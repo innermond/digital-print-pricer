@@ -41,8 +41,21 @@ const MOCK_SIZES: Size[] = [
 ];
 
 
-const allowedLaminationTypes =  (p: Paper) => {
-  if (p.gsm < 170) return false;
+const allowedLaminationTypes = (elem: Elemental) => {
+  if (elem.paper.gsm < 170) return false;
+  if (['elem3-2'].includes(elem.id)) return false;
+  return true;
+};
+
+const allowedCreasingTypes = (elem: Elemental) => {
+  if (elem.paper.gsm < 200) return false;
+  if (['elem4-1', 'elem3-2'].includes(elem.id)) return false;
+  return true;
+};
+
+const allowedRoundedCorners = (elem: Elemental) => {
+  if (elem.paper.gsm < 170) return false;
+  if (['elem3-1', 'elem3-2'].includes(elem.id)) return false;
   return true;
 };
 
@@ -67,7 +80,14 @@ const PRODUCT_CONFIG = {
     allowedSizeIds: ['s1', 's2'],
     recommendedPaperId: 'p4',
     recommendedSizeId: 's1',
-    allowedFoldTypes: ['none', 'half-fold'],
+    allowedFoldTypes: ['none'],
+  },
+  prod4: { // Business card
+    allowedPaperIds: ['p5', 'p6'],
+    allowedSizeIds: ['s5', 's6'],
+    recommendedPaperId: 'p6',
+    recommendedSizeId: 's5',
+    allowedFoldTypes: ['none'],
   },
 };
 
@@ -146,21 +166,40 @@ const MOCK_PRODUCTS: Product[] = [
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm' },
         finishing: {
           lamination: { type: 'soft-touch', sides: 'both' },
-          folding: { type: 'half-fold', folds: 1 },
-          creasing: { count: 1 },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 2 },
           roundedCornes: { count: 0 },
         },
       },
       {
         id: 'elem3-2',
         label: 'Paper Pocket',
-        paper: MOCK_PAPERS[2],
-        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm' },
+        paper: MOCK_PAPERS[5],
+        size: { id: 's999', label: 'Cust', width: 200, height: 120, unit: 'mm' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
-          roundedCornes: { count: 4 },
+          roundedCornes: { count: 0 },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod4',
+    label: 'Business Card',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem4-1',
+        label: 'Business card',
+        paper: MOCK_PAPERS[5],
+        size: { id: 's5', label: 'Business Card Classic', width: 90, height: 50, unit: 'mm' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { count: 0 },
         },
       },
     ],
@@ -179,6 +218,9 @@ export default function ProductConfigurator() {
     products[0].elementals[0].id
   );
   const [customSizeUnit, setCustomSizeUnit] = useState('mm');
+  const [productPrices, setProductPrices] = useState({});
+  const [pricingLoading, setPricingLoading] = useState(false);
+  const [pricingError, setPricingError] = useState(null);
 
   const selectedProduct = products.find((p: Product) => p.id === selectedProductId);
   const selectedElemental = selectedProduct?.elementals.find(
@@ -213,6 +255,70 @@ export default function ProductConfigurator() {
   const updateProductAmount = (productId: Product['id'], amount: number) => {
     updateProduct(productId, { amount: Math.max(1, amount) });
   };
+ 
+  const getPriceFromAPI = async () => {
+    if (!selectedProduct) return;
+    
+    setPricingLoading(true);
+    setPricingError(null);
+    
+    try {
+      // Prepare the product data to send to the API
+      const productData = {
+        productId: selectedProduct.id,
+        productLabel: selectedProduct.label,
+        amount: selectedProduct.amount,
+        elementals: selectedProduct.elementals.map(elem => ({
+          label: elem.label,
+          paper: {
+            id: elem.paper.id,
+            label: elem.paper.label,
+            gsm: elem.paper.gsm,
+            finish: elem.paper.finish,
+          },
+          size: {
+            width: elem.size.width,
+            height: elem.size.height,
+            unit: elem.size.unit,
+          },
+          finishing: elem.finishing,
+        })),
+      };
+
+      console.log(productData)
+ 
+      // Call your API endpoint - update this URL to your actual API
+      const response = await fetch('https://your-api-endpoint.com/calculate-price', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+      });
+ 
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+ 
+      const result = await response.json();
+      
+      // Store the price for this product
+      setProductPrices(prev => ({
+        ...prev,
+        [selectedProduct.id]: {
+          price: result.price,
+          currency: result.currency || 'USD',
+          timestamp: new Date().toISOString(),
+        },
+      }));
+    } catch (error) {
+      setPricingError(error.message || 'Failed to get price. Please check your API endpoint.');
+      console.error('Pricing error:', error);
+    } finally {
+      setPricingLoading(false);
+    }
+  };
+ 
 
   const exportProducts = () => {
     const json = JSON.stringify(products, null, 2);
@@ -367,7 +473,57 @@ export default function ProductConfigurator() {
                       <Plus size={14} className="text-slate-700 dark:text-slate-300" />
                     </button>
                   </div>
-</div>
+ 
+            {/* Get Price Button */}
+            <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
+              <button
+                onClick={getPriceFromAPI}
+                disabled={pricingLoading}
+                className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-400 disabled:to-slate-500 px-4 py-2.5 text-sm font-semibold text-white transition shadow-sm flex items-center justify-center gap-2"
+              >
+                {pricingLoading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Calculating Price...
+                  </>
+                ) : (
+                  '💰 Get Price'
+                )}
+              </button>
+ 
+              {/* Price Display */}
+              {productPrices[selectedProduct.id] && (
+                <div className="mt-4 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800">
+                  <div className="text-xs text-emerald-700 dark:text-emerald-300 mb-1 font-medium">Unit Price:</div>
+                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">
+                    {productPrices[selectedProduct.id].currency} {productPrices[selectedProduct.id].price.toFixed(2)}
+                  </div>
+                  <div className="bg-white dark:bg-emerald-900 rounded p-2 mb-2">
+                    <div className="text-xs text-emerald-900 dark:text-emerald-200">
+                      <span className="font-semibold">Total for {selectedProduct.amount} unit{selectedProduct.amount !== 1 ? 's' : ''}:</span>
+                    </div>
+                    <div className="text-lg font-bold text-emerald-700 dark:text-emerald-300">
+                      {productPrices[selectedProduct.id].currency} {(productPrices[selectedProduct.id].price * selectedProduct.amount).toFixed(2)}
+                    </div>
+                  </div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400">
+                    Last updated: {new Date(productPrices[selectedProduct.id].timestamp).toLocaleTimeString()}
+                  </div>
+                </div>
+              )}
+ 
+              {/* Error Display */}
+              {pricingError && (
+                <div className="mt-4 p-4 rounded-lg bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800">
+                  <div className="text-xs font-semibold text-red-700 dark:text-red-300 mb-1">⚠️ Error:</div>
+                  <div className="text-sm text-red-600 dark:text-red-400 mb-2">{pricingError}</div>
+                  <div className="text-xs text-red-600 dark:text-red-400">
+                    💡 Make sure your API endpoint URL is configured correctly and returns: {'{'} price: number, currency?: string {'}'}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
         {/* Configuration Panel */}
         <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
@@ -614,11 +770,12 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
             <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Lamination</h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-2">
               {['none', 'gloss', 'matt', 'soft-touch'].map((type) => {
-                const isAllowed = allowedLaminationTypes(element.paper);
+                const allowed = allowedLaminationTypes(element);
                 return (
                 <button
                   key={type}
-                  onClick={() =>
+                  onClick={() => {
+                    if (!allowed) return;
                     onUpdate({
                       finishing: {
                         ...element.finishing,
@@ -627,10 +784,10 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
                           type,
                         },
                       },
-                    })
-                  }
+                    });
+                  }}
                     className={`rounded px-2 py-1.5 text-xs font-medium transition ${
-                      !isAllowed &&  element.finishing.lamination.type !== type
+                      !allowed &&  element.finishing.lamination.type !== type
                         ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
                         :  element.finishing.lamination.type === type
                         ? 'bg-blue-500 dark:bg-blue-600 text-white'
@@ -680,12 +837,13 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
             <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Folding</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
               {['none', 'half-fold', 'tri-fold', 'z-fold', 'gate-fold'].map((type) => {
-                const isAllowed = config.allowedFoldTypes.includes(type);
+                const allowed = config.allowedFoldTypes.includes(type);
                 return (
                   <button
                     key={type}
-                    disabled={!isAllowed}
-                    onClick={() =>
+                    disabled={!allowed}
+                    onClick={() => {
+                      if (!allowed) return;
                       onUpdate({
                         finishing: {
                           ...element.finishing,
@@ -694,10 +852,10 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
                             folds: type === 'none' ? 0 : element.finishing.folding.folds || 1,
                           },
                         },
-                      })
-                    }
+                      });
+                    }}
                     className={`rounded px-2 py-1.5 text-xs font-medium transition ${
-                      !isAllowed &&  element.finishing.folding.type !== type
+                      !allowed &&  element.finishing.folding.type !== type
                         ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
                         : element.finishing.folding.type === type
                         ? 'bg-blue-500 dark:bg-blue-600 text-white'
@@ -722,15 +880,16 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
                 min="0"
                 max="5"
                 value={element.finishing.creasing.count}
-                onChange={(e) =>
+                onChange={(e) => {
+                  if (! allowedCreasingTypes(element)) return;
                   onUpdate({
                     finishing: {
                       ...element.finishing,
                       creasing: { count: parseInt(e.target.value) },
                     },
-                  })
-                }
-                className="flex-1 accent-blue-500 dark:accent-blue-400"
+                  });
+                }}
+                className={'flex-1 ' + (allowedCreasingTypes(element) ? 'accent-blue-500 dark:accent-blue-400' : 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed')} 
               />
               <span className="text-xs font-medium text-slate-900 dark:text-slate-50 w-6 text-center">
                 {element.finishing.creasing.count}
@@ -742,26 +901,32 @@ function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUni
           <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
             <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Rounded Corners</h4>
             <div className="grid grid-cols-5 gap-1.5">
-              {[0, 1, 2, 3, 4].map((count) => (
-                <button
-                  key={count}
-                  onClick={() =>
-                    onUpdate({
-                      finishing: {
-                        ...element.finishing,
-                        roundedCornes: { count },
-                      },
-                    })
-                  }
-                  className={`rounded px-2 py-1.5 text-xs font-medium transition ${
-                    element.finishing.roundedCornes.count === count
-                      ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                      : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400'
-                  }`}
-                >
-                  {count}
-                </button>
-              ))}
+              {[0, 1, 2, 3, 4].map((count) => {
+                const allowed = allowedRoundedCorners(element);
+                const isActive = allowed && element.finishing.roundedCornes.count === count;
+                const base = 'rounded px-2 py-1.5 text-xs font-medium transition border';
+                const active = 'bg-blue-500 dark:bg-blue-600 text-white';
+                const inactive =
+                  'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400';
+                const disabled = !allowed ? 'cursor-not-allowed' : '';
+
+                return (
+                  <button
+                    key={count}
+                    onClick={() => {
+                      if (!allowed) return;
+                      onUpdate({
+                        finishing: {
+                          ...element.finishing,
+                          roundedCornes: { count },
+                        },
+                      });
+                    }}
+                    className={`${base} ${isActive ? active : inactive} ${disabled}`}
+                  >
+                    {count}
+                  </button>
+              )})}
             </div>
           </div>
         </div>
