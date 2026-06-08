@@ -1,10 +1,10 @@
-import type { Elemental, Size, SizeUnit, LaminationType, LaminationSides, FoldingType } from '../types';
+import type { Elemental, Size, SizeUnit, LaminationType, LaminationSides, FoldingType, RoundedCorner } from '../types';
 import { MOCK_PAPERS, MOCK_SIZES } from '../data/mockData';
 import type { ProductConfig } from '../data/mockData';
 import { convertSize } from '../lib/sizeUtils';
 import {
   allowedLaminationTypes,
-  allowedCreasingTypes,
+  allowedCreasingCounts,
   allowedRoundedCorners,
 } from '../lib/finishingRules';
 
@@ -12,7 +12,12 @@ const SIZE_UNITS: SizeUnit[] = ['mm', 'in', 'pt'];
 const LAMINATION_TYPES: LaminationType[] = ['none', 'gloss', 'matt', 'soft-touch'];
 const LAMINATION_SIDES: LaminationSides[] = ['front', 'back', 'both'];
 const FOLDING_TYPES: FoldingType[] = ['none', 'half-fold', 'tri-fold', 'z-fold', 'gate-fold'];
-const ROUNDED_CORNER_COUNTS = [0, 1, 2, 3, 4] as const;
+const ROUNDED_CORNERS: Array<{ value: RoundedCorner; label: string }> = [
+  { value: 1, label: 'Top-left' },
+  { value: 2, label: 'Top-right' },
+  { value: 3, label: 'Bottom-left' },
+  { value: 4, label: 'Bottom-right' },
+];
 
 type ConfigurationPanelProps = {
   element: Elemental;
@@ -33,6 +38,11 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
   const availableSizes = MOCK_SIZES.filter(s =>
     config.allowedSizeIds.includes(s.id)
   );
+
+  // Subsets of finishing options allowed for this element
+  const allowedLaminationOptions = allowedLaminationTypes(element);
+  const allowedCreasingOptions = allowedCreasingCounts(element);
+  const allowedRoundedCornerOptions = allowedRoundedCorners(element);
 
   // Find which size preset matches current element size
   const matchingPreset = availableSizes.find(
@@ -225,7 +235,7 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
             <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Lamination</h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-2">
               {LAMINATION_TYPES.map((type) => {
-                const allowed = allowedLaminationTypes(element);
+                const allowed = allowedLaminationOptions.includes(type);
                 return (
                 <button
                   key={type}
@@ -336,15 +346,16 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
                 max="5"
                 value={element.finishing.creasing.count}
                 onChange={(e) => {
-                  if (! allowedCreasingTypes(element)) return;
+                  const count = parseInt(e.target.value);
+                  if (!allowedCreasingOptions.includes(count)) return;
                   onUpdate({
                     finishing: {
                       ...element.finishing,
-                      creasing: { count: parseInt(e.target.value) },
+                      creasing: { count },
                     },
                   });
                 }}
-                className={'flex-1 ' + (allowedCreasingTypes(element) ? 'accent-blue-500 dark:accent-blue-400' : 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed')}
+                className={'flex-1 ' + (allowedCreasingOptions.length > 0 ? 'accent-blue-500 dark:accent-blue-400' : 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed')}
               />
               <span className="text-xs font-medium text-slate-900 dark:text-slate-50 w-6 text-center">
                 {element.finishing.creasing.count}
@@ -355,32 +366,35 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
           {/* Rounded Corners */}
           <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
             <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Rounded Corners</h4>
-            <div className="grid grid-cols-5 gap-1.5">
-              {ROUNDED_CORNER_COUNTS.map((count) => {
-                const allowed = allowedRoundedCorners(element);
-                const isActive = allowed && element.finishing.roundedCornes.count === count;
-                const base = 'rounded px-2 py-1.5 text-xs font-medium transition border';
-                const active = 'bg-blue-500 dark:bg-blue-600 text-white';
-                const inactive =
-                  'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400';
-                const disabled = !allowed ? 'cursor-not-allowed' : '';
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+              {ROUNDED_CORNERS.map(({ value, label }) => {
+                const allowed = allowedRoundedCornerOptions.includes(value);
+                const checked = element.finishing.roundedCornes.corners.includes(value);
+                const base = 'flex items-center gap-1.5 rounded px-2 py-1.5 text-xs font-medium transition border';
+                const enabled =
+                  'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400 cursor-pointer';
+                const disabled =
+                  'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-500 cursor-not-allowed';
 
                 return (
-                  <button
-                    key={count}
-                    onClick={() => {
-                      if (!allowed) return;
-                      onUpdate({
-                        finishing: {
-                          ...element.finishing,
-                          roundedCornes: { count },
-                        },
-                      });
-                    }}
-                    className={`${base} ${isActive ? active : inactive} ${disabled}`}
-                  >
-                    {count}
-                  </button>
+                  <label key={value} className={`${base} ${allowed ? enabled : disabled}`}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      disabled={!allowed}
+                      onChange={() => {
+                        if (!allowed) return;
+                        const corners = checked
+                          ? element.finishing.roundedCornes.corners.filter((corner) => corner !== value)
+                          : [...element.finishing.roundedCornes.corners, value];
+                        onUpdate({
+                          finishing: { ...element.finishing, roundedCornes: { corners } },
+                        });
+                      }}
+                      className="accent-blue-500 dark:accent-blue-400 disabled:cursor-not-allowed"
+                    />
+                    {label}
+                  </label>
               )})}
             </div>
           </div>

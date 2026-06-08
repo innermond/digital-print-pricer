@@ -17,6 +17,9 @@ type FoldingType =
   | "gate-fold"
   | "custom";
 
+// 1 = top-left, 2 = top-right, 3 = bottom-left, 4 = bottom-right
+type RoundedCorner = 1 | 2 | 3 | 4;
+
 type Finishing = {
   lamination: {
     type: LaminationType;
@@ -33,8 +36,8 @@ type Finishing = {
   };
 
   roundedCornes: {
-    count: 0 | 1 | 2 | 3 | 4;
+    corners: RoundedCorner[];
   };
 };
 
-export type { LaminationType, LaminationSides, FoldingType, Finishing };
+export type { LaminationType, LaminationSides, FoldingType, RoundedCorner, Finishing };

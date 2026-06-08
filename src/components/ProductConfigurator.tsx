@@ -6,6 +6,7 @@ import { MOCK_PRODUCTS, PRODUCT_CONFIG } from '../data/mockData';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { PreviewCard } from './PreviewCard';
 import { AssemblySummary } from './AssemblySummary';
+import { Badge } from './Badge';
 
 type ProductPrice = {
   price: number;
@@ -219,6 +220,7 @@ export default function ProductConfigurator() {
           <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
             Select Product
           </h2>
+          <Badge text="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {products.map((product: Product) => (
               <button
@@ -244,6 +246,7 @@ export default function ProductConfigurator() {
               </button>
             ))}
           </div>
+          </Badge>
         </div>
 
         {/* Current product amount */}
