@@ -6,7 +6,8 @@ import { MOCK_PRODUCTS, PRODUCT_CONFIG } from '../data/mockData';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { PreviewCard } from './PreviewCard';
 import { AssemblySummary } from './AssemblySummary';
-import { Badge } from './Badge';
+import { ProductButton } from './ProductButton';
+import { NumericPlusMinusButton } from './NumericPlusMinusButton';
 
 type ProductPrice = {
   price: number;
@@ -60,9 +61,15 @@ export default function ProductConfigurator() {
     );
   };
 
-  const updateProductAmount = (productId: Product['id'], amount: number) => {
-    updateProduct(productId, { amount: Math.max(1, amount) });
-  };
+const updateProductAmount = (productId: Product['id'], delta: number) => {
+  setProducts(prev =>
+    prev.map(p =>
+      p.id === productId
+        ? { ...p, amount: Math.max(1, p.amount + delta) }
+        : p
+    )
+  );
+};
 
   const getPriceFromAPI = async () => {
     if (!selectedProduct) return;
@@ -170,7 +177,7 @@ export default function ProductConfigurator() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
       {/* Header */}
-      <header className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-10">
+      <header className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-[21]">
         <div className="mx-auto max-w-7xl px-4 py-5">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
@@ -216,38 +223,25 @@ export default function ProductConfigurator() {
       {/* Main Content */}
       <main className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
         {/* Products Grid (Row-oriented) */}
-        <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
-          <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
-            Select Product
-          </h2>
-          <Badge text="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {products.map((product: Product) => (
-              <button
-                key={product.id}
-                onClick={() => {
-                  setSelectedProductId(product.id);
-                  setSelectedElementalId(product.elementals[0].id);
-                }}
-                className={`rounded-lg border-2 px-4 py-3 text-left transition ${
-                  selectedProductId === product.id
-                    ? 'border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950'
-                    : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
-                }`}
-              >
-                <div className="font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                  {product.label}
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-xs text-slate-600 dark:text-slate-400">
-                    {product.elementals.length} element{product.elementals.length !== 1 ? 's' : ''}
-                  </div>
-                </div>
-              </button>
-            ))}
+          <div className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
+            <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
+              Select Product
+            </h2>
+            <div className="w-full flex flex-wrap gap-4">
+              {products.map((product: Product) => (
+                <ProductButton
+                  key={product.id}
+                  product={product}
+                  selectedProductId={selectedProductId}
+                  onClick={() => {
+                    setSelectedProductId(product.id);
+                    setSelectedElementalId(product.elementals[0].id);
+                  }}
+badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>"
+                />
+              ))}
+            </div>
           </div>
-          </Badge>
-        </div>
 
         {/* Current product amount */}
         {selectedProduct && (
@@ -257,37 +251,13 @@ export default function ProductConfigurator() {
           </h2>
         <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
         <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-600 rounded px-2 py-1">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateProductAmount(selectedProduct.id, selectedProduct.amount - 1);
-                      }}
-                      className="p-0.5 hover:bg-slate-200 dark:hover:bg-slate-500 rounded"
-                    >
-                      <Minus size={14} className="text-slate-700 dark:text-slate-300" />
-                    </button>
-                      <input   type="text"
-                        pattern="(?:0|[1-9]\d*)"
-                        inputMode="decimal"
-                        autoComplete="off"
-                        size={Math.max(String(selectedProduct.amount).length, 1)}
-                        value={selectedProduct.amount}
-                        onChange={(e) => {
-                          e.stopPropagation();
-                          updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value));
-                        }}
-                        className="text-center text-xs font-semibold text-slate-900 dark:text-slate-50"
-                      />
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateProductAmount(selectedProduct.id, selectedProduct.amount + 1);
-                      }}
-                      className="p-0.5 hover:bg-slate-200 dark:hover:bg-slate-500 rounded"
-                    >
-                      <Plus size={14} className="text-slate-700 dark:text-slate-300" />
-                    </button>
-                  </div>
+          <NumericPlusMinusButton
+            onClickMinus={() => updateProductAmount(selectedProduct.id, -1)}
+            onChange={() => updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value))}
+            onClickPlus={() => updateProductAmount(selectedProduct.id, +1)}
+            value={selectedProduct.amount}
+          />
+        </div>
 
             {/* Get Price Button */}
             <div className="border-t border-slate-200 dark:border-slate-700 pt-4">

@@ -71,13 +71,13 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
   };
 
   return (
-    <span className="relative inline-flex">
+    <span className="flex-grow flex-shrink relative inline-flex">
       {children}
       <span
         ref={badgeRef}
         onMouseEnter={handleEnter}
         onMouseLeave={() => setIsOpen(false)}
-        className={`absolute z-10 inline-flex items-center justify-center rounded-full bg-blue-500 dark:bg-blue-600 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-white shadow-sm ${BADGE_POSITION_CLASSES[position]}`}
+        className={`absolute z-10 inline-flex items-center justify-center rounded-full bg-blue-500 dark:bg-blue-600 text-[10px] font-semibold leading-none text-white shadow-sm ${BADGE_POSITION_CLASSES[position]}`}
       >
         {label ?? 'ⓘ'}
         <span
