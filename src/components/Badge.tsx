@@ -33,17 +33,21 @@ const fitPosition = (
 ): BadgePosition => {
   const [vertical, horizontal] = preferred.split('-') as ['top' | 'bottom', 'left' | 'right'];
 
+  const fitsAbove = badgeRect.top - panelRect.height >= 0;
+  const fitsBelow = badgeRect.bottom + panelRect.height <= window.innerHeight;
   let nextVertical = vertical;
-  if (vertical === 'top' && badgeRect.top - panelRect.height < 0) {
+  if (vertical === 'top' && !fitsAbove && fitsBelow) {
     nextVertical = 'bottom';
-  } else if (vertical === 'bottom' && badgeRect.bottom + panelRect.height > window.innerHeight) {
+  } else if (vertical === 'bottom' && !fitsBelow && fitsAbove) {
     nextVertical = 'top';
   }
 
+  const fitsLeftAligned = badgeRect.left + panelRect.width <= window.innerWidth;
+  const fitsRightAligned = badgeRect.right - panelRect.width >= 0;
   let nextHorizontal = horizontal;
-  if (horizontal === 'left' && badgeRect.left + panelRect.width > window.innerWidth) {
+  if (horizontal === 'left' && !fitsLeftAligned && fitsRightAligned) {
     nextHorizontal = 'right';
-  } else if (horizontal === 'right' && badgeRect.right - panelRect.width < 0) {
+  } else if (horizontal === 'right' && !fitsRightAligned && fitsLeftAligned) {
     nextHorizontal = 'left';
   }
 
