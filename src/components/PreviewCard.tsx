@@ -48,7 +48,9 @@ export function PreviewCard({ element }: PreviewCardProps) {
           {element.size.width.toFixed(1)} × {element.size.height.toFixed(1)} {element.size.unit}
         </div>
         <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-          {element.paper.gsm} GSM • {element.paper.finish}
+          {element.media.kind === 'paper'
+            ? `${element.media.gsm} GSM · ${element.media.finish}`
+            : `${element.media.face} label`}
         </div>
       </div>
     </div>

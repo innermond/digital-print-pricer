@@ -1,7 +1,7 @@
 import type { Elemental, SizeUnit } from '../types';
-import { MOCK_PAPERS, MOCK_SIZES } from '../data/mockData';
+import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
 import type { ProductConfig } from '../data/mockData';
-import { PaperSelector } from './configuration/PaperSelector';
+import { MediaSelector } from './configuration/MediaSelector';
 import { SizeSelector } from './configuration/SizeSelector';
 import { PrintingControl } from './configuration/PrintingControl';
 import { PageCountControl } from './configuration/PageCountControl';
@@ -16,7 +16,7 @@ type ConfigurationPanelProps = {
 };
 
 export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUnitChange, config }: ConfigurationPanelProps) {
-  const availablePapers = MOCK_PAPERS.filter((p) => config.allowedPaperIds.includes(p.id));
+  const availableMedia = MOCK_MEDIA.filter((m) => config.allowedMediaIds.includes(m.id));
   const availableSizes = MOCK_SIZES.filter((s) => config.allowedSizeIds.includes(s.id));
 
   const pageCountConstraint = config.elementalPageCounts?.[element.id];
@@ -24,11 +24,11 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
 
   return (
     <div className="space-y-3">
-      <PaperSelector
-        papers={availablePapers}
-        selectedId={element.paper.id}
-        recommendedId={config.recommendedPaperId}
-        onSelect={(paper) => onUpdate({ paper })}
+      <MediaSelector
+        media={availableMedia}
+        selectedId={element.media.id}
+        recommendedId={config.recommendedMediaId}
+        onSelect={(media) => onUpdate({ media })}
       />
       <SizeSelector
         sizes={availableSizes}

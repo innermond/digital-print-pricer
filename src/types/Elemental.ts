@@ -1,9 +1,9 @@
-import type { Paper, Size, Finishing, Printing } from './';
+import type { Media, Size, Finishing, Printing } from './';
 
 type Elemental = {
   id: string;
   label: string;
-  paper: Paper;
+  media: Media;
   size: Size;
   pageCount: number;
   printing: Printing;
@@ -11,4 +11,3 @@ type Elemental = {
 };
 
 export type { Elemental };
-

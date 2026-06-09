@@ -17,7 +17,7 @@ type ProductPrice = {
 
 // ============ MAIN APP ============
 export default function ProductConfigurator() {
-  const STORAGE_VERSION = 'v4';
+  const STORAGE_VERSION = 'v5';
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
@@ -89,11 +89,13 @@ const updateProductAmount = (productId: Product['id'], delta: number) => {
         amount: selectedProduct.amount,
         elementals: selectedProduct.elementals.map(elem => ({
           label: elem.label,
-          paper: {
-            id: elem.paper.id,
-            label: elem.paper.label,
-            gsm: elem.paper.gsm,
-            finish: elem.paper.finish,
+          media: {
+            kind: elem.media.kind,
+            id: elem.media.id,
+            label: elem.media.label,
+            gsm: elem.media.gsm,
+            ...(elem.media.kind === 'paper'   ? { finish: elem.media.finish } : {}),
+            ...(elem.media.kind === 'sticker' ? { face: elem.media.face }     : {}),
           },
           size: {
             width: elem.size.width,

@@ -24,7 +24,7 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs text-slate-600 dark:text-slate-400">
               <div>
-                <span className="font-medium text-slate-900 dark:text-slate-50">Paper:</span> {element.paper.label}
+                <span className="font-medium text-slate-900 dark:text-slate-50">Media:</span> {element.media.label}
               </div>
               <div>
                 <span className="font-medium text-slate-900 dark:text-slate-50">Size:</span> {element.size.width.toFixed(1)}×{element.size.height.toFixed(1)} {element.size.unit}
