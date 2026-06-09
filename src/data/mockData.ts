@@ -104,8 +104,9 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     recommendedSizeId: 's1',
     allowedFoldTypes: ['none'],
     elementalPageCounts: {
-      'elem7-1': { kind: 'fixed', value: 2 },
+      'elem7-1': { kind: 'fixed', value: 1 },
       'elem7-2': { kind: 'multiple', of: 2, min: 2, max: 200 },
+      'elem7-3': { kind: 'fixed', value: 1 },
     },
   },
 };
@@ -275,10 +276,10 @@ export const MOCK_PRODUCTS: Product[] = [
         label: 'Copertă',
         media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 2,
-        printing: { front: 'color', back: 'color' },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'gloss', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -293,6 +294,20 @@ export const MOCK_PRODUCTS: Product[] = [
         printing: { front: 'color', back: 'color' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem7-3',
+        label: 'Copertă Spate',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'gloss', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },

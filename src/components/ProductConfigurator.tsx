@@ -17,7 +17,7 @@ type ProductPrice = {
 
 // ============ MAIN APP ============
 export default function ProductConfigurator() {
-  const STORAGE_VERSION = 'v6';
+  const STORAGE_VERSION = 'v7';
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
