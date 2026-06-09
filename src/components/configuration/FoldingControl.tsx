@@ -2,11 +2,11 @@ import type { FoldingType, Finishing } from '../../types';
 import { Badge } from '../Badge';
 
 const FOLDING_TYPE_INFO: Partial<Record<FoldingType, { label: string; explanation?: string }>> = {
-  none:       { label: 'None',      explanation: 'No folding. Delivered flat.' },
-  'half-fold':{ label: 'Half fold', explanation: 'One fold down the centre, creating two equal panels. Classic for A4→A5 leaflets.' },
-  'tri-fold': { label: 'Tri-fold',  explanation: 'Two parallel folds that divide the sheet into three equal panels. The standard for DL brochures and letter-fold mailers.' },
-  'z-fold':   { label: 'Z-fold',    explanation: 'Two folds in opposite directions, forming a Z or S shape. Each panel is fully visible when unfolded — good for maps and menus.' },
-  'gate-fold':{ label: 'Gate fold', explanation: 'Two outer panels fold inward to meet at the centre without overlapping, like a pair of doors. Creates a dramatic reveal for premium brochures.' },
+  none:        { label: 'Fără',              explanation: 'Fără pliere. Livrat plat.' },
+  'half-fold': { label: 'Pliere la jumătate', explanation: 'O pliere centrală care creează două panouri egale. Clasic pentru pliante A4→A5.' },
+  'tri-fold':  { label: 'Pliere în trei',    explanation: 'Două pliuri paralele care împart coala în trei panouri egale. Standard pentru broșuri DL.' },
+  'z-fold':    { label: 'Pliere Z',          explanation: 'Două pliuri în direcții opuse, formând o formă Z sau S. Fiecare panou este vizibil când se desfășoară — potrivit pentru hărți și meniuri.' },
+  'gate-fold': { label: 'Pliere poartă',     explanation: 'Două panouri exterioare se pliază înăuntru, ca o pereche de uși. Efect de dezvăluire dramatic pentru materiale premium.' },
 };
 
 const FOLDING_TYPES = Object.keys(FOLDING_TYPE_INFO) as FoldingType[];
@@ -21,7 +21,7 @@ type FoldingControlProps = {
 export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText }: FoldingControlProps) {
   const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Folding</h4>
+      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Pliere</h4>
       <div className="flex flex-wrap gap-1.5">
         {FOLDING_TYPES.map((type) => {
           const allowed = allowedFoldTypes.includes(type) || (type === 'none' && allowedFoldTypes.length === 0);

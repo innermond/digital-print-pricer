@@ -53,7 +53,7 @@ export function SizeSelector({
     const numMm = convertSize(numValue, customSizeUnit, 'mm');
     onSizeChange({
       id: 'custom',
-      label: 'Custom',
+      label: 'Personalizat',
       width: field === 'width' ? numValue : displayWidth,
       height: field === 'height' ? numValue : displayHeight,
       widthMm: field === 'width' ? numMm : currentSize.widthMm,
@@ -76,7 +76,7 @@ export function SizeSelector({
     <div>
       <div className="flex items-center justify-between mb-2 gap-2">
         <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50">
-          Size
+          Dimensiune
         </label>
         <div className="flex gap-1">
           {SIZE_UNITS.map((unit) => (
@@ -127,7 +127,7 @@ export function SizeSelector({
               : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-500'
           }`}
         >
-          <div className="font-medium text-slate-900 dark:text-slate-50">Custom</div>
+          <div className="font-medium text-slate-900 dark:text-slate-50">Personalizat</div>
           <div className="text-xs text-slate-500 dark:text-slate-400">
             {displayWidth.toFixed(1)} × {displayHeight.toFixed(1)} {customSizeUnit}
           </div>
@@ -137,7 +137,7 @@ export function SizeSelector({
       <div className="flex flex-wrap gap-2 p-2.5 rounded-lg bg-slate-50 dark:bg-slate-700">
         <div className="flex-1 min-w-24">
           <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Width ({customSizeUnit})
+            Lățime ({customSizeUnit})
           </label>
           <NumericButton
             value={fmt(displayWidth)}
@@ -149,7 +149,7 @@ export function SizeSelector({
         </div>
         <div className="flex-1 min-w-24">
           <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Height ({customSizeUnit})
+            Înălțime ({customSizeUnit})
           </label>
           <NumericButton
             value={fmt(displayHeight)}

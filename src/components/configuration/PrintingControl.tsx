@@ -2,14 +2,14 @@ import type { Printing, PrintInk } from '../../types';
 import { Badge } from '../Badge';
 
 const FRONT_INK_INFO: Record<PrintInk, { label: string; explanation: string }> = {
-  color: { label: 'Color',      explanation: 'Full CMYK colour printing on the front face. Best for photos, illustrations, and brand-heavy designs.' },
-  black: { label: 'Black only', explanation: 'Single-colour (black ink) on the front face. Lower cost — good for text-heavy documents where colour is not needed.' },
+  color: { label: 'Color',      explanation: 'Tipărire CMYK completă pe fața față. Potrivit pentru fotografii, ilustrații și design-uri cu identitate vizuală puternică.' },
+  black: { label: 'Alb-negru',  explanation: 'Tipărire monocromă (cerneală neagră) pe fața față. Cost mai mic — potrivit pentru documente cu mult text unde culoarea nu este necesară.' },
 };
 
 const BACK_INK_INFO: Record<PrintInk | 'none', { label: string; explanation: string }> = {
-  color: { label: 'Color',      explanation: 'Full CMYK colour printing on the back face.' },
-  black: { label: 'Black only', explanation: 'Single-colour (black ink) on the back face. Useful when the back carries text or simple graphics.' },
-  none:  { label: 'Blank',      explanation: 'Back face is left unprinted. Cheaper and faster — suitable when only one side needs to communicate.' },
+  color: { label: 'Color',      explanation: 'Tipărire CMYK completă pe fața verso.' },
+  black: { label: 'Alb-negru',  explanation: 'Tipărire monocromă (cerneală neagră) pe fața verso. Util când versoul conține text sau grafice simple.' },
+  none:  { label: 'Neimprimat', explanation: 'Fața verso rămâne netipărită. Mai ieftin și mai rapid — potrivit când doar o față trebuie să comunice.' },
 };
 
 const FRONT_INKS = Object.keys(FRONT_INK_INFO) as PrintInk[];
@@ -37,11 +37,11 @@ export function PrintingControl({ printing, onChange, allowedBacks, badgeText }:
 
   const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Printing</h4>
+      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Tipărire</h4>
 
       <div className="space-y-2">
         <div>
-          <label className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 block">Front</label>
+          <label className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 block">Față</label>
           <div className="flex flex-wrap gap-1.5">
             {FRONT_INKS.map((ink) => {
               const { label, explanation } = FRONT_INK_INFO[ink];
@@ -61,7 +61,7 @@ export function PrintingControl({ printing, onChange, allowedBacks, badgeText }:
 
         {showBack && (
           <div>
-            <label className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 block">Back</label>
+            <label className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 block">Verso</label>
             <div className="flex flex-wrap gap-1.5">
               {visibleBacks.map((ink) => {
                 const { label, explanation } = BACK_INK_INFO[ink];

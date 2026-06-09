@@ -5,6 +5,7 @@ import {
   allowedCreasingCounts,
   allowedRoundedCorners,
 } from '../../lib/finishingRules';
+import { derivedPageCount } from '../../lib/foldUtils';
 import { LaminationControl } from './LaminationControl';
 import { FoldingControl } from './FoldingControl';
 import { CreasingControl } from './CreasingControl';
@@ -24,7 +25,7 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
   const widget = (
     <div>
       <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
-        Finishing
+        Finisare
       </label>
       <div className="space-y-2.5">
         <LaminationControl
@@ -35,7 +36,14 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
         <FoldingControl
           folding={finishing.folding}
           allowedFoldTypes={config.allowedFoldTypes}
-          onChange={(folding) => onUpdate({ finishing: { ...finishing, folding } })}
+          onChange={(folding) => {
+            const pageCountConstraint = config.elementalPageCounts?.[element.id];
+            const updates: Partial<Elemental> = { finishing: { ...finishing, folding } };
+            if (pageCountConstraint?.kind === 'derived') {
+              updates.pageCount = derivedPageCount(folding.type);
+            }
+            onUpdate(updates);
+          }}
         />
         <CreasingControl
           count={finishing.creasing.count}

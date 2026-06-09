@@ -20,10 +20,10 @@ export function PageCountControl({ pageCount, constraint, onChange }: PageCountC
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
       <div className="flex items-center justify-between gap-2">
         <label className="text-xs font-semibold text-slate-900 dark:text-slate-50">
-          Pages
+          Pagini
         </label>
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          multiples of {step}, {min}–{max}
+          multipli de {step}, {min}–{max}
         </span>
       </div>
       <div className="mt-2">

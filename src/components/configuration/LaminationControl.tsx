@@ -2,16 +2,16 @@ import type { LaminationType, LaminationSides, Finishing } from '../../types';
 import { Badge } from '../Badge';
 
 const LAMINATION_TYPE_INFO: Record<LaminationType, { label: string; explanation?: string }> = {
-  none:         { label: 'None', explanation: 'No lamination applied. The paper surface is left as-is.' },
-  gloss:        { label: 'Gloss', explanation: 'High-shine coating that makes colours vibrant and images pop. Susceptible to fingerprints and glare under bright light.' },
-  matt:         { label: 'Matt', explanation: 'Low-sheen coating that reduces glare and gives a refined, understated look. Easier to write on than gloss.' },
-  'soft-touch': { label: 'Soft-touch', explanation: 'Velvety tactile laminate that feels luxurious to the touch. Most expensive option — best reserved for premium pieces.' },
+  none:         { label: 'Fără',       explanation: 'Fără laminare. Suprafața hârtiei rămâne nemodificată.' },
+  gloss:        { label: 'Lucios',     explanation: 'Strat de luciu puternic care face culorile vibrante și imaginile atrăgătoare. Susceptibil la amprente și reflexii sub lumină puternică.' },
+  matt:         { label: 'Mat',        explanation: 'Strat cu luciu redus care elimină reflexiile și dă un aspect rafinat, discret. Poate fi scris mai ușor decât luciosul.' },
+  'soft-touch': { label: 'Soft-touch', explanation: 'Laminare catifelată cu senzație tactilă deosebită. Cea mai scumpă opțiune — rezervată pentru materiale de prezentare premium.' },
 };
 
 const LAMINATION_SIDE_INFO: Record<LaminationSides, { label: string; explanation?: string }> = {
-  front: { label: 'Front', explanation: 'Laminate only the front (printed) face.' },
-  back:  { label: 'Back',  explanation: 'Laminate only the reverse side.' },
-  both:  { label: 'Both',  explanation: 'Laminate both sides for maximum durability and a consistent feel.' },
+  front: { label: 'Față',    explanation: 'Laminare doar pe fața față (tipărită).' },
+  back:  { label: 'Spate',   explanation: 'Laminare doar pe fața verso.' },
+  both:  { label: 'Ambele',  explanation: 'Laminare pe ambele fețe pentru durabilitate maximă și aspect consistent.' },
 };
 
 const LAMINATION_TYPES = Object.keys(LAMINATION_TYPE_INFO) as LaminationType[];
@@ -27,7 +27,7 @@ type LaminationControlProps = {
 export function LaminationControl({ lamination, allowedTypes, onChange, badgeText }: LaminationControlProps) {
   const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Lamination</h4>
+      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Laminare</h4>
       <div className="flex flex-wrap gap-1.5 mb-2">
         {LAMINATION_TYPES.map((type) => {
           const allowed = type === 'none' || allowedTypes.includes(type);
@@ -58,7 +58,7 @@ export function LaminationControl({ lamination, allowedTypes, onChange, badgeTex
       {lamination.type !== 'none' && (
         <div>
           <label className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1 block">
-            Apply to:
+            Aplică pe:
           </label>
           <div className="flex flex-wrap gap-1.5">
             {LAMINATION_SIDES.map((side) => {

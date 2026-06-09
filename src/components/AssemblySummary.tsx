@@ -1,17 +1,23 @@
 import type { Elemental, Product } from '../types';
 
+const LAMINATION_RO: Record<string, string> = {
+  none: 'Fără', gloss: 'Lucios', matt: 'Mat', 'soft-touch': 'Soft-touch',
+};
+const FOLD_RO: Record<string, string> = {
+  none: 'Fără', 'half-fold': 'La jumătate', 'tri-fold': 'În trei', 'z-fold': 'Z', 'gate-fold': 'Poartă',
+};
+
 type AssemblySummaryProps = {
   product: Product | undefined;
 };
 
-// ============ ASSEMBLY SUMMARY ============
 export function AssemblySummary({ product }: AssemblySummaryProps) {
   if (!product) return null;
 
   return (
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-sm h-fit">
       <h3 className="mb-2.5 text-sm font-semibold text-slate-900 dark:text-slate-50">
-        Assembly ({product.amount} unit{product.amount !== 1 ? 's' : ''})
+        Asamblare ({product.amount} {product.amount !== 1 ? 'unități' : 'unitate'})
       </h3>
       <div className="space-y-2 max-h-96 overflow-y-auto">
         {product.elementals.map((element: Elemental, index: number) => (
@@ -24,22 +30,18 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs text-slate-600 dark:text-slate-400">
               <div>
-                <span className="font-medium text-slate-900 dark:text-slate-50">Media:</span> {element.media.label}
+                <span className="font-medium text-slate-900 dark:text-slate-50">Material:</span> {element.media.label}
               </div>
               <div>
-                <span className="font-medium text-slate-900 dark:text-slate-50">Size:</span> {element.size.width.toFixed(1)}×{element.size.height.toFixed(1)} {element.size.unit}
+                <span className="font-medium text-slate-900 dark:text-slate-50">Dimensiune:</span> {element.size.width.toFixed(1)}×{element.size.height.toFixed(1)} {element.size.unit}
               </div>
               <div>
-                <span className="font-medium text-slate-900 dark:text-slate-50">Lamination:</span>{' '}
-                {element.finishing.lamination.type === 'none'
-                  ? 'None'
-                  : `${element.finishing.lamination.type}`}
+                <span className="font-medium text-slate-900 dark:text-slate-50">Laminare:</span>{' '}
+                {LAMINATION_RO[element.finishing.lamination.type] ?? element.finishing.lamination.type}
               </div>
               <div>
-                <span className="font-medium text-slate-900 dark:text-slate-50">Fold:</span>{' '}
-                {element.finishing.folding.type === 'none'
-                  ? 'None'
-                  : element.finishing.folding.type}
+                <span className="font-medium text-slate-900 dark:text-slate-50">Pliere:</span>{' '}
+                {FOLD_RO[element.finishing.folding.type] ?? element.finishing.folding.type}
               </div>
             </div>
           </div>
@@ -47,8 +49,8 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
       </div>
       <div className="mt-3 rounded-lg bg-blue-50 dark:bg-blue-950 p-2.5 border border-blue-200 dark:border-blue-800">
         <p className="text-xs text-blue-900 dark:text-blue-200">
-          <span className="font-semibold">Product: </span>
-          {product.label} ({product.elementals.length} item{product.elementals.length !== 1 ? 's' : ''}) × {product.amount}
+          <span className="font-semibold">Produs: </span>
+          {product.label} ({product.elementals.length} {product.elementals.length !== 1 ? 'elemente' : 'element'}) × {product.amount}
         </p>
       </div>
     </div>

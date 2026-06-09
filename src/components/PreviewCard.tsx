@@ -59,7 +59,7 @@ export function PreviewCard({ element }: PreviewCardProps) {
   return (
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-sm h-fit">
       <h3 className="mb-2.5 text-sm font-semibold text-slate-900 dark:text-slate-50">
-        Preview
+        Previzualizare
       </h3>
       <div className="flex items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-900 p-3">
         {lamination.type === 'none' ? (

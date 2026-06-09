@@ -13,7 +13,7 @@ export function CreasingControl({ count, allowedCounts, onChange, badgeText }: C
   const widget = (
     <div className={`rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5 ${disabled ? 'opacity-50' : ''}`}>
       <label className="flex items-center justify-between gap-2 text-xs font-medium text-slate-900 dark:text-slate-50 mb-2">
-        Creasing
+        Biguitură
       </label>
       <div className={`flex items-center gap-2 ${disabled ? 'cursor-not-allowed' : ''}`}>
         <input

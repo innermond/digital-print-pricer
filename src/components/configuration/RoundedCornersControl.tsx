@@ -2,10 +2,10 @@ import type { RoundedCorner, Finishing } from '../../types';
 import { Badge } from '../Badge';
 
 const ROUNDED_CORNERS: Array<{ value: RoundedCorner; label: string }> = [
-  { value: 1, label: 'Top-left' },
-  { value: 2, label: 'Top-right' },
-  { value: 3, label: 'Bottom-left' },
-  { value: 4, label: 'Bottom-right' },
+  { value: 1, label: 'Stânga sus' },
+  { value: 2, label: 'Dreapta sus' },
+  { value: 3, label: 'Stânga jos' },
+  { value: 4, label: 'Dreapta jos' },
 ];
 
 type RoundedCornersControlProps = {
@@ -24,7 +24,7 @@ export function RoundedCornersControl({ corners, allowedCorners, onChange, badge
 
   const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Rounded Corners</h4>
+      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Colțuri Rotunjite</h4>
       <div className="flex flex-wrap gap-1.5">
         {ROUNDED_CORNERS.map(({ value, label }) => {
           const allowed = allowedCorners.includes(value);

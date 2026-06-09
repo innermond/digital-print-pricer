@@ -1,4 +1,4 @@
-import type { Media } from '../../types';
+import type { Media, StickerFace } from '../../types';
 import { Badge } from '../Badge';
 
 type MediaSelectorProps = {
@@ -9,10 +9,17 @@ type MediaSelectorProps = {
   badgeText?: string;
 };
 
+const FACE_RO: Record<StickerFace, string> = {
+  Gloss: 'lucioasă',
+  Matt:  'mată',
+  Clear: 'transparentă',
+  Kraft: 'kraft',
+};
+
 function mediaSubLabel(m: Media): string {
   switch (m.kind) {
     case 'paper':   return `${m.gsm} GSM · ${m.finish}`;
-    case 'sticker': return `${m.face} face`;
+    case 'sticker': return `Față ${FACE_RO[m.face] ?? m.face.toLowerCase()}`;
   }
 }
 
@@ -20,7 +27,7 @@ export function MediaSelector({ media, selectedId, recommendedId, onSelect, badg
   const widget = (
     <div>
       <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
-        Media
+        Material
       </label>
       <div className="flex flex-wrap gap-2">
         {media.map((m) => {
