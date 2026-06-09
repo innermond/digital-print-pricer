@@ -24,7 +24,7 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
       <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Folding</h4>
       <div className="flex flex-wrap gap-1.5">
         {FOLDING_TYPES.map((type) => {
-          const allowed = allowedFoldTypes.includes(type);
+          const allowed = type === 'none' || allowedFoldTypes.includes(type);
           const { label, explanation } = FOLDING_TYPE_INFO[type]!;
           const btn = (
             <button
@@ -48,7 +48,7 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
               {label}
             </button>
           );
-          return explanation
+          return explanation && allowed
             ? <Badge key={type} text={explanation}>{btn}</Badge>
             : btn;
         })}

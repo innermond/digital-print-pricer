@@ -30,7 +30,7 @@ export function LaminationControl({ lamination, allowedTypes, onChange, badgeTex
       <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Lamination</h4>
       <div className="flex flex-wrap gap-1.5 mb-2">
         {LAMINATION_TYPES.map((type) => {
-          const allowed = allowedTypes.includes(type);
+          const allowed = type === 'none' || allowedTypes.includes(type);
           const { label, explanation } = LAMINATION_TYPE_INFO[type];
           const btn = (
             <button
@@ -50,7 +50,7 @@ export function LaminationControl({ lamination, allowedTypes, onChange, badgeTex
               {label}
             </button>
           );
-          return explanation
+          return explanation && allowed
             ? <Badge key={type} text={explanation}>{btn}</Badge>
             : btn;
         })}
