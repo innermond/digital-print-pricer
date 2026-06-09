@@ -1,11 +1,14 @@
+import { Badge } from '../Badge';
+
 type CreasingControlProps = {
   count: number;
   allowedCounts: number[];
   onChange: (count: number) => void;
+  badgeText?: string;
 };
 
-export function CreasingControl({ count, allowedCounts, onChange }: CreasingControlProps) {
-  return (
+export function CreasingControl({ count, allowedCounts, onChange, badgeText }: CreasingControlProps) {
+  const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
       <label className="flex items-center justify-between gap-2 text-xs font-medium text-slate-900 dark:text-slate-50 mb-2">
         Creasing
@@ -34,4 +37,6 @@ export function CreasingControl({ count, allowedCounts, onChange }: CreasingCont
       </div>
     </div>
   );
+
+  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
 }

@@ -1,6 +1,7 @@
 import type { Size, SizeUnit } from '../../types';
 import { convertSize } from '../../lib/sizeUtils';
 import { NumericButton } from '../NumericButton';
+import { Badge } from '../Badge';
 
 const SIZE_UNITS: SizeUnit[] = ['mm', 'in', 'pt'];
 
@@ -11,6 +12,7 @@ type SizeSelectorProps = {
   recommendedSizeId: string;
   onSizeChange: (size: Size) => void;
   onUnitChange: (unit: SizeUnit) => void;
+  badgeText?: string;
 };
 
 export function SizeSelector({
@@ -20,38 +22,42 @@ export function SizeSelector({
   recommendedSizeId,
   onSizeChange,
   onUnitChange,
+  badgeText,
 }: SizeSelectorProps) {
   const step = customSizeUnit === 'in' ? 0.1 : 1;
   const precision = customSizeUnit === 'in' ? 1 : 0;
   const fmt = (n: number) => n.toFixed(precision);
 
   const matchingPreset = sizes.find(
-    (s) =>
-      convertSize(s.width, s.unit, 'mm') === convertSize(currentSize.width, currentSize.unit, 'mm') &&
-      convertSize(s.height, s.unit, 'mm') === convertSize(currentSize.height, currentSize.unit, 'mm')
+    (s) => s.widthMm === currentSize.widthMm && s.heightMm === currentSize.heightMm
   );
 
   const isCustomSize = !matchingPreset;
-  const displayWidth = convertSize(currentSize.width, currentSize.unit, customSizeUnit);
-  const displayHeight = convertSize(currentSize.height, currentSize.unit, customSizeUnit);
+  const displayWidth = convertSize(currentSize.widthMm, 'mm', customSizeUnit);
+  const displayHeight = convertSize(currentSize.heightMm, 'mm', customSizeUnit);
 
   const handlePresetSelect = (size: Size) => {
     onSizeChange({
       id: size.id,
       label: size.label,
-      width: convertSize(size.width, size.unit, customSizeUnit),
-      height: convertSize(size.height, size.unit, customSizeUnit),
+      width: convertSize(size.widthMm, 'mm', customSizeUnit),
+      height: convertSize(size.heightMm, 'mm', customSizeUnit),
+      widthMm: size.widthMm,
+      heightMm: size.heightMm,
       unit: customSizeUnit,
     });
   };
 
   const handleCustomSizeChange = (field: 'width' | 'height', value: string) => {
     const numValue = parseFloat(value) || 0;
+    const numMm = convertSize(numValue, customSizeUnit, 'mm');
     onSizeChange({
       id: 'custom',
       label: 'Custom',
       width: field === 'width' ? numValue : displayWidth,
       height: field === 'height' ? numValue : displayHeight,
+      widthMm: field === 'width' ? numMm : currentSize.widthMm,
+      heightMm: field === 'height' ? numMm : currentSize.heightMm,
       unit: customSizeUnit,
     });
   };
@@ -60,13 +66,13 @@ export function SizeSelector({
     onUnitChange(newUnit);
     onSizeChange({
       ...currentSize,
-      width: convertSize(currentSize.width, currentSize.unit, newUnit),
-      height: convertSize(currentSize.height, currentSize.unit, newUnit),
+      width: convertSize(currentSize.widthMm, 'mm', newUnit),
+      height: convertSize(currentSize.heightMm, 'mm', newUnit),
       unit: newUnit,
     });
   };
 
-  return (
+  const widget = (
     <div>
       <div className="flex items-center justify-between mb-2 gap-2">
         <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50">
@@ -156,4 +162,6 @@ export function SizeSelector({
       </div>
     </div>
   );
+
+  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
 }

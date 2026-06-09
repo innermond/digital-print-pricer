@@ -1,5 +1,6 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import React, { useRef } from 'react';
+import { Badge } from './Badge';
 
 type NumericButtonProps = {
   onClickMinus: () => void;
@@ -7,6 +8,7 @@ type NumericButtonProps = {
   onClickPlus: () => void;
   value: number | string;
   style?: string;
+  badgeText?: string;
 };
 
 const INITIAL_DELAY = 500;
@@ -18,6 +20,7 @@ export function NumericButton({
   onClickMinus,
   onChange,
   onClickPlus,
+  badgeText,
 }: NumericButtonProps) {
   const minusTimersRef = useRef<{ timeout: number | null; interval: number | null }>({
     timeout: null,
@@ -51,7 +54,7 @@ export function NumericButton({
     }
   };
 
-  return (
+  const widget = (
     <div className={"group/updown rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-600 text-sm text-slate-900 dark:text-slate-50 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 dark:focus:border-blue-600 dark:focus:ring-blue-600 flex items-center gap-1" + (style ? ' ' + style : '')}>
       <input
         type="text"
@@ -82,4 +85,6 @@ export function NumericButton({
       </div>
     </div>
   );
+
+  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
 }

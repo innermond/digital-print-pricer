@@ -6,6 +6,8 @@ type Size = {
   width: number;
   height: number;
   unit: SizeUnit;
+  widthMm: number;
+  heightMm: number;
 };
 
 export type { SizeUnit, Size };

@@ -6,6 +6,7 @@ type Paper = {
   label: string;
   gsm: PaperWeight;
   finish: PaperFinish;
+  explanation?: string;
 };
 
 export type { PaperWeight, PaperFinish, Paper };

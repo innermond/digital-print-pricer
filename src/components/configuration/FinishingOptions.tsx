@@ -9,17 +9,19 @@ import { LaminationControl } from './LaminationControl';
 import { FoldingControl } from './FoldingControl';
 import { CreasingControl } from './CreasingControl';
 import { RoundedCornersControl } from './RoundedCornersControl';
+import { Badge } from '../Badge';
 
 type FinishingOptionsProps = {
   element: Elemental;
   config: ProductConfig;
   onUpdate: (updates: Partial<Elemental>) => void;
+  badgeText?: string;
 };
 
-export function FinishingOptions({ element, config, onUpdate }: FinishingOptionsProps) {
+export function FinishingOptions({ element, config, onUpdate, badgeText }: FinishingOptionsProps) {
   const { finishing } = element;
 
-  return (
+  const widget = (
     <div>
       <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
         Finishing
@@ -48,4 +50,6 @@ export function FinishingOptions({ element, config, onUpdate }: FinishingOptions
       </div>
     </div>
   );
+
+  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
 }

@@ -1,4 +1,5 @@
 import type { RoundedCorner, Finishing } from '../../types';
+import { Badge } from '../Badge';
 
 const ROUNDED_CORNERS: Array<{ value: RoundedCorner; label: string }> = [
   { value: 1, label: 'Top-left' },
@@ -11,16 +12,17 @@ type RoundedCornersControlProps = {
   corners: Finishing['roundedCornes']['corners'];
   allowedCorners: RoundedCorner[];
   onChange: (corners: RoundedCorner[]) => void;
+  badgeText?: string;
 };
 
-export function RoundedCornersControl({ corners, allowedCorners, onChange }: RoundedCornersControlProps) {
+export function RoundedCornersControl({ corners, allowedCorners, onChange, badgeText }: RoundedCornersControlProps) {
   const base = 'flex items-center gap-1.5 rounded px-2 py-1.5 text-xs font-medium transition border';
   const enabledCls =
     'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400 cursor-pointer';
   const disabledCls =
     'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-500 cursor-not-allowed';
 
-  return (
+  const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
       <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Rounded Corners</h4>
       <div className="flex flex-wrap gap-1.5">
@@ -50,4 +52,6 @@ export function RoundedCornersControl({ corners, allowedCorners, onChange }: Rou
       </div>
     </div>
   );
+
+  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
 }
