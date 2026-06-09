@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Badge } from './Badge';
 
 type NumericButtonProps = {
@@ -22,6 +22,14 @@ export function NumericButton({
   onClickPlus,
   badgeText,
 }: NumericButtonProps) {
+  // Keep refs to the latest handlers so a running repeat-interval always
+  // calls the current closure (with up-to-date values), not the one
+  // captured at the moment the button was pressed.
+  const onClickPlusRef = useRef(onClickPlus);
+  const onClickMinusRef = useRef(onClickMinus);
+  onClickPlusRef.current = onClickPlus;
+  onClickMinusRef.current = onClickMinus;
+
   const minusTimersRef = useRef<{ timeout: number | null; interval: number | null }>({
     timeout: null,
     interval: null,
@@ -32,13 +40,13 @@ export function NumericButton({
   });
 
   const handleMouseDown = (
-    handler: () => void,
+    handlerRef: React.MutableRefObject<() => void>,
     timersRef: React.MutableRefObject<{ timeout: number | null; interval: number | null }>,
   ) => {
-    handler();
+    handlerRef.current();
     timersRef.current.timeout = window.setTimeout(() => {
       timersRef.current.interval = window.setInterval(() => {
-        handler();
+        handlerRef.current();
       }, REPEAT_INTERVAL);
     }, INITIAL_DELAY);
   };
@@ -54,6 +62,13 @@ export function NumericButton({
     }
   };
 
+  useEffect(() => {
+    return () => {
+      handleMouseUp(plusTimersRef);
+      handleMouseUp(minusTimersRef);
+    };
+  }, []);
+
   const widget = (
     <div className={"group/updown rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-600 text-sm text-slate-900 dark:text-slate-50 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 dark:focus:border-blue-600 dark:focus:ring-blue-600 flex items-center gap-1" + (style ? ' ' + style : '')}>
       <input
@@ -67,7 +82,7 @@ export function NumericButton({
       />
       <div className="flex flex-col gap-0 invisible group-hover/updown:visible">
         <button
-          onMouseDown={() => handleMouseDown(onClickPlus, plusTimersRef)}
+          onMouseDown={() => handleMouseDown(onClickPlusRef, plusTimersRef)}
           onMouseUp={() => handleMouseUp(plusTimersRef)}
           onMouseLeave={() => handleMouseUp(plusTimersRef)}
           className="p-0.5 hover:bg-slate-200 dark:hover:bg-slate-500 rounded"
@@ -75,7 +90,7 @@ export function NumericButton({
           <ChevronUp size={14} className="text-slate-700 dark:text-slate-300" />
         </button>
         <button
-          onMouseDown={() => handleMouseDown(onClickMinus, minusTimersRef)}
+          onMouseDown={() => handleMouseDown(onClickMinusRef, minusTimersRef)}
           onMouseUp={() => handleMouseUp(minusTimersRef)}
           onMouseLeave={() => handleMouseUp(minusTimersRef)}
           className="p-0.5 hover:bg-slate-200 dark:hover:bg-slate-500 rounded"
