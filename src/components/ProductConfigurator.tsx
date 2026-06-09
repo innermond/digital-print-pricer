@@ -17,9 +17,13 @@ type ProductPrice = {
 
 // ============ MAIN APP ============
 export default function ProductConfigurator() {
+  const STORAGE_VERSION = 'v4';
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('products');
-    return saved ? (JSON.parse(saved) as Product[]) : MOCK_PRODUCTS;
+    const version = localStorage.getItem('products_version');
+    if (saved && version === STORAGE_VERSION) return JSON.parse(saved) as Product[];
+    localStorage.setItem('products_version', STORAGE_VERSION);
+    return MOCK_PRODUCTS;
   });
 
   const [selectedProductId, setSelectedProductId] = useState<Product['id']>(products[0].id);
