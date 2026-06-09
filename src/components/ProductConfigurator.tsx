@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
-import { Download, Upload, RotateCcw, Minus, Plus } from 'lucide-react';
+import { Download, Upload, RotateCcw, } from 'lucide-react';
 import type { Product, Elemental, SizeUnit } from '../types';
 import { MOCK_PRODUCTS, PRODUCT_CONFIG } from '../data/mockData';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { PreviewCard } from './PreviewCard';
 import { AssemblySummary } from './AssemblySummary';
 import { ProductButton } from './ProductButton';
-import { NumericPlusMinusButton } from './NumericPlusMinusButton';
+import { NumericButton } from './NumericButton';
 
 type ProductPrice = {
   price: number;
@@ -65,7 +65,7 @@ const updateProductAmount = (productId: Product['id'], delta: number) => {
   setProducts(prev =>
     prev.map(p =>
       p.id === productId
-        ? { ...p, amount: Math.max(1, p.amount + delta) }
+        ? { ...p, amount: Math.max(1, Math.abs(delta) > 1 ? delta : p.amount + delta) }
         : p
     )
   );
@@ -221,7 +221,7 @@ const updateProductAmount = (productId: Product['id'], delta: number) => {
       </header>
 
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+      <main className="overflow-hidden mx-auto max-w-7xl px-4 py-4 sm:py-6">
         {/* Products Grid (Row-oriented) */}
           <div className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
             <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
@@ -250,31 +250,33 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
             Product Amount
           </h2>
         <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
-        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-600 rounded px-2 py-1">
-          <NumericPlusMinusButton
-            onClickMinus={() => updateProductAmount(selectedProduct.id, -1)}
-            onChange={() => updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value))}
-            onClickPlus={() => updateProductAmount(selectedProduct.id, +1)}
-            value={selectedProduct.amount}
-          />
-        </div>
-
+          <div className="flex flex-wrap justify-center items-center gap-2">
+            <div className="flex flex-1 max-w-9xl justify-center items-center gap-1 bg-slate-100 dark:bg-slate-600 rounded px-2 py-1">
+              <NumericButton
+                style="flex-1"
+                onClickMinus={() => updateProductAmount(selectedProduct.id, -1)}
+                onChange={(e) => updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value))}
+                onClickPlus={() => updateProductAmount(selectedProduct.id, +1)}
+                value={selectedProduct.amount}
+              />
+            </div>
             {/* Get Price Button */}
-            <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-              <button
-                onClick={getPriceFromAPI}
-                disabled={pricingLoading}
-                className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-400 disabled:to-slate-500 px-4 py-2.5 text-sm font-semibold text-white transition shadow-sm flex items-center justify-center gap-2"
-              >
-                {pricingLoading ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Calculating Price...
-                  </>
-                ) : (
-                  '💰 Get Price'
-                )}
-              </button>
+            <button
+              onClick={getPriceFromAPI}
+              disabled={pricingLoading}
+              className="flex-1 whitespace-nowrap
+ max-w-[120px] rounded bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-400 disabled:to-slate-500 px-4 py-2.5 text-sm font-semibold text-white transition shadow-sm flex items-center justify-center gap-2"
+            >
+              {pricingLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Calculating Price...
+                </>
+              ) : (
+                '💰 Get Price'
+              )}
+            </button>
+          </div>
 
               {/* Price Display */}
               {productPrices[selectedProduct.id] && (
@@ -308,7 +310,6 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
                 </div>
               )}
             </div>
-          </div>
           </>
         )}
 
@@ -345,9 +346,9 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
         </div>
 
         {/* Preview & Summary */}
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <PreviewCard element={selectedElemental} />
-          <AssemblySummary product={selectedProduct} />
+        <div className="flex flex-wrap gap-4">
+          <div className="flex-1 min-w-72"><PreviewCard element={selectedElemental} /></div>
+          <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} /></div>
         </div>
       </main>
     </div>

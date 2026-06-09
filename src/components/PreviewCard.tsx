@@ -37,12 +37,8 @@ export function PreviewCard({ element }: PreviewCardProps) {
 
   const previewBox = (
     <div
-      className={`flex flex-col items-center justify-center ${laminationColor} border-2 border-dashed border-slate-300 dark:border-slate-500 p-6 ${roundCornerClass}`}
-      style={{
-        aspectRatio: `${element.size.width} / ${element.size.height}`,
-        maxWidth: '100%',
-        width: '200px',
-      }}
+      className={`flex flex-col items-center justify-center ${laminationColor} border-2 border-dashed border-slate-300 dark:border-slate-500 p-6 max-w-full max-h-48 ${roundCornerClass}`}
+      style={{ aspectRatio: `${element.size.width} / ${element.size.height}` }}
     >
       <div className="text-center">
         <div className="mb-1 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">

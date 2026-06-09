@@ -5,7 +5,7 @@ type ProductButtonProps = {
   product: Product;
   selectedProductId: Product['id'];
   badgeText?: string;
-  OnClick: () => void;
+  onClick: () => void;
 };
 
 // ==== Product Button ===
