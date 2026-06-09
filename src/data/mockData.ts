@@ -60,7 +60,6 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     elementalPageCounts: {
       'elem2-1': { kind: 'derived' },
       'elem2-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
-      'elem2-3': { kind: 'derived' },
     },
   },
   prod3: {
@@ -96,6 +95,17 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     allowedPrintingBacks: ['none'],
     elementalPageCounts: {
       'elem6-1': { kind: 'fixed', value: 1 },
+    },
+  },
+  prod7: { // Spiral Catalog
+    allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
+    allowedSizeIds: ['s1', 's2'],
+    recommendedMediaId: 'p3',
+    recommendedSizeId: 's1',
+    allowedFoldTypes: ['none'],
+    elementalPageCounts: {
+      'elem7-1': { kind: 'fixed', value: 2 },
+      'elem7-2': { kind: 'multiple', of: 2, min: 2, max: 200 },
     },
   },
 };
@@ -152,20 +162,6 @@ export const MOCK_PRODUCTS: Product[] = [
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
           creasing: { count: 0 },
-          roundedCornes: { corners: [] },
-        },
-      },
-      {
-        id: 'elem2-3',
-        label: 'Copertă Spate',
-        media: MOCK_PAPERS[2],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 6,
-        printing: { front: 'color', back: 'color' },
-        finishing: {
-          lamination: { type: 'matt', sides: 'back' },
-          folding: { type: 'tri-fold', folds: 2 },
-          creasing: { count: 1 },
           roundedCornes: { corners: [] },
         },
       },
@@ -260,6 +256,41 @@ export const MOCK_PRODUCTS: Product[] = [
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod7',
+    label: 'Catalog cu spira',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem7-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'gloss', sides: 'both' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem7-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 16,
+        printing: { front: 'color', back: 'color' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
