@@ -20,6 +20,11 @@ type FoldingType =
 // 1 = top-left, 2 = top-right, 3 = bottom-left, 4 = bottom-right
 type RoundedCorner = 1 | 2 | 3 | 4;
 
+type Staple = {
+  hole: boolean;
+  staple: boolean;
+};
+
 type Finishing = {
   lamination: {
     type: LaminationType;
@@ -38,6 +43,8 @@ type Finishing = {
   roundedCornes: {
     corners: RoundedCorner[];
   };
+
+  staple?: Staple;
 };
 
-export type { LaminationType, LaminationSides, FoldingType, RoundedCorner, Finishing };
+export type { LaminationType, LaminationSides, FoldingType, RoundedCorner, Staple, Finishing };

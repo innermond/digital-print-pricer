@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
-import { Download, Upload, RotateCcw, } from 'lucide-react';
-import type { Product, Elemental, SizeUnit } from '../types';
-import { MOCK_PRODUCTS, PRODUCT_CONFIG } from '../data/mockData';
+import { Download, Upload, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
+import type { Product, ProductCategory, Elemental, SizeUnit, Binding } from '../types';
+import { MOCK_PRODUCTS, PRODUCT_CONFIG, PRODUCT_CATEGORIES } from '../data/mockData';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { PreviewCard } from './PreviewCard';
 import { AssemblySummary } from './AssemblySummary';
 import { ProductButton } from './ProductButton';
+import { CategoryButton } from './CategoryButton';
 import { NumericButton } from './NumericButton';
+import { BindingControl } from './configuration/BindingControl';
 
 type ProductPrice = {
   price: number;
@@ -15,9 +17,19 @@ type ProductPrice = {
   timestamp: string;
 };
 
+const BINDING_TAB_ID = '__binding__';
+
+const STEPS = [
+  { title: 'Categorie & Produs' },
+  { title: 'Cantitate Produs' },
+  { title: 'Configurare' },
+  { title: 'Previzualizare & Sumar' },
+  { title: 'Preț' },
+] as const;
+
 // ============ MAIN APP ============
 export default function ProductConfigurator() {
-  const STORAGE_VERSION = 'v7';
+  const STORAGE_VERSION = 'v10';
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
@@ -26,6 +38,9 @@ export default function ProductConfigurator() {
     return MOCK_PRODUCTS;
   });
 
+  const [isWizardMode, setIsWizardMode] = useState(true);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<ProductCategory['id'] | null>(null);
   const [selectedProductId, setSelectedProductId] = useState<Product['id']>(products[0].id);
   const [selectedElementalId, setSelectedElementalId] = useState<Elemental['id']>(
     products[0].elementals[0].id
@@ -41,6 +56,8 @@ export default function ProductConfigurator() {
   );
   const config = PRODUCT_CONFIG[selectedProductId];
 
+  const showStep = (step: number) => !isWizardMode || currentStep === step;
+
   // Save to localStorage whenever products change
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(products));
@@ -54,6 +71,12 @@ export default function ProductConfigurator() {
           elem.id === elementId ? { ...elem, ...updates } : elem
         ),
       }))
+    );
+  };
+
+  const updateBinding = (productId: Product['id'], binding: Binding) => {
+    setProducts(prev =>
+      prev.map(p => (p.id === productId ? { ...p, binding } : p))
     );
   };
 
@@ -95,6 +118,7 @@ export default function ProductConfigurator() {
           },
           finishing: elem.finishing,
         })),
+        ...(selectedProduct.binding ? { binding: selectedProduct.binding } : {}),
       };
 
       console.log(productData)
@@ -151,6 +175,7 @@ export default function ProductConfigurator() {
         if (typeof text !== 'string') throw new Error('Conținut fișier invalid');
         const imported = JSON.parse(text) as Product[];
         setProducts(imported);
+        setSelectedCategoryId(imported[0].categoryId);
         setSelectedProductId(imported[0].id);
         setSelectedElementalId(imported[0].elementals[0].id);
       } catch (err) {
@@ -164,6 +189,7 @@ export default function ProductConfigurator() {
   const resetProducts = () => {
     if (confirm('Resetați produsele la valorile implicite?')) {
       setProducts(MOCK_PRODUCTS);
+      setSelectedCategoryId(null);
       setSelectedProductId(MOCK_PRODUCTS[0].id);
       setSelectedElementalId(MOCK_PRODUCTS[0].elementals[0].id);
     }
@@ -216,30 +242,142 @@ export default function ProductConfigurator() {
       </header>
 
       {/* Main Content */}
-      <main className="overflow-hidden mx-auto max-w-7xl px-4 py-4 sm:py-6">
-        {/* Products Grid */}
-          <div className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
-            <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
-              Selectați Produsul
-            </h2>
-            <div className="w-full flex flex-wrap gap-4">
-              {products.map((product: Product) => (
-                <ProductButton
-                  key={product.id}
-                  product={product}
-                  selectedProductId={selectedProductId}
-                  onClick={() => {
-                    setSelectedProductId(product.id);
-                    setSelectedElementalId(product.elementals[0].id);
-                  }}
-badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>"
-                />
+      <main className={`overflow-hidden mx-auto max-w-7xl px-4 py-4 sm:py-6 ${isWizardMode ? 'pb-20 sm:pb-6' : ''}`}>
+        {/* View mode toggle */}
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-sm">
+          <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={isWizardMode}
+              onChange={(e) => setIsWizardMode(e.target.checked)}
+              className="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-blue-600 focus:ring-blue-500"
+            />
+            Mod pas-cu-pas
+          </label>
+
+          {isWizardMode && (
+            <div className="flex flex-wrap items-center gap-2">
+              {STEPS.map((step, index) => (
+                <button
+                  key={step.title}
+                  onClick={() => setCurrentStep(index)}
+                  className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                    currentStep === index
+                      ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
+                      : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  }`}
+                >
+                  {index + 1}. {step.title}
+                </button>
               ))}
+              <div className="flex gap-2 ml-2">
+                <button
+                  onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
+                  disabled={currentStep === 0}
+                  className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                    currentStep === 0 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
+                  }`}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Înapoi
+                </button>
+                <button
+                  onClick={() => setCurrentStep((s) => Math.min(STEPS.length - 1, s + 1))}
+                  disabled={currentStep === STEPS.length - 1}
+                  className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                    currentStep === STEPS.length - 1 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
+                  }`}
+                >
+                  Înainte
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
             </div>
+          )}
+        </div>
+
+        {/* Sticky step navigation for small screens, so prev/next stay reachable while scrolling */}
+        {isWizardMode && (
+          <div className="sm:hidden fixed bottom-0 left-0 right-0 z-20 flex gap-2 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 shadow-[0_-2px_8px_rgba(0,0,0,0.08)]">
+            <button
+              onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
+              disabled={currentStep === 0}
+              className={`flex flex-1 items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                currentStep === 0 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
+              }`}
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Înapoi
+            </button>
+            <button
+              onClick={() => setCurrentStep((s) => Math.min(STEPS.length - 1, s + 1))}
+              disabled={currentStep === STEPS.length - 1}
+              className={`flex flex-1 items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                currentStep === STEPS.length - 1 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
+              }`}
+            >
+              Înainte
+              <ChevronRight className="h-4 w-4" />
+            </button>
           </div>
+        )}
+
+        {/* Products Grid */}
+        {showStep(0) && (
+          <div className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
+            {selectedCategoryId === null ? (
+              <>
+                <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
+                  Selectați Categoria
+                </h2>
+                <div className="w-full flex flex-wrap gap-4">
+                  {PRODUCT_CATEGORIES.map((category: ProductCategory) => (
+                    <CategoryButton
+                      key={category.id}
+                      category={category}
+                      selectedCategoryId={selectedCategoryId ?? undefined}
+                      presetCount={products.filter((p) => p.categoryId === category.id).length}
+                      onClick={() => setSelectedCategoryId(category.id)}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mb-3 flex items-center gap-3">
+                  <button
+                    onClick={() => setSelectedCategoryId(null)}
+                    className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"
+                  >
+                    ← Înapoi la categorii
+                  </button>
+                  <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
+                    {PRODUCT_CATEGORIES.find((c) => c.id === selectedCategoryId)?.label}
+                  </h2>
+                </div>
+                <div className="w-full flex flex-wrap gap-4">
+                  {products
+                    .filter((product: Product) => product.categoryId === selectedCategoryId)
+                    .map((product: Product) => (
+                      <ProductButton
+                        key={product.id}
+                        product={product}
+                        selectedProductId={selectedProductId}
+                        onClick={() => {
+                          setSelectedProductId(product.id);
+                          setSelectedElementalId(product.elementals[0].id);
+                        }}
+                        badgeText={PRODUCT_CONFIG[product.id]?.explanation}
+                      />
+                    ))}
+                </div>
+              </>
+            )}
+          </div>
+        )}
 
         {/* Current product amount */}
-        {selectedProduct && (
+        {showStep(1) && selectedProduct && (
           <>
           <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
             Cantitate Produs
@@ -253,63 +391,16 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
                 onChange={(e) => updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value))}
                 onClickPlus={() => updateProductAmount(selectedProduct.id, +1)}
                 value={selectedProduct.amount}
-badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>"
+                badgeText={config?.explanation}
               />
             </div>
-            {/* Get Price Button */}
-            <button
-              onClick={getPriceFromAPI}
-              disabled={pricingLoading}
-              className="flex-1 whitespace-nowrap
- max-w-[120px] rounded bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-400 disabled:to-slate-500 px-4 py-2.5 text-sm font-semibold text-white transition shadow-sm flex items-center justify-center gap-2"
-            >
-              {pricingLoading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Se calculează...
-                </>
-              ) : (
-                '💰 Obține Preț'
-              )}
-            </button>
           </div>
-
-              {/* Price Display */}
-              {productPrices[selectedProduct.id] && (
-                <div className="mt-4 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800">
-                  <div className="text-xs text-emerald-700 dark:text-emerald-300 mb-1 font-medium">Preț unitar:</div>
-                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">
-                    {productPrices[selectedProduct.id].currency} {productPrices[selectedProduct.id].price.toFixed(2)}
-                  </div>
-                  <div className="bg-white dark:bg-emerald-900 rounded p-2 mb-2">
-                    <div className="text-xs text-emerald-900 dark:text-emerald-200">
-                      <span className="font-semibold">Total pentru {selectedProduct.amount} {selectedProduct.amount !== 1 ? 'unități' : 'unitate'}:</span>
-                    </div>
-                    <div className="text-lg font-bold text-emerald-700 dark:text-emerald-300">
-                      {productPrices[selectedProduct.id].currency} {(productPrices[selectedProduct.id].price * selectedProduct.amount).toFixed(2)}
-                    </div>
-                  </div>
-                  <div className="text-xs text-emerald-600 dark:text-emerald-400">
-                    Ultima actualizare: {new Date(productPrices[selectedProduct.id].timestamp).toLocaleTimeString()}
-                  </div>
-                </div>
-              )}
-
-              {/* Error Display */}
-              {pricingError && (
-                <div className="mt-4 p-4 rounded-lg bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800">
-                  <div className="text-xs font-semibold text-red-700 dark:text-red-300 mb-1">⚠️ Eroare:</div>
-                  <div className="text-sm text-red-600 dark:text-red-400 mb-2">{pricingError}</div>
-                  <div className="text-xs text-red-600 dark:text-red-400">
-                    💡 Asigurați-vă că URL-ul endpoint-ului API este configurat corect și returnează: {'{'} price: number, currency?: string {'}'}
-                  </div>
-                </div>
-              )}
-            </div>
+        </div>
           </>
         )}
 
         {/* Configuration Panel */}
+        {showStep(2) && (
         <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
           {/* Elementals Tabs */}
           <div className="mb-4 flex flex-wrap gap-1.5">
@@ -326,9 +417,27 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
                 {element.label}
               </button>
             ))}
+            {config?.binding?.type === 'spiral' && (
+              <button
+                onClick={() => setSelectedElementalId(BINDING_TAB_ID)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                  selectedElementalId === BINDING_TAB_ID
+                    ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                }`}
+              >
+                Spirală
+              </button>
+            )}
           </div>
 
-          {selectedElemental && config && (
+          {selectedElementalId === BINDING_TAB_ID && config?.binding?.type === 'spiral' && selectedProduct ? (
+            <BindingControl
+              binding={selectedProduct.binding}
+              allowedColors={config.binding.allowedColors ?? []}
+              onChange={(binding) => updateBinding(selectedProduct.id, binding)}
+            />
+          ) : selectedElemental && config && (
             <ConfigurationPanel
               element={selectedElemental}
               onUpdate={(updates: Partial<Elemental>) =>
@@ -340,12 +449,73 @@ badgeText="<p class='max-w-xs'>Lorem Ipsum is simply dummy text of the printing 
             />
           )}
         </div>
+        )}
 
         {/* Preview & Summary */}
+        {showStep(3) && (
         <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-72"><PreviewCard element={selectedElemental} /></div>
           <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} /></div>
         </div>
+        )}
+
+        {/* Pricing */}
+        {showStep(4) && selectedProduct && (
+          <>
+          <h2 className="mb-3 mt-6 text-sm font-semibold text-slate-900 dark:text-slate-50">
+            Preț
+          </h2>
+          <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
+            {/* Get Price Button */}
+            <button
+              onClick={getPriceFromAPI}
+              disabled={pricingLoading}
+              className="w-full max-w-[200px] mx-auto rounded bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-400 disabled:to-slate-500 px-4 py-2.5 text-sm font-semibold text-white transition shadow-sm flex items-center justify-center gap-2"
+            >
+              {pricingLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Se calculează...
+                </>
+              ) : (
+                '💰 Obține Preț'
+              )}
+            </button>
+
+            {/* Price Display */}
+            {productPrices[selectedProduct.id] && (
+              <div className="mt-4 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800">
+                <div className="text-xs text-emerald-700 dark:text-emerald-300 mb-1 font-medium">Preț unitar:</div>
+                <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">
+                  {productPrices[selectedProduct.id].currency} {productPrices[selectedProduct.id].price.toFixed(2)}
+                </div>
+                <div className="bg-white dark:bg-emerald-900 rounded p-2 mb-2">
+                  <div className="text-xs text-emerald-900 dark:text-emerald-200">
+                    <span className="font-semibold">Total pentru {selectedProduct.amount} {selectedProduct.amount !== 1 ? 'unități' : 'unitate'}:</span>
+                  </div>
+                  <div className="text-lg font-bold text-emerald-700 dark:text-emerald-300">
+                    {productPrices[selectedProduct.id].currency} {(productPrices[selectedProduct.id].price * selectedProduct.amount).toFixed(2)}
+                  </div>
+                </div>
+                <div className="text-xs text-emerald-600 dark:text-emerald-400">
+                  Ultima actualizare: {new Date(productPrices[selectedProduct.id].timestamp).toLocaleTimeString()}
+                </div>
+              </div>
+            )}
+
+            {/* Error Display */}
+            {pricingError && (
+              <div className="mt-4 p-4 rounded-lg bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800">
+                <div className="text-xs font-semibold text-red-700 dark:text-red-300 mb-1">⚠️ Eroare:</div>
+                <div className="text-sm text-red-600 dark:text-red-400 mb-2">{pricingError}</div>
+                <div className="text-xs text-red-600 dark:text-red-400">
+                  💡 Asigurați-vă că URL-ul endpoint-ului API este configurat corect și returnează: {'{'} price: number, currency?: string {'}'}
+                </div>
+              </div>
+            )}
+          </div>
+          </>
+        )}
       </main>
     </div>
   );

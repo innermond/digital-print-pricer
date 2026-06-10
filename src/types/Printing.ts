@@ -1,7 +1,7 @@
 type PrintInk = 'color' | 'black';
 
 type Printing = {
-  front: PrintInk;
+  front: PrintInk | 'none';
   back: PrintInk | 'none';
 };
 

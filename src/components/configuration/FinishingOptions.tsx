@@ -10,6 +10,7 @@ import { LaminationControl } from './LaminationControl';
 import { FoldingControl } from './FoldingControl';
 import { CreasingControl } from './CreasingControl';
 import { RoundedCornersControl } from './RoundedCornersControl';
+import { StapleControl } from './StapleControl';
 import { Badge } from '../Badge';
 
 type FinishingOptionsProps = {
@@ -27,7 +28,7 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
       <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
         Finisare
       </label>
-      <div className="space-y-2.5">
+      <div className="flex flex-wrap items-start gap-2">
         <LaminationControl
           lamination={finishing.lamination}
           allowedTypes={allowedLaminationTypes(element)}
@@ -55,6 +56,13 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
           allowedCorners={allowedRoundedCorners(element)}
           onChange={(corners) => onUpdate({ finishing: { ...finishing, roundedCornes: { corners } } })}
         />
+        {config.allowedStaple && (
+          <StapleControl
+            staple={finishing.staple}
+            allowed={config.allowedStaple}
+            onChange={(staple) => onUpdate({ finishing: { ...finishing, staple } })}
+          />
+        )}
       </div>
     </div>
   );

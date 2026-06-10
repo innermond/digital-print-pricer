@@ -48,7 +48,8 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
       <PrintingControl
         printing={element.printing}
         onChange={(printing) => onUpdate({ printing })}
-        allowedBacks={config.allowedPrintingBacks}
+        allowedFronts={config.elementalPrintingFronts?.[element.id] ?? config.allowedPrintingFronts}
+        allowedBacks={config.elementalPrintingBacks?.[element.id] ?? config.allowedPrintingBacks}
       />
       <FinishingOptions
         element={element}

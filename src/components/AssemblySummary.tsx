@@ -6,6 +6,9 @@ const LAMINATION_RO: Record<string, string> = {
 const FOLD_RO: Record<string, string> = {
   none: 'Fără', 'half-fold': 'La jumătate', 'tri-fold': 'În trei', 'z-fold': 'Z', 'gate-fold': 'Poartă',
 };
+const SPIRAL_COLOR_RO: Record<string, string> = {
+  white: 'Alb', black: 'Negru',
+};
 
 type AssemblySummaryProps = {
   product: Product | undefined;
@@ -43,6 +46,15 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
                 <span className="font-medium text-slate-900 dark:text-slate-50">Pliere:</span>{' '}
                 {FOLD_RO[element.finishing.folding.type] ?? element.finishing.folding.type}
               </div>
+              {element.finishing.staple && (element.finishing.staple.hole || element.finishing.staple.staple) && (
+                <div>
+                  <span className="font-medium text-slate-900 dark:text-slate-50">Capsare:</span>{' '}
+                  {[
+                    element.finishing.staple.hole && 'Gaură',
+                    element.finishing.staple.staple && 'Capsă',
+                  ].filter(Boolean).join(', ')}
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -52,6 +64,12 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
           <span className="font-semibold">Produs: </span>
           {product.label} ({product.elementals.length} {product.elementals.length !== 1 ? 'elemente' : 'element'}) × {product.amount}
         </p>
+        {product.binding?.type === 'spiral' && (
+          <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">
+            <span className="font-semibold">Spirală: </span>
+            {SPIRAL_COLOR_RO[product.binding.color] ?? product.binding.color}
+          </p>
+        )}
       </div>
     </div>
   );

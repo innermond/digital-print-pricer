@@ -20,8 +20,8 @@ type FoldingControlProps = {
 
 export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText }: FoldingControlProps) {
   const widget = (
-    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Pliere</h4>
+    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2">
+      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-1.5 text-xs">Pliere</h4>
       <div className="flex flex-wrap gap-1.5">
         {FOLDING_TYPES.map((type) => {
           const allowed = allowedFoldTypes.includes(type) || (type === 'none' && allowedFoldTypes.length === 0);
@@ -37,7 +37,7 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
                   folds: type === 'none' ? 0 : folding.folds || 1,
                 });
               }}
-              className={`flex-1 rounded px-2 py-1.5 text-xs font-medium transition ${
+              className={`whitespace-nowrap rounded px-2 py-1 text-xs font-medium transition ${
                 !allowed && folding.type !== type
                   ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
                   : folding.type === type

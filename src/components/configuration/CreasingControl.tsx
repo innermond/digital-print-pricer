@@ -11,8 +11,8 @@ export function CreasingControl({ count, allowedCounts, onChange, badgeText }: C
   const disabled = allowedCounts.length === 0;
 
   const widget = (
-    <div className={`rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5 ${disabled ? 'opacity-50' : ''}`}>
-      <label className="flex items-center justify-between gap-2 text-xs font-medium text-slate-900 dark:text-slate-50 mb-2">
+    <div className={`rounded-lg bg-slate-50 dark:bg-slate-700 p-2 ${disabled ? 'opacity-50' : ''}`}>
+      <label className="flex items-center justify-between gap-2 text-xs font-medium text-slate-900 dark:text-slate-50 mb-1.5">
         Biguitură
       </label>
       <div className={`flex items-center gap-2 ${disabled ? 'cursor-not-allowed' : ''}`}>
@@ -27,7 +27,7 @@ export function CreasingControl({ count, allowedCounts, onChange, badgeText }: C
             if (!allowedCounts.includes(next)) return;
             onChange(next);
           }}
-          className={`flex-1 ${disabled ? 'pointer-events-none' : 'accent-blue-500 dark:accent-blue-400'}`}
+          className={`w-24 ${disabled ? 'pointer-events-none' : 'accent-blue-500 dark:accent-blue-400'}`}
         />
         <span className="text-xs font-medium text-slate-900 dark:text-slate-50 w-6 text-center">
           {count}

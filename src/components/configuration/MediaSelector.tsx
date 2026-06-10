@@ -42,7 +42,7 @@ export function MediaSelector({ media, selectedId, recommendedId, onSelect, badg
               }`}
             >
               {recommendedId === m.id && (
-                <span className="absolute top-1 right-1 bg-amber-500 text-white text-xs rounded px-1.5 py-0.5 font-medium">
+                <span className="absolute top-1 right-1 text-white text-xs rounded px-1.5 py-0.5 font-medium">
                   ⭐
                 </span>
               )}
