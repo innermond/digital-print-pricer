@@ -33,7 +33,7 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
     const badgeRect = badgeEl.getBoundingClientRect();
     const { width: panelW, height: panelH } = panelEl.getBoundingClientRect();
 
-    const maxWidth = document.documentElement.clientWidth - 2 * MARGIN;
+    const maxWidth = Math.min(300, document.documentElement.clientWidth - 2 * MARGIN);
     const effectiveW = Math.min(panelW, maxWidth);
 
     // Vertical: prefer above, fall back below when no room
@@ -71,7 +71,7 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
         <span
           ref={panelRef}
           style={panelStyle ?? {}}
-          className={`pointer-events-none absolute z-20 w-max break-words rounded-md border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-2 py-1 text-xs font-normal normal-case text-slate-700 dark:text-slate-200 shadow-md max-w-none max-h-[min(400px,95vh)] overflow-auto ${
+          className={`pointer-events-none absolute z-20 w-max break-words rounded-md border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-2 py-1 text-xs font-normal normal-case text-slate-700 dark:text-slate-200 shadow-md max-w-[300px] max-h-[min(400px,95vh)] overflow-auto ${
             panelStyle ? '' : 'invisible'
           }`}
           dangerouslySetInnerHTML={{ __html: text }}
