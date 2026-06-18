@@ -32,10 +32,18 @@ type ProductConfiguratorProps = {
   // When embedded (e.g. in materialpublicitar), the host injects a catalog
   // fetched from its endpoint. When omitted (standalone dev), use MOCK_CATALOG.
   catalog?: Catalog;
+  // Open the wizard already focused on a category/product. Host pages map their
+  // marketing entity to a configurator id; unknown ids are ignored gracefully.
+  initialCategoryId?: string | null;
+  initialProductId?: string | null;
 };
 
 // ============ MAIN APP ============
-export default function ProductConfigurator({ catalog = MOCK_CATALOG }: ProductConfiguratorProps = {}) {
+export default function ProductConfigurator({
+  catalog = MOCK_CATALOG,
+  initialCategoryId = null,
+  initialProductId = null,
+}: ProductConfiguratorProps = {}) {
   const STORAGE_VERSION = 'v10';
   const [products, setProducts] = useState<Product[]>(() => {
     // A host-injected catalog always wins; only standalone dev persists edits.
@@ -47,12 +55,23 @@ export default function ProductConfigurator({ catalog = MOCK_CATALOG }: ProductC
     return catalog.products;
   });
 
+  // Resolve the requested preselection against the actual catalog; a known
+  // product implies its category, so a product page can land straight on it.
+  const preselectedProduct = initialProductId
+    ? products.find((p) => p.id === initialProductId)
+    : undefined;
+  const preselectedCategoryId =
+    (initialCategoryId && catalog.categories.some((c) => c.id === initialCategoryId)
+      ? initialCategoryId
+      : undefined) ?? preselectedProduct?.categoryId ?? null;
+  const initialProduct = preselectedProduct ?? products[0];
+
   const [isWizardMode, setIsWizardMode] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<ProductCategory['id'] | null>(null);
-  const [selectedProductId, setSelectedProductId] = useState<Product['id']>(products[0].id);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<ProductCategory['id'] | null>(preselectedCategoryId);
+  const [selectedProductId, setSelectedProductId] = useState<Product['id']>(initialProduct.id);
   const [selectedElementalId, setSelectedElementalId] = useState<Elemental['id']>(
-    products[0].elementals[0].id
+    initialProduct.elementals[0].id
   );
   const [customSizeUnit, setCustomSizeUnit] = useState<SizeUnit>('mm');
   const [productPrices, setProductPrices] = useState<Record<string, ProductPrice>>({});
