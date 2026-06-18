@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "test": "vitest",
     "test:run": "vitest run",
+    "dump:catalog": "vitest run scripts/dump-catalog.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {

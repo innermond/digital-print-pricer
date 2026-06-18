@@ -2,9 +2,10 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ConfigurationPanel } from './ConfigurationPanel';
+import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
 import { makeConfig, makeElemental, makePaper } from '../test/fixtures';
 
-// The panel reads MOCK_MEDIA/MOCK_SIZES, so the config must use real ids:
+// The panel filters the media/sizes it's given by the config, so use real ids:
 // p2 = "130 GSM - Lucios", p3 = "170 GSM - Mat", s1 = A4, s2 = A5.
 const element = makeElemental({ media: makePaper({ id: 'p2', label: '130 GSM - Lucios', gsm: 130 }) });
 const config = makeConfig();
@@ -16,6 +17,8 @@ function renderPanel(overrides: Partial<Parameters<typeof ConfigurationPanel>[0]
     customSizeUnit: 'mm' as const,
     onCustomSizeUnitChange: vi.fn(),
     config,
+    media: MOCK_MEDIA,
+    sizes: MOCK_SIZES,
     ...overrides,
   };
   render(<ConfigurationPanel {...props} />);

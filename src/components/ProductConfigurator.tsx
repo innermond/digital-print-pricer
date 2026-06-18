@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
 import { Download, Upload, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Product, ProductCategory, Elemental, SizeUnit, Binding } from '../types';
-import { MOCK_PRODUCTS, PRODUCT_CONFIG, PRODUCT_CATEGORIES } from '../data/mockData';
+import { MOCK_CATALOG } from '../data/catalog';
+import type { Catalog } from '../data/catalog';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { PreviewCard } from './PreviewCard';
 import { AssemblySummary } from './AssemblySummary';
@@ -28,21 +29,22 @@ const STEPS = [
 ] as const;
 
 type ProductConfiguratorProps = {
-  // When embedded (e.g. in materialpublicitar), the host seeds the catalog.
-  // When omitted (standalone dev), fall back to localStorage / MOCK_PRODUCTS.
-  initialProducts?: Product[];
+  // When embedded (e.g. in materialpublicitar), the host injects a catalog
+  // fetched from its endpoint. When omitted (standalone dev), use MOCK_CATALOG.
+  catalog?: Catalog;
 };
 
 // ============ MAIN APP ============
-export default function ProductConfigurator({ initialProducts }: ProductConfiguratorProps = {}) {
+export default function ProductConfigurator({ catalog = MOCK_CATALOG }: ProductConfiguratorProps = {}) {
   const STORAGE_VERSION = 'v10';
   const [products, setProducts] = useState<Product[]>(() => {
-    if (initialProducts && initialProducts.length > 0) return initialProducts;
+    // A host-injected catalog always wins; only standalone dev persists edits.
+    if (catalog !== MOCK_CATALOG) return catalog.products;
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
     if (saved && version === STORAGE_VERSION) return JSON.parse(saved) as Product[];
     localStorage.setItem('products_version', STORAGE_VERSION);
-    return MOCK_PRODUCTS;
+    return catalog.products;
   });
 
   const [isWizardMode, setIsWizardMode] = useState(true);
@@ -61,7 +63,7 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
   const selectedElemental = selectedProduct?.elementals.find(
     (e: Elemental) => e.id === selectedElementalId
   );
-  const config = PRODUCT_CONFIG[selectedProductId];
+  const config = catalog.config[selectedProductId];
 
   const showStep = (step: number) => !isWizardMode || currentStep === step;
 
@@ -195,10 +197,10 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
 
   const resetProducts = () => {
     if (confirm('Resetați produsele la valorile implicite?')) {
-      setProducts(MOCK_PRODUCTS);
+      setProducts(catalog.products);
       setSelectedCategoryId(null);
-      setSelectedProductId(MOCK_PRODUCTS[0].id);
-      setSelectedElementalId(MOCK_PRODUCTS[0].elementals[0].id);
+      setSelectedProductId(catalog.products[0].id);
+      setSelectedElementalId(catalog.products[0].elementals[0].id);
     }
   };
 
@@ -338,7 +340,7 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
                   Selectați Categoria
                 </h2>
                 <div className="w-full flex flex-wrap gap-4">
-                  {PRODUCT_CATEGORIES.map((category: ProductCategory) => (
+                  {catalog.categories.map((category: ProductCategory) => (
                     <CategoryButton
                       key={category.id}
                       category={category}
@@ -359,7 +361,7 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
                     ← Înapoi la categorii
                   </button>
                   <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
-                    {PRODUCT_CATEGORIES.find((c) => c.id === selectedCategoryId)?.label}
+                    {catalog.categories.find((c) => c.id === selectedCategoryId)?.label}
                   </h2>
                 </div>
                 <div className="w-full flex flex-wrap gap-4">
@@ -374,7 +376,7 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
                           setSelectedProductId(product.id);
                           setSelectedElementalId(product.elementals[0].id);
                         }}
-                        badgeText={PRODUCT_CONFIG[product.id]?.explanation}
+                        badgeText={catalog.config[product.id]?.explanation}
                       />
                     ))}
                 </div>
@@ -453,6 +455,8 @@ export default function ProductConfigurator({ initialProducts }: ProductConfigur
               customSizeUnit={customSizeUnit}
               onCustomSizeUnitChange={setCustomSizeUnit}
               config={config}
+              media={catalog.media}
+              sizes={catalog.sizes}
             />
           )}
         </div>

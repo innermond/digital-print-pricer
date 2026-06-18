@@ -1,5 +1,4 @@
-import type { Elemental, SizeUnit } from '../types';
-import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
+import type { Elemental, SizeUnit, Media, Size } from '../types';
 import type { ProductConfig } from '../data/mockData';
 import { MediaSelector } from './configuration/MediaSelector';
 import { SizeSelector } from './configuration/SizeSelector';
@@ -13,11 +12,13 @@ type ConfigurationPanelProps = {
   customSizeUnit: SizeUnit;
   onCustomSizeUnitChange: (unit: SizeUnit) => void;
   config: ProductConfig;
+  media: Media[];
+  sizes: Size[];
 };
 
-export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUnitChange, config }: ConfigurationPanelProps) {
-  const availableMedia = MOCK_MEDIA.filter((m) => config.allowedMediaIds.includes(m.id));
-  const availableSizes = MOCK_SIZES.filter((s) => config.allowedSizeIds.includes(s.id));
+export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustomSizeUnitChange, config, media, sizes }: ConfigurationPanelProps) {
+  const availableMedia = media.filter((m) => config.allowedMediaIds.includes(m.id));
+  const availableSizes = sizes.filter((s) => config.allowedSizeIds.includes(s.id));
 
   const pageCountConstraint = config.elementalPageCounts?.[element.id];
   const showPageCount = pageCountConstraint?.kind === 'multiple';
