@@ -27,10 +27,17 @@ const STEPS = [
   { title: 'Preț' },
 ] as const;
 
+type ProductConfiguratorProps = {
+  // When embedded (e.g. in materialpublicitar), the host seeds the catalog.
+  // When omitted (standalone dev), fall back to localStorage / MOCK_PRODUCTS.
+  initialProducts?: Product[];
+};
+
 // ============ MAIN APP ============
-export default function ProductConfigurator() {
+export default function ProductConfigurator({ initialProducts }: ProductConfiguratorProps = {}) {
   const STORAGE_VERSION = 'v10';
   const [products, setProducts] = useState<Product[]>(() => {
+    if (initialProducts && initialProducts.length > 0) return initialProducts;
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
     if (saved && version === STORAGE_VERSION) return JSON.parse(saved) as Product[];
