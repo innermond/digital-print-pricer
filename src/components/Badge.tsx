@@ -60,7 +60,6 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
 
   return (
     <span className="flex-grow flex-shrink relative inline-flex">
-      {children}
       <span
         ref={badgeRef}
         onMouseEnter={handleEnter}
@@ -77,6 +76,7 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
           dangerouslySetInnerHTML={{ __html: text }}
         />
       </span>
+      {children}
     </span>
   );
 }

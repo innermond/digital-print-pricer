@@ -3,10 +3,10 @@ import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, B
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
   { kind: 'paper', id: 'p2', label: '120 GSM - Lucios',        gsm: 120, finish: 'Gloss',      explanation: 'Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere.' },
-  { kind: 'paper', id: 'p3', label: '150 GSM - Mat',           gsm: 150, finish: 'Matt',       explanation: 'Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai premium decât lucioasa la aceeași greutate.' },
+  { kind: 'paper', id: 'p3', label: '150 GSM - Mat',           gsm: 150, finish: 'Matt',       explanation: 'Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate.' },
   { kind: 'paper', id: 'p4', label: '200 GSM - Soft-touch',    gsm: 200, finish: 'Soft-touch', explanation: 'Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje.' },
   { kind: 'paper', id: 'p5', label: '250 GSM - Lucios Premium',gsm: 250, finish: 'Gloss',      explanation: 'Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor.' },
-  { kind: 'paper', id: 'p6', label: '350 GSM - Mat Premium',   gsm: 350, finish: 'Matt',       explanation: 'Carton mat greu — cea mai groasă opțiune. Ideal pentru cărți de vizită unde doriți o impresie solidă și ponderată. Suprafața mată permite scrierea cu pixul.' },
+  { kind: 'paper', id: 'p6', label: '350 GSM - Mat Premium',   gsm: 350, finish: 'Matt',       explanation: 'Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul.' },
 ];
 
 export const MOCK_STICKERS: Sticker[] = [
@@ -460,7 +460,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod1b',
     categoryId: 'flyer',
     label: 'Fluturaș 1/3A4 Alb-Negru, O Față',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem1b-1',
@@ -482,7 +482,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod1c',
     categoryId: 'flyer',
     label: 'Fluturaș A5 Color, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem1c-1',
@@ -1579,7 +1579,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod9',
     categoryId: 'calendar',
-    label: 'Calendar',
+    label: 'Calendar A3+',
     amount: 1,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
@@ -1587,7 +1587,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem9-1',
         label: 'Copertă',
         media: MOCK_PAPERS[2],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -1601,7 +1601,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem9-2',
         label: 'Interior',
         media: MOCK_PAPERS[2],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
         pageCount: 24,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -1613,6 +1613,57 @@ export const MOCK_PRODUCTS: Product[] = [
       },
       {
         id: 'elem9-3',
+        label: 'Copertă Spate',
+        media: MOCK_PAPERS[2],
+        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
+        pageCount: 1,
+        printing: { front: 'none', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod10',
+    categoryId: 'calendar',
+    label: 'Calendar A4',
+    amount: 1,
+    binding: { type: 'spiral', color: 'white' },
+    elementals: [
+      {
+        id: 'elem10-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem10-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 24,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem10-3',
         label: 'Copertă Spate',
         media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
