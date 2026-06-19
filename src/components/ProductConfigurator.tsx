@@ -87,6 +87,8 @@ export default function ProductConfigurator({
     (e: Elemental) => e.id === selectedElementalId
   );
   const config = catalog.config[selectedProductId];
+  // Multi-element products share one size by default; a config can opt out.
+  const sizeShared = config?.sharedSize ?? ((selectedProduct?.elementals.length ?? 1) > 1);
 
   const showStep = (step: number) => !isWizardMode || currentStep === step;
 
@@ -109,6 +111,18 @@ export default function ProductConfigurator({
   const updateBinding = (productId: Product['id'], binding: Binding) => {
     setProducts(prev =>
       prev.map(p => (p.id === productId ? { ...p, binding } : p))
+    );
+  };
+
+  // Apply one size to every elemental of a product (multi-element products
+  // physically share a single size).
+  const setProductSize = (productId: Product['id'], size: Elemental['size']) => {
+    setProducts(prev =>
+      prev.map(p =>
+        p.id === productId
+          ? { ...p, elementals: p.elementals.map(e => ({ ...e, size })) }
+          : p
+      )
     );
   };
 
@@ -484,9 +498,15 @@ export default function ProductConfigurator({
           ) : selectedElemental && config && (
             <ConfigurationPanel
               element={selectedElemental}
-              onUpdate={(updates: Partial<Elemental>) =>
-                updateElemental(selectedElemental.id, updates)
-              }
+              onUpdate={(updates: Partial<Elemental>) => {
+                if (sizeShared && updates.size && selectedProduct) {
+                  const { size, ...rest } = updates;
+                  setProductSize(selectedProduct.id, size);
+                  if (Object.keys(rest).length) updateElemental(selectedElemental.id, rest);
+                } else {
+                  updateElemental(selectedElemental.id, updates);
+                }
+              }}
               customSizeUnit={customSizeUnit}
               onCustomSizeUnitChange={setCustomSizeUnit}
               config={config}

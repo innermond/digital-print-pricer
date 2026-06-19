@@ -38,6 +38,9 @@ export type ProductConfig = {
   allowedSizeIds: string[];
   recommendedMediaId: string;
   recommendedSizeId: string;
+  // Whether all elementals must share one size. Defaults to true for products
+  // with more than one elemental; set false to allow per-elemental sizes.
+  sharedSize?: boolean;
   allowedFoldTypes: string[];
   allowedPrintingFronts?: Array<PrintInk | 'none'>;
   allowedPrintingBacks?: Array<PrintInk | 'none'>;

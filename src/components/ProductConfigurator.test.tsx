@@ -142,4 +142,26 @@ describe('ProductConfigurator', () => {
     const saved = JSON.parse(localStorage.getItem('products')!);
     expect(Number.isNaN(saved[0].amount)).toBe(false);
   });
+
+  it('shares one size across elements of a multi-element product', async () => {
+    const user = userEvent.setup();
+    localStorage.clear();
+    render(<ProductConfigurator />);
+
+    // Brochure prod2a has Copertă + Interior, both seeded A4; allowed sizes A4/A5.
+    await user.click(screen.getByText('Broșură'));
+    await user.click(screen.getByText('Broșură A4, Interior 8 Pagini'));
+    await user.click(screen.getByRole('button', { name: '3. Configurare' }));
+
+    // Change the size on the (cover) tab to A5 — it must propagate to both.
+    await user.click(screen.getByText('A5'));
+
+    const saved = JSON.parse(localStorage.getItem('products')!);
+    const brochure = saved.find((p: { id: string }) => p.id === 'prod2a');
+    expect(brochure.elementals).toHaveLength(2);
+    for (const el of brochure.elementals) {
+      expect(el.size.widthMm).toBe(148);
+      expect(el.size.heightMm).toBe(210);
+    }
+  });
 });
