@@ -1,5 +1,6 @@
 type PaperFinish = "Gloss" | "Silk" | "Matt" | "Soft-touch";
-type PaperWeight = 80 | 130 | 170 | 200 | 250 | 350;
+// Real stock weights (RON market) — match the price engine's paper keys exactly.
+type PaperWeight = 90 | 120 | 150 | 200 | 250 | 350;
 
 type Paper = {
   kind: 'paper';

@@ -6,8 +6,8 @@ import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
 import { makeConfig, makeElemental, makePaper } from '../test/fixtures';
 
 // The panel filters the media/sizes it's given by the config, so use real ids:
-// p2 = "130 GSM - Lucios", p3 = "170 GSM - Mat", s1 = A4, s2 = A5.
-const element = makeElemental({ media: makePaper({ id: 'p2', label: '130 GSM - Lucios', gsm: 130 }) });
+// p2 = "120 GSM - Lucios", p3 = "150 GSM - Mat", s1 = A4, s2 = A5.
+const element = makeElemental({ media: makePaper({ id: 'p2', label: '120 GSM - Lucios', gsm: 120 }) });
 const config = makeConfig();
 
 function renderPanel(overrides: Partial<Parameters<typeof ConfigurationPanel>[0]> = {}) {
@@ -29,9 +29,9 @@ describe('ConfigurationPanel', () => {
   it('renders the media allowed by the config', () => {
     renderPanel();
     expect(screen.getByText('Material')).toBeInTheDocument();
-    expect(screen.getByText('130 GSM - Lucios')).toBeInTheDocument();
-    expect(screen.getByText('170 GSM - Mat')).toBeInTheDocument();
-    expect(screen.queryByText('80 GSM - Silk')).not.toBeInTheDocument();
+    expect(screen.getByText('120 GSM - Lucios')).toBeInTheDocument();
+    expect(screen.getByText('150 GSM - Mat')).toBeInTheDocument();
+    expect(screen.queryByText('90 GSM - Silk')).not.toBeInTheDocument();
   });
 
   it('renders the sizes allowed by the config', () => {
@@ -52,7 +52,7 @@ describe('ConfigurationPanel', () => {
     const user = userEvent.setup();
     const { onUpdate } = renderPanel();
 
-    await user.click(screen.getByText('170 GSM - Mat'));
+    await user.click(screen.getByText('150 GSM - Mat'));
     expect(onUpdate).toHaveBeenCalledWith({
       media: expect.objectContaining({ id: 'p3' }),
     });
