@@ -36,6 +36,9 @@ type ProductConfiguratorProps = {
   // marketing entity to a configurator id; unknown ids are ignored gracefully.
   initialCategoryId?: string | null;
   initialProductId?: string | null;
+  // Endpoint that prices a selection (host app, e.g. materialpublicitar). When
+  // omitted (standalone dev), the built-in placeholder URL is used.
+  priceEndpoint?: string | null;
 };
 
 // ============ MAIN APP ============
@@ -43,6 +46,7 @@ export default function ProductConfigurator({
   catalog = MOCK_CATALOG,
   initialCategoryId = null,
   initialProductId = null,
+  priceEndpoint = null,
 }: ProductConfiguratorProps = {}) {
   const STORAGE_VERSION = 'v10';
   const [products, setProducts] = useState<Product[]>(() => {
@@ -144,14 +148,15 @@ export default function ProductConfigurator({
             height: elem.size.height,
             unit: elem.size.unit,
           },
+          printing: elem.printing,
+          pageCount: elem.pageCount,
           finishing: elem.finishing,
         })),
         ...(selectedProduct.binding ? { binding: selectedProduct.binding } : {}),
       };
 
-      console.log(productData)
-
-      const response = await fetch('https://your-api-endpoint.com/calculate-price', {
+      const endpoint = priceEndpoint ?? 'https://your-api-endpoint.com/calculate-price';
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
