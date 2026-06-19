@@ -124,4 +124,22 @@ describe('ProductConfigurator', () => {
     const saved = JSON.parse(localStorage.getItem('products')!);
     expect(saved[0].amount).toBe(2);
   });
+
+  it('ignores an emptied quantity field instead of going NaN', async () => {
+    const user = userEvent.setup();
+    localStorage.clear();
+    render(<ProductConfigurator />);
+
+    const [nextButton] = screen.getAllByRole('button', { name: /Înainte/ });
+    await user.click(nextButton);
+
+    const textbox = screen.getByRole('textbox') as HTMLInputElement;
+    const before = textbox.value; // last valid value
+    await user.clear(textbox);    // empty input is ignored, not written as NaN
+
+    expect(textbox).toHaveValue(before);
+    expect(textbox.value).not.toBe('NaN');
+    const saved = JSON.parse(localStorage.getItem('products')!);
+    expect(Number.isNaN(saved[0].amount)).toBe(false);
+  });
 });

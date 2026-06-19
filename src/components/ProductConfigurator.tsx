@@ -112,12 +112,20 @@ export default function ProductConfigurator({
     );
   };
 
+  // Step the amount by delta (the ± buttons); never below 1.
   const updateProductAmount = (productId: Product['id'], delta: number) => {
     setProducts(prev =>
       prev.map(p =>
-        p.id === productId
-          ? { ...p, amount: Math.max(1, Math.abs(delta) > 1 ? delta : p.amount + delta) }
-          : p
+        p.id === productId ? { ...p, amount: Math.max(1, p.amount + delta) } : p
+      )
+    );
+  };
+
+  // Set an absolute amount (typing in the field); never below 1.
+  const setProductAmount = (productId: Product['id'], amount: number) => {
+    setProducts(prev =>
+      prev.map(p =>
+        p.id === productId ? { ...p, amount: Math.max(1, amount) } : p
       )
     );
   };
@@ -275,10 +283,10 @@ export default function ProductConfigurator({
       </header>
 
       {/* Main Content */}
-      <main className={`overflow-hidden mx-auto max-w-7xl px-4 py-4 sm:py-6 ${isWizardMode ? 'pb-20 sm:pb-6' : ''}`}>
+      <main className={`mx-auto max-w-7xl px-4 py-4 sm:py-6 ${isWizardMode ? 'pb-20 sm:pb-6' : ''}`}>
         {/* View mode toggle */}
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-sm">
-          <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
             <input
               type="checkbox"
               checked={isWizardMode}
@@ -289,12 +297,12 @@ export default function ProductConfigurator({
           </label>
 
           {isWizardMode && (
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex justify-center flex-wrap items-center gap-2">
               {STEPS.map((step, index) => (
                 <button
                   key={step.title}
                   onClick={() => setCurrentStep(index)}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                  className={`w-full sm:w-auto rounded-lg px-3 py-1.5 text-lg font-medium transition ${
                     currentStep === index
                       ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
@@ -303,11 +311,11 @@ export default function ProductConfigurator({
                   {index + 1}. {step.title}
                 </button>
               ))}
-              <div className="flex gap-2 ml-2">
+              <div className="w-full sm:w-auto flex flex-wrap justify-center gap-2">
                 <button
                   onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
                   disabled={currentStep === 0}
-                  className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                  className={`w-full sm:w-auto justify-center flex items-center gap-1 rounded-lg px-3 py-1.5 text-lg font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
                     currentStep === 0 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
                   }`}
                 >
@@ -317,7 +325,7 @@ export default function ProductConfigurator({
                 <button
                   onClick={() => setCurrentStep((s) => Math.min(STEPS.length - 1, s + 1))}
                   disabled={currentStep === STEPS.length - 1}
-                  className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
+                  className={`w-full sm:w-auto justify-center flex items-center gap-1 rounded-lg px-3 py-1.5 text-lg font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
                     currentStep === STEPS.length - 1 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
                   }`}
                 >
@@ -421,7 +429,10 @@ export default function ProductConfigurator({
               <NumericButton
                 style="flex-1"
                 onClickMinus={() => updateProductAmount(selectedProduct.id, -1)}
-                onChange={(e) => updateProductAmount(selectedProduct.id, parseInt(e.currentTarget.value))}
+                onChange={(e) => {
+                  const n = parseInt(e.currentTarget.value, 10);
+                  if (!Number.isNaN(n)) setProductAmount(selectedProduct.id, n);
+                }}
                 onClickPlus={() => updateProductAmount(selectedProduct.id, +1)}
                 value={selectedProduct.amount}
                 badgeText={config?.explanation}
