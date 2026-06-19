@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { ChangeEvent } from 'react';
-import { Download, Upload, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Download, Upload, RotateCcw, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import type { Product, ProductCategory, Elemental, SizeUnit, Binding } from '../types';
 import { MOCK_CATALOG } from '../data/catalog';
 import type { Catalog } from '../data/catalog';
@@ -27,6 +27,36 @@ const STEPS = [
   { title: 'Previzualizare & Sumar' },
   { title: 'Preț' },
 ] as const;
+
+// The full selection that produced a price: posted to the price endpoint and
+// shared with the host (pricer:offer event) so it can email / act on the quote.
+function buildSelectionPayload(product: Product) {
+  return {
+    productId: product.id,
+    productLabel: product.label,
+    amount: product.amount,
+    elementals: product.elementals.map(elem => ({
+      label: elem.label,
+      media: {
+        kind: elem.media.kind,
+        id: elem.media.id,
+        label: elem.media.label,
+        gsm: elem.media.gsm,
+        ...(elem.media.kind === 'paper'   ? { finish: elem.media.finish } : {}),
+        ...(elem.media.kind === 'sticker' ? { face: elem.media.face }     : {}),
+      },
+      size: {
+        width: elem.size.width,
+        height: elem.size.height,
+        unit: elem.size.unit,
+      },
+      printing: elem.printing,
+      pageCount: elem.pageCount,
+      finishing: elem.finishing,
+    })),
+    ...(product.binding ? { binding: product.binding } : {}),
+  };
+}
 
 type ProductConfiguratorProps = {
   // When embedded (e.g. in materialpublicitar), the host injects a catalog
@@ -81,6 +111,7 @@ export default function ProductConfigurator({
   const [productPrices, setProductPrices] = useState<Record<string, ProductPrice>>({});
   const [pricingLoading, setPricingLoading] = useState(false);
   const [pricingError, setPricingError] = useState<string | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const selectedProduct = products.find((p: Product) => p.id === selectedProductId);
   const selectedElemental = selectedProduct?.elementals.find(
@@ -151,31 +182,7 @@ export default function ProductConfigurator({
     setPricingError(null);
 
     try {
-      const productData = {
-        productId: selectedProduct.id,
-        productLabel: selectedProduct.label,
-        amount: selectedProduct.amount,
-        elementals: selectedProduct.elementals.map(elem => ({
-          label: elem.label,
-          media: {
-            kind: elem.media.kind,
-            id: elem.media.id,
-            label: elem.media.label,
-            gsm: elem.media.gsm,
-            ...(elem.media.kind === 'paper'   ? { finish: elem.media.finish } : {}),
-            ...(elem.media.kind === 'sticker' ? { face: elem.media.face }     : {}),
-          },
-          size: {
-            width: elem.size.width,
-            height: elem.size.height,
-            unit: elem.size.unit,
-          },
-          printing: elem.printing,
-          pageCount: elem.pageCount,
-          finishing: elem.finishing,
-        })),
-        ...(selectedProduct.binding ? { binding: selectedProduct.binding } : {}),
-      };
+      const productData = buildSelectionPayload(selectedProduct);
 
       const endpoint = priceEndpoint ?? 'https://your-api-endpoint.com/calculate-price';
       const response = await fetch(endpoint, {
@@ -209,6 +216,23 @@ export default function ProductConfigurator({
     }
   };
 
+  // Announce the quote (selection + price) to the host page, which decides what
+  // to do with it (e.g. open a prefilled email). No-op in standalone dev.
+  const requestOffer = () => {
+    if (!selectedProduct) return;
+    const priceInfo = productPrices[selectedProduct.id];
+    if (!priceInfo) return;
+    rootRef.current?.dispatchEvent(
+      new CustomEvent('pricer:offer', {
+        bubbles: true,
+        detail: {
+          selection: buildSelectionPayload(selectedProduct),
+          price: priceInfo.price,
+          currency: priceInfo.currency,
+        },
+      })
+    );
+  };
 
   const exportProducts = () => {
     const json = JSON.stringify(products, null, 2);
@@ -251,7 +275,7 @@ export default function ProductConfigurator({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
+    <div ref={rootRef} className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
       {/* Header */}
       <header className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-[21]">
         <div className="mx-auto max-w-7xl px-4 py-5">
@@ -566,6 +590,13 @@ export default function ProductConfigurator({
                 <div className="text-xs text-emerald-600 dark:text-emerald-400">
                   Ultima actualizare: {new Date(productPrices[selectedProduct.id].timestamp).toLocaleTimeString()}
                 </div>
+                <button
+                  onClick={requestOffer}
+                  className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg border border-emerald-300 dark:border-emerald-700 bg-white dark:bg-emerald-900 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-200 transition hover:bg-emerald-100 dark:hover:bg-emerald-800"
+                >
+                  <Mail size={16} />
+                  Cere ofertă pe email
+                </button>
               </div>
             )}
 

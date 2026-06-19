@@ -97,6 +97,31 @@ describe('ProductConfigurator', () => {
     expect(body.elementals).toHaveLength(1);
   });
 
+  it('emits a pricer:offer event with the selection and price', async () => {
+    const user = userEvent.setup();
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ price: 12.5, currency: 'RON' }),
+    }));
+
+    const onOffer = vi.fn();
+    document.addEventListener('pricer:offer', onOffer);
+
+    render(<ProductConfigurator />);
+    await user.click(screen.getByRole('button', { name: '5. Preț' }));
+    await user.click(screen.getByRole('button', { name: /Obține Preț/ }));
+    await screen.findAllByText('RON 12.50');
+    await user.click(screen.getByRole('button', { name: /Cere ofertă pe email/ }));
+
+    expect(onOffer).toHaveBeenCalledTimes(1);
+    const detail = onOffer.mock.calls[0][0].detail;
+    expect(detail.price).toBe(12.5);
+    expect(detail.currency).toBe('RON');
+    expect(detail.selection.productId).toBe('prod1a');
+
+    document.removeEventListener('pricer:offer', onOffer);
+  });
+
   it('shows an error when the price request fails', async () => {
     const user = userEvent.setup();
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 500 }));
