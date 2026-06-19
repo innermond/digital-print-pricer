@@ -39,8 +39,8 @@ export function NumericButton({
   });
 
   const handleMouseDown = (
-    handlerRef: React.MutableRefObject<() => void>,
-    timersRef: React.MutableRefObject<{ timeout: number | null; interval: number | null }>,
+    handlerRef: React.RefObject<() => void>,
+    timersRef: React.RefObject<{ timeout: number | null; interval: number | null }>,
   ) => {
     handlerRef.current();
     timersRef.current.timeout = window.setTimeout(() => {
@@ -50,7 +50,7 @@ export function NumericButton({
     }, INITIAL_DELAY);
   };
 
-  const handleMouseUp = (timersRef: React.MutableRefObject<{ timeout: number | null; interval: number | null }>) => {
+  const handleMouseUp = (timersRef: React.RefObject<{ timeout: number | null; interval: number | null }>) => {
     if (timersRef.current.timeout !== null) {
       window.clearTimeout(timersRef.current.timeout);
       timersRef.current.timeout = null;
