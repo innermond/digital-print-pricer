@@ -1,5 +1,6 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import React, { useEffect, useRef } from 'react';
+import { useLatestRef } from '../hooks/useLatestRef';
 import { Badge } from './Badge';
 
 type NumericButtonProps = {
@@ -25,10 +26,8 @@ export function NumericButton({
   // Keep refs to the latest handlers so a running repeat-interval always
   // calls the current closure (with up-to-date values), not the one
   // captured at the moment the button was pressed.
-  const onClickPlusRef = useRef(onClickPlus);
-  const onClickMinusRef = useRef(onClickMinus);
-  onClickPlusRef.current = onClickPlus;
-  onClickMinusRef.current = onClickMinus;
+  const onClickPlusRef = useLatestRef(onClickPlus);
+  const onClickMinusRef = useLatestRef(onClickMinus);
 
   const minusTimersRef = useRef<{ timeout: number | null; interval: number | null }>({
     timeout: null,
