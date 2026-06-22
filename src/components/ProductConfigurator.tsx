@@ -587,7 +587,7 @@ export default function ProductConfigurator({
         {showStep(3) && (
         <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-72"><PreviewCard element={selectedElemental} /></div>
-          <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} /></div>
+          <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} personalized={!!selectedProduct && isPersonalized(selectedProduct)} /></div>
         </div>
         )}
 

@@ -12,9 +12,10 @@ const SPIRAL_COLOR_RO: Record<string, string> = {
 
 type AssemblySummaryProps = {
   product: Product | undefined;
+  personalized?: boolean;
 };
 
-export function AssemblySummary({ product }: AssemblySummaryProps) {
+export function AssemblySummary({ product, personalized }: AssemblySummaryProps) {
   if (!product) return null;
 
   return (
@@ -61,7 +62,7 @@ export function AssemblySummary({ product }: AssemblySummaryProps) {
       </div>
       <div className="mt-3 rounded-lg bg-blue-50 dark:bg-blue-950 p-2.5 border border-blue-200 dark:border-blue-800">
         <p className="text-xs text-blue-900 dark:text-blue-200">
-          <span className="font-semibold">Produs: </span>
+          <span className="font-semibold">{personalized ? 'Produs personalizat' : 'Produs'}: </span>
           {product.label} ({product.elementals.length} {product.elementals.length !== 1 ? 'elemente' : 'element'}) × {product.amount}
         </p>
         {product.binding?.type === 'spiral' && (
