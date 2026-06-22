@@ -313,10 +313,10 @@ export default function ProductConfigurator({
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50 truncate">
-                Configurator de Produse
+                Calculator de prețuri 
               </h1>
               <p className="mt-0.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-                Configurați produse tipărite cu precizie
+                Preț precis indiferent de specificul ofertei
               </p>
             </div>
             <div className="flex gap-2 flex-shrink-0">
