@@ -123,6 +123,11 @@ export default function ProductConfigurator({
   // Multi-element products share one size by default; a config can opt out.
   const sizeShared = config?.sharedSize ?? ((selectedProduct?.elementals.length ?? 1) > 1);
 
+  // When the host preselects a category (or a product, which implies its
+  // category), the category is fixed: the user picks a product within it but
+  // can't navigate back to the category list.
+  const categoryLocked = preselectedCategoryId !== null;
+
   const showStep = (step: number) => !isWizardMode || currentStep === step;
 
   // Gate the wizard: the user must select a product (which means first choosing
@@ -297,8 +302,9 @@ export default function ProductConfigurator({
   const resetProducts = () => {
     if (confirm('Resetați produsele la valorile implicite?')) {
       setProducts(catalog.products);
-      setSelectedCategoryId(null);
-      // Back to a clean slate: no category, no product — the user re-selects.
+      // A host-preselected category stays fixed; otherwise back to a clean
+      // slate with no category. Either way the product is re-selected.
+      setSelectedCategoryId(preselectedCategoryId);
       setSelectedProductId('');
       setSelectedElementalId('');
       setCurrentStep(0);
@@ -464,12 +470,14 @@ export default function ProductConfigurator({
             ) : (
               <>
                 <div className="mb-3 flex items-center gap-3">
-                  <button
-                    onClick={() => setSelectedCategoryId(null)}
-                    className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"
-                  >
-                    ← Înapoi la categorii
-                  </button>
+                  {!categoryLocked && (
+                    <button
+                      onClick={() => setSelectedCategoryId(null)}
+                      className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"
+                    >
+                      ← Înapoi la categorii
+                    </button>
+                  )}
                   <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-50">
                     {catalog.categories.find((c) => c.id === selectedCategoryId)?.label}
                   </h2>
