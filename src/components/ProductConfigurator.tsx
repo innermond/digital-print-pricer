@@ -22,8 +22,8 @@ const BINDING_TAB_ID = '__binding__';
 
 const STEPS = [
   { title: 'Categorie & Produs' },
+  { title: 'Personalizare' },
   { title: 'Cantitate Produs' },
-  { title: 'Configurare' },
   { title: 'Previzualizare & Sumar' },
   { title: 'Preț' },
 ] as const;
@@ -98,14 +98,16 @@ export default function ProductConfigurator({
     (initialCategoryId && catalog.categories.some((c) => c.id === initialCategoryId)
       ? initialCategoryId
       : undefined) ?? preselectedProduct?.categoryId ?? null;
-  const initialProduct = preselectedProduct ?? products[0];
+  // No auto-selection: the user must pick a category then a product. Only an
+  // explicit (and valid) host preselection lands on a product up front.
+  const initialProduct = preselectedProduct;
 
   const [isWizardMode, setIsWizardMode] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<ProductCategory['id'] | null>(preselectedCategoryId);
-  const [selectedProductId, setSelectedProductId] = useState<Product['id']>(initialProduct.id);
+  const [selectedProductId, setSelectedProductId] = useState<Product['id']>(initialProduct?.id ?? '');
   const [selectedElementalId, setSelectedElementalId] = useState<Elemental['id']>(
-    initialProduct.elementals[0].id
+    initialProduct?.elementals[0]?.id ?? ''
   );
   const [customSizeUnit, setCustomSizeUnit] = useState<SizeUnit>('mm');
   const [productPrices, setProductPrices] = useState<Record<string, ProductPrice>>({});
@@ -122,6 +124,14 @@ export default function ProductConfigurator({
   const sizeShared = config?.sharedSize ?? ((selectedProduct?.elementals.length ?? 1) > 1);
 
   const showStep = (step: number) => !isWizardMode || currentStep === step;
+
+  // Gate the wizard: the user must select a product (which means first choosing
+  // a category) before they can leave the first step.
+  const productSelected = !!selectedProduct;
+  const goToStep = (index: number) => {
+    if (index > 0 && !productSelected) return;
+    setCurrentStep(Math.max(0, Math.min(STEPS.length - 1, index)));
+  };
 
   // Save to localStorage whenever products change
   useEffect(() => {
@@ -172,6 +182,25 @@ export default function ProductConfigurator({
       prev.map(p =>
         p.id === productId ? { ...p, amount: Math.max(1, amount) } : p
       )
+    );
+  };
+
+  // A product is "personalized" once its elementals/binding diverge from the
+  // pristine catalog definition (quantity is a separate step, not a setting).
+  const baselineProduct = (id: Product['id']) => catalog.products.find(p => p.id === id);
+  const settingsOf = (p: Product) =>
+    JSON.stringify({ elementals: p.elementals, binding: p.binding ?? null });
+  const isPersonalized = (p: Product) => {
+    const base = baselineProduct(p.id);
+    return !!base && settingsOf(base) !== settingsOf(p);
+  };
+
+  // Restore a product's elementals/binding to the catalog defaults.
+  const revertProduct = (id: Product['id']) => {
+    const base = baselineProduct(id);
+    if (!base) return;
+    setProducts(prev =>
+      prev.map(p => (p.id === id ? { ...p, elementals: base.elementals, binding: base.binding } : p))
     );
   };
 
@@ -269,8 +298,10 @@ export default function ProductConfigurator({
     if (confirm('Resetați produsele la valorile implicite?')) {
       setProducts(catalog.products);
       setSelectedCategoryId(null);
-      setSelectedProductId(catalog.products[0].id);
-      setSelectedElementalId(catalog.products[0].elementals[0].id);
+      // Back to a clean slate: no category, no product — the user re-selects.
+      setSelectedProductId('');
+      setSelectedElementalId('');
+      setCurrentStep(0);
     }
   };
 
@@ -339,8 +370,9 @@ export default function ProductConfigurator({
               {STEPS.map((step, index) => (
                 <button
                   key={step.title}
-                  onClick={() => setCurrentStep(index)}
-                  className={`w-full sm:w-auto rounded-lg px-3 py-1.5 text-lg font-medium transition ${
+                  onClick={() => goToStep(index)}
+                  disabled={index > 0 && !productSelected}
+                  className={`w-full sm:w-auto rounded-lg px-3 py-1.5 text-lg font-medium transition disabled:opacity-40 disabled:cursor-not-allowed ${
                     currentStep === index
                       ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
@@ -361,8 +393,8 @@ export default function ProductConfigurator({
                   Înapoi
                 </button>
                 <button
-                  onClick={() => setCurrentStep((s) => Math.min(STEPS.length - 1, s + 1))}
-                  disabled={currentStep === STEPS.length - 1}
+                  onClick={() => goToStep(currentStep + 1)}
+                  disabled={currentStep === STEPS.length - 1 || (currentStep === 0 && !productSelected)}
                   className={`w-full sm:w-auto justify-center flex items-center gap-1 rounded-lg px-3 py-1.5 text-lg font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
                     currentStep === STEPS.length - 1 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
                   }`}
@@ -389,8 +421,8 @@ export default function ProductConfigurator({
               Înapoi
             </button>
             <button
-              onClick={() => setCurrentStep((s) => Math.min(STEPS.length - 1, s + 1))}
-              disabled={currentStep === STEPS.length - 1}
+              onClick={() => goToStep(currentStep + 1)}
+              disabled={currentStep === STEPS.length - 1 || (currentStep === 0 && !productSelected)}
               className={`flex flex-1 items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white hover:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:animate-none transition ${
                 currentStep === STEPS.length - 1 ? 'bg-blue-500 dark:bg-blue-600' : 'nav-glow'
               }`}
@@ -416,7 +448,15 @@ export default function ProductConfigurator({
                       category={category}
                       selectedCategoryId={selectedCategoryId ?? undefined}
                       presetCount={products.filter((p) => p.categoryId === category.id).length}
-                      onClick={() => setSelectedCategoryId(category.id)}
+                      onClick={() => {
+                        setSelectedCategoryId(category.id);
+                        // Drop any product not in the newly chosen category so
+                        // the user is forced to pick one that belongs to it.
+                        if (selectedProduct?.categoryId !== category.id) {
+                          setSelectedProductId('');
+                          setSelectedElementalId('');
+                        }
+                      }}
                     />
                   ))}
                 </div>
@@ -447,6 +487,8 @@ export default function ProductConfigurator({
                           setSelectedElementalId(product.elementals[0].id);
                         }}
                         badgeText={catalog.config[product.id]?.explanation}
+                        personalized={isPersonalized(product)}
+                        onRevert={() => revertProduct(product.id)}
                       />
                     ))}
                 </div>
@@ -456,7 +498,7 @@ export default function ProductConfigurator({
         )}
 
         {/* Current product amount */}
-        {showStep(1) && selectedProduct && (
+        {showStep(2) && selectedProduct && (
           <>
           <h2 className="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-50">
             Cantitate Produs
@@ -482,7 +524,7 @@ export default function ProductConfigurator({
         )}
 
         {/* Configuration Panel */}
-        {showStep(2) && (
+        {showStep(1) && (
         <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm mb-6">
           {/* Elementals Tabs */}
           <div className="mb-4 flex flex-wrap gap-1.5">
