@@ -53,6 +53,7 @@ export type ProductConfig = {
 };
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
+  { id: 'afis', label: 'Afiș', explanation: 'Material tipărit pe o singură coală, o singură față.' },
   { id: 'flyer', label: 'Fluturaș', explanation: 'Materiale tipărite pe o singură coală, distribuite în masă — promoții, evenimente, anunțuri.' },
   { id: 'brochure', label: 'Broșură', explanation: 'Materiale pliate cu copertă și interior, pentru cataloage și prezentări.' },
   { id: 'folder', label: 'Dosar de Prezentare', explanation: 'Dosare din carton gros cu buzunar interior, pentru oferte și prezentări.' },
@@ -63,6 +64,15 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
   { id: 'calendar', label: 'Calendar', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
 ];
+
+// Shared constraints for the "afis" category — presets within this category only
+// differ by their initial elemental selections (media/size/printing), not by what's allowed.
+const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks'> = {
+  allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
+  allowedSizeIds: ['s0', 's1'],
+  allowedFoldTypes: ['none'],
+  allowedPrintingBacks: ['none'],
+};
 
 // Shared constraints for the "flyer" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
@@ -144,6 +154,34 @@ const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | '
 };
 
 export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
+  prod0a: {
+    ...AFIS_CATEGORY_CONFIG,
+    allowedPrintingFronts: ['color'],
+    recommendedMediaId: 'p2',
+    recommendedSizeId: 's0',
+    explanation: 'Coală A3 tipărită color pe o față. Dimensiune rezonabilă pentru utilizare in-door.',
+  },
+  prod0b: {
+    ...AFIS_CATEGORY_CONFIG,
+    allowedPrintingFronts: ['color'],
+    recommendedMediaId: 'p2',
+    recommendedSizeId: 's1',
+    explanation: 'Coală A4 tipărită color pe o față. Format compact pentru afișaj in-door în spații mici.',
+  },
+  prod0c: {
+    ...AFIS_CATEGORY_CONFIG,
+    allowedPrintingFronts: ['black'],
+    recommendedMediaId: 'p2',
+    recommendedSizeId: 's0',
+    explanation: 'Coală A3 tipărită alb-negru pe o față. Dimensiune rezonabilă pentru utilizare in-door.',
+  },
+  prod0d: {
+    ...AFIS_CATEGORY_CONFIG,
+    allowedPrintingFronts: ['black'],
+    recommendedMediaId: 'p2',
+    recommendedSizeId: 's1',
+    explanation: 'Coală A4 tipărită alb-negru pe o față. Format compact pentru afișaj in-door în spații mici.',
+  },
   prod1a: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p2',
@@ -438,10 +476,98 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
 
 export const MOCK_PRODUCTS: Product[] = [
   {
+    id: 'prod0a',
+    categoryId: 'afis',
+    label: 'Afiș A3 Color, Față',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem0a-1',
+        label: 'Coală Simplă',
+        media: MOCK_PAPERS[1],
+        size: { id: 's0', label: 'A3', width: 297, height: 420, unit: 'mm', widthMm: 297, heightMm: 420 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod0b',
+    categoryId: 'afis',
+    label: 'Afiș A4 Color, Față',
+    amount: 20,
+    elementals: [
+      {
+        id: 'elem0b-1',
+        label: 'Coală Simplă',
+        media: MOCK_PAPERS[1],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod0c',
+    categoryId: 'afis',
+    label: 'Afiș A3 Alb-Negru, Față',
+    amount: 20,
+    elementals: [
+      {
+        id: 'elem0c-1',
+        label: 'Coală Simplă',
+        media: MOCK_PAPERS[1],
+        size: { id: 's0', label: 'A3', width: 297, height: 420, unit: 'mm', widthMm: 297, heightMm: 420 },
+        pageCount: 1,
+        printing: { front: 'black', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod0d',
+    categoryId: 'afis',
+    label: 'Afiș A4 Alb-Negru, Față',
+    amount: 20,
+    elementals: [
+      {
+        id: 'elem0d-1',
+        label: 'Coală Simplă',
+        media: MOCK_PAPERS[1],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'black', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
     id: 'prod1a',
     categoryId: 'flyer',
     label: 'Fluturaș A4 Color, Față-Verso',
-    amount: 1,
+    amount: 50,
     elementals: [
       {
         id: 'elem1a-1',

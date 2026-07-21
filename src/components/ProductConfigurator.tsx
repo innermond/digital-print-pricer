@@ -78,7 +78,7 @@ export default function ProductConfigurator({
   initialProductId = null,
   priceEndpoint = null,
 }: ProductConfiguratorProps = {}) {
-  const STORAGE_VERSION = 'v10';
+  const STORAGE_VERSION = 'v2';
   const [products, setProducts] = useState<Product[]>(() => {
     // A host-injected catalog always wins; only standalone dev persists edits.
     if (catalog !== MOCK_CATALOG) return catalog.products;
