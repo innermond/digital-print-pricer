@@ -24,8 +24,8 @@ export const MOCK_SIZES: Size[] = [
   { id: 's2', label: 'A5',                      width: 148, height: 210, unit: 'mm', widthMm: 148,   heightMm: 210   },
   { id: 's3', label: 'Letter',                  width: 8.5, height: 11,  unit: 'in', widthMm: 215.9, heightMm: 279.4 },
   { id: 's4', label: '1/3A4',          width: 100, height: 210, unit: 'mm', widthMm: 100,   heightMm: 210   },
-  { id: 's5', label: 'Card Vizită Standard',     width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
-  { id: 's6', label: 'Card Vizită Compact',      width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
+  { id: 's5', label: 'Carte Vizită Standard',     width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
+  { id: 's6', label: 'Carte Vizită Compact',      width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
 ];
 
 export type PageCountConstraint =
@@ -56,7 +56,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'flyer', label: 'Fluturaș', explanation: 'Materiale tipărite pe o singură coală, distribuite în masă — promoții, evenimente, anunțuri.' },
   { id: 'brochure', label: 'Broșură', explanation: 'Materiale pliate cu copertă și interior, pentru cataloage și prezentări.' },
   { id: 'folder', label: 'Dosar de Prezentare', explanation: 'Dosare din carton gros cu buzunar interior, pentru oferte și prezentări.' },
-  { id: 'business-card', label: 'Card de Vizită', explanation: 'Carduri de vizită clasice, tipărite pe carton rezistent.' },
+  { id: 'business-card', label: 'Carte de Vizită', explanation: 'Carți de vizită clasice, tipărite pe carton rezistent.' },
   { id: 'folded-flyer', label: 'Pliant Pliat', explanation: 'Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală.' },
   { id: 'sticker-sheet', label: 'Etichetă pe Coală', explanation: 'Coli de etichete autoadezive, decupate individual după tipărire.' },
   { id: 'spiral-catalog', label: 'Catalog cu spira', explanation: 'Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate.' },
@@ -238,28 +238,28 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod4a: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's5',
-    explanation: 'Card de vizită standard 90x50mm, tipărit pe ambele fețe pe carton rezistent. Esențial pentru identitatea de afaceri și networking.',
+    explanation: 'Carte de vizită standard 90x50mm, tipărit pe ambele fețe pe carton rezistent. Esențial pentru identitatea de afaceri și networking.',
   },
   prod4b: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's6',
-    explanation: 'Card de vizită compact 80x50mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari.',
+    explanation: 'Carte de vizită compact 80x50mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari.',
   },
   prod4c: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedMediaId: 'p5',
     recommendedSizeId: 's5',
-    explanation: 'Card de vizită premium 90x50mm pe carton lucios 250gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență.',
+    explanation: 'Carte de vizită premium 90x50mm pe carton lucios 250gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență.',
   },
   prod4d: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's5',
-    explanation: 'Card de vizită standard 90x50mm, tipărit doar pe față, cu finisaj soft-touch catifelat. Senzație tactilă premium pentru o primă impresie memorabilă.',
+    explanation: 'Carte de vizită standard 90x50mm, tipărit doar pe față, cu finisaj soft-touch catifelat. Senzație tactilă premium pentru o primă impresie memorabilă.',
   },
   prod4e: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's6',
-    explanation: 'Card de vizită compact 80x50mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat.',
+    explanation: 'Carte de vizită compact 80x50mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat.',
   },
   prod5a: {
     ...FOLDED_FLYER_CATEGORY_CONFIG,
@@ -882,14 +882,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4a',
     categoryId: 'business-card',
-    label: 'Card Standard 90x50, Față-Verso',
+    label: 'Carte Standard 90x50, Față-Verso',
     amount: 1,
     elementals: [
       {
         id: 'elem4a-1',
-        label: 'Card de Vizită',
+        label: 'Carte de Vizită',
         media: MOCK_PAPERS[5],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -904,14 +904,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4b',
     categoryId: 'business-card',
-    label: 'Card Compact 80x50, O Față',
+    label: 'Carte Compact 80x50, O Față',
     amount: 1,
     elementals: [
       {
         id: 'elem4b-1',
-        label: 'Card de Vizită',
+        label: 'Carte de Vizită',
         media: MOCK_PAPERS[5],
-        size: { id: 's6', label: 'Card Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
+        size: { id: 's6', label: 'Carte Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -926,14 +926,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4c',
     categoryId: 'business-card',
-    label: 'Card Premium 90x50, Lucios Față-Verso',
+    label: 'Carte Premium 90x50, Lucios Față-Verso',
     amount: 1,
     elementals: [
       {
         id: 'elem4c-1',
-        label: 'Card de Vizită',
+        label: 'Carte de Vizită',
         media: MOCK_PAPERS[4],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -948,14 +948,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4d',
     categoryId: 'business-card',
-    label: 'Card Standard 90x50, Soft-Touch, O Față',
+    label: 'Carte Standard 90x50, Soft-Touch, O Față',
     amount: 1,
     elementals: [
       {
         id: 'elem4d-1',
-        label: 'Card de Vizită',
+        label: 'Carte de Vizită',
         media: MOCK_PAPERS[5],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -970,14 +970,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4e',
     categoryId: 'business-card',
-    label: 'Card Compact 80x50, Față-Verso',
+    label: 'Carte Compact 80x50, Față-Verso',
     amount: 1,
     elementals: [
       {
         id: 'elem4e-1',
-        label: 'Card de Vizită',
+        label: 'Carte de Vizită',
         media: MOCK_PAPERS[5],
-        size: { id: 's6', label: 'Card Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
+        size: { id: 's6', label: 'Carte Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1474,7 +1474,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem8a-1',
         label: 'Etichetă Carton',
         media: MOCK_PAPERS[5],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1497,7 +1497,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem8b-1',
         label: 'Etichetă Carton',
         media: MOCK_PAPERS[5],
-        size: { id: 's6', label: 'Card Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
+        size: { id: 's6', label: 'Carte Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1520,7 +1520,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem8c-1',
         label: 'Etichetă Carton',
         media: MOCK_PAPERS[5],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -1543,7 +1543,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem8d-1',
         label: 'Etichetă Carton',
         media: MOCK_PAPERS[4],
-        size: { id: 's6', label: 'Card Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
+        size: { id: 's6', label: 'Carte Vizită Compact', width: 80, height: 50, unit: 'mm', widthMm: 80, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1566,7 +1566,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem8e-1',
         label: 'Etichetă Carton',
         media: MOCK_PAPERS[5],
-        size: { id: 's5', label: 'Card Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
+        size: { id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, unit: 'mm', widthMm: 90, heightMm: 50 },
         pageCount: 2,
         printing: { front: 'black', back: 'none' },
         finishing: {
