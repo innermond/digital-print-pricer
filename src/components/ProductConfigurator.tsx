@@ -20,6 +20,9 @@ type ProductPrice = {
 
 const BINDING_TAB_ID = '__binding__';
 
+const DEFAULT_POWER_TITLE = 'Calculator de prețuri ';
+const DEFAULT_TAGLINE = 'Preț precis indiferent de specificul ofertei';
+
 const STEPS = [
   { title: 'Categorie & Produs' },
   { title: 'Personalizare' },
@@ -69,6 +72,11 @@ type ProductConfiguratorProps = {
   // Endpoint that prices a selection (host app, e.g. materialpublicitar). When
   // omitted (standalone dev), the built-in placeholder URL is used.
   priceEndpoint?: string | null;
+  // Host-supplied header markup, injected as raw HTML in place of the whole
+  // default title + tagline block. When omitted (standalone dev), the built-in
+  // title + tagline are shown. MUST be host-controlled/trusted — it is NOT
+  // sanitized (dangerouslySetInnerHTML); never pass untrusted user input (XSS).
+  powerText?: string;
 };
 
 // ============ MAIN APP ============
@@ -77,6 +85,7 @@ export default function ProductConfigurator({
   initialCategoryId = null,
   initialProductId = null,
   priceEndpoint = null,
+  powerText,
 }: ProductConfiguratorProps = {}) {
   const STORAGE_VERSION = 'v2';
   const [products, setProducts] = useState<Product[]>(() => {
@@ -317,14 +326,18 @@ export default function ProductConfigurator({
       <header className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-[21]">
         <div className="mx-auto max-w-7xl px-4 py-5">
           <div className="flex items-center justify-between gap-4">
-            <div className="min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50 truncate">
-                Calculator de prețuri 
-              </h1>
-              <p className="mt-0.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-                Preț precis indiferent de specificul ofertei
-              </p>
-            </div>
+            {powerText ? (
+              <div className="min-w-0" dangerouslySetInnerHTML={{ __html: powerText }} />
+            ) : (
+              <div className="min-w-0">
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50 truncate">
+                  {DEFAULT_POWER_TITLE}
+                </h1>
+                <p className="mt-0.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                  {DEFAULT_TAGLINE}
+                </p>
+              </div>
+            )}
             <div className="flex gap-2 flex-shrink-0">
               <button
                 onClick={exportProducts}
