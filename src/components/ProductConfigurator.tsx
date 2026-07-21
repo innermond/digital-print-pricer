@@ -312,7 +312,7 @@ export default function ProductConfigurator({
   };
 
   return (
-    <div ref={rootRef} className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
+    <div ref={rootRef} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
       {/* Header */}
       <header className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-[21]">
         <div className="mx-auto max-w-7xl px-4 py-5">
