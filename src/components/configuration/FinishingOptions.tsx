@@ -2,6 +2,7 @@ import type { Elemental } from '../../types';
 import type { ProductConfig } from '../../data/mockData';
 import {
   allowedLaminationTypes,
+  allowedLaminationSides,
   allowedCreasingCounts,
   allowedRoundedCorners,
 } from '../../lib/finishingRules';
@@ -23,6 +24,9 @@ type FinishingOptionsProps = {
 export function FinishingOptions({ element, config, onUpdate, badgeText }: FinishingOptionsProps) {
   const { finishing } = element;
 
+  const creasingCounts = allowedCreasingCounts(element);
+  const roundedCorners = allowedRoundedCorners(element);
+
   const widget = (
     <div>
       <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
@@ -32,6 +36,7 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
         <LaminationControl
           lamination={finishing.lamination}
           allowedTypes={allowedLaminationTypes(element)}
+          allowedSides={allowedLaminationSides(config)}
           onChange={(lamination) => onUpdate({ finishing: { ...finishing, lamination } })}
         />
         <FoldingControl
@@ -46,16 +51,20 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
             onUpdate(updates);
           }}
         />
-        <CreasingControl
-          count={finishing.creasing.count}
-          allowedCounts={allowedCreasingCounts(element)}
-          onChange={(count) => onUpdate({ finishing: { ...finishing, creasing: { count } } })}
-        />
-        <RoundedCornersControl
-          corners={finishing.roundedCornes.corners}
-          allowedCorners={allowedRoundedCorners(element)}
-          onChange={(corners) => onUpdate({ finishing: { ...finishing, roundedCornes: { corners } } })}
-        />
+        {creasingCounts.length > 0 && (
+          <CreasingControl
+            count={finishing.creasing.count}
+            allowedCounts={creasingCounts}
+            onChange={(count) => onUpdate({ finishing: { ...finishing, creasing: { count } } })}
+          />
+        )}
+        {roundedCorners.length > 0 && (
+          <RoundedCornersControl
+            corners={finishing.roundedCornes.corners}
+            allowedCorners={roundedCorners}
+            onChange={(corners) => onUpdate({ finishing: { ...finishing, roundedCornes: { corners } } })}
+          />
+        )}
         {config.allowedStaple && (
           <StapleControl
             staple={finishing.staple}

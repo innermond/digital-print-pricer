@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FinishingOptions } from './FinishingOptions';
-import { makeConfig, makeElemental, makeFinishing } from '../../test/fixtures';
+import { makeConfig, makeElemental, makeFinishing, makePaper } from '../../test/fixtures';
 
 // 250 GSM paper allows lamination, creasing and rounded corners
 const element = makeElemental();
@@ -16,6 +16,14 @@ describe('FinishingOptions', () => {
     expect(screen.getByRole('heading', { name: 'Pliere' })).toBeInTheDocument();
     expect(screen.getByText('Biguitură')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Colțuri Rotunjite' })).toBeInTheDocument();
+  });
+
+  it('hides creasing and rounded corners when the media disallows them', () => {
+    // 120 GSM paper: under 200 (no creasing) and under 170 (no rounded corners).
+    const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+    render(<FinishingOptions element={thin} config={config} onUpdate={() => {}} />);
+    expect(screen.queryByText('Biguitură')).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Colțuri Rotunjite' })).not.toBeInTheDocument();
   });
 
   it('shows the staple control only when the config allows stapling', () => {

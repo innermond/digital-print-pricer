@@ -3,6 +3,13 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductConfigurator from './ProductConfigurator';
 
+// The wizard gates every step past the first behind a selected product, so most
+// tests start by picking the default flyer (prod1a) from its category.
+async function selectFlyer(user: ReturnType<typeof userEvent.setup>) {
+  await user.click(screen.getByText('Fluturaș'));
+  await user.click(screen.getByText('Fluturaș A4 Color, Față-Verso'));
+}
+
 describe('ProductConfigurator', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
@@ -10,7 +17,7 @@ describe('ProductConfigurator', () => {
 
   it('starts on the category step in wizard mode', () => {
     render(<ProductConfigurator />);
-    expect(screen.getByText('Configurator de Produse')).toBeInTheDocument();
+    expect(screen.getByText('Calculator de prețuri')).toBeInTheDocument();
     expect(screen.getByText('Selectați Categoria')).toBeInTheDocument();
     expect(screen.getByText('Fluturaș')).toBeInTheDocument();
     // Later steps are hidden in wizard mode
@@ -32,23 +39,24 @@ describe('ProductConfigurator', () => {
   it('navigates between steps with the next/previous buttons', async () => {
     const user = userEvent.setup();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
-    const [nextButton] = screen.getAllByRole('button', { name: /Înainte/ });
     const [prevButton] = screen.getAllByRole('button', { name: /Înapoi$/ });
-    expect(prevButton).toBeDisabled();
+    const [nextButton] = screen.getAllByRole('button', { name: /Înainte/ });
+    expect(prevButton).toBeDisabled(); // on the first step
 
-    await user.click(nextButton);
-    expect(screen.getByRole('heading', { name: 'Cantitate Produs' })).toBeInTheDocument();
-    expect(screen.queryByText('Selectați Categoria')).not.toBeInTheDocument();
+    await user.click(nextButton); // → step 2: Personalizare (configuration)
+    expect(screen.getByText('Material')).toBeInTheDocument();
     expect(prevButton).toBeEnabled();
 
-    await user.click(prevButton);
-    expect(screen.getByText('Selectați Categoria')).toBeInTheDocument();
+    await user.click(prevButton); // → back to the product grid
+    expect(screen.getByText('Fluturaș A4 Color, Față-Verso')).toBeInTheDocument();
   });
 
   it('jumps to a step from the step list', async () => {
     const user = userEvent.setup();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
     await user.click(screen.getByRole('button', { name: '4. Previzualizare & Sumar' }));
     expect(screen.getByText('Previzualizare')).toBeInTheDocument();
@@ -59,9 +67,10 @@ describe('ProductConfigurator', () => {
   it('shows everything at once when wizard mode is off', async () => {
     const user = userEvent.setup();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
     await user.click(screen.getByRole('checkbox', { name: 'Mod pas-cu-pas' }));
-    expect(screen.getByText('Selectați Categoria')).toBeInTheDocument();
+    expect(screen.getByText('Material')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Cantitate Produs' })).toBeInTheDocument();
     expect(screen.getByText('Previzualizare')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Preț' })).toBeInTheDocument();
@@ -70,8 +79,9 @@ describe('ProductConfigurator', () => {
   it('shows the configuration tabs for the selected product', async () => {
     const user = userEvent.setup();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
-    await user.click(screen.getByRole('button', { name: '3. Configurare' }));
+    await user.click(screen.getByRole('button', { name: '2. Personalizare' }));
     expect(screen.getByRole('button', { name: 'Coală Simplă' })).toBeInTheDocument();
     expect(screen.getByText('Material')).toBeInTheDocument();
     expect(screen.getByText('Dimensiune')).toBeInTheDocument();
@@ -86,11 +96,13 @@ describe('ProductConfigurator', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     render(<ProductConfigurator />);
+    await selectFlyer(user);
     await user.click(screen.getByRole('button', { name: '5. Preț' }));
     await user.click(screen.getByRole('button', { name: /Obține Preț/ }));
 
-    // Shown twice: unit price and total (amount is 1)
-    expect(await screen.findAllByText('RON 12.50')).toHaveLength(2);
+    // Unit price plus the total for the seeded quantity (prod1a is seeded at 50)
+    expect(await screen.findByText('RON 12.50')).toBeInTheDocument();
+    expect(screen.getByText('RON 625.00')).toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(body.productId).toBe('prod1a');
@@ -108,6 +120,7 @@ describe('ProductConfigurator', () => {
     document.addEventListener('pricer:offer', onOffer);
 
     render(<ProductConfigurator />);
+    await selectFlyer(user);
     await user.click(screen.getByRole('button', { name: '5. Preț' }));
     await user.click(screen.getByRole('button', { name: /Obține Preț/ }));
     await screen.findAllByText('RON 12.50');
@@ -127,6 +140,7 @@ describe('ProductConfigurator', () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 500 }));
 
     render(<ProductConfigurator />);
+    await selectFlyer(user);
     await user.click(screen.getByRole('button', { name: '5. Preț' }));
     await user.click(screen.getByRole('button', { name: /Obține Preț/ }));
 
@@ -136,10 +150,10 @@ describe('ProductConfigurator', () => {
   it('persists products to localStorage', async () => {
     const user = userEvent.setup();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
     // Bump the amount of the default product on the quantity step
-    const [nextButton] = screen.getAllByRole('button', { name: /Înainte/ });
-    await user.click(nextButton);
+    await user.click(screen.getByRole('button', { name: '3. Cantitate Produs' }));
     // The quantity step shows a single NumericButton; its input's container
     // holds the plus/minus buttons (plus first).
     const amountGroup = screen.getByRole('textbox').parentElement!;
@@ -147,16 +161,17 @@ describe('ProductConfigurator', () => {
     await user.click(plusButton);
 
     const saved = JSON.parse(localStorage.getItem('products')!);
-    expect(saved[0].amount).toBe(2);
+    const flyer = saved.find((p: { id: string }) => p.id === 'prod1a');
+    expect(flyer.amount).toBe(51); // seeded at 50
   });
 
   it('ignores an emptied quantity field instead of going NaN', async () => {
     const user = userEvent.setup();
     localStorage.clear();
     render(<ProductConfigurator />);
+    await selectFlyer(user);
 
-    const [nextButton] = screen.getAllByRole('button', { name: /Înainte/ });
-    await user.click(nextButton);
+    await user.click(screen.getByRole('button', { name: '3. Cantitate Produs' }));
 
     const textbox = screen.getByRole('textbox') as HTMLInputElement;
     const before = textbox.value; // last valid value
@@ -176,7 +191,7 @@ describe('ProductConfigurator', () => {
     // Brochure prod2a has Copertă + Interior, both seeded A4; allowed sizes A4/A5.
     await user.click(screen.getByText('Broșură'));
     await user.click(screen.getByText('Broșură A4, Interior 8 Pagini'));
-    await user.click(screen.getByRole('button', { name: '3. Configurare' }));
+    await user.click(screen.getByRole('button', { name: '2. Personalizare' }));
 
     // Change the size on the (cover) tab to A5 — it must propagate to both.
     await user.click(screen.getByText('A5'));

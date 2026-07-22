@@ -11,6 +11,7 @@ import { ProductButton } from './ProductButton';
 import { CategoryButton } from './CategoryButton';
 import { NumericButton } from './NumericButton';
 import { BindingControl } from './configuration/BindingControl';
+import { clampLamination } from '../lib/finishingRules';
 
 type ProductPrice = {
   price: number;
@@ -157,7 +158,9 @@ export default function ProductConfigurator({
       products.map((product: Product) => ({
         ...product,
         elementals: product.elementals.map((elem) =>
-          elem.id === elementId ? { ...elem, ...updates } : elem
+          elem.id === elementId
+            ? clampLamination({ ...elem, ...updates }, catalog.config[product.id])
+            : elem
         ),
       }))
     );

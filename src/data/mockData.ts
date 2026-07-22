@@ -1,4 +1,4 @@
-import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple } from '../types';
+import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
@@ -49,6 +49,10 @@ export type ProductConfig = {
   elementalPageCounts?: Record<string, PageCountConstraint>;
   binding?: { type: BindingType; allowedColors?: SpiralColor[] };
   allowedStaple?: Staple;
+  // Which lamination sides this product offers. Omit to allow all three
+  // (front/back/both) — a blank verso can still be laminated, so this is a
+  // product decision, not something derived from what's printed.
+  allowedLaminationSides?: LaminationSides[];
   explanation?: string;
 };
 
@@ -67,11 +71,13 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 
 // Shared constraints for the "afis" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
-const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks'> = {
+const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s0', 's1'],
   allowedFoldTypes: ['none'],
   allowedPrintingBacks: ['none'],
+  // Afiș is a one-sided poster — laminate the front only (or not at all).
+  allowedLaminationSides: ['front'],
 };
 
 // Shared constraints for the "flyer" category — presets within this category only

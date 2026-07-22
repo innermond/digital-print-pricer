@@ -24,39 +24,49 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
   const showPageCount = pageCountConstraint?.kind === 'multiple';
 
   return (
-    <div className="space-y-3">
-      <MediaSelector
-        media={availableMedia}
-        selectedId={element.media.id}
-        recommendedId={config.recommendedMediaId}
-        onSelect={(media) => onUpdate({ media })}
-      />
-      <SizeSelector
-        sizes={availableSizes}
-        currentSize={element.size}
-        customSizeUnit={customSizeUnit}
-        recommendedSizeId={config.recommendedSizeId}
-        onSizeChange={(size) => onUpdate({ size })}
-        onUnitChange={onCustomSizeUnitChange}
-      />
-      {showPageCount && (
-        <PageCountControl
-          pageCount={element.pageCount}
-          constraint={pageCountConstraint}
-          onChange={(pageCount) => onUpdate({ pageCount })}
+    <div className="divide-y divide-slate-200 dark:divide-slate-700">
+      <section className="pb-5">
+        <MediaSelector
+          media={availableMedia}
+          selectedId={element.media.id}
+          recommendedId={config.recommendedMediaId}
+          onSelect={(media) => onUpdate({ media })}
         />
+      </section>
+      <section className="py-5">
+        <SizeSelector
+          sizes={availableSizes}
+          currentSize={element.size}
+          customSizeUnit={customSizeUnit}
+          recommendedSizeId={config.recommendedSizeId}
+          onSizeChange={(size) => onUpdate({ size })}
+          onUnitChange={onCustomSizeUnitChange}
+        />
+      </section>
+      {showPageCount && (
+        <section className="py-5">
+          <PageCountControl
+            pageCount={element.pageCount}
+            constraint={pageCountConstraint}
+            onChange={(pageCount) => onUpdate({ pageCount })}
+          />
+        </section>
       )}
-      <PrintingControl
-        printing={element.printing}
-        onChange={(printing) => onUpdate({ printing })}
-        allowedFronts={config.elementalPrintingFronts?.[element.id] ?? config.allowedPrintingFronts}
-        allowedBacks={config.elementalPrintingBacks?.[element.id] ?? config.allowedPrintingBacks}
-      />
-      <FinishingOptions
-        element={element}
-        config={config}
-        onUpdate={onUpdate}
-      />
+      <section className="py-5">
+        <PrintingControl
+          printing={element.printing}
+          onChange={(printing) => onUpdate({ printing })}
+          allowedFronts={config.elementalPrintingFronts?.[element.id] ?? config.allowedPrintingFronts}
+          allowedBacks={config.elementalPrintingBacks?.[element.id] ?? config.allowedPrintingBacks}
+        />
+      </section>
+      <section className="pt-5">
+        <FinishingOptions
+          element={element}
+          config={config}
+          onUpdate={onUpdate}
+        />
+      </section>
     </div>
   );
 }

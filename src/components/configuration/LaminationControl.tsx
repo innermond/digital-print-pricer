@@ -20,11 +20,12 @@ const LAMINATION_SIDES = Object.keys(LAMINATION_SIDE_INFO) as LaminationSides[];
 type LaminationControlProps = {
   lamination: Finishing['lamination'];
   allowedTypes: LaminationType[];
+  allowedSides: LaminationSides[];
   onChange: (lamination: Finishing['lamination']) => void;
   badgeText?: string;
 };
 
-export function LaminationControl({ lamination, allowedTypes, onChange, badgeText }: LaminationControlProps) {
+export function LaminationControl({ lamination, allowedTypes, allowedSides, onChange, badgeText }: LaminationControlProps) {
   const widget = (
     <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2">
       <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-1.5 text-xs">Laminare</h4>
@@ -63,13 +64,19 @@ export function LaminationControl({ lamination, allowedTypes, onChange, badgeTex
             </label>
             <div className="flex flex-wrap gap-1.5">
               {LAMINATION_SIDES.map((side) => {
+                const allowed = allowedSides.includes(side);
                 const { label, explanation } = LAMINATION_SIDE_INFO[side];
                 const btn = (
                   <button
                     key={side}
-                    onClick={() => onChange({ ...lamination, sides: side })}
+                    onClick={() => {
+                      if (!allowed) return;
+                      onChange({ ...lamination, sides: side });
+                    }}
                     className={`whitespace-nowrap rounded px-2 py-1 text-xs font-medium transition ${
-                      lamination.sides === side
+                      !allowed && lamination.sides !== side
+                        ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
+                        : lamination.sides === side
                         ? 'bg-blue-500 dark:bg-blue-600 text-white'
                         : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500'
                     }`}
@@ -77,7 +84,7 @@ export function LaminationControl({ lamination, allowedTypes, onChange, badgeTex
                     {label}
                   </button>
                 );
-                return explanation
+                return explanation && allowed
                   ? <Badge key={side} text={explanation}>{btn}</Badge>
                   : btn;
               })}
