@@ -31,4 +31,11 @@ describe('CreasingControl', () => {
     render(<CreasingControl count={0} allowedCounts={[]} onChange={() => {}} />);
     expect(screen.getByRole('slider')).toBeDisabled();
   });
+
+  it('drops the slider entirely when exactly one count is allowed', () => {
+    render(<CreasingControl count={2} allowedCounts={[2]} onChange={() => {}} />);
+    expect(screen.queryByRole('slider')).not.toBeInTheDocument();
+    expect(screen.getByText('Biguitură')).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
+  });
 });

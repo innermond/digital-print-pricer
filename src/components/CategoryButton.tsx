@@ -23,7 +23,7 @@ export function CategoryButton({ category, selectedCategoryId, presetCount, onCl
         {category.label}
       </div>
       <div className="flex items-center justify-between">
-        <div className="text-xs text-slate-600 dark:text-slate-400">
+        <div className="text-sm text-slate-600 dark:text-slate-400">
           {presetCount} variant{presetCount !== 1 ? 'e' : 'ă'}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides } from '../types';
+import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, Pocket } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
@@ -47,7 +47,14 @@ export type ProductConfig = {
   elementalPrintingFronts?: Record<string, Array<PrintInk | 'none'>>;
   elementalPrintingBacks?: Record<string, Array<PrintInk | 'none'>>;
   elementalPageCounts?: Record<string, PageCountConstraint>;
+  // Which creasing counts this product offers, narrowing what the stock can hold.
+  // Omit to offer the full 0-5 range on paper heavy enough to take a crease; use []
+  // to rule creasing out; use a single value to fix it structurally.
+  allowedCreasingCounts?: number[];
   binding?: { type: BindingType; allowedColors?: SpiralColor[] };
+  // The glued-in paper pocket of a presentation folder. Like binding, it is a stock
+  // item the catalog includes or omits — not an Elemental the customer can spec.
+  pocket?: Pocket;
   allowedStaple?: Staple;
   // Which lamination sides this product offers. Omit to allow all three
   // (front/back/both) — a blank verso can still be laminated, so this is a
@@ -60,21 +67,23 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'afis', label: 'Afiș', explanation: 'Material tipărit pe o singură coală, o singură față.' },
   { id: 'flyer', label: 'Fluturaș', explanation: 'Materiale tipărite pe o singură coală, distribuite în masă — promoții, evenimente, anunțuri.' },
   { id: 'brochure', label: 'Broșură', explanation: 'Materiale pliate cu copertă și interior, pentru cataloage și prezentări.' },
-  { id: 'folder', label: 'Dosar de Prezentare', explanation: 'Dosare din carton gros cu buzunar interior, pentru oferte și prezentări.' },
+  { id: 'folder', label: 'Mapă de Prezentare', explanation: 'Mape din carton gros cu buzunar interior, pentru oferte și prezentări.' },
   { id: 'business-card', label: 'Carte de Vizită', explanation: 'Carți de vizită clasice, tipărite pe carton rezistent.' },
-  { id: 'folded-flyer', label: 'Pliant Pliat', explanation: 'Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală.' },
+  { id: 'folded-flyer', label: 'Pliant', explanation: 'Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală.' },
   { id: 'sticker-sheet', label: 'Etichetă pe Coală', explanation: 'Coli de etichete autoadezive, decupate individual după tipărire.' },
   { id: 'spiral-catalog', label: 'Catalog cu spira', explanation: 'Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate.' },
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
-  { id: 'calendar', label: 'Calendar', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
+  { id: 'calendar', label: 'Calendar perete', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
 ];
 
 // Shared constraints for the "afis" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
-const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
+const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s0', 's1'],
   allowedFoldTypes: ['none'],
+  // A poster hangs flat — nothing to crease.
+  allowedCreasingCounts: [],
   allowedPrintingBacks: ['none'],
   // Afiș is a one-sided poster — laminate the front only (or not at all).
   allowedLaminationSides: ['front'],
@@ -99,18 +108,33 @@ const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 };
 
 // Shared constraints for the "folder" category — presets within this category only
-// differ by whether the inner paper pocket is included.
-const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
-  allowedMediaIds: ['p6'],
+// differ by the lamination of the cover. Every folder includes the paper pocket, a
+// fixed accessory rather than a configurable element.
+const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'pocket'> = {
+  allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s1'],
   recommendedMediaId: 'p6',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
+  // The cover is creased twice to form the folder — structural, so it's the only
+  // count on offer.
+  allowedCreasingCounts: [1, 2],
+  pocket: {
+    label: 'Buzunar de Hârtie',
+    mediaId: 'p6',
+    width: 200,
+    height: 120,
+    unit: 'mm',
+    pageCount: 2,
+    printing: { front: 'black', back: 'none' },
+  },
 };
 
 // Shared constraints for the "business-card" category — presets within this category only
 // differ by their initial size and printing selections.
-const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes'> = {
+const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
+  // A card is a single flat piece — never creased.
+  allowedCreasingCounts: [],
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s5', 's6'],
   recommendedMediaId: 'p6',
@@ -151,11 +175,13 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'a
 
 // Shared constraints for the "cardboard-label" category — presets within this category only
 // differ by their initial size and staple selection.
-const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedStaple'> = {
+const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s5', 's6'],
   recommendedMediaId: 'p6',
   allowedFoldTypes: ['none'],
+  // A hang tag is a flat piece of card — never creased.
+  allowedCreasingCounts: [],
   allowedStaple: { hole: true, staple: true },
 };
 
@@ -261,23 +287,20 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Dosar de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium.',
-  },
-  prod3b: {
-    ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Dosar de prezentare simplu din carton gros, fără buzunar interior. Variantă mai economică pentru materiale de prezentare de bază.',
+    allowedCreasingCounts: [2],
+    explanation: 'Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium.',
   },
   prod3c: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Dosar de prezentare cu buzunar interior și bandă elastică de închidere. Protejează conținutul în timpul transportului — potrivit pentru dosare de candidatură sau materiale care circulă des.',
+    explanation: 'Mapă de prezentare cu buzunar interior și bandă elastică de închidere. Protejează conținutul în timpul transportului — potrivit pentru dosare de candidatură sau materiale care circulă des.',
   },
   prod3d: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Dosar de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
+    explanation: 'Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
   },
   prod3e: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Dosar de prezentare simplu, cu laminare mată pe copertă, fără buzunar interior. Aspect discret și elegant pentru documente oficiale.',
+    explanation: 'Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale.',
   },
   prod4a: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
@@ -862,7 +885,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3a',
     categoryId: 'folder',
-    label: 'Dosar cu Buzunar de Hârtie',
+    label: 'Mapă cu Buzunar și Cotor, laminată soft-touch',
     amount: 1,
     elementals: [
       {
@@ -873,43 +896,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'soft-touch', sides: 'both' },
-          folding: { type: 'none', folds: 0 },
-          creasing: { count: 2 },
-          roundedCornes: { corners: [] },
-        },
-      },
-      {
-        id: 'elem3a-2',
-        label: 'Buzunar de Hârtie',
-        media: MOCK_PAPERS[5],
-        size: { id: 's999', label: 'Pers.', width: 200, height: 120, unit: 'mm', widthMm: 200, heightMm: 120 },
-        pageCount: 2,
-        printing: { front: 'black', back: 'none' },
-        finishing: {
-          lamination: { type: 'none', sides: 'front' },
-          folding: { type: 'none', folds: 0 },
-          creasing: { count: 0 },
-          roundedCornes: { corners: [] },
-        },
-      },
-    ],
-  },
-  {
-    id: 'prod3b',
-    categoryId: 'folder',
-    label: 'Dosar Simplu, fără Buzunar',
-    amount: 1,
-    elementals: [
-      {
-        id: 'elem3b-1',
-        label: 'Coală A3 Pliată',
-        media: MOCK_PAPERS[3],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 2,
-        printing: { front: 'color', back: 'none' },
-        finishing: {
-          lamination: { type: 'soft-touch', sides: 'both' },
+          lamination: { type: 'soft-touch', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 2 },
           roundedCornes: { corners: [] },
@@ -920,7 +907,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3c',
     categoryId: 'folder',
-    label: 'Dosar cu Buzunar și Bandă Elastică',
+    label: 'Mapă cu Buzunar fără Cotor',
     amount: 1,
     elementals: [
       {
@@ -933,21 +920,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'soft-touch', sides: 'both' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2 },
-          roundedCornes: { corners: [] },
-        },
-      },
-      {
-        id: 'elem3c-2',
-        label: 'Buzunar de Hârtie',
-        media: MOCK_PAPERS[5],
-        size: { id: 's999', label: 'Pers.', width: 200, height: 120, unit: 'mm', widthMm: 200, heightMm: 120 },
-        pageCount: 2,
-        printing: { front: 'black', back: 'none' },
-        finishing: {
-          lamination: { type: 'none', sides: 'front' },
-          folding: { type: 'none', folds: 0 },
-          creasing: { count: 0 },
+          creasing: { count: 1 },
           roundedCornes: { corners: [] },
         },
       },
@@ -956,7 +929,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3d',
     categoryId: 'folder',
-    label: 'Dosar A4 cu Buzunar Lucios',
+    label: 'Mapă fără Buzunar, fără Cotor',
     amount: 1,
     elementals: [
       {
@@ -969,21 +942,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'gloss', sides: 'both' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2 },
-          roundedCornes: { corners: [] },
-        },
-      },
-      {
-        id: 'elem3d-2',
-        label: 'Buzunar de Hârtie',
-        media: MOCK_PAPERS[5],
-        size: { id: 's999', label: 'Pers.', width: 200, height: 120, unit: 'mm', widthMm: 200, heightMm: 120 },
-        pageCount: 2,
-        printing: { front: 'black', back: 'none' },
-        finishing: {
-          lamination: { type: 'none', sides: 'front' },
-          folding: { type: 'none', folds: 0 },
-          creasing: { count: 0 },
+          creasing: { count: 1 },
           roundedCornes: { corners: [] },
         },
       },
@@ -992,7 +951,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3e',
     categoryId: 'folder',
-    label: 'Dosar Simplu Mat fără Buzunar',
+    label: 'Mapă Mat cu Buzunar',
     amount: 1,
     elementals: [
       {

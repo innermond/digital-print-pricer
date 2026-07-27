@@ -11,7 +11,9 @@ import { ProductButton } from './ProductButton';
 import { CategoryButton } from './CategoryButton';
 import { NumericButton } from './NumericButton';
 import { BindingControl } from './configuration/BindingControl';
+import { PocketControl } from './configuration/PocketControl';
 import { clampLamination } from '../lib/finishingRules';
+import { pocketElemental } from '../lib/pocket';
 
 type ProductPrice = {
   price: number;
@@ -20,6 +22,7 @@ type ProductPrice = {
 };
 
 const BINDING_TAB_ID = '__binding__';
+const POCKET_TAB_ID = '__pocket__';
 
 const DEFAULT_POWER_TITLE = 'Calculator de prețuri ';
 const DEFAULT_TAGLINE = 'Preț precis indiferent de specificul ofertei';
@@ -34,12 +37,15 @@ const STEPS = [
 
 // The full selection that produced a price: posted to the price endpoint and
 // shared with the host (pricer:offer event) so it can email / act on the quote.
-function buildSelectionPayload(product: Product) {
+// The pocket is catalog data rather than an elemental, but it has always reached the
+// price endpoint as one — so it is appended here, keeping the wire format unchanged.
+export function buildSelectionPayload(product: Product, pocketElem?: Elemental | null) {
+  const elementals = pocketElem ? [...product.elementals, pocketElem] : product.elementals;
   return {
     productId: product.id,
     productLabel: product.label,
     amount: product.amount,
-    elementals: product.elementals.map(elem => ({
+    elementals: elementals.map(elem => ({
       label: elem.label,
       media: {
         kind: elem.media.kind,
@@ -88,7 +94,9 @@ export default function ProductConfigurator({
   priceEndpoint = null,
   powerText,
 }: ProductConfiguratorProps = {}) {
-  const STORAGE_VERSION = 'v2';
+  // v3: the folder pocket stopped being an Elemental and prod3b was retired, so a
+  // v2 cache would resurrect both.
+  const STORAGE_VERSION = 'v3';
   const [products, setProducts] = useState<Product[]>(() => {
     // A host-injected catalog always wins; only standalone dev persists edits.
     if (catalog !== MOCK_CATALOG) return catalog.products;
@@ -130,6 +138,8 @@ export default function ProductConfigurator({
     (e: Elemental) => e.id === selectedElementalId
   );
   const config = catalog.config[selectedProductId];
+  // Derived, never stored: the pocket only takes Elemental shape for the payload.
+  const pocketElem = config?.pocket ? pocketElemental(config.pocket, catalog.media) : null;
   // Multi-element products share one size by default; a config can opt out.
   const sizeShared = config?.sharedSize ?? ((selectedProduct?.elementals.length ?? 1) > 1);
 
@@ -228,7 +238,7 @@ export default function ProductConfigurator({
     setPricingError(null);
 
     try {
-      const productData = buildSelectionPayload(selectedProduct);
+      const productData = buildSelectionPayload(selectedProduct, pocketElem);
 
       const endpoint = priceEndpoint ?? 'https://your-api-endpoint.com/calculate-price';
       const response = await fetch(endpoint, {
@@ -272,7 +282,7 @@ export default function ProductConfigurator({
       new CustomEvent('pricer:offer', {
         bubbles: true,
         detail: {
-          selection: buildSelectionPayload(selectedProduct),
+          selection: buildSelectionPayload(selectedProduct, pocketElem),
           price: priceInfo.price,
           currency: priceInfo.currency,
         },
@@ -577,6 +587,18 @@ export default function ProductConfigurator({
                 Spirală
               </button>
             )}
+            {config?.pocket && (
+              <button
+                onClick={() => setSelectedElementalId(POCKET_TAB_ID)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
+                  selectedElementalId === POCKET_TAB_ID
+                    ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                }`}
+              >
+                Buzunar
+              </button>
+            )}
           </div>
 
           {selectedElementalId === BINDING_TAB_ID && config?.binding?.type === 'spiral' && selectedProduct ? (
@@ -585,6 +607,8 @@ export default function ProductConfigurator({
               allowedColors={config.binding.allowedColors ?? []}
               onChange={(binding) => updateBinding(selectedProduct.id, binding)}
             />
+          ) : selectedElementalId === POCKET_TAB_ID && config?.pocket ? (
+            <PocketControl pocket={config.pocket} media={catalog.media} />
           ) : selectedElemental && config && (
             <ConfigurationPanel
               element={selectedElemental}
@@ -611,7 +635,7 @@ export default function ProductConfigurator({
         {showStep(3) && (
         <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-72"><PreviewCard element={selectedElemental} /></div>
-          <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} personalized={!!selectedProduct && isPersonalized(selectedProduct)} /></div>
+          <div className="flex-1 min-w-72"><AssemblySummary product={selectedProduct} personalized={!!selectedProduct && isPersonalized(selectedProduct)} pocket={config?.pocket} /></div>
         </div>
         )}
 

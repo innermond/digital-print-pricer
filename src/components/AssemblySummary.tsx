@@ -1,4 +1,4 @@
-import type { Elemental, Product } from '../types';
+import type { Elemental, Pocket, Product } from '../types';
 
 const LAMINATION_RO: Record<string, string> = {
   none: 'Fără', gloss: 'Lucios', matt: 'Mat', 'soft-touch': 'Soft-touch',
@@ -13,9 +13,12 @@ const SPIRAL_COLOR_RO: Record<string, string> = {
 type AssemblySummaryProps = {
   product: Product | undefined;
   personalized?: boolean;
+  // Catalog-level accessory rather than an elemental, so it arrives alongside the
+  // product instead of appearing in the loop below.
+  pocket?: Pocket;
 };
 
-export function AssemblySummary({ product, personalized }: AssemblySummaryProps) {
+export function AssemblySummary({ product, personalized, pocket }: AssemblySummaryProps) {
   if (!product) return null;
 
   return (
@@ -69,6 +72,12 @@ export function AssemblySummary({ product, personalized }: AssemblySummaryProps)
           <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">
             <span className="font-semibold">Spirală: </span>
             {SPIRAL_COLOR_RO[product.binding.color] ?? product.binding.color}
+          </p>
+        )}
+        {pocket && (
+          <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">
+            <span className="font-semibold">Buzunar: </span>
+            {pocket.label} ({pocket.width} × {pocket.height} {pocket.unit})
           </p>
         )}
       </div>

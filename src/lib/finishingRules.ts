@@ -6,8 +6,10 @@ const ALL_LAMINATION_SIDES: LaminationSides[] = ['front', 'back', 'both'];
 const ALL_CREASING_COUNTS = [0, 1, 2, 3, 4, 5];
 const ALL_ROUNDED_CORNERS: RoundedCorner[] = [1, 2, 3, 4];
 
+// The folded A3 cover of a Mapă de Prezentare, one per folder product.
+const FOLDER_COVER_IDS = ['elem3a-1', 'elem3c-1', 'elem3d-1', 'elem3e-1'];
+
 export const allowedLaminationTypes = (elem: Elemental): LaminationType[] => {
-  if (['elem3a-2', 'elem3c-2', 'elem3d-2'].includes(elem.id)) return [];
   switch (elem.media.kind) {
     case 'sticker': return [];
     case 'paper':   return elem.media.gsm < 170 ? [] : ALL_LAMINATION_TYPES;
@@ -51,24 +53,29 @@ export const clampLamination = (elem: Elemental, config?: ProductConfig): Elemen
   };
 };
 
-export const allowedCreasingCounts = (elem: Elemental): number[] => {
-  if ([
-    'elem0a-1', 'elem0b-1', 'elem0c-1', 'elem0d-1',
-    'elem4a-1', 'elem4b-1', 'elem4c-1', 'elem4d-1', 'elem4e-1',
-    'elem3a-2', 'elem3c-2', 'elem3d-2',
-    'elem8a-1', 'elem8b-1', 'elem8c-1', 'elem8d-1', 'elem8e-1',
-  ].includes(elem.id)) return [];
+// What the stock itself can hold: a sticker never takes a crease, and paper under
+// 200 GSM creases badly.
+const creasableByMedia = (elem: Elemental): number[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
     case 'paper':   return elem.media.gsm < 200 ? [] : ALL_CREASING_COUNTS;
   }
 };
 
+// Creasing is a customer choice, so the counts on offer are catalog data. The media
+// sets the physical ceiling; a product narrows it from there — to a subset, to a
+// single structural count (a Mapă de Prezentare cover is always creased twice), or
+// to nothing at all. Omit the config field to offer whatever the stock allows.
+export const allowedCreasingCounts = (elem: Elemental, config?: ProductConfig): number[] => {
+  const byMedia = creasableByMedia(elem);
+  const allowed = config?.allowedCreasingCounts;
+  return allowed ? byMedia.filter((count) => allowed.includes(count)) : byMedia;
+};
+
 export const allowedRoundedCorners = (elem: Elemental): RoundedCorner[] => {
   if ([
     'elem0a-1', 'elem0b-1', 'elem0c-1', 'elem0d-1',
-    'elem3a-1', 'elem3a-2', 'elem3b-1',
-    'elem3c-1', 'elem3c-2', 'elem3d-1', 'elem3d-2', 'elem3e-1',
+    ...FOLDER_COVER_IDS,
   ].includes(elem.id)) return [];
   switch (elem.media.kind) {
     case 'sticker': return [];
@@ -82,6 +89,6 @@ export const allowedRoundedCorners = (elem: Elemental): RoundedCorner[] => {
 export const hasFinishingOptions = (elem: Elemental, config: ProductConfig): boolean =>
   allowedLaminationTypes(elem).length > 0 ||
   allowedFoldTypes(config).length > 0 ||
-  allowedCreasingCounts(elem).length > 0 ||
+  allowedCreasingCounts(elem, config).length > 0 ||
   allowedRoundedCorners(elem).length > 0 ||
   Boolean(config.allowedStaple);

@@ -111,8 +111,8 @@ export function SizeSelector({
                 ⭐
               </span>
             )}
-            <div className="font-medium text-slate-900 dark:text-slate-50">{size.label}</div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">
+            <div className="text-base font-medium text-slate-900 dark:text-slate-50">{size.label}</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">
               {convertSize(size.width, size.unit, customSizeUnit).toFixed(1)} ×{' '}
               {convertSize(size.height, size.unit, customSizeUnit).toFixed(1)} {customSizeUnit}
             </div>
@@ -127,8 +127,8 @@ export function SizeSelector({
               : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-500'
           }`}
         >
-          <div className="font-medium text-slate-900 dark:text-slate-50">Personalizat</div>
-          <div className="text-xs text-slate-500 dark:text-slate-400">
+          <div className="text-base font-medium text-slate-900 dark:text-slate-50">Personalizat</div>
+          <div className="text-sm text-slate-500 dark:text-slate-400">
             {displayWidth.toFixed(1)} × {displayHeight.toFixed(1)} {customSizeUnit}
           </div>
         </button>

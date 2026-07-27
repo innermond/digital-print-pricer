@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
+  allowedCreasingCounts,
   allowedFoldTypes,
   allowedLaminationSides,
   clampLamination,
   hasFinishingOptions,
 } from './finishingRules';
 import { makeElemental, makeFinishing, makeConfig, makePaper } from '../test/fixtures';
+import { MOCK_CATALOG } from '../data/catalog';
 
 describe('allowedLaminationSides', () => {
   it('offers all three sides by default (no config restriction)', () => {
@@ -36,6 +38,49 @@ describe('allowedFoldTypes', () => {
   it('returns every fold when the config never offers none', () => {
     const config = makeConfig({ allowedFoldTypes: ['half-fold', 'tri-fold', 'z-fold'] });
     expect(allowedFoldTypes(config)).toEqual(['half-fold', 'tri-fold', 'z-fold']);
+  });
+});
+
+describe('allowedCreasingCounts', () => {
+  const heavy = makeElemental({ media: makePaper({ id: 'p5', gsm: 250 }) });
+
+  it('offers the full range when the config says nothing', () => {
+    expect(allowedCreasingCounts(heavy)).toEqual([0, 1, 2, 3, 4, 5]);
+    expect(allowedCreasingCounts(heavy, makeConfig())).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+
+  it('offers nothing below the 200 GSM threshold, whatever the config asks for', () => {
+    const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+    expect(allowedCreasingCounts(thin)).toEqual([]);
+    // The media is the ceiling — a config cannot crease paper that won't hold one.
+    expect(allowedCreasingCounts(thin, makeConfig({ allowedCreasingCounts: [2] }))).toEqual([]);
+  });
+
+  it('narrows to the counts a product offers', () => {
+    const config = makeConfig({ allowedCreasingCounts: [0, 2, 4] });
+    expect(allowedCreasingCounts(heavy, config)).toEqual([0, 2, 4]);
+  });
+
+  it('fixes a single count when that is all the product offers', () => {
+    expect(allowedCreasingCounts(heavy, makeConfig({ allowedCreasingCounts: [2] }))).toEqual([2]);
+  });
+
+  it('rules creasing out entirely with an empty list', () => {
+    expect(allowedCreasingCounts(heavy, makeConfig({ allowedCreasingCounts: [] }))).toEqual([]);
+  });
+});
+
+describe('allowedCreasingCounts, wired to the real catalog', () => {
+  it('fixes a Mapă de Prezentare cover at the two structural creases', () => {
+    const cover = MOCK_CATALOG.products.find((p) => p.id === 'prod3a')!.elementals[0];
+    expect(allowedCreasingCounts(cover, MOCK_CATALOG.config['prod3a'])).toEqual([2]);
+  });
+
+  it('keeps creasing off posters, business cards and hang tags', () => {
+    for (const id of ['prod0a', 'prod4a', 'prod8a']) {
+      const elem = MOCK_CATALOG.products.find((p) => p.id === id)!.elementals[0];
+      expect(allowedCreasingCounts(elem, MOCK_CATALOG.config[id])).toEqual([]);
+    }
   });
 });
 

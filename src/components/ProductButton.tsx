@@ -29,7 +29,7 @@ export function ProductButton({product, selectedProductId, onClick, badgeText, p
           {product.label}
         </div>
         <div className="flex items-center justify-between">
-          <div className="text-xs text-slate-600 dark:text-slate-400">
+          <div className="text-sm text-slate-600 dark:text-slate-400">
             {product.elementals.length} element{product.elementals.length !== 1 ? 's' : ''}
           </div>
         </div>

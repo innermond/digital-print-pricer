@@ -46,8 +46,8 @@ export function MediaSelector({ media, selectedId, recommendedId, onSelect, badg
                   ⭐
                 </span>
               )}
-              <div className="font-medium text-slate-900 dark:text-slate-50">{m.label}</div>
-              <div className="text-xs text-slate-500 dark:text-slate-400">{mediaSubLabel(m)}</div>
+              <div className="text-base font-medium text-slate-900 dark:text-slate-50">{m.label}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{mediaSubLabel(m)}</div>
             </button>
           );
           return m.explanation
