@@ -3,8 +3,10 @@ import type { ProductConfig } from '../../data/mockData';
 import {
   allowedLaminationTypes,
   allowedLaminationSides,
+  allowedFoldTypes,
   allowedCreasingCounts,
   allowedRoundedCorners,
+  hasFinishingOptions,
 } from '../../lib/finishingRules';
 import { derivedPageCount } from '../../lib/foldUtils';
 import { LaminationControl } from './LaminationControl';
@@ -24,8 +26,14 @@ type FinishingOptionsProps = {
 export function FinishingOptions({ element, config, onUpdate, badgeText }: FinishingOptionsProps) {
   const { finishing } = element;
 
+  const laminationTypes = allowedLaminationTypes(element);
+  const foldTypes = allowedFoldTypes(config);
   const creasingCounts = allowedCreasingCounts(element);
   const roundedCorners = allowedRoundedCorners(element);
+
+  // Every sub-control can be ruled out at once (e.g. a 120 GSM flyer). Drop the
+  // whole section rather than leaving a "Finisare" heading over nothing.
+  if (!hasFinishingOptions(element, config)) return null;
 
   const widget = (
     <div>
@@ -33,24 +41,30 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
         Finisare
       </label>
       <div className="flex flex-wrap items-start gap-2">
-        <LaminationControl
-          lamination={finishing.lamination}
-          allowedTypes={allowedLaminationTypes(element)}
-          allowedSides={allowedLaminationSides(config)}
-          onChange={(lamination) => onUpdate({ finishing: { ...finishing, lamination } })}
-        />
-        <FoldingControl
-          folding={finishing.folding}
-          allowedFoldTypes={config.allowedFoldTypes}
-          onChange={(folding) => {
-            const pageCountConstraint = config.elementalPageCounts?.[element.id];
-            const updates: Partial<Elemental> = { finishing: { ...finishing, folding } };
-            if (pageCountConstraint?.kind === 'derived') {
-              updates.pageCount = derivedPageCount(folding.type);
-            }
-            onUpdate(updates);
-          }}
-        />
+        {laminationTypes.length > 0 && (
+          <LaminationControl
+            lamination={finishing.lamination}
+            allowedTypes={laminationTypes}
+            allowedSides={allowedLaminationSides(config)}
+            onChange={(lamination) => onUpdate({ finishing: { ...finishing, lamination } })}
+          />
+        )}
+        {/* The unfiltered list goes to the control so 'Fără' stays clickable — foldTypes
+            only decides whether the panel is worth showing at all. */}
+        {foldTypes.length > 0 && (
+          <FoldingControl
+            folding={finishing.folding}
+            allowedFoldTypes={config.allowedFoldTypes}
+            onChange={(folding) => {
+              const pageCountConstraint = config.elementalPageCounts?.[element.id];
+              const updates: Partial<Elemental> = { finishing: { ...finishing, folding } };
+              if (pageCountConstraint?.kind === 'derived') {
+                updates.pageCount = derivedPageCount(folding.type);
+              }
+              onUpdate(updates);
+            }}
+          />
+        )}
         {creasingCounts.length > 0 && (
           <CreasingControl
             count={finishing.creasing.count}

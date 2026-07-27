@@ -9,7 +9,7 @@ const ALL_ROUNDED_CORNERS: RoundedCorner[] = [1, 2, 3, 4];
 export const allowedLaminationTypes = (elem: Elemental): LaminationType[] => {
   if (['elem3a-2', 'elem3c-2', 'elem3d-2'].includes(elem.id)) return [];
   switch (elem.media.kind) {
-    case 'sticker': return ALL_LAMINATION_TYPES;
+    case 'sticker': return [];
     case 'paper':   return elem.media.gsm < 170 ? [] : ALL_LAMINATION_TYPES;
   }
 };
@@ -20,6 +20,11 @@ export const allowedLaminationTypes = (elem: Elemental): LaminationType[] => {
 export const allowedLaminationSides = (config?: ProductConfig): LaminationSides[] => {
   return config?.allowedLaminationSides ?? ALL_LAMINATION_SIDES;
 };
+
+// Which *real* folds a product offers. 'none' (Fără) is always on the table and is
+// therefore not an "allowed fold" — an empty result means the product doesn't fold at all.
+export const allowedFoldTypes = (config?: ProductConfig): string[] =>
+  (config?.allowedFoldTypes ?? []).filter((type) => type !== 'none');
 
 // Coerce a stale lamination selection back into what's currently allowed, after
 // another change invalidates it:
@@ -66,7 +71,17 @@ export const allowedRoundedCorners = (elem: Elemental): RoundedCorner[] => {
     'elem3c-1', 'elem3c-2', 'elem3d-1', 'elem3d-2', 'elem3e-1',
   ].includes(elem.id)) return [];
   switch (elem.media.kind) {
-    case 'sticker': return ALL_ROUNDED_CORNERS;
+    case 'sticker': return [];
     case 'paper':   return elem.media.gsm < 170 ? [] : ALL_ROUNDED_CORNERS;
   }
 };
+
+// Whether this elemental has any finishing to offer at all. Every dimension can be
+// ruled out at once (a 120 GSM flyer, say), and then there is no finishing section
+// to draw — heading, separator and all.
+export const hasFinishingOptions = (elem: Elemental, config: ProductConfig): boolean =>
+  allowedLaminationTypes(elem).length > 0 ||
+  allowedFoldTypes(config).length > 0 ||
+  allowedCreasingCounts(elem).length > 0 ||
+  allowedRoundedCorners(elem).length > 0 ||
+  Boolean(config.allowedStaple);

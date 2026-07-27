@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { allowedLaminationSides, clampLamination } from './finishingRules';
+import {
+  allowedFoldTypes,
+  allowedLaminationSides,
+  clampLamination,
+  hasFinishingOptions,
+} from './finishingRules';
 import { makeElemental, makeFinishing, makeConfig, makePaper } from '../test/fixtures';
 
 describe('allowedLaminationSides', () => {
@@ -11,6 +16,46 @@ describe('allowedLaminationSides', () => {
   it('honours a product restriction from config', () => {
     const config = makeConfig({ allowedLaminationSides: ['front'] });
     expect(allowedLaminationSides(config)).toEqual(['front']);
+  });
+});
+
+describe('allowedFoldTypes', () => {
+  it('offers nothing without a config', () => {
+    expect(allowedFoldTypes()).toEqual([]);
+  });
+
+  it('does not count none as a fold — a product that only allows none does not fold', () => {
+    expect(allowedFoldTypes(makeConfig({ allowedFoldTypes: ['none'] }))).toEqual([]);
+  });
+
+  it('drops none from a config that offers real folds', () => {
+    const config = makeConfig({ allowedFoldTypes: ['none', 'half-fold'] });
+    expect(allowedFoldTypes(config)).toEqual(['half-fold']);
+  });
+
+  it('returns every fold when the config never offers none', () => {
+    const config = makeConfig({ allowedFoldTypes: ['half-fold', 'tri-fold', 'z-fold'] });
+    expect(allowedFoldTypes(config)).toEqual(['half-fold', 'tri-fold', 'z-fold']);
+  });
+});
+
+describe('hasFinishingOptions', () => {
+  const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+  const noFolds = makeConfig({ allowedFoldTypes: ['none'] });
+
+  it('is false when the media and the config rule out everything', () => {
+    expect(hasFinishingOptions(thin, noFolds)).toBe(false);
+  });
+
+  it('is true when the media alone allows something', () => {
+    // 250 GSM clears the lamination, creasing and rounded-corner thresholds.
+    expect(hasFinishingOptions(makeElemental(), noFolds)).toBe(true);
+  });
+
+  it('is true when only the config allows something', () => {
+    expect(hasFinishingOptions(thin, makeConfig({ allowedFoldTypes: ['half-fold'] }))).toBe(true);
+    expect(hasFinishingOptions(thin, makeConfig({ allowedStaple: { hole: true, staple: false } })))
+      .toBe(true);
   });
 });
 

@@ -5,6 +5,7 @@ import { SizeSelector } from './configuration/SizeSelector';
 import { PrintingControl } from './configuration/PrintingControl';
 import { PageCountControl } from './configuration/PageCountControl';
 import { FinishingOptions } from './configuration/FinishingOptions';
+import { hasFinishingOptions } from '../lib/finishingRules';
 
 type ConfigurationPanelProps = {
   element: Elemental;
@@ -60,13 +61,17 @@ export function ConfigurationPanel({ element, onUpdate, customSizeUnit, onCustom
           allowedBacks={config.elementalPrintingBacks?.[element.id] ?? config.allowedPrintingBacks}
         />
       </section>
-      <section className="pt-5">
-        <FinishingOptions
-          element={element}
-          config={config}
-          onUpdate={onUpdate}
-        />
-      </section>
+      {/* Skipped entirely when nothing is finishable, so divide-y doesn't leave a
+          separator hanging under an empty section. */}
+      {hasFinishingOptions(element, config) && (
+        <section className="pt-5">
+          <FinishingOptions
+            element={element}
+            config={config}
+            onUpdate={onUpdate}
+          />
+        </section>
+      )}
     </div>
   );
 }

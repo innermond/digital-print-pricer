@@ -13,7 +13,7 @@ const FACE_RO: Record<StickerFace, string> = {
   Gloss: 'lucioasă',
   Matt:  'mată',
   Clear: 'transparentă',
-  Kraft: 'kraft',
+  PVC: 'PVC',
 };
 
 function mediaSubLabel(m: Media): string {

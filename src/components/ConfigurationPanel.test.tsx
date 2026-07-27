@@ -43,7 +43,9 @@ describe('ConfigurationPanel', () => {
   });
 
   it('renders printing and finishing sections', () => {
-    renderPanel();
+    // The shared element is 120 GSM, which rules out every media-driven finishing,
+    // so allow a fold to keep the Finisare section populated.
+    renderPanel({ config: makeConfig({ allowedFoldTypes: ['none', 'half-fold'] }) });
     expect(screen.getByText('Tipărire')).toBeInTheDocument();
     expect(screen.getByText('Finisare')).toBeInTheDocument();
   });

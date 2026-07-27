@@ -18,8 +18,8 @@ describe('PreviewCard', () => {
   });
 
   it('describes sticker media by its face', () => {
-    render(<PreviewCard element={makeElemental({ media: makeSticker({ face: 'Kraft' }) })} />);
-    expect(screen.getByText('Kraft label')).toBeInTheDocument();
+    render(<PreviewCard element={makeElemental({ media: makeSticker({ face: 'PVC' }) })} />);
+    expect(screen.getByText('PVC label')).toBeInTheDocument();
   });
 
   it('applies the rounded-corner classes', () => {

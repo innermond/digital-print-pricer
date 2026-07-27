@@ -18,12 +18,41 @@ describe('FinishingOptions', () => {
     expect(screen.getByRole('heading', { name: 'Colțuri Rotunjite' })).toBeInTheDocument();
   });
 
-  it('hides creasing and rounded corners when the media disallows them', () => {
-    // 120 GSM paper: under 200 (no creasing) and under 170 (no rounded corners).
+  it('hides lamination, creasing and rounded corners when the media disallows them', () => {
+    // 120 GSM paper: under 200 (no creasing) and under 170 (no lamination, no rounded corners).
     const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
     render(<FinishingOptions element={thin} config={config} onUpdate={() => {}} />);
+    expect(screen.queryByRole('heading', { name: 'Laminare' })).not.toBeInTheDocument();
     expect(screen.queryByText('Biguitură')).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Colțuri Rotunjite' })).not.toBeInTheDocument();
+  });
+
+  it('hides folding when the config offers no real fold', () => {
+    const noFolds = makeConfig({ allowedFoldTypes: ['none'] });
+    const { rerender } = render(
+      <FinishingOptions element={element} config={noFolds} onUpdate={() => {}} />,
+    );
+    expect(screen.queryByRole('heading', { name: 'Pliere' })).not.toBeInTheDocument();
+
+    rerender(<FinishingOptions element={element} config={config} onUpdate={() => {}} />);
+    expect(screen.getByRole('heading', { name: 'Pliere' })).toBeInTheDocument();
+  });
+
+  it('renders nothing at all when every finishing is ruled out', () => {
+    const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+    const noFolds = makeConfig({ allowedFoldTypes: ['none'] });
+    const { container } = render(
+      <FinishingOptions element={thin} config={noFolds} onUpdate={() => {}} />,
+    );
+    expect(container).toBeEmptyDOMElement();
+    expect(screen.queryByText('Finisare')).not.toBeInTheDocument();
+  });
+
+  it('still lets the fold be cleared — the control gets the unfiltered list', () => {
+    // 120 GSM hides the Laminare panel, so the only 'Fără' left is the folding one.
+    const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+    render(<FinishingOptions element={thin} config={config} onUpdate={() => {}} />);
+    expect(screen.getByRole('button', { name: 'Fără' })).toBeEnabled();
   });
 
   it('shows the staple control only when the config allows stapling', () => {

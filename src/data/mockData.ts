@@ -5,7 +5,7 @@ export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p2', label: '120 GSM - Lucios',        gsm: 120, finish: 'Gloss',      explanation: 'Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere.' },
   { kind: 'paper', id: 'p3', label: '150 GSM - Mat',           gsm: 150, finish: 'Matt',       explanation: 'Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate.' },
   { kind: 'paper', id: 'p4', label: '200 GSM - Soft-touch',    gsm: 200, finish: 'Soft-touch', explanation: 'Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje.' },
-  { kind: 'paper', id: 'p5', label: '250 GSM - Lucios Premium',gsm: 250, finish: 'Gloss',      explanation: 'Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor.' },
+  { kind: 'paper', id: 'p5', label: '300 GSM - Lucios Premium',gsm: 300, finish: 'Gloss',      explanation: 'Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor.' },
   { kind: 'paper', id: 'p6', label: '350 GSM - Mat Premium',   gsm: 350, finish: 'Matt',       explanation: 'Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul.' },
 ];
 
@@ -13,7 +13,7 @@ export const MOCK_STICKERS: Sticker[] = [
   { kind: 'sticker', id: 'p7',  label: 'Etichetă Lucioasă Albă', gsm: 80, face: 'Gloss', explanation: 'Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă.' },
   { kind: 'sticker', id: 'p8',  label: 'Etichetă Mată Albă',     gsm: 80, face: 'Matt',  explanation: 'Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret.' },
   { kind: 'sticker', id: 'p9',  label: 'Etichetă Transparentă',  gsm: 80, face: 'Clear', explanation: 'Etichetă din film transparent. Creează un aspect de „fără etichetă" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt.' },
-  { kind: 'sticker', id: 'p10', label: 'Etichetă Kraft',          gsm: 80, face: 'Kraft', explanation: 'Etichetă din kraft maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
+  { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
 ];
 
 export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_STICKERS];
@@ -293,7 +293,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedMediaId: 'p5',
     recommendedSizeId: 's5',
-    explanation: 'Carte de vizită premium 90x50mm pe carton lucios 250gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență.',
+    explanation: 'Carte de vizită premium 90x50mm pe carton lucios 300gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență.',
   },
   prod4d: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
@@ -371,7 +371,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     elementalPageCounts: {
       'elem6d-1': { kind: 'fixed', value: 1 },
     },
-    explanation: 'Coală A5 de etichete kraft, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau organice.',
+    explanation: 'Coală A5 de etichete PVC, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau organice.',
   },
   prod6e: {
     ...STICKER_SHEET_CATEGORY_CONFIG,
@@ -447,7 +447,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
     recommendedMediaId: 'p5',
     recommendedSizeId: 's6',
-    explanation: 'Etichetă premium din carton lucios 250gsm, 80x50mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.',
+    explanation: 'Etichetă premium din carton lucios 300gsm, 80x50mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.',
   },
   prod8e: {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
@@ -1300,7 +1300,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod6d',
     categoryId: 'sticker-sheet',
-    label: 'Coală A5 Kraft',
+    label: 'Coală A5 PVC',
     amount: 1,
     elementals: [
       {

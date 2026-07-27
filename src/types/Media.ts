@@ -11,7 +11,7 @@ type Paper = {
   explanation?: string;
 };
 
-type StickerFace = "Gloss" | "Matt" | "Clear" | "Kraft";
+type StickerFace = "Gloss" | "Matt" | "Clear" | "PVC";
 
 type Sticker = {
   kind: 'sticker';
