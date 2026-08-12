@@ -1,4 +1,6 @@
+import { useId } from 'react';
 import type { Binding, SpiralColor } from '../../types';
+import { optionButtonClass } from '../../lib/optionButton';
 
 const SPIRAL_COLOR_INFO: Record<SpiralColor, { label: string }> = {
   white: { label: 'Alb' },
@@ -14,11 +16,12 @@ type BindingControlProps = {
 };
 
 export function BindingControl({ binding, allowedColors, onChange }: BindingControlProps) {
+  const headingId = useId();
   const selectedColor = binding?.type === 'spiral' ? binding.color : undefined;
 
   return (
-    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Spirală</h4>
+    <div role="group" aria-labelledby={headingId} className="rounded-lg bg-slate-50 dark:bg-slate-700 p-3">
+      <h4 id={headingId} className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Spirală</h4>
       <div className="flex flex-wrap gap-1.5">
         {SPIRAL_COLORS.map((color) => {
           const allowed = allowedColors.includes(color);
@@ -26,17 +29,16 @@ export function BindingControl({ binding, allowedColors, onChange }: BindingCont
           return (
             <button
               key={color}
+              type="button"
+              aria-pressed={selectedColor === color}
               onClick={() => {
                 if (!allowed) return;
                 onChange({ type: 'spiral', color });
               }}
-              className={`flex-1 rounded px-2 py-1.5 text-xs font-medium transition ${
-                !allowed && selectedColor !== color
-                  ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                  : selectedColor === color
-                  ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                  : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400'
-              }`}
+              className={`flex-1 ${optionButtonClass({
+                active: selectedColor === color,
+                disabled: !allowed && selectedColor !== color,
+              })}`}
             >
               {label}
             </button>

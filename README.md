@@ -1,8 +1,12 @@
 # Digital Print Pricer
 
-A React + TypeScript + Vite app that prices digital print products. Users pick a
-category and product, then customize it in the **Personalizare** step (media, size,
-printing, finishing) and get a price.
+A React + TypeScript + Vite app that prices digital print products.
+
+The flow is three stages — **Produs** (category → product), **Configurare**
+(media, size, printing, and finishing behind an "Opțiuni avansate" disclosure),
+and **Ofertă** (preview, assembly summary, email handoff). A persistent price
+panel follows the user through all three: it holds the quantity stepper and
+re-prices automatically, debounced 400 ms, whenever the selection changes.
 
 ## Development
 
@@ -96,6 +100,17 @@ Values: `none`, `half-fold`, `tri-fold`, `z-fold`, `gate-fold`, `custom`.
 | Setting | Type | Effect |
 |---|---|---|
 | `explanation` | `string` | Tooltip/badge text shown for the product. |
+
+## Essentials vs. advanced
+
+The configuration stage shows only what every job needs — material, size preset,
+printing, and page count where it applies. Exact dimensions, all finishing, and
+the product-wide accessories (spiral binding, folder pocket) live inside the
+**Opțiuni avansate** disclosure.
+
+The disclosure opens automatically when any setting inside it differs from the
+catalog default, and when it is collapsed those settings are listed as chips on
+its header. Collapsing therefore never hides a choice the user made.
 
 ## Seen vs. disabled
 

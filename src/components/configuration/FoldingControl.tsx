@@ -1,5 +1,7 @@
+import { useId } from 'react';
 import type { FoldingType, Finishing } from '../../types';
 import { Badge } from '../Badge';
+import { optionButtonClass } from '../../lib/optionButton';
 
 const FOLDING_TYPE_INFO: Partial<Record<FoldingType, { label: string; explanation?: string }>> = {
   none:        { label: 'Fără',              explanation: 'Fără pliere. Livrat plat.' },
@@ -19,9 +21,10 @@ type FoldingControlProps = {
 };
 
 export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText }: FoldingControlProps) {
+  const headingId = useId();
   const widget = (
-    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-1.5 text-xs">Pliere</h4>
+    <div role="group" aria-labelledby={headingId} className="rounded-lg bg-slate-50 dark:bg-slate-700 p-3">
+      <h4 id={headingId} className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Pliere</h4>
       <div className="flex flex-wrap gap-1.5">
         {FOLDING_TYPES.map((type) => {
           const allowed = allowedFoldTypes.includes(type) || (type === 'none' && allowedFoldTypes.length === 0);
@@ -29,6 +32,8 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
           const btn = (
             <button
               key={type}
+              type="button"
+              aria-pressed={folding.type === type}
               disabled={!allowed}
               onClick={() => {
                 if (!allowed) return;
@@ -37,13 +42,10 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
                   folds: type === 'none' ? 0 : folding.folds || 1,
                 });
               }}
-              className={`whitespace-nowrap rounded px-2 py-1 text-xs font-medium transition ${
-                !allowed && folding.type !== type
-                  ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                  : folding.type === type
-                  ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                  : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400'
-              }`}
+              className={`whitespace-nowrap ${optionButtonClass({
+                active: folding.type === type,
+                disabled: !allowed && folding.type !== type,
+              })}`}
             >
               {label}
             </button>

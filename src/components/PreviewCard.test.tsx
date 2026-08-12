@@ -19,7 +19,7 @@ describe('PreviewCard', () => {
 
   it('describes sticker media by its face', () => {
     render(<PreviewCard element={makeElemental({ media: makeSticker({ face: 'PVC' }) })} />);
-    expect(screen.getByText('PVC label')).toBeInTheDocument();
+    expect(screen.getByText('Etichetă PVC')).toBeInTheDocument();
   });
 
   it('applies the rounded-corner classes', () => {
@@ -37,12 +37,12 @@ describe('PreviewCard', () => {
       finishing: makeFinishing({ lamination: { type: 'gloss', sides: 'both' } }),
     });
     render(<PreviewCard element={element} />);
-    expect(screen.getByText('Gloss')).toBeInTheDocument();
-    expect(screen.getByText('gloss lamination on both sides')).toBeInTheDocument();
+    expect(screen.getByText('Lucios')).toBeInTheDocument();
+    expect(screen.getByText('Laminare lucios pe ambele fețe')).toBeInTheDocument();
   });
 
   it('shows no lamination badge without lamination', () => {
     render(<PreviewCard element={makeElemental()} />);
-    expect(screen.queryByText(/lamination on/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Laminare .* pe /)).not.toBeInTheDocument();
   });
 });

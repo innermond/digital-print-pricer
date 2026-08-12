@@ -1,6 +1,9 @@
 type PaperFinish = "Gloss" | "Silk" | "Matt" | "Soft-touch";
 // Real stock weights (RON market) — match the price engine's paper keys exactly.
-type PaperWeight = 90 | 120 | 150 | 200 | 250 | 350;
+// 300 was missing here while the catalog shipped a 300 GSM stock (p5), which
+// broke `tsc -b`; `tsc --noEmit` hid it because the root tsconfig is a
+// project-references solution and emits nothing to check.
+type PaperWeight = 90 | 120 | 150 | 200 | 250 | 300 | 350;
 
 type Paper = {
   kind: 'paper';

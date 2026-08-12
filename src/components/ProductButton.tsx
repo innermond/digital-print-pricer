@@ -1,6 +1,8 @@
 import { Badge } from './Badge';
 import { RotateCcw } from 'lucide-react';
 import type { Product } from '../types';
+import { optionCardClass } from '../lib/optionButton';
+import { plural } from '../lib/labels';
 
 type ProductButtonProps = {
   product: Product;
@@ -18,19 +20,17 @@ export function ProductButton({product, selectedProductId, onClick, badgeText, p
   const card = (
     <span className="relative inline-flex flex-grow flex-shrink">
       <button
+        type="button"
         onClick={onClick}
-        className={`w-full rounded-lg border-2 px-4 py-3 text-left transition ${
-          selectedProductId === product.id
-            ? 'border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950'
-            : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
-        }`}
+        aria-pressed={selectedProductId === product.id}
+        className={`w-full px-4 py-3 ${optionCardClass({ active: selectedProductId === product.id })}`}
       >
         <div className="font-semibold text-slate-900 dark:text-slate-50 mb-2">
           {product.label}
         </div>
         <div className="flex items-center justify-between">
           <div className="text-sm text-slate-600 dark:text-slate-400">
-            {product.elementals.length} element{product.elementals.length !== 1 ? 's' : ''}
+            {plural(product.elementals.length, 'element', 'elemente')}
           </div>
         </div>
       </button>

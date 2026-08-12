@@ -1,14 +1,5 @@
 import type { Elemental, Pocket, Product } from '../types';
-
-const LAMINATION_RO: Record<string, string> = {
-  none: 'Fără', gloss: 'Lucios', matt: 'Mat', 'soft-touch': 'Soft-touch',
-};
-const FOLD_RO: Record<string, string> = {
-  none: 'Fără', 'half-fold': 'La jumătate', 'tri-fold': 'În trei', 'z-fold': 'Z', 'gate-fold': 'Poartă',
-};
-const SPIRAL_COLOR_RO: Record<string, string> = {
-  white: 'Alb', black: 'Negru',
-};
+import { LAMINATION_RO, FOLD_RO, SPIRAL_COLOR_RO, plural } from '../lib/labels';
 
 type AssemblySummaryProps = {
   product: Product | undefined;
@@ -24,7 +15,7 @@ export function AssemblySummary({ product, personalized, pocket }: AssemblySumma
   return (
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-sm h-fit">
       <h3 className="mb-2.5 text-sm font-semibold text-slate-900 dark:text-slate-50">
-        Asamblare ({product.amount} {product.amount !== 1 ? 'unități' : 'unitate'})
+        Asamblare ({plural(product.amount, 'unitate', 'unități')})
       </h3>
       <div className="space-y-2 max-h-96 overflow-y-auto">
         {product.elementals.map((element: Elemental, index: number) => (
@@ -66,7 +57,7 @@ export function AssemblySummary({ product, personalized, pocket }: AssemblySumma
       <div className="mt-3 rounded-lg bg-blue-50 dark:bg-blue-950 p-2.5 border border-blue-200 dark:border-blue-800">
         <p className="text-xs text-blue-900 dark:text-blue-200">
           <span className="font-semibold">{personalized ? 'Produs personalizat' : 'Produs'}: </span>
-          {product.label} ({product.elementals.length} {product.elementals.length !== 1 ? 'elemente' : 'element'}) × {product.amount}
+          {product.label} ({plural(product.elementals.length, 'element', 'elemente')}) × {product.amount}
         </p>
         {product.binding?.type === 'spiral' && (
           <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">

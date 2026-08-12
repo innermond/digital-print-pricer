@@ -1,5 +1,7 @@
+import { useId } from 'react';
 import type { Staple } from '../../types';
 import { Badge } from '../Badge';
+import { optionButtonClass } from '../../lib/optionButton';
 
 const DEFAULT_STAPLE: Staple = { hole: false, staple: false };
 
@@ -18,11 +20,12 @@ type StapleControlProps = {
 };
 
 export function StapleControl({ staple, allowed, onChange, badgeText }: StapleControlProps) {
+  const headingId = useId();
   const current = staple ?? DEFAULT_STAPLE;
 
   const widget = (
-    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2.5">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-2 text-xs">Capsare</h4>
+    <div role="group" aria-labelledby={headingId} className="rounded-lg bg-slate-50 dark:bg-slate-700 p-3">
+      <h4 id={headingId} className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Capsare</h4>
       <div className="flex flex-wrap gap-1.5">
         {STAPLE_OPTIONS.map(({ key, label }) => {
           const isAllowed = allowed[key];
@@ -30,17 +33,13 @@ export function StapleControl({ staple, allowed, onChange, badgeText }: StapleCo
           return (
             <button
               key={key}
+              type="button"
+              aria-pressed={active}
               onClick={() => {
                 if (!isAllowed) return;
                 onChange({ ...current, [key]: !active });
               }}
-              className={`flex-1 rounded px-2 py-1.5 text-xs font-medium transition ${
-                !isAllowed && !active
-                  ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                  : active
-                  ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                  : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400'
-              }`}
+              className={`flex-1 ${optionButtonClass({ active, disabled: !isAllowed && !active })}`}
             >
               {label}
             </button>

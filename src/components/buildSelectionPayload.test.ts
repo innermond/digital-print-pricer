@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildSelectionPayload } from './ProductConfigurator';
+import { buildSelectionPayload } from '../lib/selection';
 import { pocketElemental } from '../lib/pocket';
 import { MOCK_CATALOG } from '../data/catalog';
 

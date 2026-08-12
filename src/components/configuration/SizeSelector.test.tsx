@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SizeSelector } from './SizeSelector';
 import { makeSize } from '../../test/fixtures';
@@ -16,7 +16,7 @@ function renderSelector(overrides: Partial<Parameters<typeof SizeSelector>[0]> =
     customSizeUnit: 'mm' as const,
     recommendedSizeId: 's2',
     onSizeChange: vi.fn(),
-    onUnitChange: vi.fn(),
+    onRequestCustomSize: vi.fn(),
     ...overrides,
   };
   const utils = render(<SizeSelector {...props} />);
@@ -66,50 +66,11 @@ describe('SizeSelector', () => {
     });
   });
 
-  it('switches the unit and converts the current size', async () => {
+  it('asks for the exact-dimensions control when Personalizat is clicked', async () => {
     const user = userEvent.setup();
     const { props } = renderSelector();
 
-    await user.click(screen.getByRole('button', { name: 'in' }));
-    expect(props.onUnitChange).toHaveBeenCalledWith('in');
-    expect(props.onSizeChange).toHaveBeenCalledWith({
-      ...a4,
-      width: 8.27,  // 210 mm
-      height: 11.69, // 297 mm
-      unit: 'in',
-    });
-  });
-
-  it('reports a custom width as a custom size', () => {
-    const { props } = renderSelector();
-    const [widthInput] = screen.getAllByRole('textbox');
-
-    fireEvent.change(widthInput, { target: { value: '200' } });
-    expect(props.onSizeChange).toHaveBeenCalledWith({
-      id: 'custom',
-      label: 'Personalizat',
-      width: 200,
-      height: 297,
-      widthMm: 200,
-      heightMm: 297,
-      unit: 'mm',
-    });
-  });
-
-  it('reports a custom height as a custom size', () => {
-    const { props } = renderSelector();
-    const [, heightInput] = screen.getAllByRole('textbox');
-
-    fireEvent.change(heightInput, { target: { value: '300' } });
-    expect(props.onSizeChange).toHaveBeenCalledWith(
-      expect.objectContaining({ id: 'custom', heightMm: 300, widthMm: 210 }),
-    );
-  });
-
-  it('shows the custom inputs in the active unit', () => {
-    renderSelector({ customSizeUnit: 'in' });
-    const [widthInput, heightInput] = screen.getAllByRole('textbox');
-    expect(widthInput).toHaveValue('8.3');
-    expect(heightInput).toHaveValue('11.7');
+    await user.click(screen.getByText('Personalizat'));
+    expect(props.onRequestCustomSize).toHaveBeenCalled();
   });
 });

@@ -33,7 +33,7 @@ describe('ProductButton', () => {
         onClick={() => {}}
       />,
     );
-    expect(screen.getByText('2 elements')).toBeInTheDocument();
+    expect(screen.getByText('2 elemente')).toBeInTheDocument();
   });
 
   it('calls onClick when pressed', async () => {

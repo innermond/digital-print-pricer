@@ -42,12 +42,28 @@ describe('ConfigurationPanel', () => {
     expect(screen.queryByText('A3')).not.toBeInTheDocument();
   });
 
-  it('renders printing and finishing sections', () => {
+  it('renders printing as an essential and finishing behind the disclosure', async () => {
+    const user = userEvent.setup();
     // The shared element is 120 GSM, which rules out every media-driven finishing,
     // so allow a fold to keep the Finisare section populated.
     renderPanel({ config: makeConfig({ allowedFoldTypes: ['none', 'half-fold'] }) });
+
     expect(screen.getByText('Tipărire')).toBeInTheDocument();
+    // Finishing is advanced: hidden until the section is opened.
+    expect(screen.queryByText('Finisare')).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
     expect(screen.getByText('Finisare')).toBeInTheDocument();
+  });
+
+  it('keeps the exact-dimensions control out of the essentials', async () => {
+    const user = userEvent.setup();
+    renderPanel();
+
+    expect(screen.queryByLabelText(/Lățime/)).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+    expect(screen.getByLabelText('Lățime (mm)')).toBeInTheDocument();
+    expect(screen.getByLabelText('Înălțime (mm)')).toBeInTheDocument();
   });
 
   it('reports a media selection', async () => {

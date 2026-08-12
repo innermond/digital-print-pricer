@@ -14,6 +14,7 @@ import { FoldingControl } from './FoldingControl';
 import { CreasingControl } from './CreasingControl';
 import { RoundedCornersControl } from './RoundedCornersControl';
 import { StapleControl } from './StapleControl';
+import { useId } from 'react';
 import { Badge } from '../Badge';
 
 type FinishingOptionsProps = {
@@ -24,6 +25,7 @@ type FinishingOptionsProps = {
 };
 
 export function FinishingOptions({ element, config, onUpdate, badgeText }: FinishingOptionsProps) {
+  const headingId = useId();
   const { finishing } = element;
 
   const laminationTypes = allowedLaminationTypes(element);
@@ -36,11 +38,13 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
   if (!hasFinishingOptions(element, config)) return null;
 
   const widget = (
-    <div>
-      <label className="block text-xs font-semibold text-slate-900 dark:text-slate-50 mb-2">
+    <div role="group" aria-labelledby={headingId}>
+      <h3 id={headingId} className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
         Finisare
-      </label>
-      <div className="flex flex-wrap items-start gap-2">
+      </h3>
+      {/* A predictable two-column grid rather than a wrapped pile: each
+          sub-control keeps its own width and stays scannable. */}
+      <div className="grid gap-3 sm:grid-cols-2">
         {laminationTypes.length > 0 && (
           <LaminationControl
             lamination={finishing.lamination}

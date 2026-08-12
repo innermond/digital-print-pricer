@@ -1,5 +1,7 @@
+import { useId } from 'react';
 import type { LaminationType, LaminationSides, Finishing } from '../../types';
 import { Badge } from '../Badge';
+import { optionButtonClass } from '../../lib/optionButton';
 
 const LAMINATION_TYPE_INFO: Record<LaminationType, { label: string; explanation?: string }> = {
   none:         { label: 'Fără',       explanation: 'Fără laminare. Suprafața hârtiei rămâne nemodificată.' },
@@ -26,10 +28,12 @@ type LaminationControlProps = {
 };
 
 export function LaminationControl({ lamination, allowedTypes, allowedSides, onChange, badgeText }: LaminationControlProps) {
+  const headingId = useId();
+  const sidesId = useId();
   const widget = (
-    <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-2">
-      <h4 className="font-medium text-slate-900 dark:text-slate-50 mb-1.5 text-xs">Laminare</h4>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+    <div role="group" aria-labelledby={headingId} className="rounded-lg bg-slate-50 dark:bg-slate-700 p-3">
+      <h4 id={headingId} className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Laminare</h4>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <div className="flex flex-wrap gap-1.5">
           {LAMINATION_TYPES.map((type) => {
             const allowed = type === 'none' || allowedTypes.includes(type);
@@ -37,17 +41,16 @@ export function LaminationControl({ lamination, allowedTypes, allowedSides, onCh
             const btn = (
               <button
                 key={type}
+                type="button"
+                aria-pressed={lamination.type === type}
                 onClick={() => {
                   if (!allowed) return;
                   onChange({ ...lamination, type });
                 }}
-                className={`whitespace-nowrap rounded px-2 py-1 text-xs font-medium transition ${
-                  !allowed && lamination.type !== type
-                    ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                    : lamination.type === type
-                    ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                    : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-400'
-                }`}
+                className={`whitespace-nowrap ${optionButtonClass({
+                  active: lamination.type === type,
+                  disabled: !allowed && lamination.type !== type,
+                })}`}
               >
                 {label}
               </button>
@@ -59,27 +62,26 @@ export function LaminationControl({ lamination, allowedTypes, allowedSides, onCh
         </div>
         {lamination.type !== 'none' && (
           <div className="flex items-center gap-1.5">
-            <label className="text-xs font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">
+            <span id={sidesId} className="text-xs font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">
               Aplică pe:
-            </label>
-            <div className="flex flex-wrap gap-1.5">
+            </span>
+            <div role="group" aria-labelledby={sidesId} className="flex flex-wrap gap-1.5">
               {LAMINATION_SIDES.map((side) => {
                 const allowed = allowedSides.includes(side);
                 const { label, explanation } = LAMINATION_SIDE_INFO[side];
                 const btn = (
                   <button
                     key={side}
+                    type="button"
+                    aria-pressed={lamination.sides === side}
                     onClick={() => {
                       if (!allowed) return;
                       onChange({ ...lamination, sides: side });
                     }}
-                    className={`whitespace-nowrap rounded px-2 py-1 text-xs font-medium transition ${
-                      !allowed && lamination.sides !== side
-                        ? 'bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                        : lamination.sides === side
-                        ? 'bg-blue-500 dark:bg-blue-600 text-white'
-                        : 'bg-white dark:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-500'
-                    }`}
+                    className={`whitespace-nowrap ${optionButtonClass({
+                      active: lamination.sides === side,
+                      disabled: !allowed && lamination.sides !== side,
+                    })}`}
                   >
                     {label}
                   </button>

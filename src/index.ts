@@ -3,5 +3,8 @@
 // still uses App.tsx / main.tsx and is unaffected by this file.
 export { default as ProductConfigurator } from './components/ProductConfigurator';
 export { MOCK_CATALOG } from './data/catalog';
+// The wire format posted to the price endpoint and handed to the host on
+// pricer:offer. Exported so a host can build/inspect the same payload.
+export { buildSelectionPayload } from './lib/selection';
 export type { Catalog } from './data/catalog';
 export * from './types';

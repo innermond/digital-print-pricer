@@ -1,5 +1,6 @@
-import type { Elemental, LaminationType, LaminationSides, RoundedCorner } from '../types';
+import type { Elemental, LaminationType, RoundedCorner } from '../types';
 import { Badge } from './Badge';
+import { LAMINATION_RO, LAMINATION_SIDES_RO } from '../lib/labels';
 
 const CORNER_CLASSES: Record<RoundedCorner, string> = {
   1: 'rounded-tl-xl',
@@ -13,12 +14,6 @@ const LAMINATION_BACKGROUNDS: Record<LaminationType, string> = {
   gloss: 'bg-gradient-to-br from-white to-slate-100 dark:from-slate-600 dark:to-slate-700',
   matt: 'bg-slate-50 dark:bg-slate-700',
   'soft-touch': 'bg-slate-100 dark:bg-slate-600',
-};
-
-const LAMINATION_SIDE_LABELS: Record<LaminationSides, string> = {
-  front: 'the front side',
-  back: 'the back side',
-  both: 'both sides',
 };
 
 type PreviewCardProps = {
@@ -50,7 +45,7 @@ export function PreviewCard({ element }: PreviewCardProps) {
         <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
           {element.media.kind === 'paper'
             ? `${element.media.gsm} GSM · ${element.media.finish}`
-            : `${element.media.face} label`}
+            : `Etichetă ${element.media.face}`}
         </div>
       </div>
     </div>
@@ -66,8 +61,10 @@ export function PreviewCard({ element }: PreviewCardProps) {
           previewBox
         ) : (
           <Badge
-            label={lamination.type.charAt(0).toUpperCase() + lamination.type.slice(1)}
-            text={`${lamination.type} lamination on ${LAMINATION_SIDE_LABELS[lamination.sides]}`}
+            label={LAMINATION_RO[lamination.type] ?? lamination.type}
+            text={`Laminare ${(LAMINATION_RO[lamination.type] ?? lamination.type).toLowerCase()} pe ${
+              LAMINATION_SIDES_RO[lamination.sides] ?? lamination.sides
+            }`}
           >
             {previewBox}
           </Badge>
