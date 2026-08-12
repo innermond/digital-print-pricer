@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FinishingOptions } from './FinishingOptions';
 import { makeConfig, makeElemental, makeFinishing, makePaper } from '../../test/fixtures';
@@ -91,6 +91,56 @@ describe('FinishingOptions', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       finishing: makeFinishing({ folding: { type: 'half-fold', folds: 1 } }),
     });
+  });
+
+  it('keeps the creasing cap when the chosen count changes', () => {
+    // Regression: the slider used to write `creasing: { count }`, replacing the
+    // object and dropping the catalog's `max`. On the next render the cap was
+    // gone, the product-level rule took over, and the control unmounted itself
+    // the moment you used it.
+    const onUpdate = vi.fn();
+    const capped = makeElemental({
+      finishing: makeFinishing({ creasing: { count: 0, max: 3 } }),
+    });
+    render(
+      <FinishingOptions
+        element={capped}
+        config={makeConfig({ allowedCreasingCounts: [] })}
+        onUpdate={onUpdate}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '2' } });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      finishing: makeFinishing({ creasing: { count: 2, max: 3 } }),
+    });
+  });
+
+  it('keeps showing the creasing control after a change', () => {
+    // The same regression seen end to end: re-render with what onUpdate produced
+    // and the slider must still be there.
+    const capped = makeElemental({
+      finishing: makeFinishing({ creasing: { count: 0, max: 3 } }),
+    });
+    const noProductCreasing = makeConfig({ allowedCreasingCounts: [] });
+    let current = capped;
+    const onUpdate = vi.fn((updates) => {
+      current = { ...current, ...updates };
+    });
+
+    const { rerender } = render(
+      <FinishingOptions element={current} config={noProductCreasing} onUpdate={onUpdate} />,
+    );
+    expect(screen.getByRole('slider')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '2' } });
+    rerender(
+      <FinishingOptions element={current} config={noProductCreasing} onUpdate={onUpdate} />,
+    );
+
+    expect(screen.getByRole('slider')).toBeInTheDocument();
+    expect(screen.getByRole('slider')).toHaveValue('2');
   });
 
   it('derives the page count from the fold when the config says so', async () => {

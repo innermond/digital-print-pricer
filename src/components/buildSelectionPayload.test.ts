@@ -35,4 +35,19 @@ describe('buildSelectionPayload', () => {
     expect(buildSelectionPayload(folder, pocket).elementals[0].label).toBe('Coală A3 Pliată');
     expect(folder.elementals).toHaveLength(1);
   });
+
+  it('sends the chosen crease count and not the catalog cap', () => {
+    // `creasing.max` is a constraint the catalog puts on the part, not something
+    // the customer picked — it must not reach the price endpoint.
+    const capped = {
+      ...folder,
+      elementals: folder.elementals.map((e) => ({
+        ...e,
+        finishing: { ...e.finishing, creasing: { count: 2, max: 4 } },
+      })),
+    };
+    const creasing = buildSelectionPayload(capped).elementals[0].finishing.creasing;
+    expect(creasing).toEqual({ count: 2 });
+    expect(creasing).not.toHaveProperty('max');
+  });
 });

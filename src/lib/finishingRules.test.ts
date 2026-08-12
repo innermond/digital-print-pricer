@@ -72,6 +72,60 @@ describe('allowedCreasingCounts', () => {
   });
 });
 
+describe('allowedCreasingCounts, per-element cap', () => {
+  // The cap is authored on the elemental itself, beside the chosen count.
+  const capped = (max: number | undefined, count = 0) =>
+    makeElemental({
+      media: makePaper({ id: 'p5', gsm: 250 }),
+      finishing: makeFinishing({ creasing: { count, max } }),
+    });
+
+  it('caps at an inclusive maximum', () => {
+    expect(allowedCreasingCounts(capped(2))).toEqual([0, 1, 2]);
+  });
+
+  it('treats a cap of 0 as "offered, but only none" — not the same as []', () => {
+    expect(allowedCreasingCounts(capped(0))).toEqual([0]);
+    expect(allowedCreasingCounts(capped(undefined), makeConfig({ allowedCreasingCounts: [] })))
+      .toEqual([]);
+  });
+
+  it('replaces the product-level list rather than intersecting it', () => {
+    // The whole point: one part creases even though the product says none do.
+    expect(allowedCreasingCounts(capped(2), makeConfig({ allowedCreasingCounts: [] })))
+      .toEqual([0, 1, 2]);
+    expect(allowedCreasingCounts(capped(1), makeConfig({ allowedCreasingCounts: [4, 5] })))
+      .toEqual([0, 1]);
+  });
+
+  it('is still floored by the media, which a cap cannot lift', () => {
+    const thin = makeElemental({
+      media: makePaper({ id: 'p2', gsm: 120 }),
+      finishing: makeFinishing({ creasing: { count: 0, max: 5 } }),
+    });
+    expect(allowedCreasingCounts(thin)).toEqual([]);
+  });
+
+  it('is bounded by the media range when the cap exceeds it', () => {
+    expect(allowedCreasingCounts(capped(9))).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+
+  it('leaves an uncapped elemental on the product-level path', () => {
+    expect(allowedCreasingCounts(capped(undefined), makeConfig({ allowedCreasingCounts: [0, 2, 4] })))
+      .toEqual([0, 2, 4]);
+  });
+
+  // Regression guard for the bug this field exists to fix: the cap used to be
+  // read off creasing.count, so every pick narrowed the menu — a one-way
+  // ratchet that ended with the control disappearing.
+  it('does not move when the stored selection changes', () => {
+    for (const count of [0, 1, 2, 3, 5]) {
+      expect(allowedCreasingCounts(capped(3, count)), `stored count ${count}`)
+        .toEqual([0, 1, 2, 3]);
+    }
+  });
+});
+
 describe('allowedCreasingCounts, wired to the real catalog', () => {
   it('fixes a Mapă de Prezentare cover at the two structural creases', () => {
     const cover = MOCK_CATALOG.products.find((p) => p.id === 'prod3a')!.elementals[0];
@@ -122,7 +176,7 @@ describe('allowedRoundedCorners, wired to the real catalog', () => {
   // must still come back empty. This replaced a hand-maintained blocklist of
   // element ids, so it is asserted per category: a folder product added later
   // has to inherit the opt-out rather than be appended to a list by hand.
-  it.each(['afis', 'folder'])('keeps corners off every %s product, on any stock', (categoryId) => {
+  it.each(['afis', 'folder', 'calendar'])('keeps corners off every %s product, on any stock', (categoryId) => {
     const products = MOCK_CATALOG.products.filter((p) => p.categoryId === categoryId);
     // Guards the reverse failure: a renamed category silently emptying the loop.
     expect(products.length).toBeGreaterThan(0);

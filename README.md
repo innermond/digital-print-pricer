@@ -170,9 +170,38 @@ config can never exceed what the stock will hold. A product whose **shape** rule
 a finishing out regardless of weight — Afiș, Mapă de Prezentare — says so with an
 empty list in its config.
 
-There are **no rules keyed by element id** in `finishingRules.ts`. Availability is
-either a media fact (the table above) or catalog data (the config fields), never a
-hardcoded list of catalog ids — those silently went wrong whenever a host catalog
-used different ids or added a product. Lamination **type** is the one dimension
-still decided by media alone; lamination **sides** is fully JSON-driven via
-`allowedLaminationSides`.
+Precedence for creasing is **media > element > product**. A single part can carry
+its own cap as `finishing.creasing.max` on the elemental — an inclusive maximum
+(`2` offers 0, 1 or 2) that replaces `allowedCreasingCounts` for that part alone,
+while the media floors both. It lives on the elemental rather than in an
+id-keyed record here so it is authored where the part is defined:
+
+```jsonc
+"finishing": {
+  "creasing": { "count": 0, "max": 1 }   // cover folds back over the spiral
+}
+```
+
+`count` is the customer's choice; `max` is the catalog's constraint on it. They
+are separate fields deliberately — see the note at the end of this section.
+
+Because `max` sits on the elemental, it is part of what standalone dev caches in
+localStorage. Constraints are therefore refreshed from the catalog on every load
+(`withCatalogConstraints` in `src/hooks/useProducts.ts`), so editing a `max` takes
+effect immediately while the user's own selections survive. **Any future
+constraint added to the Elemental must be listed there too**, or a stale cache
+will silently ignore it.
+
+There are **no hardcoded catalog ids** in `finishingRules.ts`. Availability is
+either a media fact (the table above) or catalog data (the config fields). Where a
+rule is per-element, it is carried by the element itself (`finishing.creasing.max`)
+— never by a list of ids baked into the code; such lists silently went wrong
+whenever a host catalog used different ids or added a product.
+Lamination **type** is the one dimension still decided by media alone; lamination
+**sides** is fully JSON-driven via `allowedLaminationSides`.
+
+All of this decides what is **offered**. The chosen value (`finishing.creasing.count`)
+is never read when computing the menu — the range a value was picked from must not
+depend on which value was picked, or every choice would narrow the next one. Note
+`max` is a catalog constraint and is stripped from the price payload; only `count`
+is sent.

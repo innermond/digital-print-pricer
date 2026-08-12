@@ -73,7 +73,12 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
           <CreasingControl
             count={finishing.creasing.count}
             allowedCounts={creasingCounts}
-            onChange={(count) => onUpdate({ finishing: { ...finishing, creasing: { count } } })}
+            // Spread the existing creasing object: it carries the catalog's `max`
+            // alongside the chosen count, and rebuilding it would drop the cap —
+            // which silently unmounts this control on the next render.
+            onChange={(count) =>
+              onUpdate({ finishing: { ...finishing, creasing: { ...finishing.creasing, count } } })
+            }
           />
         )}
         {roundedCorners.length > 0 && (

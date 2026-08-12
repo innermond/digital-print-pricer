@@ -10,6 +10,39 @@ import { isPersonalized as isPersonalizedAgainst } from '../lib/personalization'
 // since — do not bump this without a real shape change, it wipes local edits.
 const STORAGE_VERSION = 'v3';
 
+/**
+ * Refresh the catalog-owned parts of a cached product list.
+ *
+ * The cache mixes two things: what the user chose (media, size, printing,
+ * finishing selections) and constraints the catalog imposes on those choices.
+ * Only the first should survive a reload — a constraint read back from an old
+ * cache silently ignores the catalog, so editing it appears to do nothing.
+ *
+ * `finishing.creasing.max` is the only such field on an Elemental today. Add any
+ * future constraint that lives on the elemental here, or it will drift the same
+ * way. Ids missing from the catalog are left alone rather than dropped, so an
+ * imported product list still round-trips.
+ */
+const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =>
+  saved.map((product) => {
+    const base = catalog.products.find((b) => b.id === product.id);
+    if (!base) return product;
+    return {
+      ...product,
+      elementals: product.elementals.map((elem) => {
+        const baseElem = base.elementals.find((b) => b.id === elem.id);
+        if (!baseElem) return elem;
+        return {
+          ...elem,
+          finishing: {
+            ...elem.finishing,
+            creasing: { ...elem.finishing.creasing, max: baseElem.finishing.creasing.max },
+          },
+        };
+      }),
+    };
+  });
+
 type UseProductsOptions = {
   catalog: Catalog;
   // Only standalone dev persists edits. A host-injected catalog is the source of
@@ -26,7 +59,9 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     if (!persist) return catalog.products;
     const saved = localStorage.getItem('products');
     const version = localStorage.getItem('products_version');
-    if (saved && version === STORAGE_VERSION) return JSON.parse(saved) as Product[];
+    if (saved && version === STORAGE_VERSION) {
+      return withCatalogConstraints(JSON.parse(saved) as Product[], catalog);
+    }
     localStorage.setItem('products_version', STORAGE_VERSION);
     return catalog.products;
   });

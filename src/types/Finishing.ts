@@ -37,7 +37,13 @@ type Finishing = {
   };
 
   creasing: {
+    // What the customer chose. The slider writes this.
     count: number;
+    // Catalog data: the most creases this part may take, overriding the
+    // product's allowedCreasingCounts. Inclusive — 2 offers 0, 1 or 2. Kept
+    // separate from `count` so choosing a value can never narrow the range it
+    // was chosen from.
+    max?: number;
   };
 
   roundedCornes: {

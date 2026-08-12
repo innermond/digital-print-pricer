@@ -19,13 +19,14 @@ export const MOCK_STICKERS: Sticker[] = [
 export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_STICKERS];
 
 export const MOCK_SIZES: Size[] = [
-  { id: 's0', label: 'A3',                      width: 297, height: 420, unit: 'mm', widthMm: 297,   heightMm: 420   },
-  { id: 's1', label: 'A4',                      width: 210, height: 297, unit: 'mm', widthMm: 210,   heightMm: 297   },
-  { id: 's2', label: 'A5',                      width: 148, height: 210, unit: 'mm', widthMm: 148,   heightMm: 210   },
-  { id: 's3', label: 'Letter',                  width: 8.5, height: 11,  unit: 'in', widthMm: 215.9, heightMm: 279.4 },
-  { id: 's4', label: '1/3A4',          width: 100, height: 210, unit: 'mm', widthMm: 100,   heightMm: 210   },
-  { id: 's5', label: 'Carte Vizită Standard',     width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
-  { id: 's6', label: 'Carte Vizită Compact',      width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
+  { id: 's0', label: 'A3',                    width: 297, height: 420, unit: 'mm', widthMm: 297,   heightMm: 420   },
+  { id: 's1', label: 'A4',                    width: 210, height: 297, unit: 'mm', widthMm: 210,   heightMm: 297   },
+  { id: 's2', label: 'A5',                    width: 148, height: 210, unit: 'mm', widthMm: 148,   heightMm: 210   },
+  { id: 's3', label: 'Letter',                width: 8.5, height: 11,  unit: 'in', widthMm: 215.9, heightMm: 279.4 },
+  { id: 's4', label: '1/3A4',                 width: 100, height: 210, unit: 'mm', widthMm: 100,   heightMm: 210   },
+  { id: 's5', label: 'Carte Vizită Standard', width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
+  { id: 's6', label: 'Carte Vizită Compact',  width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
+  { id: 's7', label: 'A3+',                   width: 320, height: 450, unit: 'mm', widthMm: 320,   heightMm: 450   },
 ];
 
 export type PageCountConstraint =
@@ -51,6 +52,8 @@ export type ProductConfig = {
   // Omit to offer the full 0-5 range on paper heavy enough to take a crease; use []
   // to rule creasing out; use a single value to fix it structurally.
   allowedCreasingCounts?: number[];
+  // Per-element creasing is set on the elemental itself, as finishing.creasing.max
+  // — authored where the part is defined rather than in an id-keyed record here.
   binding?: { type: BindingType; allowedColors?: SpiralColor[] };
   // The glued-in paper pocket of a presentation folder. Like binding, it is a stock
   // item the catalog includes or omits — not an Elemental the customer can spec.
@@ -180,6 +183,22 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'a
   recommendedMediaId: 'p3',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
+  binding: { type: 'spiral', allowedColors: ['white', 'black'] },
+};
+
+// Shared constraints for the "calendar" category — presets within this category
+// only differ by page size and by the elemental ids their per-part rules are
+// keyed on. Every calendar is cover + month sheets + back cover on a spiral.
+const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationTypes' | 'allowedRoundedCorners' | 'binding'> = {
+  allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
+  allowedSizeIds: ['s1', 's2', 's7'],
+  recommendedMediaId: 'p6',
+  recommendedSizeId: 's7',
+  allowedFoldTypes: ['none'],
+  allowedCreasingCounts: [],
+  allowedLaminationTypes: [],
+  // A wall calendar is trimmed square — no rounded corners, whatever the board.
+  allowedRoundedCorners: [],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
 };
 
@@ -487,12 +506,8 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     recommendedSizeId: 's5',
     explanation: 'Etichetă din carton 90x50mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare.',
   },
-  prod9: { // Calendar
-    allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
-    allowedSizeIds: ['s1', 's2'],
-    recommendedMediaId: 'p3',
-    recommendedSizeId: 's1',
-    allowedFoldTypes: ['none'],
+  prod9: { // Calendar A3+
+    ...CALENDAR_CATEGORY_CONFIG,
     elementalPrintingFronts: {
       'elem9-1': ['color'],
       'elem9-2': ['color'],
@@ -508,8 +523,26 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem9-2': { kind: 'fixed', value: 24 },
       'elem9-3': { kind: 'fixed', value: 1 },
     },
-    binding: { type: 'spiral', allowedColors: ['white', 'black'] },
     explanation: 'Calendar de perete cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format clasic pentru calendare promoționale anuale.',
+  },
+  prod10: { // Calendar A4
+    ...CALENDAR_CATEGORY_CONFIG,
+    elementalPrintingFronts: {
+      'elem10-1': ['color'],
+      'elem10-2': ['color'],
+      'elem10-3': ['none'],
+    },
+    elementalPrintingBacks: {
+      'elem10-1': ['none'],
+      'elem10-2': ['none'],
+      'elem10-3': ['none'],
+    },
+    elementalPageCounts: {
+      'elem10-1': { kind: 'fixed', value: 1 },
+      'elem10-2': { kind: 'fixed', value: 24 },
+      'elem10-3': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici.',
   },
 };
 
@@ -1690,14 +1723,14 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem9-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
-        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
+        media: MOCK_PAPERS[5],
+        size: { id: 's7', label: 'A3+', width: 320, height: 450, unit: 'mm', widthMm: 320, heightMm: 450 },
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 0 },
+          creasing: { count: 0, max: 5 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1705,7 +1738,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem9-2',
         label: 'Interior',
         media: MOCK_PAPERS[2],
-        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
+        size: { id: 's7', label: 'A3+', width: 320, height: 450, unit: 'mm', widthMm: 320, heightMm: 450 },
         pageCount: 24,
         printing: { front: 'color', back: 'none' },
         finishing: {
@@ -1719,7 +1752,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem9-3',
         label: 'Copertă Spate',
         media: MOCK_PAPERS[2],
-        size: { id: 's0', label: 'A3+', width: 350, height: 420, unit: 'mm', widthMm: 350, heightMm: 420 },
+        size: { id: 's7', label: 'A3+', width: 320, height: 420, unit: 'mm', widthMm: 320, heightMm: 450 },
         pageCount: 1,
         printing: { front: 'none', back: 'none' },
         finishing: {

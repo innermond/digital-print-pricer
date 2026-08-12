@@ -92,6 +92,16 @@ export function ConfigureStage({
         </div>
       )}
 
+      {/* A product with no config entry used to render the tab row over a blank
+          panel, with nothing to say why — the catalog and the product list can
+          drift apart (a product added without its config). Say so instead. */}
+      {product && !config && (
+        <p className="text-sm text-amber-700 dark:text-amber-300">
+          Acest produs nu are o configurație definită în catalog, așa că nu poate fi
+          personalizat. ({product.id})
+        </p>
+      )}
+
       {selectedElemental && config && product && (
         <ConfigurationPanel
           element={selectedElemental}

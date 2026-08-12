@@ -63,8 +63,26 @@ const creasableByMedia = (elem: Elemental): number[] => {
 // sets the physical ceiling; a product narrows it from there — to a subset, to a
 // single structural count (a Mapă de Prezentare cover is always creased twice), or
 // to nothing at all. Omit the config field to offer whatever the stock allows.
+//
+// Precedence is media > elemental > product: an elemental's own `creasing.max`
+// replaces the product-level list for that one part, and the media floors both.
+//
+// All of this decides what is *offered*. The chosen value is
+// `creasing.count`, and it is deliberately never read here — the range a value
+// was picked from must not depend on which value was picked, or every choice
+// would narrow the next one.
 export const allowedCreasingCounts = (elem: Elemental, config?: ProductConfig): number[] => {
   const byMedia = creasableByMedia(elem);
+  // by media constraint is strongest - as it stems in physical reality
+  if (byMedia.length === 0) return byMedia;
+
+  // A per-element cap replaces the product-level list outright, so one part of a
+  // product can crease while the rest cannot. Filtering byMedia rather than
+  // building a fresh range keeps the physical floor: a cap can never offer a
+  // crease the stock won't hold.
+  const { max } = elem.finishing.creasing;
+  if (max !== undefined) return byMedia.filter((count) => count <= max);
+
   const allowed = config?.allowedCreasingCounts;
   return allowed ? byMedia.filter((count) => allowed.includes(count)) : byMedia;
 };

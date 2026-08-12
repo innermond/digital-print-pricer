@@ -24,6 +24,52 @@ const preMigrationCatalog = (): Catalog =>
     )
   );
 
+describe('catalog integrity', () => {
+  // prod10 (Calendar A4) shipped without a config entry, so its configuration
+  // stage rendered the element tabs over an empty panel with no explanation.
+  it('gives every product a config entry', () => {
+    const missing = MOCK_CATALOG.products
+      .filter((p) => !MOCK_CATALOG.config[p.id])
+      .map((p) => `${p.id} (${p.label})`);
+    expect(missing).toEqual([]);
+  });
+
+  it('has no config entry for a product that does not exist', () => {
+    const ids = new Set(MOCK_CATALOG.products.map((p) => p.id));
+    expect(Object.keys(MOCK_CATALOG.config).filter((id) => !ids.has(id))).toEqual([]);
+  });
+
+  // Per-elemental records are keyed by elemental id, which is exactly where a
+  // copy-pasted product config drifts from the product it describes.
+  it('keys every per-elemental rule on an elemental the product actually has', () => {
+    const stray: string[] = [];
+    for (const product of MOCK_CATALOG.products) {
+      const config = MOCK_CATALOG.config[product.id];
+      if (!config) continue;
+      const ids = new Set(product.elementals.map((e) => e.id));
+      for (const field of ['elementalPrintingFronts', 'elementalPrintingBacks', 'elementalPageCounts'] as const) {
+        for (const key of Object.keys(config[field] ?? {})) {
+          if (!ids.has(key)) stray.push(`${product.id}.${field}['${key}']`);
+        }
+      }
+    }
+    expect(stray).toEqual([]);
+  });
+
+  it('recommends media and sizes that the product actually allows', () => {
+    const bad: string[] = [];
+    for (const [id, config] of Object.entries(MOCK_CATALOG.config)) {
+      if (config.recommendedMediaId && !config.allowedMediaIds.includes(config.recommendedMediaId)) {
+        bad.push(`${id}: recommendedMediaId ${config.recommendedMediaId} not in allowedMediaIds`);
+      }
+      if (config.recommendedSizeId && !config.allowedSizeIds.includes(config.recommendedSizeId)) {
+        bad.push(`${id}: recommendedSizeId ${config.recommendedSizeId} not in allowedSizeIds`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+});
+
 describe('warnIfCatalogPredatesRoundedCorners', () => {
   afterEach(() => {
     vi.restoreAllMocks();

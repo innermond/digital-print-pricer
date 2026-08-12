@@ -27,7 +27,12 @@ export function buildSelectionPayload(product: Product, pocketElem?: Elemental |
       },
       printing: elem.printing,
       pageCount: elem.pageCount,
-      finishing: elem.finishing,
+      finishing: {
+        ...elem.finishing,
+        // `max` is a catalog constraint, not a customer choice — send only what
+        // was chosen, so the wire format stays exactly what it has always been.
+        creasing: { count: elem.finishing.creasing.count },
+      },
     })),
     ...(product.binding ? { binding: product.binding } : {}),
   };
