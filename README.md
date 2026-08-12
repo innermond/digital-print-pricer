@@ -87,12 +87,14 @@ The page-count control is **only visible** for `kind: "multiple"`.
 
 Values: `none`, `half-fold`, `tri-fold`, `z-fold`, `gate-fold`, `custom`.
 
-## Finishing — staple, lamination sides, binding
+## Finishing — staple, lamination sides, creasing, rounded corners, binding
 
 | Setting | Type | Effect |
 |---|---|---|
 | `allowedStaple` | `{ hole: boolean, staple: boolean }` | **Opt-in.** Omit → the staple control is **hidden**. Include it → the control appears with the given options enabled. |
 | `allowedLaminationSides` | `('front' \| 'back' \| 'both')[]` | Restricts which lamination sides are offered. **Omit → all three.** A blank/unprinted back can still be laminated, so this is a product decision, *not* derived from what is printed. Disallowed sides render greyed/disabled. |
+| `allowedCreasingCounts` | `number[]` | Restricts the creasing counts (0–5) offered. **Omit → everything the stock allows.** `[]` rules creasing out; a single value fixes it structurally (a folder cover is always creased). Intersected with the media ceiling below — a config cannot crease stock that won't hold one. |
+| `allowedRoundedCorners` | `(1 \| 2 \| 3 \| 4)[]` | Restricts which **corner positions** may be rounded — `1` top-left, `2` top-right, `3` bottom-left, `4` bottom-right. **Omit → all four wherever the media allows.** `[]` rules rounding out for shapes that never get it whatever the weight (Afiș, Mapă de Prezentare). Intersected with the media ceiling below. The whole control disappears when the result is empty; a partial set renders the remaining corners greyed. |
 | `binding` | `{ type: 'spiral', allowedColors?: ('white' \| 'black')[] }` | Enables the binding tab/control for the product. |
 
 ## Copy
@@ -124,7 +126,9 @@ Not every restriction hides its control — some grey it out instead:
   (only "Fără" when the media forbids lamination) and lamination sides.
 
 Afiș uses `allowedLaminationSides: ['front']`, so posters offer front-or-none
-lamination.
+lamination, and `allowedCreasingCounts: []` / `allowedRoundedCorners: []`, so
+neither of those controls is drawn at all — a poster hangs flat and is trimmed
+square.
 
 ## Full example
 
@@ -136,6 +140,8 @@ lamination.
     "recommendedMediaId": "p2",
     "recommendedSizeId": "s0",
     "allowedFoldTypes": ["none"],
+    "allowedCreasingCounts": [],
+    "allowedRoundedCorners": [],
     "allowedPrintingFronts": ["color"],
     "allowedPrintingBacks": ["none"],
     "allowedLaminationSides": ["front"],
@@ -148,16 +154,25 @@ lamination.
 
 ## Settings that live in code, not JSON
 
-Some finishing availability is derived from the **media** (weight/kind) in
-`src/lib/finishingRules.ts`, not from `config`. To change these, edit that file:
+Three finishing dimensions have a **physical ceiling** derived from the media
+(weight/kind) in `src/lib/finishingRules.ts`, not from `config`. To move a
+threshold, edit that file:
 
-| Finishing | Rule |
+| Finishing | Media ceiling |
 |---|---|
-| Lamination **type** (Lucios/Mat/Soft-touch) | Stickers: always. Paper: only ≥ 170 GSM — below that only "Fără" shows. |
-| **Biguitură** (creasing) | Paper only, ≥ 200 GSM. Never for stickers. |
-| **Colțuri rotunjite** (rounded corners) | Stickers: always. Paper: only ≥ 170 GSM. |
+| Lamination **type** (Lucios/Mat/Soft-touch) | Paper ≥ 170 GSM. Never for stickers — below the threshold only "Fără" shows. |
+| **Biguitură** (creasing) | Paper ≥ 200 GSM. Never for stickers. |
+| **Colțuri rotunjite** (rounded corners) | Paper ≥ 170 GSM. Never for stickers, which are die-cut to shape already. |
 
-Each of these also has a per-element **blocklist by id** in `finishingRules.ts`
-(e.g. afis elements opt out of creasing and rounded corners regardless of weight).
-Lamination **sides**, by contrast, is fully JSON-driven via `allowedLaminationSides`
-above.
+The ceiling is the *most* a product can offer. `allowedCreasingCounts` and
+`allowedRoundedCorners` narrow it from there and are intersected with it, so a
+config can never exceed what the stock will hold. A product whose **shape** rules
+a finishing out regardless of weight — Afiș, Mapă de Prezentare — says so with an
+empty list in its config.
+
+There are **no rules keyed by element id** in `finishingRules.ts`. Availability is
+either a media fact (the table above) or catalog data (the config fields), never a
+hardcoded list of catalog ids — those silently went wrong whenever a host catalog
+used different ids or added a product. Lamination **type** is the one dimension
+still decided by media alone; lamination **sides** is fully JSON-driven via
+`allowedLaminationSides`.

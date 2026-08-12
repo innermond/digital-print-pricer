@@ -1,4 +1,4 @@
-import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, Pocket } from '../types';
+import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
@@ -60,6 +60,11 @@ export type ProductConfig = {
   // (front/back/both) — a blank verso can still be laminated, so this is a
   // product decision, not something derived from what's printed.
   allowedLaminationSides?: LaminationSides[];
+  // Which corners this product lets the customer round (1 = top-left … 4 =
+  // bottom-right), narrowing what the stock can take. Omit to offer all four on
+  // paper heavy enough to cut clean; use [] to rule rounding out on a shape that
+  // never gets it, whatever the weight.
+  allowedRoundedCorners?: RoundedCorner[];
   explanation?: string;
 };
 
@@ -78,12 +83,14 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 
 // Shared constraints for the "afis" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
-const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
+const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s0', 's1'],
   allowedFoldTypes: ['none'],
-  // A poster hangs flat — nothing to crease.
+  // A poster hangs flat and gets trimmed square — nothing to crease, nothing to
+  // round, however heavy the stock.
   allowedCreasingCounts: [],
+  allowedRoundedCorners: [],
   allowedPrintingBacks: ['none'],
   // Afiș is a one-sided poster — laminate the front only (or not at all).
   allowedLaminationSides: ['front'],
@@ -110,7 +117,7 @@ const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // Shared constraints for the "folder" category — presets within this category only
 // differ by the lamination of the cover. Every folder includes the paper pocket, a
 // fixed accessory rather than a configurable element.
-const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'pocket'> = {
+const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket'> = {
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s1'],
   recommendedMediaId: 'p6',
@@ -119,6 +126,9 @@ const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSi
   // The cover is creased twice to form the folder — structural, so it's the only
   // count on offer.
   allowedCreasingCounts: [1, 2],
+  // The cover is a folded A3 panel, not a trimmed card — its corners stay square
+  // however heavy the board.
+  allowedRoundedCorners: [],
   pocket: {
     label: 'Buzunar de Hârtie',
     mediaId: 'p6',

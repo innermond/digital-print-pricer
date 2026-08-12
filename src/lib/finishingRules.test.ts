@@ -3,11 +3,13 @@ import {
   allowedCreasingCounts,
   allowedFoldTypes,
   allowedLaminationSides,
+  allowedRoundedCorners,
   clampLamination,
   hasFinishingOptions,
 } from './finishingRules';
-import { makeElemental, makeFinishing, makeConfig, makePaper } from '../test/fixtures';
+import { makeElemental, makeFinishing, makeConfig, makePaper, makeSticker } from '../test/fixtures';
 import { MOCK_CATALOG } from '../data/catalog';
+import { MOCK_PAPERS } from '../data/mockData';
 
 describe('allowedLaminationSides', () => {
   it('offers all three sides by default (no config restriction)', () => {
@@ -81,6 +83,65 @@ describe('allowedCreasingCounts, wired to the real catalog', () => {
       const elem = MOCK_CATALOG.products.find((p) => p.id === id)!.elementals[0];
       expect(allowedCreasingCounts(elem, MOCK_CATALOG.config[id])).toEqual([]);
     }
+  });
+});
+
+describe('allowedRoundedCorners', () => {
+  // The fixture paper is 250 GSM, comfortably over the 170 threshold.
+  const heavy = makeElemental();
+
+  it('offers all four corners when the config says nothing', () => {
+    expect(allowedRoundedCorners(heavy)).toEqual([1, 2, 3, 4]);
+    expect(allowedRoundedCorners(heavy, makeConfig())).toEqual([1, 2, 3, 4]);
+  });
+
+  it('offers nothing below the 170 GSM threshold, whatever the config asks for', () => {
+    const thin = makeElemental({ media: makePaper({ id: 'p2', gsm: 120 }) });
+    expect(allowedRoundedCorners(thin)).toEqual([]);
+    // The media is the ceiling — a config cannot round a corner the stock won't hold.
+    expect(allowedRoundedCorners(thin, makeConfig({ allowedRoundedCorners: [1] }))).toEqual([]);
+  });
+
+  it('offers nothing on a sticker, which is die-cut to shape already', () => {
+    expect(allowedRoundedCorners(makeElemental({ media: makeSticker() }))).toEqual([]);
+  });
+
+  it('narrows to the corners a product offers', () => {
+    // 1 = top-left, 2 = top-right: a hang tag rounded only along its top edge.
+    expect(allowedRoundedCorners(heavy, makeConfig({ allowedRoundedCorners: [1, 2] })))
+      .toEqual([1, 2]);
+  });
+
+  it('rules rounding out entirely with an empty list', () => {
+    expect(allowedRoundedCorners(heavy, makeConfig({ allowedRoundedCorners: [] }))).toEqual([]);
+  });
+});
+
+describe('allowedRoundedCorners, wired to the real catalog', () => {
+  // Afiș and Mapă de Prezentare opt out by shape, not by weight — heavy board
+  // must still come back empty. This replaced a hand-maintained blocklist of
+  // element ids, so it is asserted per category: a folder product added later
+  // has to inherit the opt-out rather than be appended to a list by hand.
+  it.each(['afis', 'folder'])('keeps corners off every %s product, on any stock', (categoryId) => {
+    const products = MOCK_CATALOG.products.filter((p) => p.categoryId === categoryId);
+    // Guards the reverse failure: a renamed category silently emptying the loop.
+    expect(products.length).toBeGreaterThan(0);
+    const board = MOCK_PAPERS.find((p) => p.gsm === 350)!;
+    for (const product of products) {
+      const config = MOCK_CATALOG.config[product.id];
+      expect(config, `${product.id} has no config entry`).toBeDefined();
+      for (const elem of product.elementals) {
+        expect(allowedRoundedCorners(elem, config), product.id).toEqual([]);
+        // …and not merely because the default stock is too light.
+        expect(allowedRoundedCorners({ ...elem, media: board }, config), `${product.id} on 350 GSM`)
+          .toEqual([]);
+      }
+    }
+  });
+
+  it('still offers corners on a business card, the case the opt-out must not catch', () => {
+    const card = MOCK_CATALOG.products.find((p) => p.id === 'prod4a')!.elementals[0];
+    expect(allowedRoundedCorners(card, MOCK_CATALOG.config['prod4a'])).toEqual([1, 2, 3, 4]);
   });
 });
 

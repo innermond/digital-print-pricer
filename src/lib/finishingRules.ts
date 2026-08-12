@@ -6,9 +6,6 @@ const ALL_LAMINATION_SIDES: LaminationSides[] = ['front', 'back', 'both'];
 const ALL_CREASING_COUNTS = [0, 1, 2, 3, 4, 5];
 const ALL_ROUNDED_CORNERS: RoundedCorner[] = [1, 2, 3, 4];
 
-// The folded A3 cover of a Mapă de Prezentare, one per folder product.
-const FOLDER_COVER_IDS = ['elem3a-1', 'elem3c-1', 'elem3d-1', 'elem3e-1'];
-
 export const allowedLaminationTypes = (elem: Elemental): LaminationType[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
@@ -72,15 +69,25 @@ export const allowedCreasingCounts = (elem: Elemental, config?: ProductConfig): 
   return allowed ? byMedia.filter((count) => allowed.includes(count)) : byMedia;
 };
 
-export const allowedRoundedCorners = (elem: Elemental): RoundedCorner[] => {
-  if ([
-    'elem0a-1', 'elem0b-1', 'elem0c-1', 'elem0d-1',
-    ...FOLDER_COVER_IDS,
-  ].includes(elem.id)) return [];
+// What the stock itself can take: a sticker is die-cut to shape already, and
+// paper under 170 GSM frays instead of cutting clean.
+const roundableByMedia = (elem: Elemental): RoundedCorner[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
     case 'paper':   return elem.media.gsm < 170 ? [] : ALL_ROUNDED_CORNERS;
   }
+};
+
+// Rounding is a customer choice, so the corners on offer are catalog data. The
+// media sets the physical ceiling; a product narrows it from there — to a subset
+// (only the two top corners of a hang tag, say), or to nothing at all when the
+// shape rules rounding out regardless of weight: a poster is trimmed square, and
+// a Mapă de Prezentare cover is a folded panel rather than a cut card. Omit the
+// config field to offer whatever the stock allows.
+export const allowedRoundedCorners = (elem: Elemental, config?: ProductConfig): RoundedCorner[] => {
+  const byMedia = roundableByMedia(elem);
+  const allowed = config?.allowedRoundedCorners;
+  return allowed ? byMedia.filter((corner) => allowed.includes(corner)) : byMedia;
 };
 
 // Whether this elemental has any finishing to offer at all. Every dimension can be
@@ -90,5 +97,5 @@ export const hasFinishingOptions = (elem: Elemental, config: ProductConfig): boo
   allowedLaminationTypes(elem).length > 0 ||
   allowedFoldTypes(config).length > 0 ||
   allowedCreasingCounts(elem, config).length > 0 ||
-  allowedRoundedCorners(elem).length > 0 ||
+  allowedRoundedCorners(elem, config).length > 0 ||
   Boolean(config.allowedStaple);

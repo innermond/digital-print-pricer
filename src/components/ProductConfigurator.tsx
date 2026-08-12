@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import type { Product, ProductCategory, Elemental, SizeUnit } from '../types';
-import { MOCK_CATALOG } from '../data/catalog';
+import { MOCK_CATALOG, warnIfCatalogPredatesRoundedCorners } from '../data/catalog';
 import type { Catalog } from '../data/catalog';
 import { AppHeader } from './AppHeader';
 import { StageProgress, StageNav } from './StageProgress';
@@ -112,6 +112,12 @@ export default function ProductConfigurator({
   useEffect(() => {
     stageHeadingRef.current?.focus();
   }, [stage]);
+
+  // Dev-only: flag a host catalog that predates `allowedRoundedCorners`. In an
+  // effect rather than in render, so it runs once per catalog, not per re-render.
+  useEffect(() => {
+    warnIfCatalogPredatesRoundedCorners(catalog);
+  }, [catalog]);
 
   const selectCategory = (categoryId: ProductCategory['id'] | null) => {
     setSelectedCategoryId(categoryId);

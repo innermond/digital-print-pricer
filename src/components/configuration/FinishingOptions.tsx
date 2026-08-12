@@ -31,7 +31,7 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
   const laminationTypes = allowedLaminationTypes(element);
   const foldTypes = allowedFoldTypes(config);
   const creasingCounts = allowedCreasingCounts(element, config);
-  const roundedCorners = allowedRoundedCorners(element);
+  const roundedCorners = allowedRoundedCorners(element, config);
 
   // Every sub-control can be ruled out at once (e.g. a 120 GSM flyer). Drop the
   // whole section rather than leaving a "Finisare" heading over nothing.
