@@ -80,6 +80,12 @@ describe('allowedCreasingCounts, per-element cap', () => {
       finishing: makeFinishing({ creasing: { count, max } }),
     });
 
+  const ranged = (min: number | undefined, max: number | undefined, count = 0) =>
+    makeElemental({
+      media: makePaper({ id: 'p5', gsm: 250 }),
+      finishing: makeFinishing({ creasing: { count, min, max } }),
+    });
+
   it('caps at an inclusive maximum', () => {
     expect(allowedCreasingCounts(capped(2))).toEqual([0, 1, 2]);
   });
@@ -113,6 +119,35 @@ describe('allowedCreasingCounts, per-element cap', () => {
   it('leaves an uncapped elemental on the product-level path', () => {
     expect(allowedCreasingCounts(capped(undefined), makeConfig({ allowedCreasingCounts: [0, 2, 4] })))
       .toEqual([0, 2, 4]);
+  });
+
+  it('treats an undefined min as 0, unchanged from max alone', () => {
+    expect(allowedCreasingCounts(ranged(undefined, 3))).toEqual([0, 1, 2, 3]);
+  });
+
+  it('narrows both ends of the range inclusively', () => {
+    expect(allowedCreasingCounts(ranged(1, 3))).toEqual([1, 2, 3]);
+  });
+
+  it('pins a single value when min equals max — the structural cover case', () => {
+    expect(allowedCreasingCounts(ranged(2, 2))).toEqual([2]);
+  });
+
+  it('applies a min with no max, floored only from below', () => {
+    expect(allowedCreasingCounts(ranged(3, undefined))).toEqual([3, 4, 5]);
+  });
+
+  it('replaces the product-level list with a min alone, same as max alone', () => {
+    expect(allowedCreasingCounts(ranged(3, undefined), makeConfig({ allowedCreasingCounts: [0] })))
+      .toEqual([3, 4, 5]);
+  });
+
+  it('is still floored by the media, which a min cannot lift', () => {
+    const thin = makeElemental({
+      media: makePaper({ id: 'p2', gsm: 120 }),
+      finishing: makeFinishing({ creasing: { count: 0, min: 1, max: 5 } }),
+    });
+    expect(allowedCreasingCounts(thin)).toEqual([]);
   });
 
   // Regression guard for the bug this field exists to fix: the cap used to be

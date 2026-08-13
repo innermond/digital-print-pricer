@@ -18,10 +18,10 @@ const STORAGE_VERSION = 'v3';
  * Only the first should survive a reload — a constraint read back from an old
  * cache silently ignores the catalog, so editing it appears to do nothing.
  *
- * `finishing.creasing.max` is the only such field on an Elemental today. Add any
- * future constraint that lives on the elemental here, or it will drift the same
- * way. Ids missing from the catalog are left alone rather than dropped, so an
- * imported product list still round-trips.
+ * `finishing.creasing.min`/`.max` are the only such fields on an Elemental
+ * today. Add any future constraint that lives on the elemental here, or it
+ * will drift the same way. Ids missing from the catalog are left alone rather
+ * than dropped, so an imported product list still round-trips.
  */
 const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =>
   saved.map((product) => {
@@ -36,7 +36,11 @@ const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =
           ...elem,
           finishing: {
             ...elem.finishing,
-            creasing: { ...elem.finishing.creasing, max: baseElem.finishing.creasing.max },
+            creasing: {
+              ...elem.finishing.creasing,
+              min: baseElem.finishing.creasing.min,
+              max: baseElem.finishing.creasing.max,
+            },
           },
         };
       }),

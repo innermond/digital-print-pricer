@@ -67,7 +67,7 @@ export type ProductConfig = {
   // Omit to offer the full 0-5 range on paper heavy enough to take a crease; use []
   // to rule creasing out; use a single value to fix it structurally.
   allowedCreasingCounts?: number[];
-  // Per-element creasing is set on the elemental itself, as finishing.creasing.max
+  // Per-element creasing is set on the elemental itself, as finishing.creasing.min/max
   // — authored where the part is defined rather than in an id-keyed record here.
   binding?: { type: BindingType; allowedColors?: SpiralColor[] };
   // The glued-in paper pocket of a presentation folder. Like binding, it is a stock
@@ -969,7 +969,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'soft-touch', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2, max: 2 },
+          creasing: { count: 2, min: 2, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1035,7 +1035,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'matt', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2, max: 2 },
+          creasing: { count: 2, min: 2, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
