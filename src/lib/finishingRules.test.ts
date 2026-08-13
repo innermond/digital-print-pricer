@@ -162,9 +162,9 @@ describe('allowedCreasingCounts, per-element cap', () => {
 });
 
 describe('allowedCreasingCounts, wired to the real catalog', () => {
-  it('fixes a Mapă de Prezentare cover at the two structural creases', () => {
+  it('bounds a Mapă de Prezentare cover to its structural range of one or two creases', () => {
     const cover = MOCK_CATALOG.products.find((p) => p.id === 'prod3a')!.elementals[0];
-    expect(allowedCreasingCounts(cover, MOCK_CATALOG.config['prod3a'])).toEqual([2]);
+    expect(allowedCreasingCounts(cover, MOCK_CATALOG.config['prod3a'])).toEqual([1, 2]);
   });
 
   it('keeps creasing off posters, business cards and hang tags', () => {

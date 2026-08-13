@@ -48,6 +48,7 @@ export default function ProductConfigurator({
     products,
     updateElemental,
     updateBinding,
+    updatePocketEnabled,
     setProductSize,
     updateProductAmount,
     setProductAmount,
@@ -88,10 +89,12 @@ export default function ProductConfigurator({
     (e: Elemental) => e.id === selectedElementalId
   );
   const config = catalog.config[selectedProductId];
+  // Undefined means on — matches the pocket always showing before this field existed.
+  const pocketOn = selectedProduct?.pocketEnabled ?? true;
   // Derived, never stored: the pocket only takes Elemental shape for the payload.
   // Left to the React Compiler to memoize — a hand-written useMemo here had
   // narrower deps than the compiler could infer, so it skipped the component.
-  const pocketElem = config?.pocket ? pocketElemental(config.pocket, catalog.media) : null;
+  const pocketElem = config?.pocket && pocketOn ? pocketElemental(config.pocket, catalog.media) : null;
 
   const { status: priceStatus, retry: retryPrice } = useAutoPrice({
     product: selectedProduct,
@@ -217,6 +220,7 @@ export default function ProductConfigurator({
                 onCustomSizeUnitChange={setCustomSizeUnit}
                 onUpdateElemental={updateElemental}
                 onUpdateBinding={updateBinding}
+                onUpdatePocketEnabled={updatePocketEnabled}
                 onSetProductSize={setProductSize}
               />
             )}
@@ -225,7 +229,7 @@ export default function ProductConfigurator({
               <SummaryStage
                 product={selectedProduct}
                 element={selectedElemental}
-                pocket={config?.pocket}
+                pocket={pocketOn ? config?.pocket : undefined}
                 personalized={!!selectedProduct && isPersonalized(selectedProduct)}
               />
             )}

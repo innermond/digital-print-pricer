@@ -14,6 +14,7 @@ type ConfigureStageProps = {
   onCustomSizeUnitChange: (unit: SizeUnit) => void;
   onUpdateElemental: (elementId: Elemental['id'], updates: Partial<Elemental>) => void;
   onUpdateBinding: (productId: Product['id'], binding: Binding) => void;
+  onUpdatePocketEnabled: (productId: Product['id'], enabled: boolean) => void;
   onSetProductSize: (productId: Product['id'], size: Elemental['size']) => void;
 };
 
@@ -26,6 +27,7 @@ export function ConfigureStage({
   onCustomSizeUnitChange,
   onUpdateElemental,
   onUpdateBinding,
+  onUpdatePocketEnabled,
   onSetProductSize,
 }: ConfigureStageProps) {
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,14 @@ export function ConfigureStage({
             onChange={(binding) => onUpdateBinding(product.id, binding)}
           />
         )}
-        {config.pocket && <PocketControl pocket={config.pocket} media={catalog.media} />}
+        {config.pocket && (
+          <PocketControl
+            pocket={config.pocket}
+            media={catalog.media}
+            enabled={product.pocketEnabled ?? true}
+            onChange={(enabled) => onUpdatePocketEnabled(product.id, enabled)}
+          />
+        )}
       </div>
     ) : null;
 

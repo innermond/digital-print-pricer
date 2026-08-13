@@ -94,6 +94,12 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     );
   };
 
+  const updatePocketEnabled = (productId: Product['id'], pocketEnabled: boolean) => {
+    setProducts(prev =>
+      prev.map(p => (p.id === productId ? { ...p, pocketEnabled } : p))
+    );
+  };
+
   // Apply one size to every elemental of a product (multi-element products
   // physically share a single size).
   const setProductSize = (productId: Product['id'], size: Elemental['size']) => {
@@ -132,7 +138,11 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     const base = baselineProduct(id);
     if (!base) return;
     setProducts(prev =>
-      prev.map(p => (p.id === id ? { ...p, elementals: base.elementals, binding: base.binding } : p))
+      prev.map(p =>
+        p.id === id
+          ? { ...p, elementals: base.elementals, binding: base.binding, pocketEnabled: base.pocketEnabled }
+          : p
+      )
     );
   };
 
@@ -184,6 +194,7 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     products,
     updateElemental,
     updateBinding,
+    updatePocketEnabled,
     setProductSize,
     updateProductAmount,
     setProductAmount,

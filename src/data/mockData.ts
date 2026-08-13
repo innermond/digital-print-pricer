@@ -343,7 +343,6 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,
-    allowedCreasingCounts: [2],
     explanation: 'Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium.',
   },
   prod3c: {
@@ -352,7 +351,6 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod3d: {
     ...FOLDER_CATEGORY_CONFIG,
-    pocket: false,
     explanation: 'Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
   },
   prod3e: {
@@ -969,7 +967,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'soft-touch', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2, min: 2, max: 2 },
+          creasing: { count: 2, min: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -991,7 +989,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 1, max: 2 },
+          creasing: { count: 1, min: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1002,6 +1000,9 @@ export const MOCK_PRODUCTS: Product[] = [
     categoryId: 'folder',
     label: 'Mapă fără Buzunar, fără Cotor',
     amount: 1,
+    // The catalog still offers a pocket (via FOLDER_CATEGORY_CONFIG) so the
+    // toggle in the UI can turn it back on, but this variant ships without one.
+    pocketEnabled: false,
     elementals: [
       {
         id: 'elem3d-1',
@@ -1013,7 +1014,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 1, max: 2 },
+          creasing: { count: 1, min: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1022,7 +1023,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3e',
     categoryId: 'folder',
-    label: 'Mapă Mat cu Buzunar',
+    label: 'Mapă Laminată Mat cu Buzunar',
     amount: 1,
     elementals: [
       {
@@ -1035,7 +1036,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'matt', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2, min: 2, max: 2 },
+          creasing: { count: 2, min: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
