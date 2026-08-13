@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
-import { makeConfig, makeElemental, makePaper } from '../test/fixtures';
+import { makeConfig, makeElemental, makePaper, makeMachine } from '../test/fixtures';
 
 // The panel filters the media/sizes it's given by the config, so use real ids:
 // p2 = "120 GSM - Lucios", p3 = "150 GSM - Mat", s1 = A4, s2 = A5.
@@ -19,6 +19,7 @@ function renderPanel(overrides: Partial<Parameters<typeof ConfigurationPanel>[0]
     config,
     media: MOCK_MEDIA,
     sizes: MOCK_SIZES,
+    machines: [makeMachine()],
     ...overrides,
   };
   render(<ConfigurationPanel {...props} />);
@@ -40,6 +41,22 @@ describe('ConfigurationPanel', () => {
     expect(screen.getByText('A4')).toBeInTheDocument();
     expect(screen.getByText('A5')).toBeInTheDocument();
     expect(screen.queryByText('A3')).not.toBeInTheDocument();
+  });
+
+  it('excludes preset sizes larger than the resolved machine max, with a note why', () => {
+    // A4 is 210x297mm; a 200mm-wide machine rules it out but not A5 (148x210mm).
+    renderPanel({
+      config: makeConfig({ allowedSizeIds: ['s1', 's2'], machineId: 'm1' }),
+      machines: [makeMachine({ id: 'm1', maxWidthMm: 200, maxHeightMm: 450 })],
+    });
+    expect(screen.getByText('A5')).toBeInTheDocument();
+    expect(screen.queryByText('A4')).not.toBeInTheDocument();
+    expect(screen.getByText(/depășesc limita presei/)).toBeInTheDocument();
+  });
+
+  it('shows no hidden-by-machine note when the config resolves no machine', () => {
+    renderPanel();
+    expect(screen.queryByText(/depășesc limita presei/)).not.toBeInTheDocument();
   });
 
   it('renders printing as an essential and finishing behind the disclosure', async () => {

@@ -2,6 +2,7 @@ export * from './Binding';
 export * from './Category';
 export * from './Elemental';
 export * from './Finishing';
+export * from './Machine';
 export * from './Media';
 export * from './Pocket';
 export * from './Printing';

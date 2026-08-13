@@ -73,4 +73,14 @@ describe('SizeSelector', () => {
     await user.click(screen.getByText('Personalizat'));
     expect(props.onRequestCustomSize).toHaveBeenCalled();
   });
+
+  it('notes that some presets are hidden by the machine limit', () => {
+    renderSelector({ machineLimitHidesSizes: true });
+    expect(screen.getByText(/depășesc limita presei/)).toBeInTheDocument();
+  });
+
+  it('shows no note when nothing was hidden by the machine', () => {
+    renderSelector();
+    expect(screen.queryByText(/depășesc limita presei/)).not.toBeInTheDocument();
+  });
 });

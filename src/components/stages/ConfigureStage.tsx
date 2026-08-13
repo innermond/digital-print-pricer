@@ -121,6 +121,7 @@ export function ConfigureStage({
           config={config}
           media={catalog.media}
           sizes={catalog.sizes}
+          machines={catalog.machines}
           baseline={catalog.products.find((p) => p.id === product.id)}
           productExtras={productExtras}
         />

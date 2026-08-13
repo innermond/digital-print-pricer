@@ -1,4 +1,4 @@
-import type { Elemental, Finishing, Paper, Size, Sticker } from '../types';
+import type { Elemental, Finishing, Machine, Paper, Size, Sticker } from '../types';
 import type { ProductConfig } from '../data/mockData';
 
 export const makePaper = (overrides: Partial<Paper> = {}): Paper => ({
@@ -46,6 +46,14 @@ export const makeElemental = (overrides: Partial<Elemental> = {}): Elemental => 
   pageCount: 2,
   printing: { front: 'color', back: 'none' },
   finishing: makeFinishing(),
+  ...overrides,
+});
+
+export const makeMachine = (overrides: Partial<Machine> = {}): Machine => ({
+  id: 'm1',
+  label: 'Presă Digitală',
+  maxWidthMm: 320,
+  maxHeightMm: 450,
   ...overrides,
 });
 

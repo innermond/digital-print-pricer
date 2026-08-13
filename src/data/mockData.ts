@@ -1,4 +1,4 @@
-import type { Paper, Sticker, Media, Size, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
+import type { Paper, Sticker, Media, Size, Machine, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
@@ -29,6 +29,13 @@ export const MOCK_SIZES: Size[] = [
   { id: 's7', label: 'A3+',                   width: 320, height: 450, unit: 'mm', widthMm: 320,   heightMm: 450   },
 ];
 
+// The physical ceiling a print is bound by, regardless of what a product's
+// config otherwise allows. One press today; maxWidthMm/maxHeightMm match the
+// largest current preset (A3+), so nothing existing is filtered out.
+export const MOCK_MACHINES: Machine[] = [
+  { id: 'm1', label: 'Presă Digitală', maxWidthMm: 320, maxHeightMm: 450 },
+];
+
 export type PageCountConstraint =
   | { kind: 'derived' }
   | { kind: 'fixed';    value: number }
@@ -37,6 +44,11 @@ export type PageCountConstraint =
 export type ProductConfig = {
   allowedMediaIds: string[];
   allowedSizeIds: string[];
+  // The printing machine (see MOCK_MACHINES) whose maxWidthMm/maxHeightMm this
+  // product is bound by. Omit for a host catalog that predates the concept —
+  // warnIfCatalogPredatesMachine flags the drift in dev rather than silently
+  // enforcing no ceiling at all.
+  machineId?: string;
   recommendedMediaId: string;
   recommendedSizeId: string;
   // Whether all elementals must share one size. Defaults to true for products
@@ -86,9 +98,10 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 
 // Shared constraints for the "afis" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
-const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
+const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s0', 's1'],
+  machineId: 'm1',
   allowedFoldTypes: ['none'],
   // A poster hangs flat and gets trimmed square — nothing to crease, nothing to
   // round, however heavy the stock.
@@ -101,17 +114,19 @@ const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSize
 
 // Shared constraints for the "flyer" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
-const FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'allowedFoldTypes'> = {
+const FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'allowedFoldTypes'> = {
   allowedMediaIds: ['p1', 'p2', 'p3', 'p4'],
   allowedSizeIds: ['s4', 's3', 's2', 's1'],
+  machineId: 'm1',
   allowedFoldTypes: ['none'],
 };
 
 // Shared constraints for the "brochure" category — presets within this category only
 // differ by their interior page count.
-const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
+const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
+  machineId: 'm1',
   recommendedMediaId: 'p3',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none', 'half-fold'],
@@ -120,9 +135,10 @@ const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // Shared constraints for the "folder" category — presets within this category only
 // differ by the lamination of the cover. Every folder includes the paper pocket, a
 // fixed accessory rather than a configurable element.
-const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket'> = {
+const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket'> = {
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s1'],
+  machineId: 'm1',
   recommendedMediaId: 'p6',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
@@ -145,20 +161,22 @@ const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSi
 
 // Shared constraints for the "business-card" category — presets within this category only
 // differ by their initial size and printing selections.
-const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
+const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
   // A card is a single flat piece — never creased.
   allowedCreasingCounts: [],
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s5', 's6'],
+  machineId: 'm1',
   recommendedMediaId: 'p6',
   allowedFoldTypes: ['none'],
 };
 
 // Shared constraints for the "folded-flyer" category — presets within this category only
 // differ by their initial fold type and panel count.
-const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
+const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
   allowedMediaIds: ['p1', 'p2', 'p3', 'p4'],
   allowedSizeIds: ['s1', 's2', 's4'],
+  machineId: 'm1',
   recommendedMediaId: 'p2',
   recommendedSizeId: 's4',
   allowedFoldTypes: ['half-fold', 'tri-fold', 'z-fold', 'gate-fold'],
@@ -166,9 +184,10 @@ const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'all
 
 // Shared constraints for the "sticker-sheet" category — presets within this category only
 // differ by their initial media (face finish) and size.
-const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedPrintingBacks'> = {
+const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedPrintingBacks'> = {
   allowedMediaIds: ['p7', 'p8', 'p9', 'p10'],
   allowedSizeIds: ['s0', 's1', 's2'],
+  machineId: 'm1',
   recommendedMediaId: 'p7',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
@@ -177,9 +196,10 @@ const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'al
 
 // Shared constraints for the "spiral-catalog" category — presets within this category only
 // differ by their interior page count.
-const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'binding'> = {
+const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'binding'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
+  machineId: 'm1',
   recommendedMediaId: 'p3',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
@@ -189,9 +209,10 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'a
 // Shared constraints for the "calendar" category — presets within this category
 // only differ by page size and by the elemental ids their per-part rules are
 // keyed on. Every calendar is cover + month sheets + back cover on a spiral.
-const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationTypes' | 'allowedRoundedCorners' | 'binding'> = {
+const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationTypes' | 'allowedRoundedCorners' | 'binding'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s1', 's2', 's7'],
+  machineId: 'm1',
   recommendedMediaId: 'p6',
   recommendedSizeId: 's7',
   allowedFoldTypes: ['none'],
@@ -204,9 +225,10 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 
 // Shared constraints for the "cardboard-label" category — presets within this category only
 // differ by their initial size and staple selection.
-const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
+const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
   allowedMediaIds: ['p5', 'p6'],
   allowedSizeIds: ['s5', 's6'],
+  machineId: 'm1',
   recommendedMediaId: 'p6',
   allowedFoldTypes: ['none'],
   // A hang tag is a flat piece of card — never creased.
@@ -617,7 +639,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod0d',
     categoryId: 'afis',
     label: 'Afiș A4 Alb-Negru, Față',
-    amount: 20,
+    amount: 30,
     elementals: [
       {
         id: 'elem0d-1',

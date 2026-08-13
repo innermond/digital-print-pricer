@@ -1,6 +1,6 @@
-import type { Product, ProductCategory, Media, Size } from '../types';
+import type { Product, ProductCategory, Media, Size, Machine } from '../types';
 import type { ProductConfig } from './mockData';
-import { MOCK_PRODUCTS, PRODUCT_CONFIG, PRODUCT_CATEGORIES, MOCK_MEDIA, MOCK_SIZES } from './mockData';
+import { MOCK_PRODUCTS, PRODUCT_CONFIG, PRODUCT_CATEGORIES, MOCK_MEDIA, MOCK_SIZES, MOCK_MACHINES } from './mockData';
 
 // Everything the configurator needs to render, in one serializable object.
 // Standalone dev uses MOCK_CATALOG (assembled from mockData); a host app
@@ -11,6 +11,7 @@ export type Catalog = {
   categories: ProductCategory[];
   media: Media[];
   sizes: Size[];
+  machines: Machine[];
 };
 
 export const MOCK_CATALOG: Catalog = {
@@ -19,6 +20,7 @@ export const MOCK_CATALOG: Catalog = {
   categories: PRODUCT_CATEGORIES,
   media: MOCK_MEDIA,
   sizes: MOCK_SIZES,
+  machines: MOCK_MACHINES,
 };
 
 let warnedAboutRoundedCorners = false;
@@ -48,5 +50,30 @@ export const warnIfCatalogPredatesRoundedCorners = (catalog: Catalog): void => {
     'will now offer rounded corners they cannot be produced with. Re-seed it with ' +
     '`npm run dump:catalog`. (Harmless if every product in your catalog really does ' +
     'allow rounded corners.)'
+  );
+};
+
+let warnedAboutMachine = false;
+
+/**
+ * Dev-only drift check on a host-injected catalog.
+ *
+ * `machineId` is what ties a product to the printing machine's max
+ * width/height (`catalog.machines`), and it restricts. A catalog that
+ * predates it doesn't fail — it quietly stops enforcing any print-size
+ * ceiling at all, letting a custom size of any dimensions through. Re-seeding
+ * the host catalog is the actual fix; this is only a smoke detector for local
+ * and staging.
+ */
+export const warnIfCatalogPredatesMachine = (catalog: Catalog): void => {
+  if (!import.meta.env.DEV || warnedAboutMachine) return;
+  const configs = Object.values(catalog.config);
+  if (configs.length === 0) return;
+  if (configs.some((c) => c.machineId !== undefined)) return;
+  warnedAboutMachine = true;
+  console.warn(
+    '[pricer] No product config declares `machineId`. If this catalog came from a host ' +
+    'endpoint it likely predates that field, so no printing-machine max width/height is ' +
+    'being enforced on any product. Re-seed it with `npm run dump:catalog`.'
   );
 };

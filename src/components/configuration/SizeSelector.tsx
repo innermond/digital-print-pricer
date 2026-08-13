@@ -13,6 +13,10 @@ type SizeSelectorProps = {
   // Reveals the exact-dimensions control, which lives in the advanced section.
   onRequestCustomSize?: () => void;
   badgeText?: string;
+  // True when at least one preset the product's config would otherwise offer
+  // was left out of `sizes` for exceeding the printing machine's max — so a
+  // missing preset reads as a press limit rather than a vanished option.
+  machineLimitHidesSizes?: boolean;
 };
 
 export function SizeSelector({
@@ -23,6 +27,7 @@ export function SizeSelector({
   onSizeChange,
   onRequestCustomSize,
   badgeText,
+  machineLimitHidesSizes,
 }: SizeSelectorProps) {
   const headingId = useId();
 
@@ -91,6 +96,12 @@ export function SizeSelector({
           </div>
         </button>
       </div>
+
+      {machineLimitHidesSizes && (
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          Unele dimensiuni presetate depășesc limita presei și nu sunt afișate.
+        </p>
+      )}
     </div>
   );
 

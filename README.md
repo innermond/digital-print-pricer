@@ -33,7 +33,8 @@ Catalog = {
   "config":     { /* Record<productId, ProductConfig> — the settings below */ },
   "categories": [ /* ProductCategory[] */ ],
   "media":      [ /* Media[] — papers + stickers */ ],
-  "sizes":      [ /* Size[] */ ]
+  "sizes":      [ /* Size[] */ ],
+  "machines":   [ /* Machine[] — printing machines, referenced by config.machineId */ ]
 }
 ```
 
@@ -49,10 +50,17 @@ product id to a `ProductConfig`. Everything below is a field of that object.
 | `recommendedMediaId` | `string` | Media id highlighted as "recomandat" (must be inside `allowedMediaIds`). |
 | `recommendedSizeId` | `string` | Size id highlighted as "recomandat" (must be inside `allowedSizeIds`). |
 | `sharedSize` | `boolean` | For multi-element products, whether all elements share one size. Defaults to `true` when a product has more than one element; set `false` to allow a size per element. |
+| `machineId` | `string` | Which `Catalog.machines` entry this product's size is bound by. **Omit → no ceiling enforced** (a host catalog that predates this field just doesn't restrict size; `warnIfCatalogPredatesMachine` flags the drift in dev). |
 
 Built-in media ids: `p1` 90g Silk, `p2` 120g Lucios, `p3` 150g Mat, `p4` 200g
 Soft-touch, `p5` 250g Lucios, `p6` 350g Mat, `p7`–`p10` stickers.
 Size ids: `s0` A3, `s1` A4, `s2` A5, `s3` Letter, `s4` 1/3 A4, `s5`/`s6` business cards.
+
+A `Machine` is `{ id, label, maxWidthMm, maxHeightMm }` — the physical ceiling
+a print can't exceed, whatever a product's config otherwise allows. Sizes above
+it are filtered out of the size-preset selector, and the exact-dimensions
+inputs (`CustomSizeControl`) clamp to it as the user types or steps. Built-in:
+`m1` — 320×450mm, matching the largest preset (A3+).
 
 ## Printing
 
@@ -137,6 +145,7 @@ square.
   "prod0a": {
     "allowedMediaIds": ["p2", "p3", "p4", "p5", "p6"],
     "allowedSizeIds": ["s0", "s1"],
+    "machineId": "m1",
     "recommendedMediaId": "p2",
     "recommendedSizeId": "s0",
     "allowedFoldTypes": ["none"],

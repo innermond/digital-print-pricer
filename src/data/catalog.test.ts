@@ -1,24 +1,25 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import type { ProductConfig } from './mockData';
 import type { Catalog } from './catalog';
 import { MOCK_CATALOG } from './catalog';
 
 // The warning latches on a module-level flag so it fires once per page load, so
 // every case needs a fresh module instance.
-async function freshWarn() {
+async function freshWarn(name: 'warnIfCatalogPredatesRoundedCorners' | 'warnIfCatalogPredatesMachine') {
   vi.resetModules();
   const mod = await import('./catalog');
-  return mod.warnIfCatalogPredatesRoundedCorners;
+  return mod[name];
 }
 
 const withConfigs = (config: Catalog['config']): Catalog => ({ ...MOCK_CATALOG, config });
 
 // A host catalog that predates the field: same shape, field absent everywhere.
-const preMigrationCatalog = (): Catalog =>
+const preMigrationCatalog = (field: keyof ProductConfig): Catalog =>
   withConfigs(
     Object.fromEntries(
       Object.entries(MOCK_CATALOG.config).map(([id, c]) => {
         const copy = { ...c };
-        delete copy.allowedRoundedCorners;
+        delete copy[field];
         return [id, copy];
       })
     )
@@ -77,9 +78,9 @@ describe('warnIfCatalogPredatesRoundedCorners', () => {
 
   it('warns when no config in the catalog declares the field', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const check = await freshWarn();
+    const check = await freshWarn('warnIfCatalogPredatesRoundedCorners');
 
-    check(preMigrationCatalog());
+    check(preMigrationCatalog('allowedRoundedCorners'));
 
     expect(warn).toHaveBeenCalledTimes(1);
     expect(warn.mock.calls[0][0]).toContain('allowedRoundedCorners');
@@ -88,18 +89,18 @@ describe('warnIfCatalogPredatesRoundedCorners', () => {
 
   it('warns only once, however many times it is called', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const check = await freshWarn();
+    const check = await freshWarn('warnIfCatalogPredatesRoundedCorners');
 
-    check(preMigrationCatalog());
-    check(preMigrationCatalog());
-    check(preMigrationCatalog());
+    check(preMigrationCatalog('allowedRoundedCorners'));
+    check(preMigrationCatalog('allowedRoundedCorners'));
+    check(preMigrationCatalog('allowedRoundedCorners'));
 
     expect(warn).toHaveBeenCalledTimes(1);
   });
 
   it('stays quiet for the real catalog, which declares the field', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const check = await freshWarn();
+    const check = await freshWarn('warnIfCatalogPredatesRoundedCorners');
 
     check(MOCK_CATALOG);
 
@@ -108,7 +109,7 @@ describe('warnIfCatalogPredatesRoundedCorners', () => {
 
   it('stays quiet when even one config declares the field', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const check = await freshWarn();
+    const check = await freshWarn('warnIfCatalogPredatesRoundedCorners');
 
     // Post-migration by construction: the ~37 products that legitimately allow
     // corners omit the field, and that must not be mistaken for drift.
@@ -122,7 +123,65 @@ describe('warnIfCatalogPredatesRoundedCorners', () => {
 
   it('stays quiet for an empty catalog rather than crying drift', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const check = await freshWarn();
+    const check = await freshWarn('warnIfCatalogPredatesRoundedCorners');
+
+    check(withConfigs({}));
+
+    expect(warn).not.toHaveBeenCalled();
+  });
+});
+
+describe('warnIfCatalogPredatesMachine', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('warns when no config in the catalog declares machineId', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const check = await freshWarn('warnIfCatalogPredatesMachine');
+
+    check(preMigrationCatalog('machineId'));
+
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0][0]).toContain('machineId');
+    expect(warn.mock.calls[0][0]).toContain('npm run dump:catalog');
+  });
+
+  it('warns only once, however many times it is called', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const check = await freshWarn('warnIfCatalogPredatesMachine');
+
+    check(preMigrationCatalog('machineId'));
+    check(preMigrationCatalog('machineId'));
+    check(preMigrationCatalog('machineId'));
+
+    expect(warn).toHaveBeenCalledTimes(1);
+  });
+
+  it('stays quiet for the real catalog, which declares the field', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const check = await freshWarn('warnIfCatalogPredatesMachine');
+
+    check(MOCK_CATALOG);
+
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('stays quiet when even one config declares machineId', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const check = await freshWarn('warnIfCatalogPredatesMachine');
+
+    check(withConfigs({
+      a: { ...MOCK_CATALOG.config['prod0a'] },
+      ...preMigrationCatalog('machineId').config,
+    }));
+
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('stays quiet for an empty catalog rather than crying drift', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const check = await freshWarn('warnIfCatalogPredatesMachine');
 
     check(withConfigs({}));
 

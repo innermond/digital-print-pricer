@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import type { Product, ProductCategory, Elemental, SizeUnit } from '../types';
-import { MOCK_CATALOG, warnIfCatalogPredatesRoundedCorners } from '../data/catalog';
+import { MOCK_CATALOG, warnIfCatalogPredatesRoundedCorners, warnIfCatalogPredatesMachine } from '../data/catalog';
 import type { Catalog } from '../data/catalog';
 import { AppHeader } from './AppHeader';
 import { StageProgress, StageNav } from './StageProgress';
@@ -117,6 +117,7 @@ export default function ProductConfigurator({
   // effect rather than in render, so it runs once per catalog, not per re-render.
   useEffect(() => {
     warnIfCatalogPredatesRoundedCorners(catalog);
+    warnIfCatalogPredatesMachine(catalog);
   }, [catalog]);
 
   const selectCategory = (categoryId: ProductCategory['id'] | null) => {

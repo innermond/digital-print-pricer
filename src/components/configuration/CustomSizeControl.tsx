@@ -11,6 +11,9 @@ type CustomSizeControlProps = {
   customSizeUnit: SizeUnit;
   onSizeChange: (size: Size) => void;
   onUnitChange: (unit: SizeUnit) => void;
+  // The printing machine's ceiling, in mm. Omit for no ceiling.
+  maxWidthMm?: number;
+  maxHeightMm?: number;
 };
 
 // Exact width/height plus the display unit. Split out of SizeSelector: the
@@ -21,6 +24,8 @@ export function CustomSizeControl({
   customSizeUnit,
   onSizeChange,
   onUnitChange,
+  maxWidthMm,
+  maxHeightMm,
 }: CustomSizeControlProps) {
   const widthId = useId();
   const heightId = useId();
@@ -30,15 +35,20 @@ export function CustomSizeControl({
 
   const displayWidth = convertSize(currentSize.widthMm, 'mm', customSizeUnit);
   const displayHeight = convertSize(currentSize.heightMm, 'mm', customSizeUnit);
+  // Never above the machine ceiling, in the field's own display unit.
+  const maxDisplayWidth = maxWidthMm !== undefined ? convertSize(maxWidthMm, 'mm', customSizeUnit) : undefined;
+  const maxDisplayHeight = maxHeightMm !== undefined ? convertSize(maxHeightMm, 'mm', customSizeUnit) : undefined;
 
   const handleCustomSizeChange = (field: 'width' | 'height', value: string) => {
     const numValue = parseFloat(value) || 0;
-    const numMm = convertSize(numValue, customSizeUnit, 'mm');
+    const max = field === 'width' ? maxDisplayWidth : maxDisplayHeight;
+    const clampedValue = max !== undefined ? Math.min(numValue, max) : numValue;
+    const numMm = convertSize(clampedValue, customSizeUnit, 'mm');
     onSizeChange({
       id: 'custom',
       label: 'Personalizat',
-      width: field === 'width' ? numValue : displayWidth,
-      height: field === 'height' ? numValue : displayHeight,
+      width: field === 'width' ? clampedValue : displayWidth,
+      height: field === 'height' ? clampedValue : displayHeight,
       widthMm: field === 'width' ? numMm : currentSize.widthMm,
       heightMm: field === 'height' ? numMm : currentSize.heightMm,
       unit: customSizeUnit,
@@ -80,6 +90,9 @@ export function CustomSizeControl({
         <div className="flex-1 min-w-24">
           <label htmlFor={widthId} className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
             Lățime ({customSizeUnit})
+            {maxDisplayWidth !== undefined && (
+              <span className="text-amber-700 dark:text-amber-300"> · max {fmt(maxDisplayWidth)}</span>
+            )}
           </label>
           <NumericButton
             id={widthId}
@@ -93,6 +106,9 @@ export function CustomSizeControl({
         <div className="flex-1 min-w-24">
           <label htmlFor={heightId} className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
             Înălțime ({customSizeUnit})
+            {maxDisplayHeight !== undefined && (
+              <span className="text-amber-700 dark:text-amber-300"> · max {fmt(maxDisplayHeight)}</span>
+            )}
           </label>
           <NumericButton
             id={heightId}

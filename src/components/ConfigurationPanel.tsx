@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import type { Elemental, SizeUnit, Media, Size, Product } from '../types';
+import type { Elemental, SizeUnit, Media, Size, Machine, Product } from '../types';
 import type { ProductConfig } from '../data/mockData';
 import { MediaSelector } from './configuration/MediaSelector';
 import { SizeSelector } from './configuration/SizeSelector';
@@ -9,6 +9,7 @@ import { PageCountControl } from './configuration/PageCountControl';
 import { FinishingOptions } from './configuration/FinishingOptions';
 import { Disclosure } from './Disclosure';
 import { hasFinishingOptions } from '../lib/finishingRules';
+import { resolveMachine, fitsMachine } from '../lib/machine';
 import { advancedSummary } from '../lib/personalization';
 
 type ConfigurationPanelProps = {
@@ -19,6 +20,7 @@ type ConfigurationPanelProps = {
   config: ProductConfig;
   media: Media[];
   sizes: Size[];
+  machines: Machine[];
   // The pristine catalog version of this product, used to work out which
   // advanced settings have been changed.
   baseline?: Product;
@@ -35,12 +37,19 @@ export function ConfigurationPanel({
   config,
   media,
   sizes,
+  machines,
   baseline,
   productExtras,
 }: ConfigurationPanelProps) {
   const advancedRef = useRef<HTMLDivElement>(null);
   const availableMedia = media.filter((m) => config.allowedMediaIds.includes(m.id));
-  const availableSizes = sizes.filter((s) => config.allowedSizeIds.includes(s.id));
+  const machine = resolveMachine(config, machines);
+  const sizesInConfig = sizes.filter((s) => config.allowedSizeIds.includes(s.id));
+  const availableSizes = sizesInConfig.filter((s) => fitsMachine(s.widthMm, s.heightMm, machine));
+  // Distinct from a size never being in allowedSizeIds to begin with (ordinary
+  // catalog data, not worth flagging) — this is specifically the machine
+  // taking away a size the config would otherwise offer.
+  const hasSizesHiddenByMachine = availableSizes.length < sizesInConfig.length;
 
   const pageCountConstraint = config.elementalPageCounts?.[element.id];
   const showPageCount = pageCountConstraint?.kind === 'multiple';
@@ -69,6 +78,7 @@ export function ConfigurationPanel({
           onRequestCustomSize={() =>
             advancedRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
           }
+          machineLimitHidesSizes={hasSizesHiddenByMachine}
         />
       </section>
       {showPageCount && (
@@ -101,6 +111,8 @@ export function ConfigurationPanel({
               customSizeUnit={customSizeUnit}
               onSizeChange={(size) => onUpdate({ size })}
               onUnitChange={onCustomSizeUnitChange}
+              maxWidthMm={machine?.maxWidthMm}
+              maxHeightMm={machine?.maxHeightMm}
             />
             {hasFinishingOptions(element, config) && (
               <FinishingOptions element={element} config={config} onUpdate={onUpdate} />

@@ -71,4 +71,57 @@ describe('CustomSizeControl', () => {
     expect(screen.getByLabelText('Lățime (mm)')).toHaveAttribute('id');
     expect(screen.getByLabelText('Înălțime (mm)')).toHaveAttribute('id');
   });
+
+  it('clamps a typed width to the machine max', () => {
+    const { props } = renderControl({ maxWidthMm: 320 });
+
+    fireEvent.change(screen.getByLabelText(/Lățime/), { target: { value: '500' } });
+    expect(props.onSizeChange).toHaveBeenCalledWith(
+      expect.objectContaining({ width: 320, widthMm: 320 }),
+    );
+  });
+
+  it('clamps a typed height to the machine max', () => {
+    const { props } = renderControl({ maxHeightMm: 450 });
+
+    fireEvent.change(screen.getByLabelText(/Înălțime/), { target: { value: '900' } });
+    expect(props.onSizeChange).toHaveBeenCalledWith(
+      expect.objectContaining({ height: 450, heightMm: 450 }),
+    );
+  });
+
+  it('does not clamp a value within the machine max', () => {
+    const { props } = renderControl({ maxWidthMm: 320 });
+
+    fireEvent.change(screen.getByLabelText(/Lățime/), { target: { value: '250' } });
+    expect(props.onSizeChange).toHaveBeenCalledWith(
+      expect.objectContaining({ width: 250, widthMm: 250 }),
+    );
+  });
+
+  it('stops the "+" stepper from going past the machine max', async () => {
+    const user = userEvent.setup();
+    const { props } = renderControl({
+      currentSize: makeSize({ width: 320, height: 297, widthMm: 320, heightMm: 297 }),
+      maxWidthMm: 320,
+    });
+
+    // Both fields' "+" buttons share the same accessible name; index 0 is width.
+    await user.click(screen.getAllByRole('button', { name: 'Crește' })[0]);
+    expect(props.onSizeChange).toHaveBeenCalledWith(
+      expect.objectContaining({ width: 320, widthMm: 320 }),
+    );
+  });
+
+  it('shows the machine max as a hint on the label', () => {
+    renderControl({ maxWidthMm: 320, maxHeightMm: 450 });
+    expect(screen.getByLabelText('Lățime (mm) · max 320')).toBeInTheDocument();
+    expect(screen.getByLabelText('Înălțime (mm) · max 450')).toBeInTheDocument();
+  });
+
+  it('shows no max hint when there is no machine ceiling', () => {
+    renderControl();
+    expect(screen.getByLabelText('Lățime (mm)')).toBeInTheDocument();
+    expect(screen.getByLabelText('Înălțime (mm)')).toBeInTheDocument();
+  });
 });
