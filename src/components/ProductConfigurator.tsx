@@ -195,6 +195,11 @@ export default function ProductConfigurator({
             >
               {STAGES[stage].title}
             </h2>
+            {selectedProduct && (
+              <p className="mb-3 text-sm text-slate-500 dark:text-slate-400">
+                {selectedProduct.label}
+              </p>
+            )}
 
             {stage === 0 && (
               <ProductStage
