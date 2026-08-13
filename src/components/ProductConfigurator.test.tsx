@@ -90,8 +90,15 @@ describe('ProductConfigurator', () => {
       expect(screen.getAllByText(/Coală Simplă/).length).toBeGreaterThan(0);
     });
 
-    it('keeps the admin tools in the header', () => {
+    it('hides Export/Import by default but keeps Resetare', () => {
       renderConfigurator();
+      expect(screen.queryByRole('button', { name: /Export/ })).not.toBeInTheDocument();
+      expect(screen.queryByText('Import')).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Resetare/ })).toBeInTheDocument();
+    });
+
+    it('shows the admin tools in the header when explicitly enabled', () => {
+      renderConfigurator({ showExportImport: true });
       expect(screen.getByRole('button', { name: /Export/ })).toBeInTheDocument();
       expect(screen.getByText('Import')).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /Resetare/ })).toBeInTheDocument();

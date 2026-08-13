@@ -1,11 +1,11 @@
 import type { Paper, Sticker, Media, Size, Machine, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
-  { kind: 'paper', id: 'p1', label: '90 GSM - Silk',           gsm: 90,  finish: 'Silk',       explanation: 'Hârtie silk ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
+  { kind: 'paper', id: 'p1', label: '90 GSM - Mat',           gsm: 90,  finish: 'Matt',       explanation: 'Hârtie mată ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
   { kind: 'paper', id: 'p2', label: '120 GSM - Lucios',        gsm: 120, finish: 'Gloss',      explanation: 'Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere.' },
   { kind: 'paper', id: 'p3', label: '150 GSM - Mat',           gsm: 150, finish: 'Matt',       explanation: 'Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate.' },
-  { kind: 'paper', id: 'p4', label: '200 GSM - Soft-touch',    gsm: 200, finish: 'Soft-touch', explanation: 'Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje.' },
-  { kind: 'paper', id: 'p5', label: '300 GSM - Lucios Premium',gsm: 300, finish: 'Gloss',      explanation: 'Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor.' },
+  { kind: 'paper', id: 'p4', label: '200 GSM - Mat',    gsm: 200, finish: 'Matt', explanation: 'Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje.' },
+  { kind: 'paper', id: 'p5', label: '300 GSM - Mat Premium',gsm: 300, finish: 'Matt',      explanation: 'Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor.' },
   { kind: 'paper', id: 'p6', label: '350 GSM - Mat Premium',   gsm: 350, finish: 'Matt',       explanation: 'Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul.' },
 ];
 
@@ -15,6 +15,8 @@ export const MOCK_STICKERS: Sticker[] = [
   { kind: 'sticker', id: 'p9',  label: 'Etichetă Transparentă',  gsm: 80, face: 'Clear', explanation: 'Etichetă din film transparent. Creează un aspect de „fără etichetă" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt.' },
   { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
 ];
+
+// TODO add special papers
 
 export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_STICKERS];
 

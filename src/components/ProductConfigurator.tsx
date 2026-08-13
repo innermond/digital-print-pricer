@@ -28,6 +28,9 @@ type ProductConfiguratorProps = {
   priceEndpoint?: string | null;
   // Host-supplied header markup — see AppHeader (NOT sanitized; XSS risk).
   powerText?: string;
+  // Show the Export/Import admin tools in the header. Hidden by default —
+  // a host must opt in explicitly. Resetare is always shown regardless.
+  showExportImport?: boolean;
 };
 
 // ============ MAIN APP ============
@@ -37,6 +40,7 @@ export default function ProductConfigurator({
   initialProductId = null,
   priceEndpoint = null,
   powerText,
+  showExportImport = false,
 }: ProductConfiguratorProps = {}) {
   // A host-injected catalog always wins; only standalone dev persists edits.
   // Compared by identity here so useProducts never has to re-derive it.
@@ -157,6 +161,7 @@ export default function ProductConfigurator({
     <div ref={rootRef} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 transition-colors">
       <AppHeader
         powerText={powerText}
+        showExportImport={showExportImport}
         onExport={exportProducts}
         onImport={(e) => importProducts(e, (imported) => {
           setSelectedCategoryId(imported[0].categoryId);
