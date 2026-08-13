@@ -15,6 +15,11 @@ export function CreasingControl({ count, allowedCounts, onChange, badgeText }: C
   // With a single count on offer the slider would accept a drag and snap straight
   // back, so show the value on its own instead.
   const fixed = allowedCounts.length === 1;
+  // The native track has to stop exactly at what's allowed: a hardcoded 0–5 lets
+  // the thumb get dragged past a lower max (e.g. max: 2) since the browser moves
+  // it on the raw drag before onChange ever gets a chance to reject the value.
+  const min = disabled ? 0 : Math.min(...allowedCounts);
+  const max = disabled ? 0 : Math.max(...allowedCounts);
 
   const widget = (
     <div className={`rounded-lg bg-slate-50 dark:bg-slate-700 p-3 ${disabled ? 'opacity-50' : ''}`}>
@@ -26,8 +31,8 @@ export function CreasingControl({ count, allowedCounts, onChange, badgeText }: C
           <input
             id={sliderId}
             type="range"
-            min="0"
-            max="5"
+            min={min}
+            max={max}
             value={count}
             aria-valuetext={String(count)}
             disabled={disabled}

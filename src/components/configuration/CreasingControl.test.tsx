@@ -21,10 +21,24 @@ describe('CreasingControl', () => {
 
   it('ignores counts that are not allowed', () => {
     const onChange = vi.fn();
-    render(<CreasingControl count={1} allowedCounts={[0, 1, 2]} onChange={onChange} />);
+    render(<CreasingControl count={0} allowedCounts={[0, 2]} onChange={onChange} />);
 
-    fireEvent.change(screen.getByRole('slider'), { target: { value: '5' } });
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '1' } });
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('caps the slider track at the allowed max, not the full 0–5 range', () => {
+    render(<CreasingControl count={2} allowedCounts={[0, 1, 2]} onChange={() => {}} />);
+
+    const slider = screen.getByRole('slider') as HTMLInputElement;
+    expect(slider).toHaveAttribute('min', '0');
+    expect(slider).toHaveAttribute('max', '2');
+
+    // The track itself won't accept a drag past its max, so a value of 5 is
+    // clamped before it ever reaches onChange — unlike the old hardcoded 0–5
+    // range, which let the thumb overshoot a lower max like 2.
+    fireEvent.change(slider, { target: { value: '5' } });
+    expect(slider.value).toBe('2');
   });
 
   it('disables the slider when no counts are allowed', () => {

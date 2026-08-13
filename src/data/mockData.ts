@@ -29,6 +29,7 @@ export const MOCK_SIZES: Size[] = [
   { id: 's5', label: 'Carte Vizită Standard', width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
   { id: 's6', label: 'Carte Vizită Compact',  width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
   { id: 's7', label: 'A3+',                   width: 320, height: 450, unit: 'mm', widthMm: 320,   heightMm: 450   },
+  { id: 's8', label: 'A6',                    width: 105, height: 148, unit: 'mm', widthMm: 105,   heightMm: 148   },
 ];
 
 // The physical ceiling a print is bound by, regardless of what a product's
@@ -101,7 +102,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 // Shared constraints for the "afis" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
 const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedLaminationSides'> = {
-  allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
+  allowedMediaIds: ['p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s0', 's1'],
   machineId: 'm1',
   allowedFoldTypes: ['none'],
@@ -117,8 +118,8 @@ const AFIS_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSize
 // Shared constraints for the "flyer" category — presets within this category only
 // differ by their initial elemental selections (media/size/printing), not by what's allowed.
 const FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'allowedFoldTypes'> = {
-  allowedMediaIds: ['p1', 'p2', 'p3', 'p4'],
-  allowedSizeIds: ['s4', 's3', 's2', 's1'],
+  allowedMediaIds: ['p1', 'p3', 'p4'],
+  allowedSizeIds: ['s4', 's2', 's1', 's8'],
   machineId: 'm1',
   allowedFoldTypes: ['none'],
 };
@@ -128,10 +129,12 @@ const FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSiz
 const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
+  allowedCreasingCounts: [],
+  allowedRoundedCorners: [],
   machineId: 'm1',
   recommendedMediaId: 'p3',
   recommendedSizeId: 's1',
-  allowedFoldTypes: ['none', 'half-fold'],
+  allowedFoldTypes: ['half-fold'],
 };
 
 // Shared constraints for the "folder" category — presets within this category only
@@ -242,46 +245,46 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod0a: {
     ...AFIS_CATEGORY_CONFIG,
     allowedPrintingFronts: ['color'],
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's0',
     explanation: 'Coală A3 tipărită color pe o față. Dimensiune rezonabilă pentru utilizare in-door.',
   },
   prod0b: {
     ...AFIS_CATEGORY_CONFIG,
     allowedPrintingFronts: ['color'],
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
     explanation: 'Coală A4 tipărită color pe o față. Format compact pentru afișaj in-door în spații mici.',
   },
   prod0c: {
     ...AFIS_CATEGORY_CONFIG,
     allowedPrintingFronts: ['black'],
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's0',
     explanation: 'Coală A3 tipărită alb-negru pe o față. Dimensiune rezonabilă pentru utilizare in-door.',
   },
   prod0d: {
     ...AFIS_CATEGORY_CONFIG,
     allowedPrintingFronts: ['black'],
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
     explanation: 'Coală A4 tipărită alb-negru pe o față. Format compact pentru afișaj in-door în spații mici.',
   },
   prod1a: {
     ...FLYER_CATEGORY_CONFIG,
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
-    explanation: 'Coală A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj complet pe ambele fețe — evenimente, promoții, materiale informative.',
+    explanation: 'Coală A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat pe ambele fețe — evenimente, promoții, materiale informative.',
   },
   prod1b: {
     ...FLYER_CATEGORY_CONFIG,
-    recommendedMediaId: 'p1',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's4',
-    explanation: 'Fluturaș 1/3A4 tipărit alb-negru pe o singură față. Cea mai economică variantă pentru distribuire în masă — costuri minime de tipărire.',
+    explanation: 'Fluturaș 1/3A4 tipărit color pe o ambele fețe. Cea mai economică variantă pentru distribuire în masă — costuri minime de tipărire.',
   },
   prod1c: {
     ...FLYER_CATEGORY_CONFIG,
-    recommendedMediaId: 'p2',
+    recommendedMediaId: 'p3',
     recommendedSizeId: 's2',
     explanation: 'Coală A5 tipărită color pe ambele fețe. Format compact ideal pentru pliante de mână, meniuri sau invitații.',
   },
@@ -293,9 +296,9 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod1e: {
     ...FLYER_CATEGORY_CONFIG,
-    recommendedMediaId: 'p2',
-    recommendedSizeId: 's3',
-    explanation: 'Coală format Letter (US) tipărită color pe ambele fețe. Recomandat pentru materiale destinate pieței nord-americane.',
+    recommendedMediaId: 'p3',
+    recommendedSizeId: 's8',
+    explanation: 'Coală format A6 tipărită color pe ambele fețe. Recomandat pentru materiale care se citesc din mers.',
   },
   prod2a: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -321,6 +324,14 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     },
     explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
   },
+  prod2e: {
+    ...BROCHURE_CATEGORY_CONFIG,
+    elementalPageCounts: {
+      'elem2e-1': { kind: 'derived' },
+      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+    },
+    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
+  },
   prod2d: {
     ...BROCHURE_CATEGORY_CONFIG,
     recommendedSizeId: 's2',
@@ -329,14 +340,6 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2d-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici.',
-  },
-  prod2e: {
-    ...BROCHURE_CATEGORY_CONFIG,
-    elementalPageCounts: {
-      'elem2e-1': { kind: 'derived' },
-      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
-    },
-    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,
@@ -349,6 +352,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod3d: {
     ...FOLDER_CATEGORY_CONFIG,
+    pocket: false,
     explanation: 'Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
   },
   prod3e: {
@@ -580,7 +584,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem0a-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's0', label: 'A3', width: 297, height: 420, unit: 'mm', widthMm: 297, heightMm: 420 },
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
@@ -602,7 +606,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem0b-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
@@ -624,7 +628,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem0c-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's0', label: 'A3', width: 297, height: 420, unit: 'mm', widthMm: 297, heightMm: 420 },
         pageCount: 1,
         printing: { front: 'black', back: 'none' },
@@ -646,7 +650,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem0d-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 1,
         printing: { front: 'black', back: 'none' },
@@ -668,7 +672,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem1a-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
@@ -684,7 +688,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod1b',
     categoryId: 'flyer',
-    label: 'Fluturaș 1/3A4 Alb-Negru, O Față',
+    label: 'Fluturaș 1/3A4 Color, Față-Verso',
     amount: 100,
     elementals: [
       {
@@ -693,7 +697,7 @@ export const MOCK_PRODUCTS: Product[] = [
         media: MOCK_PAPERS[0],
         size: { id: 's4', label: '1/3A4', width: 100, height: 210, unit: 'mm', widthMm: 100, heightMm: 210 },
         pageCount: 2,
-        printing: { front: 'black', back: 'none' },
+        printing: { front: 'color', back: 'color' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
@@ -712,7 +716,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem1c-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
+        media: MOCK_PAPERS[2],
         size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
@@ -729,7 +733,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod1d',
     categoryId: 'flyer',
     label: 'Fluturaș A4 Color, Doar Față',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem1d-1',
@@ -750,14 +754,14 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod1e',
     categoryId: 'flyer',
-    label: 'Fluturaș Letter Color, Față-Verso',
-    amount: 1,
+    label: 'Fluturaș A6 color, Față-Verso',
+    amount: 100,
     elementals: [
       {
         id: 'elem1e-1',
         label: 'Coală Simplă',
-        media: MOCK_PAPERS[1],
-        size: { id: 's3', label: 'Letter', width: 8.5, height: 11, unit: 'in', widthMm: 215.9, heightMm: 279.4 },
+        media: MOCK_PAPERS[2],
+        size: { id: 's8', label: 'A6', width: 105, height: 148, unit: 'in', widthMm: 105, heightMm: 148 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -773,19 +777,19 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod2a',
     categoryId: 'brochure',
     label: 'Broșură A4, Interior 8 Pagini',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem2a-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
+        media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
-          creasing: { count: 1 },
+          creasing: { count: 0 },
           roundedCornes: { corners: [] },
         },
       },
@@ -809,19 +813,19 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod2b',
     categoryId: 'brochure',
     label: 'Broșură A4, Interior 16 Pagini',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem2b-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
+        media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
-          creasing: { count: 1 },
+          creasing: { count: 0 },
           roundedCornes: { corners: [] },
         },
       },
@@ -845,17 +849,17 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod2c',
     categoryId: 'brochure',
     label: 'Broșură A4, Interior 32 Pagini',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem2c-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
+        media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
           creasing: { count: 1 },
           roundedCornes: { corners: [] },
@@ -881,17 +885,17 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod2d',
     categoryId: 'brochure',
     label: 'Broșură A5, Interior 8 Pagini',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem2d-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
+        media: MOCK_PAPERS[4],
         size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
           creasing: { count: 1 },
           roundedCornes: { corners: [] },
@@ -922,12 +926,12 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem2e-1',
         label: 'Copertă',
-        media: MOCK_PAPERS[2],
+        media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'half-fold', folds: 1 },
           creasing: { count: 1 },
           roundedCornes: { corners: [] },
@@ -965,7 +969,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'soft-touch', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2 },
+          creasing: { count: 2, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -985,9 +989,9 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'soft-touch', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 1 },
+          creasing: { count: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1007,9 +1011,9 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'both' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 1 },
+          creasing: { count: 1, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
@@ -1029,9 +1033,9 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'matt', sides: 'both' },
+          lamination: { type: 'matt', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 2 },
+          creasing: { count: 2, max: 2 },
           roundedCornes: { corners: [] },
         },
       },
