@@ -16,6 +16,14 @@ export const MOCK_STICKERS: Sticker[] = [
   { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
 ];
 
+export const MOCK_PAPER_LABELS: Sticker[] = [
+  { kind: 'sticker', id: 'p7',  label: 'Etichetă Lucioasă Albă', gsm: 80, face: 'Gloss', explanation: 'Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă.' },
+  { kind: 'sticker', id: 'p8',  label: 'Etichetă Mată Albă',     gsm: 80, face: 'Matt',  explanation: 'Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret.' },
+  { kind: 'sticker', id: 'p9',  label: 'Etichetă Transparentă',  gsm: 80, face: 'Clear', explanation: 'Etichetă din film transparent. Creează un aspect de „fără etichetă" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt.' },
+  { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
+];
+
+
 // TODO add special papers
 
 export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_STICKERS];
@@ -30,6 +38,14 @@ export const MOCK_SIZES: Size[] = [
   { id: 's6', label: 'Carte Vizită Compact',  width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
   { id: 's7', label: 'A3+',                   width: 320, height: 450, unit: 'mm', widthMm: 320,   heightMm: 450   },
   { id: 's8', label: 'A6',                    width: 105, height: 148, unit: 'mm', widthMm: 105,   heightMm: 148   },
+  { id: 's9', label: '30x40',                 width: 30,  height: 40,  unit: 'mm', widthMm: 30,    heightMm: 40    },
+  { id: 's10', label: '50x50',                width: 50,  height: 50,  unit: 'mm', widthMm: 50,    heightMm: 50    },
+  { id: 's11', label: '60x60',                width: 60,  height: 60,  unit: 'mm', widthMm: 60,    heightMm: 60    },
+  { id: 's12', label: '40x60',                width: 40,  height: 60,  unit: 'mm', widthMm: 40,    heightMm: 60    },
+  { id: 's13', label: '90x60',                width: 90,  height: 60,  unit: 'mm', widthMm: 90,    heightMm: 60    },
+  { id: 's14', label: '70x70',                width: 70,  height: 70,  unit: 'mm', widthMm: 70,    heightMm: 70    },
+  { id: 's15', label: '90x70',                width: 90,  height: 70,  unit: 'mm', widthMm: 90,    heightMm: 70    },
+  { id: 's16', label: '90x40',                width: 90,  height: 40,  unit: 'mm', widthMm: 90,    heightMm: 40    },
 ];
 
 // The physical ceiling a print is bound by, regardless of what a product's
@@ -126,7 +142,7 @@ const FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSiz
 
 // Shared constraints for the "brochure" category — presets within this category only
 // differ by their interior page count.
-const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
+const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
   allowedCreasingCounts: [],
@@ -919,7 +935,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod2e',
     categoryId: 'brochure',
     label: 'Broșură A4, Interior 24 Pagini',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem2e-1',
@@ -955,12 +971,12 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3a',
     categoryId: 'folder',
     label: 'Mapă cu Buzunar și Cotor, laminată soft-touch',
-    amount: 1,
+    amount: 10,
     elementals: [
       {
         id: 'elem3a-1',
         label: 'Coală A3 Pliată',
-        media: MOCK_PAPERS[3],
+        media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
@@ -977,12 +993,12 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3c',
     categoryId: 'folder',
     label: 'Mapă cu Buzunar fără Cotor',
-    amount: 1,
+    amount: 10,
     elementals: [
       {
         id: 'elem3c-1',
         label: 'Coală A3 Pliată',
-        media: MOCK_PAPERS[3],
+        media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
@@ -999,7 +1015,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3d',
     categoryId: 'folder',
     label: 'Mapă fără Buzunar, fără Cotor',
-    amount: 1,
+    amount: 10,
     // The catalog still offers a pocket (via FOLDER_CATEGORY_CONFIG) so the
     // toggle in the UI can turn it back on, but this variant ships without one.
     pocketEnabled: false,
@@ -1007,7 +1023,7 @@ export const MOCK_PRODUCTS: Product[] = [
       {
         id: 'elem3d-1',
         label: 'Coală A3 Pliată',
-        media: MOCK_PAPERS[3],
+        media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
@@ -1024,12 +1040,12 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3e',
     categoryId: 'folder',
     label: 'Mapă Laminată Mat cu Buzunar',
-    amount: 1,
+    amount: 10,
     elementals: [
       {
         id: 'elem3e-1',
         label: 'Coală A3 Pliată',
-        media: MOCK_PAPERS[3],
+        media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
@@ -1046,7 +1062,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod4a',
     categoryId: 'business-card',
     label: 'Carte Standard 90x50, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem4a-1',
@@ -1068,7 +1084,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod4b',
     categoryId: 'business-card',
     label: 'Carte Compact 80x50, O Față',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem4b-1',
@@ -1090,7 +1106,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod4c',
     categoryId: 'business-card',
     label: 'Carte Premium 90x50, Lucios Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem4c-1',
@@ -1112,7 +1128,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod4d',
     categoryId: 'business-card',
     label: 'Carte Standard 90x50, Soft-Touch, O Față',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem4d-1',
@@ -1134,7 +1150,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod4e',
     categoryId: 'business-card',
     label: 'Carte Compact 80x50, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem4e-1',
@@ -1156,7 +1172,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod5a',
     categoryId: 'folded-flyer',
     label: 'Pliant Tri-fold',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem5a-1',
@@ -1178,7 +1194,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod5b',
     categoryId: 'folded-flyer',
     label: 'Pliant Z-fold',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem5b-1',
@@ -1200,7 +1216,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod5c',
     categoryId: 'folded-flyer',
     label: 'Pliant Bi-fold',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem5c-1',
@@ -1222,7 +1238,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod5d',
     categoryId: 'folded-flyer',
     label: 'Pliant Gate-fold A4',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem5d-1',
@@ -1244,7 +1260,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod5e',
     categoryId: 'folded-flyer',
     label: 'Pliant Tri-fold A4',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem5e-1',
