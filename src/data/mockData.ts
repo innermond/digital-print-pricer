@@ -46,6 +46,10 @@ export const MOCK_SIZES: Size[] = [
   { id: 's14', label: '70x70',                width: 70,  height: 70,  unit: 'mm', widthMm: 70,    heightMm: 70    },
   { id: 's15', label: '90x70',                width: 90,  height: 70,  unit: 'mm', widthMm: 90,    heightMm: 70    },
   { id: 's16', label: '90x40',                width: 90,  height: 40,  unit: 'mm', widthMm: 90,    heightMm: 40    },
+  { id: 's17', label: '100x90',                width: 100, height: 90,  unit: 'mm', widthMm: 100,   heightMm: 90    },
+  { id: 's18', label: '100x100',               width: 100, height: 100, unit: 'mm', widthMm: 100,   heightMm: 100   },
+  { id: 's19', label: '110x100',               width: 110, height: 100, unit: 'mm', widthMm: 110,   heightMm: 100   },
+  { id: 's20', label: '120x100',               width: 120, height: 100, unit: 'mm', widthMm: 120,   heightMm: 100   },
 ];
 
 // The physical ceiling a print is bound by, regardless of what a product's
@@ -207,7 +211,7 @@ const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'all
 // differ by their initial media (face finish) and size.
 const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedPrintingBacks'> = {
   allowedMediaIds: ['p7', 'p8', 'p9', 'p10'],
-  allowedSizeIds: ['s0', 's1', 's2'],
+  allowedSizeIds: ['s0', 's1', 's2', 's9', 's10', 's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20'],
   machineId: 'm1',
   recommendedMediaId: 'p7',
   recommendedSizeId: 's1',
@@ -217,13 +221,14 @@ const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'al
 
 // Shared constraints for the "spiral-catalog" category — presets within this category only
 // differ by their interior page count.
-const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'binding'> = {
+const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedRoundedCorners' | 'binding'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
   machineId: 'm1',
   recommendedMediaId: 'p3',
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
+  allowedRoundedCorners: [],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
 };
 
@@ -248,7 +253,7 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // differ by their initial size and staple selection.
 const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
   allowedMediaIds: ['p5', 'p6'],
-  allowedSizeIds: ['s5', 's6'],
+  allowedSizeIds: ['s5', 's6', 's9', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
   allowedFoldTypes: ['none'],
@@ -476,6 +481,114 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     },
     explanation: 'Coală A3 de etichete autoadezive lucioase, tipărită pe o singură față. Format mare pentru tiraje de volum sau decupaje complexe cu multe etichete pe coală.',
   },
+  prod6f: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p7',
+    recommendedSizeId: 's9',
+    elementalPageCounts: {
+      'elem6f-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă lucioasă 30x40mm, tipărită pe o singură față. Format mic potrivit pentru etichete de produs sau ambalaje compacte.',
+  },
+  prod6g: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p8',
+    recommendedSizeId: 's10',
+    elementalPageCounts: {
+      'elem6g-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă mată 50x50mm, tipărită pe o singură față. Format pătrat versatil pentru etichete de borcane, cutii sau logo-uri.',
+  },
+  prod6h: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p9',
+    recommendedSizeId: 's11',
+    elementalPageCounts: {
+      'elem6h-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă transparentă 60x60mm, tipărită pe o singură față. Aspect „fără etichetă" pentru ambalaje premium de dimensiuni medii.',
+  },
+  prod6i: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p10',
+    recommendedSizeId: 's12',
+    elementalPageCounts: {
+      'elem6i-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă PVC 40x60mm, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau cosmetice.',
+  },
+  prod6j: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p7',
+    recommendedSizeId: 's13',
+    elementalPageCounts: {
+      'elem6j-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă lucioasă 90x60mm, tipărită pe o singură față. Format dreptunghiular potrivit pentru etichete de sticle sau cutii.',
+  },
+  prod6k: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p8',
+    recommendedSizeId: 's14',
+    elementalPageCounts: {
+      'elem6k-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă mată 70x70mm, tipărită pe o singură față. Format pătrat mai mare, potrivit pentru etichete cu mai mult text.',
+  },
+  prod6l: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p9',
+    recommendedSizeId: 's15',
+    elementalPageCounts: {
+      'elem6l-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă transparentă 90x70mm, tipărită pe o singură față. Format mare pentru ambalaje premium cu detalii vizuale complexe.',
+  },
+  prod6m: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p10',
+    recommendedSizeId: 's16',
+    elementalPageCounts: {
+      'elem6m-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă PVC 90x40mm, tipărită pe o singură față. Format alungit, potrivit pentru etichete de identificare sau preț.',
+  },
+  prod6n: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p7',
+    recommendedSizeId: 's17',
+    elementalPageCounts: {
+      'elem6n-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă lucioasă 100x90mm, tipărită pe o singură față. Format mare potrivit pentru etichete de expediere sau cutii.',
+  },
+  prod6o: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p8',
+    recommendedSizeId: 's18',
+    elementalPageCounts: {
+      'elem6o-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă autoadezivă mată 100x100mm, tipărită pe o singură față. Format pătrat mare pentru etichete cu text sau grafică extinsă.',
+  },
+  prod6p: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p9',
+    recommendedSizeId: 's19',
+    elementalPageCounts: {
+      'elem6p-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă transparentă 110x100mm, tipărită pe o singură față. Aspect „fără etichetă" pentru ambalaje mari sau premium.',
+  },
+  prod6q: {
+    ...STICKER_SHEET_CATEGORY_CONFIG,
+    recommendedMediaId: 'p10',
+    recommendedSizeId: 's20',
+    elementalPageCounts: {
+      'elem6q-1': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Etichetă PVC 120x100mm, tipărită pe o singură față. Cel mai mare format din gamă — potrivit pentru cutii sau ambalaje voluminoase.',
+  },
   prod7a: {
     ...SPIRAL_CATALOG_CATEGORY_CONFIG,
     elementalPageCounts: {
@@ -522,6 +635,18 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     },
     explanation: 'Catalog cu copertă, interior de 96 pagini și copertă spate, legat cu spirală. Variantă pentru cataloage foarte extinse sau cărți de specialitate.',
   },
+  prod7f: {
+    ...SPIRAL_CATALOG_CATEGORY_CONFIG,
+    elementalPrintingFronts: {
+      'elem7f-1': ['color', 'black', 'none'],
+    },
+    elementalPageCounts: {
+      'elem7f-1': { kind: 'fixed', value: 1 },
+      'elem7f-2': { kind: 'multiple', of: 2, min: 2, max: 200 },
+      'elem7f-3': { kind: 'fixed', value: 1 },
+    },
+    explanation: 'Catalog cu copertă opțional netipărită, interior de 16 pagini și copertă spate, legat cu spirală. Potrivit pentru clienți care nu doresc o copertă tipărită.',
+  },
   prod8a: {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
     recommendedSizeId: 's5',
@@ -547,6 +672,53 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
     recommendedSizeId: 's5',
     explanation: 'Etichetă din carton 90x50mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare.',
+  },
+  prod8f: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's9',
+    explanation: 'Etichetă din carton gros 30x40mm, cu gaură pentru agățare. Format mic, potrivit pentru etichete de bijuterii sau accesorii.',
+  },
+  prod8g: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's13',
+    explanation: 'Etichetă din carton gros 90x60mm, cu capsă. Format dreptunghiular pentru etichete de preț sau identificare produs.',
+  },
+  prod8h: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedMediaId: 'p5',
+    recommendedSizeId: 's14',
+    explanation: 'Etichetă premium din carton lucios 300gsm, 70x70mm, cu gaură și capsă pentru fixare dublă. Format pătrat pentru atârnătoare de produs.',
+  },
+  prod8i: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's15',
+    explanation: 'Etichetă din carton gros 90x70mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.',
+  },
+  prod8j: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's16',
+    explanation: 'Etichetă din carton gros 90x40mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare.',
+  },
+  prod8k: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's17',
+    explanation: 'Etichetă din carton gros 100x90mm, cu gaură pentru agățare. Format mare, potrivit pentru atârnătoare de bagaje sau produse voluminoase.',
+  },
+  prod8l: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedMediaId: 'p5',
+    recommendedSizeId: 's18',
+    explanation: 'Etichetă premium din carton lucios 300gsm, 100x100mm, cu capsă. Format pătrat mare pentru etichete cu text sau grafică extinsă.',
+  },
+  prod8m: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's19',
+    explanation: 'Etichetă din carton gros 110x100mm, cu gaură și capsă pentru fixare dublă. Format mare pentru produse voluminoase.',
+  },
+  prod8n: {
+    ...CARDBOARD_LABEL_CATEGORY_CONFIG,
+    recommendedSizeId: 's20',
+    explanation: 'Etichetă din carton gros 120x100mm, tipărită pe ambele fețe, fără gaură sau capsă. Cel mai mare format din gamă.',
   },
   prod9: { // Calendar A3+
     ...CALENDAR_CATEGORY_CONFIG,
@@ -1389,6 +1561,270 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 'prod6f',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 30x40mm Lucioasă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6f-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[0],
+        size: { id: 's9', label: '30x40', width: 30, height: 40, unit: 'mm', widthMm: 30, heightMm: 40 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6g',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 50x50mm Mată',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6g-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[1],
+        size: { id: 's10', label: '50x50', width: 50, height: 50, unit: 'mm', widthMm: 50, heightMm: 50 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6h',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 60x60mm Transparentă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6h-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[2],
+        size: { id: 's11', label: '60x60', width: 60, height: 60, unit: 'mm', widthMm: 60, heightMm: 60 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6i',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 40x60mm PVC',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6i-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[3],
+        size: { id: 's12', label: '40x60', width: 40, height: 60, unit: 'mm', widthMm: 40, heightMm: 60 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6j',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 90x60mm Lucioasă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6j-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[0],
+        size: { id: 's13', label: '90x60', width: 90, height: 60, unit: 'mm', widthMm: 90, heightMm: 60 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6k',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 70x70mm Mată',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6k-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[1],
+        size: { id: 's14', label: '70x70', width: 70, height: 70, unit: 'mm', widthMm: 70, heightMm: 70 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6l',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 90x70mm Transparentă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6l-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[2],
+        size: { id: 's15', label: '90x70', width: 90, height: 70, unit: 'mm', widthMm: 90, heightMm: 70 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6m',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 90x40mm PVC',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6m-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[3],
+        size: { id: 's16', label: '90x40', width: 90, height: 40, unit: 'mm', widthMm: 90, heightMm: 40 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6n',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 100x90mm Lucioasă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6n-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[0],
+        size: { id: 's17', label: '100x90', width: 100, height: 90, unit: 'mm', widthMm: 100, heightMm: 90 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6o',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 100x100mm Mată',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6o-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[1],
+        size: { id: 's18', label: '100x100', width: 100, height: 100, unit: 'mm', widthMm: 100, heightMm: 100 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6p',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 110x100mm Transparentă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6p-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[2],
+        size: { id: 's19', label: '110x100', width: 110, height: 100, unit: 'mm', widthMm: 110, heightMm: 100 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod6q',
+    categoryId: 'sticker-sheet',
+    label: 'Etichetă 120x100mm PVC',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem6q-1',
+        label: 'Etichetă',
+        media: MOCK_STICKERS[3],
+        size: { id: 's20', label: '120x100', width: 120, height: 100, unit: 'mm', widthMm: 120, heightMm: 100 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
     id: 'prod7a',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Interior 16 Pagini',
@@ -1644,6 +2080,57 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 'prod7f',
+    categoryId: 'spiral-catalog',
+    label: 'Catalog cu spira, Copertă Netipărită',
+    amount: 1,
+    binding: { type: 'spiral', color: 'white' },
+    elementals: [
+      {
+        id: 'elem7f-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'none', back: 'none' },
+        finishing: {
+          lamination: { type: 'gloss', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem7f-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 16,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem7f-3',
+        label: 'Copertă Spate',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 1,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'gloss', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
     id: 'prod8a',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x50, cu Gaură',
@@ -1754,6 +2241,213 @@ export const MOCK_PRODUCTS: Product[] = [
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
           staple: { hole: true, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8f',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 30x40, cu Gaură',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8f-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's9', label: '30x40', width: 30, height: 40, unit: 'mm', widthMm: 30, heightMm: 40 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: true, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8g',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 90x60, cu Capsă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8g-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's13', label: '90x60', width: 90, height: 60, unit: 'mm', widthMm: 90, heightMm: 60 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8h',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Premium 70x70, cu Gaură și Capsă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8h-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[4],
+        size: { id: 's14', label: '70x70', width: 70, height: 70, unit: 'mm', widthMm: 70, heightMm: 70 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: true, staple: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8i',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 90x70, Față-Verso',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8i-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's15', label: '90x70', width: 90, height: 70, unit: 'mm', widthMm: 90, heightMm: 70 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8j',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 90x40 Alb-Negru, cu Gaură',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8j-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's16', label: '90x40', width: 90, height: 40, unit: 'mm', widthMm: 90, heightMm: 40 },
+        pageCount: 2,
+        printing: { front: 'black', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: true, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8k',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 100x90, cu Gaură',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8k-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's17', label: '100x90', width: 100, height: 90, unit: 'mm', widthMm: 100, heightMm: 90 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: true, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8l',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Premium 100x100, cu Capsă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8l-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[4],
+        size: { id: 's18', label: '100x100', width: 100, height: 100, unit: 'mm', widthMm: 100, heightMm: 100 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8m',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 110x100, cu Gaură și Capsă',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8m-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's19', label: '110x100', width: 110, height: 100, unit: 'mm', widthMm: 110, heightMm: 100 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: true, staple: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod8n',
+    categoryId: 'cardboard-label',
+    label: 'Etichetă Carton 120x100, Față-Verso',
+    amount: 1,
+    elementals: [
+      {
+        id: 'elem8n-1',
+        label: 'Etichetă Carton',
+        media: MOCK_PAPERS[5],
+        size: { id: 's20', label: '120x100', width: 120, height: 100, unit: 'mm', widthMm: 120, heightMm: 100 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
         },
       },
     ],
