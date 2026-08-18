@@ -71,4 +71,21 @@ describe('Disclosure', () => {
     );
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
   });
+
+  it('opens when openSignal is bumped, even if collapsed by the user', () => {
+    const { rerender } = render(
+      <Disclosure label="Opțiuni avansate" openSignal={0}>
+        <p>conținut</p>
+      </Disclosure>
+    );
+    const toggle = screen.getByRole('button', { name: /Opțiuni avansate/ });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+
+    rerender(
+      <Disclosure label="Opțiuni avansate" openSignal={1}>
+        <p>conținut</p>
+      </Disclosure>
+    );
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  });
 });

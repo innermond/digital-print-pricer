@@ -142,6 +142,14 @@ export default function ProductConfigurator({
     setSelectedElementalId(product.elementals[0].id);
   };
 
+  // Double-clicking a product both selects it and jumps straight to
+  // Configurare. Can't reuse goToStage here: its productSelected check would
+  // still see the pre-selection state in this same tick.
+  const confirmProduct = (product: Product) => {
+    selectProduct(product);
+    setStage(1);
+  };
+
   // Announce the quote (selection + price) to the host page, which decides what
   // to do with it (e.g. open a prefilled email). No-op in standalone dev.
   // Only fires on an `ok` status, so the price always matches the selection
@@ -210,6 +218,7 @@ export default function ProductConfigurator({
                 categoryLocked={categoryLocked}
                 onSelectCategory={selectCategory}
                 onSelectProduct={selectProduct}
+                onConfirmProduct={confirmProduct}
                 isPersonalized={isPersonalized}
                 onRevert={revertProduct}
               />

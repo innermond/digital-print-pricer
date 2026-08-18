@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import React, { useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import { useLatestRef } from '../hooks/useLatestRef';
 import { Badge } from './Badge';
 
@@ -17,7 +17,7 @@ type NumericButtonProps = {
 const INITIAL_DELAY = 500;
 const REPEAT_INTERVAL = 100;
 
-export function NumericButton({
+export const NumericButton = forwardRef<HTMLInputElement, NumericButtonProps>(function NumericButton({
   style,
   value,
   onClickMinus,
@@ -25,7 +25,7 @@ export function NumericButton({
   onClickPlus,
   badgeText,
   id,
-}: NumericButtonProps) {
+}, ref) {
   // Keep refs to the latest handlers so a running repeat-interval always
   // calls the current closure (with up-to-date values), not the one
   // captured at the moment the button was pressed.
@@ -74,6 +74,7 @@ export function NumericButton({
   const widget = (
     <div className={"group/updown rounded border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-600 text-sm text-slate-900 dark:text-slate-50 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 dark:focus:border-blue-600 dark:focus:ring-blue-600 flex items-center gap-1" + (style ? ' ' + style : '')}>
       <input
+        ref={ref}
         id={id}
         type="text"
         inputMode="decimal"
@@ -114,5 +115,5 @@ export function NumericButton({
     </div>
   );
 
-  return badgeText ? <Badge text={badgeText}>{widget}</Badge> : widget;
-}
+  return badgeText ? <Badge text={badgeText} grow>{widget}</Badge> : widget;
+});

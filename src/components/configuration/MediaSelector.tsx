@@ -55,7 +55,7 @@ export function MediaSelector({ media, selectedId, recommendedId, onSelect, badg
             </button>
           );
           return m.explanation
-            ? <Badge key={m.id} text={m.explanation}>{btn}</Badge>
+            ? <Badge key={m.id} text={m.explanation} grow>{btn}</Badge>
             : btn;
         })}
       </div>

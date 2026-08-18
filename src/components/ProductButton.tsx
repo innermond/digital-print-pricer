@@ -11,17 +11,20 @@ type ProductButtonProps = {
   // Set when the product's settings diverge from the catalog defaults.
   personalized?: boolean;
   onClick: () => void;
+  // Selects the product and advances straight to Configurare.
+  onDoubleClick?: () => void;
   // Revert the product to its initial settings (shown only when personalized).
   onRevert?: () => void;
 };
 
 // ==== Product Button ===
-export function ProductButton({product, selectedProductId, onClick, badgeText, personalized, onRevert}: ProductButtonProps) {
+export function ProductButton({product, selectedProductId, onClick, onDoubleClick, badgeText, personalized, onRevert}: ProductButtonProps) {
   const card = (
     <span className="relative inline-flex flex-grow flex-shrink">
       <button
         type="button"
         onClick={onClick}
+        onDoubleClick={onDoubleClick}
         aria-pressed={selectedProductId === product.id}
         className={`w-full px-4 py-3 ${optionCardClass({ active: selectedProductId === product.id })}`}
       >
@@ -49,5 +52,5 @@ export function ProductButton({product, selectedProductId, onClick, badgeText, p
     </span>
   );
 
-  return badgeText ? <Badge text={badgeText}>{card}</Badge> : card;
+  return badgeText ? <Badge text={badgeText} grow>{card}</Badge> : card;
 }

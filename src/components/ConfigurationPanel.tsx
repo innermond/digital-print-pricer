@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Elemental, SizeUnit, Media, Size, Machine, Product } from '../types';
 import type { ProductConfig } from '../data/mockData';
 import { MediaSelector } from './configuration/MediaSelector';
@@ -42,6 +42,10 @@ export function ConfigurationPanel({
   productExtras,
 }: ConfigurationPanelProps) {
   const advancedRef = useRef<HTMLDivElement>(null);
+  const widthInputRef = useRef<HTMLInputElement>(null);
+  // Bumped whenever "Personalizat" is clicked, forcing the advanced section
+  // open and focus into the width field even if the section was collapsed.
+  const [openSignal, setOpenSignal] = useState(0);
   const availableMedia = media.filter((m) => config.allowedMediaIds.includes(m.id));
   const machine = resolveMachine(config, machines);
   const sizesInConfig = sizes.filter((s) => config.allowedSizeIds.includes(s.id));
@@ -56,6 +60,10 @@ export function ConfigurationPanel({
 
   const baseElement = baseline?.elementals.find((e) => e.id === element.id);
   const chips = advancedSummary(element, baseElement);
+
+  useEffect(() => {
+    if (openSignal > 0) widthInputRef.current?.focus();
+  }, [openSignal]);
 
   return (
     <div className="space-y-5">
@@ -75,9 +83,10 @@ export function ConfigurationPanel({
           customSizeUnit={customSizeUnit}
           recommendedSizeId={config.recommendedSizeId}
           onSizeChange={(size) => onUpdate({ size })}
-          onRequestCustomSize={() =>
-            advancedRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
-          }
+          onRequestCustomSize={() => {
+            setOpenSignal((n) => n + 1);
+            advancedRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }}
           machineLimitHidesSizes={hasSizesHiddenByMachine}
         />
       </section>
@@ -104,7 +113,7 @@ export function ConfigurationPanel({
           but auto-opened (and chip-summarised) whenever something differs from
           the catalog default. */}
       <div ref={advancedRef}>
-        <Disclosure label="Opțiuni avansate" chips={chips} resetKey={element.id}>
+        <Disclosure label="Opțiuni avansate" chips={chips} resetKey={element.id} openSignal={openSignal}>
           <div className="space-y-5 pt-2">
             <CustomSizeControl
               currentSize={element.size}
@@ -113,6 +122,7 @@ export function ConfigurationPanel({
               onUnitChange={onCustomSizeUnitChange}
               maxWidthMm={machine?.maxWidthMm}
               maxHeightMm={machine?.maxHeightMm}
+              widthInputRef={widthInputRef}
             />
             {hasFinishingOptions(element, config) && (
               <FinishingOptions element={element} config={config} onUpdate={onUpdate} />

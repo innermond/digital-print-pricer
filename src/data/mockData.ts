@@ -201,6 +201,8 @@ const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'al
 const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
   allowedMediaIds: ['p1', 'p2', 'p3', 'p4'],
   allowedSizeIds: ['s1', 's2', 's4'],
+  allowedPrintingFronts: ['color', 'black'],
+  allowedPrintingBacks: ['color', 'black'],
   machineId: 'm1',
   recommendedMediaId: 'p2',
   recommendedSizeId: 's4',
@@ -221,7 +223,7 @@ const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'al
 
 // Shared constraints for the "spiral-catalog" category — presets within this category only
 // differ by their interior page count.
-const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedRoundedCorners' | 'binding'> = {
+const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedPrintingFronts' | 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedRoundedCorners' | 'binding'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5'],
   allowedSizeIds: ['s1', 's2'],
   machineId: 'm1',
@@ -229,6 +231,7 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'a
   recommendedSizeId: 's1',
   allowedFoldTypes: ['none'],
   allowedRoundedCorners: [],
+  allowedPrintingFronts: ['color', 'black', 'none'],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
 };
 
@@ -1828,7 +1831,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7a',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Interior 16 Pagini',
-    amount: 1,
+    amount: 30,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -1879,7 +1882,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7b',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Interior 32 Pagini',
-    amount: 1,
+    amount: 20,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -1930,7 +1933,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7c',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Interior 48 Pagini',
-    amount: 1,
+    amount: 10,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -1981,7 +1984,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7d',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Format A5, Interior 24 Pagini',
-    amount: 1,
+    amount: 20,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -2032,7 +2035,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7e',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Interior 96 Pagini',
-    amount: 1,
+    amount: 10,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -2083,7 +2086,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod7f',
     categoryId: 'spiral-catalog',
     label: 'Catalog cu spira, Copertă Netipărită',
-    amount: 1,
+    amount: 10,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {

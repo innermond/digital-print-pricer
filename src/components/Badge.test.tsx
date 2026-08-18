@@ -3,6 +3,24 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Badge } from './Badge';
 
 describe('Badge', () => {
+  it('does not stretch its wrapper to fill a flex row by default', () => {
+    const { container } = render(
+      <Badge text="info text">
+        <button>child</button>
+      </Badge>,
+    );
+    expect(container.firstChild).not.toHaveClass('flex-grow');
+  });
+
+  it('stretches its wrapper when grow is set, to match a row-filling child', () => {
+    const { container } = render(
+      <Badge text="info text" grow>
+        <button>child</button>
+      </Badge>,
+    );
+    expect(container.firstChild).toHaveClass('flex-grow', 'flex-shrink');
+  });
+
   it('renders its children', () => {
     render(
       <Badge text="info text">

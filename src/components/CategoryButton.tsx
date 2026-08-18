@@ -30,5 +30,5 @@ export function CategoryButton({ category, selectedCategoryId, presetCount, onCl
     </button>
   );
 
-  return category.explanation ? <Badge text={category.explanation}>{button}</Badge> : button;
+  return category.explanation ? <Badge text={category.explanation} grow>{button}</Badge> : button;
 }
