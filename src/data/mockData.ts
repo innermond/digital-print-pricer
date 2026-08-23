@@ -230,7 +230,7 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'a
 // Shared constraints for the "calendar" category — presets within this category
 // only differ by page size and by the elemental ids their per-part rules are
 // keyed on. Every calendar is cover + month sheets + back cover on a spiral.
-const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationTypes' | 'allowedRoundedCorners' | 'binding'> = {
+const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationSides' | 'allowedRoundedCorners' | 'binding'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s1', 's2', 's7'],
   machineId: 'm1',
@@ -238,7 +238,7 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
   recommendedSizeId: 's7',
   allowedFoldTypes: ['none'],
   allowedCreasingCounts: [],
-  allowedLaminationTypes: [],
+  allowedLaminationSides: [],
   // A wall calendar is trimmed square — no rounded corners, whatever the board.
   allowedRoundedCorners: [],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
