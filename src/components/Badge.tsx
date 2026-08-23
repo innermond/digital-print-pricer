@@ -15,12 +15,17 @@ type BadgeProps = {
   label?: ReactNode;
   text: string;
   position?: BadgePosition;
+  // Stretch to fill its flex row like a "card" button would. Off by default —
+  // most badged buttons are compact/content-sized, and stretching pulls the
+  // badge (positioned off this wrapper's own corner) away from the visible
+  // button toward the edge of the row instead.
+  grow?: boolean;
 };
 
 const GAP = 6;
 const MARGIN = 8;
 
-export function Badge({ children, label, text, position = 'top-right' }: BadgeProps) {
+export function Badge({ children, label, text, position = 'top-right', grow = false }: BadgeProps) {
   const [panelStyle, setPanelStyle] = useState<CSSProperties | null>(null);
   // Click/tap pins the panel open. Hover alone left the help unreachable on
   // touch devices, where there is no hover at all.
@@ -70,7 +75,7 @@ export function Badge({ children, label, text, position = 'top-right' }: BadgePr
   const open = panelStyle !== null;
 
   return (
-    <span className="flex-grow flex-shrink relative inline-flex">
+    <span className={`relative inline-flex ${grow ? 'flex-grow flex-shrink' : ''}`}>
       <button
         ref={badgeRef}
         type="button"

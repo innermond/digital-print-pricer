@@ -63,6 +63,20 @@ describe('ProductConfigurator', () => {
       expect(screen.getByText('Selectați Categoria')).toBeInTheDocument();
     });
 
+    it('double-clicking a product selects it and jumps straight to Configurare', async () => {
+      const user = setupUser();
+      renderConfigurator();
+
+      await user.click(screen.getByText('Fluturaș'));
+      await user.dblClick(screen.getByText('Fluturaș A4 Color, Față-Verso'));
+
+      expect(screen.getByText('Material')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Pasul 2 din 3: Configurare/ })).toHaveAttribute(
+        'aria-current',
+        'step'
+      );
+    });
+
     it('moves forward and back through the three stages', async () => {
       const user = setupUser();
       renderConfigurator();

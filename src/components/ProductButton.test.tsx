@@ -45,6 +45,22 @@ describe('ProductButton', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('calls onDoubleClick when double-clicked', async () => {
+    const user = userEvent.setup();
+    const onDoubleClick = vi.fn();
+    render(
+      <ProductButton
+        product={product}
+        selectedProductId="prod-1"
+        onClick={() => {}}
+        onDoubleClick={onDoubleClick}
+      />,
+    );
+
+    await user.dblClick(screen.getByRole('button'));
+    expect(onDoubleClick).toHaveBeenCalledTimes(1);
+  });
+
   it('highlights the button when it is the selected product', () => {
     const { rerender } = render(
       <ProductButton product={product} selectedProductId="prod-1" onClick={() => {}} />,

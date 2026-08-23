@@ -13,6 +13,8 @@ type ProductStageProps = {
   categoryLocked: boolean;
   onSelectCategory: (categoryId: ProductCategory['id'] | null) => void;
   onSelectProduct: (product: Product) => void;
+  // Double-click: select the product and advance to Configurare in one step.
+  onConfirmProduct: (product: Product) => void;
   isPersonalized: (product: Product) => boolean;
   onRevert: (productId: Product['id']) => void;
 };
@@ -26,6 +28,7 @@ export function ProductStage({
   categoryLocked,
   onSelectCategory,
   onSelectProduct,
+  onConfirmProduct,
   isPersonalized,
   onRevert,
 }: ProductStageProps) {
@@ -54,7 +57,7 @@ export function ProductStage({
             {!categoryLocked && (
               <button
                 onClick={() => onSelectCategory(null)}
-                className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition"
+                className="rounded-lg px-3 py-1.5 text-xs font-medium bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800 transition"
               >
                 ← Înapoi la categorii
               </button>
@@ -72,6 +75,7 @@ export function ProductStage({
                   product={product}
                   selectedProductId={selectedProductId}
                   onClick={() => onSelectProduct(product)}
+                  onDoubleClick={() => onConfirmProduct(product)}
                   badgeText={catalog.config[product.id]?.explanation}
                   personalized={isPersonalized(product)}
                   onRevert={() => onRevert(product.id)}

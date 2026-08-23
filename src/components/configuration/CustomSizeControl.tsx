@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, type Ref } from 'react';
 import type { Size, SizeUnit } from '../../types';
 import { convertSize } from '../../lib/sizeUtils';
 import { NumericButton } from '../NumericButton';
@@ -14,6 +14,8 @@ type CustomSizeControlProps = {
   // The printing machine's ceiling, in mm. Omit for no ceiling.
   maxWidthMm?: number;
   maxHeightMm?: number;
+  // Lets a caller (the "Personalizat" button) move focus into this field.
+  widthInputRef?: Ref<HTMLInputElement>;
 };
 
 // Exact width/height plus the display unit. Split out of SizeSelector: the
@@ -26,6 +28,7 @@ export function CustomSizeControl({
   onUnitChange,
   maxWidthMm,
   maxHeightMm,
+  widthInputRef,
 }: CustomSizeControlProps) {
   const widthId = useId();
   const heightId = useId();
@@ -95,6 +98,7 @@ export function CustomSizeControl({
             )}
           </label>
           <NumericButton
+            ref={widthInputRef}
             id={widthId}
             value={fmt(displayWidth)}
             onChange={(e) => handleCustomSizeChange('width', e.target.value)}

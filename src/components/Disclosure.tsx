@@ -11,12 +11,15 @@ type DisclosureProps = {
   // Re-evaluate the open state when this changes (e.g. the selected elemental),
   // so switching to a tab with non-default settings reveals them.
   resetKey?: string;
+  // Bumped by the parent to force this section open (e.g. the "Personalizat"
+  // button jumping to the custom-size fields) even if the user had collapsed it.
+  openSignal?: number;
 };
 
 // A plain button + conditional render rather than <details>/<summary>: jsdom's
 // toggle-event support is inconsistent and the a11y behaviour shouldn't depend
 // on it.
-export function Disclosure({ label, children, chips = [], resetKey }: DisclosureProps) {
+export function Disclosure({ label, children, chips = [], resetKey, openSignal }: DisclosureProps) {
   const panelId = useId();
   const dirty = chips.length > 0;
   const [open, setOpen] = useState(dirty);
@@ -29,6 +32,12 @@ export function Disclosure({ label, children, chips = [], resetKey }: Disclosure
   if (resetKey !== prevKey) {
     setPrevKey(resetKey);
     setOpen(dirty);
+  }
+
+  const [prevOpenSignal, setPrevOpenSignal] = useState(openSignal);
+  if (openSignal !== prevOpenSignal) {
+    setPrevOpenSignal(openSignal);
+    setOpen(true);
   }
 
   return (
