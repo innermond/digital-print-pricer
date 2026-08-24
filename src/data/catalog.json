@@ -1,0 +1,7379 @@
+{
+  "products": [
+    {
+      "id": "prod0a",
+      "categoryId": "afis",
+      "label": "Afiș A3 Color, Față",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem0a-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s0",
+            "label": "A3",
+            "width": 297,
+            "height": 420,
+            "unit": "mm",
+            "widthMm": 297,
+            "heightMm": 420
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod0b",
+      "categoryId": "afis",
+      "label": "Afiș A4 Color, Față",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem0b-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod0c",
+      "categoryId": "afis",
+      "label": "Afiș A3 Alb-Negru, Față",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem0c-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s0",
+            "label": "A3",
+            "width": 297,
+            "height": 420,
+            "unit": "mm",
+            "widthMm": 297,
+            "heightMm": 420
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "black",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod0d",
+      "categoryId": "afis",
+      "label": "Afiș A4 Alb-Negru, Față",
+      "amount": 30,
+      "elementals": [
+        {
+          "id": "elem0d-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "black",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod1a",
+      "categoryId": "flyer",
+      "label": "Fluturaș A4 Color, Față-Verso",
+      "amount": 50,
+      "elementals": [
+        {
+          "id": "elem1a-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod1b",
+      "categoryId": "flyer",
+      "label": "Fluturaș 1/3A4 Color, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem1b-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p1",
+            "label": "90 GSM - Mat",
+            "gsm": 90,
+            "finish": "Matt",
+            "explanation": "Hârtie mată ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire."
+          },
+          "size": {
+            "id": "s4",
+            "label": "1/3A4",
+            "width": 100,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 210
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod1c",
+      "categoryId": "flyer",
+      "label": "Fluturaș A5 Color, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem1c-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod1d",
+      "categoryId": "flyer",
+      "label": "Fluturaș A4 Color, Doar Față",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem1d-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod1e",
+      "categoryId": "flyer",
+      "label": "Fluturaș A6 color, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem1e-1",
+          "label": "Coală Simplă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s8",
+            "label": "A6",
+            "width": 105,
+            "height": 148,
+            "unit": "mm",
+            "widthMm": 105,
+            "heightMm": 148
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2a",
+      "categoryId": "brochure",
+      "label": "Broșură A4, Interior 8 Pagini",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem2a-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2a-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 8,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2b",
+      "categoryId": "brochure",
+      "label": "Broșură A4, Interior 16 Pagini",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem2b-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2b-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 16,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2c",
+      "categoryId": "brochure",
+      "label": "Broșură A4, Interior 24 Pagini",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem2c-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2c-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 24,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2d",
+      "categoryId": "brochure",
+      "label": "Broșură A4, Interior 32 Pagini",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem2d-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2d-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 32,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2e",
+      "categoryId": "brochure",
+      "label": "Broșură A5, Interior 8 Pagini",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem2e-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2e-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 8,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2f",
+      "categoryId": "brochure",
+      "label": "Broșură A5, Interior 16 Pagini",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem2f-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2f-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 16,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2g",
+      "categoryId": "brochure",
+      "label": "Broșură A5, Interior 24 Pagini",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem2g-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2g-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 24,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2h",
+      "categoryId": "brochure",
+      "label": "Broșură A5, Interior 32 Pagini",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem2h-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2h-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 32,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod2i",
+      "categoryId": "brochure",
+      "label": "Broșură A4, Interior 16 Pagini, laminată Mat",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem2i-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "matt",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem2i-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 16,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod3a",
+      "categoryId": "folder",
+      "label": "Mapă cu Buzunar și Cotor, laminată soft-touch",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem3a-1",
+          "label": "Coală A3 Pliată",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "soft-touch",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 2,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod3c",
+      "categoryId": "folder",
+      "label": "Mapă cu Buzunar fără Cotor",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem3c-1",
+          "label": "Coală A3 Pliată",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 1,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod3d",
+      "categoryId": "folder",
+      "label": "Mapă fără Buzunar, fără Cotor",
+      "amount": 10,
+      "pocketEnabled": false,
+      "elementals": [
+        {
+          "id": "elem3d-1",
+          "label": "Coală A3 Pliată",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 1,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod3e",
+      "categoryId": "folder",
+      "label": "Mapă Laminată Mat cu Buzunar",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem3e-1",
+          "label": "Coală A3 Pliată",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "matt",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 2,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod4a",
+      "categoryId": "business-card",
+      "label": "Carte Standard 90x50, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem4a-1",
+          "label": "Carte de Vizită",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod4b",
+      "categoryId": "business-card",
+      "label": "Carte Compact 80x50, O Față",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem4b-1",
+          "label": "Carte de Vizită",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s6",
+            "label": "Carte Vizită Compact",
+            "width": 80,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 80,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod4c",
+      "categoryId": "business-card",
+      "label": "Carte Premium 90x50, Lucios Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem4c-1",
+          "label": "Carte de Vizită",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "both"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod4d",
+      "categoryId": "business-card",
+      "label": "Carte Standard 90x50, Soft-Touch, O Față",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem4d-1",
+          "label": "Carte de Vizită",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "soft-touch",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod4e",
+      "categoryId": "business-card",
+      "label": "Carte Compact 80x50, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem4e-1",
+          "label": "Carte de Vizită",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s6",
+            "label": "Carte Vizită Compact",
+            "width": 80,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 80,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod5a",
+      "categoryId": "folded-flyer",
+      "label": "Pliant Tri-fold",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem5a-1",
+          "label": "Coală",
+          "media": {
+            "kind": "paper",
+            "id": "p2",
+            "label": "120 GSM - Lucios",
+            "gsm": 120,
+            "finish": "Gloss",
+            "explanation": "Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere."
+          },
+          "size": {
+            "id": "s4",
+            "label": "1/3A4",
+            "width": 100,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 210
+          },
+          "pageCount": 6,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "tri-fold",
+              "folds": 2
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod5b",
+      "categoryId": "folded-flyer",
+      "label": "Pliant Z-fold",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem5b-1",
+          "label": "Coală",
+          "media": {
+            "kind": "paper",
+            "id": "p2",
+            "label": "120 GSM - Lucios",
+            "gsm": 120,
+            "finish": "Gloss",
+            "explanation": "Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere."
+          },
+          "size": {
+            "id": "s4",
+            "label": "1/3A4",
+            "width": 100,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 210
+          },
+          "pageCount": 6,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "z-fold",
+              "folds": 2
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod5c",
+      "categoryId": "folded-flyer",
+      "label": "Pliant Bi-fold",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem5c-1",
+          "label": "Coală",
+          "media": {
+            "kind": "paper",
+            "id": "p2",
+            "label": "120 GSM - Lucios",
+            "gsm": 120,
+            "finish": "Gloss",
+            "explanation": "Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere."
+          },
+          "size": {
+            "id": "s4",
+            "label": "1/3A4",
+            "width": 100,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 210
+          },
+          "pageCount": 4,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "half-fold",
+              "folds": 1
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod5d",
+      "categoryId": "folded-flyer",
+      "label": "Pliant Gate-fold A4",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem5d-1",
+          "label": "Coală",
+          "media": {
+            "kind": "paper",
+            "id": "p2",
+            "label": "120 GSM - Lucios",
+            "gsm": 120,
+            "finish": "Gloss",
+            "explanation": "Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 8,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "gate-fold",
+              "folds": 3
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod5e",
+      "categoryId": "folded-flyer",
+      "label": "Pliant Tri-fold A4",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem5e-1",
+          "label": "Coală",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 6,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "tri-fold",
+              "folds": 2
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6a",
+      "categoryId": "sticker-sheet",
+      "label": "Coală A4 Lucioasă",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem6a-1",
+          "label": "Coală de Etichete",
+          "media": {
+            "kind": "sticker",
+            "id": "p7",
+            "label": "Etichetă Lucioasă Albă",
+            "gsm": 80,
+            "face": "Gloss",
+            "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 10,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6b",
+      "categoryId": "sticker-sheet",
+      "label": "Coală A3 Mată",
+      "amount": 5,
+      "elementals": [
+        {
+          "id": "elem6b-1",
+          "label": "Coală de Etichete",
+          "media": {
+            "kind": "sticker",
+            "id": "p8",
+            "label": "Etichetă Mată Albă",
+            "gsm": 80,
+            "face": "Matt",
+            "explanation": "Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret."
+          },
+          "size": {
+            "id": "s0",
+            "label": "A3",
+            "width": 297,
+            "height": 420,
+            "unit": "mm",
+            "widthMm": 297,
+            "heightMm": 420
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6c",
+      "categoryId": "sticker-sheet",
+      "label": "Coală A4 Transparentă",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem6c-1",
+          "label": "Coală de Etichete",
+          "media": {
+            "kind": "sticker",
+            "id": "p9",
+            "label": "Etichetă Transparentă",
+            "gsm": 80,
+            "face": "Clear",
+            "explanation": "Etichetă din film transparent. Creează un aspect de „fără etichetă\" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6d",
+      "categoryId": "sticker-sheet",
+      "label": "Coală A5 PVC",
+      "amount": 40,
+      "elementals": [
+        {
+          "id": "elem6d-1",
+          "label": "Coală de Etichete",
+          "media": {
+            "kind": "sticker",
+            "id": "p10",
+            "label": "Etichetă PVC",
+            "gsm": 80,
+            "face": "PVC",
+            "explanation": "Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6e",
+      "categoryId": "sticker-sheet",
+      "label": "Coală A3 Lucioasă",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem6e-1",
+          "label": "Coală de Etichete",
+          "media": {
+            "kind": "sticker",
+            "id": "p7",
+            "label": "Etichetă Lucioasă Albă",
+            "gsm": 80,
+            "face": "Gloss",
+            "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+          },
+          "size": {
+            "id": "s0",
+            "label": "A3",
+            "width": 297,
+            "height": 420,
+            "unit": "mm",
+            "widthMm": 297,
+            "heightMm": 420
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6f",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 30x40mm Lucioasă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6f-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p7",
+            "label": "Etichetă Lucioasă Albă",
+            "gsm": 80,
+            "face": "Gloss",
+            "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+          },
+          "size": {
+            "id": "s9",
+            "label": "30x40",
+            "width": 30,
+            "height": 40,
+            "unit": "mm",
+            "widthMm": 30,
+            "heightMm": 40
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6g",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 50x50mm Mată",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6g-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p8",
+            "label": "Etichetă Mată Albă",
+            "gsm": 80,
+            "face": "Matt",
+            "explanation": "Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret."
+          },
+          "size": {
+            "id": "s10",
+            "label": "50x50",
+            "width": 50,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 50,
+            "heightMm": 50
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6h",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 60x60mm Transparentă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6h-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p9",
+            "label": "Etichetă Transparentă",
+            "gsm": 80,
+            "face": "Clear",
+            "explanation": "Etichetă din film transparent. Creează un aspect de „fără etichetă\" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt."
+          },
+          "size": {
+            "id": "s11",
+            "label": "60x60",
+            "width": 60,
+            "height": 60,
+            "unit": "mm",
+            "widthMm": 60,
+            "heightMm": 60
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6i",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 40x60mm PVC",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6i-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p10",
+            "label": "Etichetă PVC",
+            "gsm": 80,
+            "face": "PVC",
+            "explanation": "Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade."
+          },
+          "size": {
+            "id": "s12",
+            "label": "40x60",
+            "width": 40,
+            "height": 60,
+            "unit": "mm",
+            "widthMm": 40,
+            "heightMm": 60
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6j",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 90x60mm Lucioasă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6j-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p7",
+            "label": "Etichetă Lucioasă Albă",
+            "gsm": 80,
+            "face": "Gloss",
+            "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+          },
+          "size": {
+            "id": "s13",
+            "label": "90x60",
+            "width": 90,
+            "height": 60,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 60
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6k",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 70x70mm Mată",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6k-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p8",
+            "label": "Etichetă Mată Albă",
+            "gsm": 80,
+            "face": "Matt",
+            "explanation": "Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret."
+          },
+          "size": {
+            "id": "s14",
+            "label": "70x70",
+            "width": 70,
+            "height": 70,
+            "unit": "mm",
+            "widthMm": 70,
+            "heightMm": 70
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6l",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 90x70mm Transparentă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6l-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p9",
+            "label": "Etichetă Transparentă",
+            "gsm": 80,
+            "face": "Clear",
+            "explanation": "Etichetă din film transparent. Creează un aspect de „fără etichetă\" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt."
+          },
+          "size": {
+            "id": "s15",
+            "label": "90x70",
+            "width": 90,
+            "height": 70,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 70
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6m",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 90x40mm PVC",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6m-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p10",
+            "label": "Etichetă PVC",
+            "gsm": 80,
+            "face": "PVC",
+            "explanation": "Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade."
+          },
+          "size": {
+            "id": "s16",
+            "label": "90x40",
+            "width": 90,
+            "height": 40,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 40
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6n",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 100x90mm Lucioasă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6n-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p7",
+            "label": "Etichetă Lucioasă Albă",
+            "gsm": 80,
+            "face": "Gloss",
+            "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+          },
+          "size": {
+            "id": "s17",
+            "label": "100x90",
+            "width": 100,
+            "height": 90,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 90
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6o",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 100x100mm Mată",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6o-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p8",
+            "label": "Etichetă Mată Albă",
+            "gsm": 80,
+            "face": "Matt",
+            "explanation": "Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret."
+          },
+          "size": {
+            "id": "s18",
+            "label": "100x100",
+            "width": 100,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 100
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6p",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 110x100mm Transparentă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6p-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p9",
+            "label": "Etichetă Transparentă",
+            "gsm": 80,
+            "face": "Clear",
+            "explanation": "Etichetă din film transparent. Creează un aspect de „fără etichetă\" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt."
+          },
+          "size": {
+            "id": "s19",
+            "label": "110x100",
+            "width": 110,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 110,
+            "heightMm": 100
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod6q",
+      "categoryId": "sticker-sheet",
+      "label": "Etichetă 120x100mm PVC",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem6q-1",
+          "label": "Etichetă",
+          "media": {
+            "kind": "sticker",
+            "id": "p10",
+            "label": "Etichetă PVC",
+            "gsm": 80,
+            "face": "PVC",
+            "explanation": "Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade."
+          },
+          "size": {
+            "id": "s20",
+            "label": "120x100",
+            "width": 120,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 120,
+            "heightMm": 100
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7a",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Interior 16 Pagini",
+      "amount": 30,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7a-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7a-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 16,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7a-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7b",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Interior 32 Pagini",
+      "amount": 20,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7b-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7b-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 32,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7b-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7c",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Interior 48 Pagini",
+      "amount": 10,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7c-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7c-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 48,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7c-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7d",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Format A5, Interior 24 Pagini",
+      "amount": 20,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7d-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7d-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 24,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7d-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7e",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Interior 96 Pagini",
+      "amount": 10,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7e-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7e-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 96,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7e-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod7f",
+      "categoryId": "spiral-catalog",
+      "label": "Catalog cu spira, Copertă Netipărită",
+      "amount": 10,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem7f-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "none",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7f-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 16,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem7f-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8a",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x50, cu Gaură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8a-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8b",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 80x50, cu Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8b-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s6",
+            "label": "Carte Vizită Compact",
+            "width": 80,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 80,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8c",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x50, cu Gaură și Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8c-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8d",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Premium 80x50, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8d-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s6",
+            "label": "Carte Vizită Compact",
+            "width": 80,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 80,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8e",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x50 Alb-Negru, cu Gaură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8e-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s5",
+            "label": "Carte Vizită Standard",
+            "width": 90,
+            "height": 50,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 50
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "black",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8f",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 30x40, cu Gaură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8f-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s9",
+            "label": "30x40",
+            "width": 30,
+            "height": 40,
+            "unit": "mm",
+            "widthMm": 30,
+            "heightMm": 40
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8g",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x60, cu Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8g-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s13",
+            "label": "90x60",
+            "width": 90,
+            "height": 60,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 60
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8h",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Premium 70x70, cu Gaură și Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8h-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s14",
+            "label": "70x70",
+            "width": 70,
+            "height": 70,
+            "unit": "mm",
+            "widthMm": 70,
+            "heightMm": 70
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8i",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x70, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8i-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s15",
+            "label": "90x70",
+            "width": 90,
+            "height": 70,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 70
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8j",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 90x40 Alb-Negru, cu Gaură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8j-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s16",
+            "label": "90x40",
+            "width": 90,
+            "height": 40,
+            "unit": "mm",
+            "widthMm": 90,
+            "heightMm": 40
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "black",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8k",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 100x90, cu Gaură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8k-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s17",
+            "label": "100x90",
+            "width": 100,
+            "height": 90,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 90
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8l",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Premium 100x100, cu Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8l-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s18",
+            "label": "100x100",
+            "width": 100,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 100,
+            "heightMm": 100
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8m",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 110x100, cu Gaură și Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8m-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s19",
+            "label": "110x100",
+            "width": 110,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 110,
+            "heightMm": 100
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod8n",
+      "categoryId": "cardboard-label",
+      "label": "Etichetă Carton 120x100, Față-Verso",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem8n-1",
+          "label": "Etichetă Carton",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s20",
+            "label": "120x100",
+            "width": 120,
+            "height": 100,
+            "unit": "mm",
+            "widthMm": 120,
+            "heightMm": 100
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod9",
+      "categoryId": "calendar",
+      "label": "Calendar A3+",
+      "amount": 5,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem9-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s7",
+            "label": "A3+",
+            "width": 320,
+            "height": 450,
+            "unit": "mm",
+            "widthMm": 320,
+            "heightMm": 450
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0,
+              "max": 5
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem9-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s7",
+            "label": "A3+",
+            "width": 320,
+            "height": 450,
+            "unit": "mm",
+            "widthMm": 320,
+            "heightMm": 450
+          },
+          "pageCount": 24,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem9-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s7",
+            "label": "A3+",
+            "width": 320,
+            "height": 420,
+            "unit": "mm",
+            "widthMm": 320,
+            "heightMm": 450
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "none",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod10",
+      "categoryId": "calendar",
+      "label": "Calendar A4",
+      "amount": 6,
+      "binding": {
+        "type": "spiral",
+        "color": "white"
+      },
+      "elementals": [
+        {
+          "id": "elem10-1",
+          "label": "Copertă",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem10-2",
+          "label": "Interior",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 24,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        },
+        {
+          "id": "elem10-3",
+          "label": "Copertă Spate",
+          "media": {
+            "kind": "paper",
+            "id": "p3",
+            "label": "150 GSM - Mat",
+            "gsm": 150,
+            "finish": "Matt",
+            "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 1,
+          "printing": {
+            "front": "none",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "prod0a": {
+      "allowedMediaIds": [
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "allowedPrintingFronts": [
+        "color"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s0",
+      "explanation": "Coală A3 tipărită color pe o față. Dimensiune rezonabilă pentru utilizare in-door."
+    },
+    "prod0b": {
+      "allowedMediaIds": [
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "allowedPrintingFronts": [
+        "color"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită color pe o față. Format compact pentru afișaj in-door în spații mici."
+    },
+    "prod0c": {
+      "allowedMediaIds": [
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "allowedPrintingFronts": [
+        "black"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s0",
+      "explanation": "Coală A3 tipărită alb-negru pe o față. Dimensiune rezonabilă pentru utilizare in-door."
+    },
+    "prod0d": {
+      "allowedMediaIds": [
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "allowedPrintingFronts": [
+        "black"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită alb-negru pe o față. Format compact pentru afișaj in-door în spații mici."
+    },
+    "prod1a": {
+      "allowedMediaIds": [
+        "p1",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s4",
+        "s2",
+        "s1",
+        "s8"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat pe ambele fețe — evenimente, promoții, materiale informative."
+    },
+    "prod1b": {
+      "allowedMediaIds": [
+        "p1",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s4",
+        "s2",
+        "s1",
+        "s8"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s4",
+      "explanation": "Fluturaș 1/3A4 tipărit color pe o ambele fețe. Cea mai economică variantă pentru distribuire în masă — costuri minime de tipărire."
+    },
+    "prod1c": {
+      "allowedMediaIds": [
+        "p1",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s4",
+        "s2",
+        "s1",
+        "s8"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "explanation": "Coală A5 tipărită color pe ambele fețe. Format compact ideal pentru pliante de mână, meniuri sau invitații."
+    },
+    "prod1d": {
+      "allowedMediaIds": [
+        "p1",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s4",
+        "s2",
+        "s1",
+        "s8"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită color doar pe față. Potrivit pentru afișe simple sau anunțuri unde versoul rămâne neutilizat."
+    },
+    "prod1e": {
+      "allowedMediaIds": [
+        "p1",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s4",
+        "s2",
+        "s1",
+        "s8"
+      ],
+      "machineId": "m1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s8",
+      "explanation": "Coală format A6 tipărită color pe ambele fețe. Recomandat pentru materiale care se citesc din mers."
+    },
+    "prod2a": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2a-1": {
+          "kind": "derived"
+        },
+        "elem2a-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 8 pagini. Potrivită pentru cataloage subțiri, prezentări de produse sau materiale promoționale concise."
+    },
+    "prod2b": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2b-1": {
+          "kind": "derived"
+        },
+        "elem2b-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+    },
+    "prod2c": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2c-1": {
+          "kind": "derived"
+        },
+        "elem2c-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+    },
+    "prod2e": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2e-1": {
+          "kind": "derived"
+        },
+        "elem2e-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
+    },
+    "prod2d": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2d-1": {
+          "kind": "derived"
+        },
+        "elem2d-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici."
+    },
+    "prod3a": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "black",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium."
+    },
+    "prod3c": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "black",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior și bandă elastică de închidere. Protejează conținutul în timpul transportului — potrivit pentru dosare de candidatură sau materiale care circulă des."
+    },
+    "prod3d": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "black",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția."
+    },
+    "prod3e": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "black",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale."
+    },
+    "prod4a": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită standard 90x50mm, tipărit pe ambele fețe pe carton rezistent. Esențial pentru identitatea de afaceri și networking."
+    },
+    "prod4b": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s6",
+      "explanation": "Carte de vizită compact 80x50mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari."
+    },
+    "prod4c": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită premium 90x50mm pe carton lucios 300gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență."
+    },
+    "prod4d": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită standard 90x50mm, tipărit doar pe față, cu finisaj soft-touch catifelat. Senzație tactilă premium pentru o primă impresie memorabilă."
+    },
+    "prod4e": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s6",
+      "explanation": "Carte de vizită compact 80x50mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat."
+    },
+    "prod5a": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s4"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p2",
+      "recommendedSizeId": "s4",
+      "allowedFoldTypes": [
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold"
+      ],
+      "elementalPageCounts": {
+        "elem5a-1": {
+          "kind": "derived"
+        }
+      },
+      "explanation": "Pliant cu pliere în 3 (tri-fold), obținut dintr-o singură coală. Excelent pentru hărți, ghiduri sau prezentări de produse cu mai multe secțiuni."
+    },
+    "prod5b": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s4"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p2",
+      "recommendedSizeId": "s4",
+      "allowedFoldTypes": [
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold"
+      ],
+      "elementalPageCounts": {
+        "elem5b-1": {
+          "kind": "derived"
+        }
+      },
+      "explanation": "Pliant cu pliere în Z (z-fold), obținut dintr-o singură coală. Potrivit pentru prezentări secvențiale sau hărți pliate."
+    },
+    "prod5c": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s4"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p2",
+      "recommendedSizeId": "s4",
+      "allowedFoldTypes": [
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold"
+      ],
+      "elementalPageCounts": {
+        "elem5c-1": {
+          "kind": "derived"
+        }
+      },
+      "explanation": "Pliant cu pliere simplă în 2 (bi-fold), obținut dintr-o singură coală. Variantă compactă pentru mesaje scurte."
+    },
+    "prod5d": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s4"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p2",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold"
+      ],
+      "elementalPageCounts": {
+        "elem5d-1": {
+          "kind": "derived"
+        }
+      },
+      "explanation": "Pliant format A4 cu pliere tip portiță (gate-fold), care se deschide spre interior din ambele laturi. Creează un efect spectaculos pentru lansări de produse sau meniuri de lux."
+    },
+    "prod5e": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s4"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold"
+      ],
+      "elementalPageCounts": {
+        "elem5e-1": {
+          "kind": "derived"
+        }
+      },
+      "explanation": "Pliant format A4 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe."
+    },
+    "prod6a": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6a-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Coală A4 de etichete autoadezive lucioase, tipărită pe o singură față. Potrivită pentru ambalaje, sticle sau organizare — se decupează individual după tipărire."
+    },
+    "prod6b": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6b-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Coală A3 de etichete autoadezive mate, tipărită pe o singură față. Potrivită pentru tiraje mari de etichete decupate individual."
+    },
+    "prod6c": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6c-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Coală A4 de etichete transparente, tipărită pe o singură față. Creează un aspect „fără etichetă\" — ideală pentru ambalaje premium."
+    },
+    "prod6d": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p10",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6d-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Coală A5 de etichete PVC, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau organice."
+    },
+    "prod6e": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s0",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6e-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Coală A3 de etichete autoadezive lucioase, tipărită pe o singură față. Format mare pentru tiraje de volum sau decupaje complexe cu multe etichete pe coală."
+    },
+    "prod6f": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s9",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6f-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă lucioasă 30x40mm, tipărită pe o singură față. Format mic potrivit pentru etichete de produs sau ambalaje compacte."
+    },
+    "prod6g": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p8",
+      "recommendedSizeId": "s10",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6g-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă mată 50x50mm, tipărită pe o singură față. Format pătrat versatil pentru etichete de borcane, cutii sau logo-uri."
+    },
+    "prod6h": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p9",
+      "recommendedSizeId": "s11",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6h-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă transparentă 60x60mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje premium de dimensiuni medii."
+    },
+    "prod6i": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p10",
+      "recommendedSizeId": "s12",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6i-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă PVC 40x60mm, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau cosmetice."
+    },
+    "prod6j": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s13",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6j-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă lucioasă 90x60mm, tipărită pe o singură față. Format dreptunghiular potrivit pentru etichete de sticle sau cutii."
+    },
+    "prod6k": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p8",
+      "recommendedSizeId": "s14",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6k-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă mată 70x70mm, tipărită pe o singură față. Format pătrat mai mare, potrivit pentru etichete cu mai mult text."
+    },
+    "prod6l": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p9",
+      "recommendedSizeId": "s15",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6l-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă transparentă 90x70mm, tipărită pe o singură față. Format mare pentru ambalaje premium cu detalii vizuale complexe."
+    },
+    "prod6m": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p10",
+      "recommendedSizeId": "s16",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6m-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă PVC 90x40mm, tipărită pe o singură față. Format alungit, potrivit pentru etichete de identificare sau preț."
+    },
+    "prod6n": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p7",
+      "recommendedSizeId": "s17",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6n-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă lucioasă 100x90mm, tipărită pe o singură față. Format mare potrivit pentru etichete de expediere sau cutii."
+    },
+    "prod6o": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p8",
+      "recommendedSizeId": "s18",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6o-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă autoadezivă mată 100x100mm, tipărită pe o singură față. Format pătrat mare pentru etichete cu text sau grafică extinsă."
+    },
+    "prod6p": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p9",
+      "recommendedSizeId": "s19",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6p-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă transparentă 110x100mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje mari sau premium."
+    },
+    "prod6q": {
+      "allowedMediaIds": [
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p10",
+      "recommendedSizeId": "s20",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "none"
+      ],
+      "elementalPageCounts": {
+        "elem6q-1": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Etichetă PVC 120x100mm, tipărită pe o singură față. Cel mai mare format din gamă — potrivit pentru cutii sau ambalaje voluminoase."
+    },
+    "prod7a": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7a-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7a-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7a-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog cu copertă, interior de 16 pagini și copertă spate, legat cu spirală. Ideal pentru cataloage subțiri de produse sau portofolii compacte."
+    },
+    "prod7b": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7b-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7b-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7b-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog cu copertă, interior de 32 pagini și copertă spate, legat cu spirală. Potrivit pentru cataloage de produse cu game extinse."
+    },
+    "prod7c": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7c-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7c-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7c-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog cu copertă, interior de 48 pagini și copertă spate, legat cu spirală. Ideal pentru manuale sau portofolii extinse care trebuie să stea deschise plate."
+    },
+    "prod7d": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7d-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7d-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7d-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog format A5 cu copertă, interior de 24 pagini și copertă spate, legat cu spirală. Format de buzunar, ușor de transportat — potrivit pentru cataloage de prezentare la întâlniri."
+    },
+    "prod7e": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7e-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7e-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7e-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog cu copertă, interior de 96 pagini și copertă spate, legat cu spirală. Variantă pentru cataloage foarte extinse sau cărți de specialitate."
+    },
+    "prod7f": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPrintingFronts": {
+        "elem7f-1": [
+          "color",
+          "black",
+          "none"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem7f-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem7f-2": {
+          "kind": "multiple",
+          "of": 2,
+          "min": 2,
+          "max": 200
+        },
+        "elem7f-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Catalog cu copertă opțional netipărită, interior de 16 pagini și copertă spate, legat cu spirală. Potrivit pentru clienți care nu doresc o copertă tipărită."
+    },
+    "prod8a": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton gros 90x50mm, cu gaură pentru agățare. Potrivită pentru etichete de bagaje sau atârnătoare de produs."
+    },
+    "prod8b": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s6",
+      "explanation": "Etichetă din carton gros 80x50mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs."
+    },
+    "prod8c": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton gros 90x50mm, cu gaură și capsă pentru fixare dublă. Potrivită pentru etichete care trebuie atașate sigur pe produse voluminoase."
+    },
+    "prod8d": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s6",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 80x50mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
+    },
+    "prod8e": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton 90x50mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare."
+    },
+    "prod8f": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s9",
+      "explanation": "Etichetă din carton gros 30x40mm, cu gaură pentru agățare. Format mic, potrivit pentru etichete de bijuterii sau accesorii."
+    },
+    "prod8g": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s13",
+      "explanation": "Etichetă din carton gros 90x60mm, cu capsă. Format dreptunghiular pentru etichete de preț sau identificare produs."
+    },
+    "prod8h": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s14",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 70x70mm, cu gaură și capsă pentru fixare dublă. Format pătrat pentru atârnătoare de produs."
+    },
+    "prod8i": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s15",
+      "explanation": "Etichetă din carton gros 90x70mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
+    },
+    "prod8j": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s16",
+      "explanation": "Etichetă din carton gros 90x40mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare."
+    },
+    "prod8k": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s17",
+      "explanation": "Etichetă din carton gros 100x90mm, cu gaură pentru agățare. Format mare, potrivit pentru atârnătoare de bagaje sau produse voluminoase."
+    },
+    "prod8l": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s18",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 100x100mm, cu capsă. Format pătrat mare pentru etichete cu text sau grafică extinsă."
+    },
+    "prod8m": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s19",
+      "explanation": "Etichetă din carton gros 110x100mm, cu gaură și capsă pentru fixare dublă. Format mare pentru produse voluminoase."
+    },
+    "prod8n": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s5",
+        "s6",
+        "s9",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "recommendedSizeId": "s20",
+      "explanation": "Etichetă din carton gros 120x100mm, tipărită pe ambele fețe, fără gaură sau capsă. Cel mai mare format din gamă."
+    },
+    "prod9": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s7"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s7",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedLaminationSides": [],
+      "allowedRoundedCorners": [],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPrintingFronts": {
+        "elem9-1": [
+          "color"
+        ],
+        "elem9-2": [
+          "color"
+        ],
+        "elem9-3": [
+          "none"
+        ]
+      },
+      "elementalPrintingBacks": {
+        "elem9-1": [
+          "none"
+        ],
+        "elem9-2": [
+          "none"
+        ],
+        "elem9-3": [
+          "none"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem9-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem9-2": {
+          "kind": "fixed",
+          "value": 24
+        },
+        "elem9-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Calendar de perete cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format clasic pentru calendare promoționale anuale."
+    },
+    "prod10": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2",
+        "s7"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s7",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedLaminationSides": [],
+      "allowedRoundedCorners": [],
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "elementalPrintingFronts": {
+        "elem10-1": [
+          "color"
+        ],
+        "elem10-2": [
+          "color"
+        ],
+        "elem10-3": [
+          "none"
+        ]
+      },
+      "elementalPrintingBacks": {
+        "elem10-1": [
+          "none"
+        ],
+        "elem10-2": [
+          "none"
+        ],
+        "elem10-3": [
+          "none"
+        ]
+      },
+      "elementalPageCounts": {
+        "elem10-1": {
+          "kind": "fixed",
+          "value": 1
+        },
+        "elem10-2": {
+          "kind": "fixed",
+          "value": 24
+        },
+        "elem10-3": {
+          "kind": "fixed",
+          "value": 1
+        }
+      },
+      "explanation": "Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici."
+    }
+  },
+  "categories": [
+    {
+      "id": "afis",
+      "label": "Afiș",
+      "explanation": "Material tipărit pe o singură coală, o singură față."
+    },
+    {
+      "id": "flyer",
+      "label": "Fluturaș",
+      "explanation": "Materiale tipărite pe o singură coală, distribuite în masă — promoții, evenimente, anunțuri."
+    },
+    {
+      "id": "brochure",
+      "label": "Broșură",
+      "explanation": "Materiale pliate cu copertă și interior, pentru cataloage și prezentări."
+    },
+    {
+      "id": "folder",
+      "label": "Mapă de Prezentare",
+      "explanation": "Mape din carton gros cu buzunar interior, pentru oferte și prezentări."
+    },
+    {
+      "id": "business-card",
+      "label": "Carte de Vizită",
+      "explanation": "Carți de vizită clasice, tipărite pe carton rezistent."
+    },
+    {
+      "id": "folded-flyer",
+      "label": "Pliant",
+      "explanation": "Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală."
+    },
+    {
+      "id": "sticker-sheet",
+      "label": "Etichetă pe Coală",
+      "explanation": "Coli de etichete autoadezive, decupate individual după tipărire."
+    },
+    {
+      "id": "spiral-catalog",
+      "label": "Catalog cu spira",
+      "explanation": "Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate."
+    },
+    {
+      "id": "cardboard-label",
+      "label": "Etichetă Carton",
+      "explanation": "Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă."
+    },
+    {
+      "id": "calendar",
+      "label": "Calendar perete",
+      "explanation": "Calendare de perete legate cu spirală, cu file lunare."
+    }
+  ],
+  "media": [
+    {
+      "kind": "paper",
+      "id": "p1",
+      "label": "90 GSM - Mat",
+      "gsm": 90,
+      "finish": "Matt",
+      "explanation": "Hârtie mată ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire."
+    },
+    {
+      "kind": "paper",
+      "id": "p2",
+      "label": "120 GSM - Lucios",
+      "gsm": 120,
+      "finish": "Gloss",
+      "explanation": "Cea mai populară alegere pentru fluturași și broșuri. Stratul lucios face fotografiile să iasă în evidență și textul să fie clar. Greutate echilibrată — suficient de rezistentă pentru distribuire, suficient de ușoară pentru expediere."
+    },
+    {
+      "kind": "paper",
+      "id": "p3",
+      "label": "150 GSM - Mat",
+      "gsm": 150,
+      "finish": "Matt",
+      "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
+    },
+    {
+      "kind": "paper",
+      "id": "p4",
+      "label": "200 GSM - Mat",
+      "gsm": 200,
+      "finish": "Matt",
+      "explanation": "Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje."
+    },
+    {
+      "kind": "paper",
+      "id": "p5",
+      "label": "300 GSM - Mat Premium",
+      "gsm": 300,
+      "finish": "Matt",
+      "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+    },
+    {
+      "kind": "paper",
+      "id": "p6",
+      "label": "350 GSM - Mat Premium",
+      "gsm": 350,
+      "finish": "Matt",
+      "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+    },
+    {
+      "kind": "sticker",
+      "id": "p7",
+      "label": "Etichetă Lucioasă Albă",
+      "gsm": 80,
+      "face": "Gloss",
+      "explanation": "Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă."
+    },
+    {
+      "kind": "sticker",
+      "id": "p8",
+      "label": "Etichetă Mată Albă",
+      "gsm": 80,
+      "face": "Matt",
+      "explanation": "Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret."
+    },
+    {
+      "kind": "sticker",
+      "id": "p9",
+      "label": "Etichetă Transparentă",
+      "gsm": 80,
+      "face": "Clear",
+      "explanation": "Etichetă din film transparent. Creează un aspect de „fără etichetă\" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt."
+    },
+    {
+      "kind": "sticker",
+      "id": "p10",
+      "label": "Etichetă PVC",
+      "gsm": 80,
+      "face": "PVC",
+      "explanation": "Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade."
+    }
+  ],
+  "sizes": [
+    {
+      "id": "s0",
+      "label": "A3",
+      "width": 297,
+      "height": 420,
+      "unit": "mm",
+      "widthMm": 297,
+      "heightMm": 420
+    },
+    {
+      "id": "s1",
+      "label": "A4",
+      "width": 210,
+      "height": 297,
+      "unit": "mm",
+      "widthMm": 210,
+      "heightMm": 297
+    },
+    {
+      "id": "s2",
+      "label": "A5",
+      "width": 148,
+      "height": 210,
+      "unit": "mm",
+      "widthMm": 148,
+      "heightMm": 210
+    },
+    {
+      "id": "s3",
+      "label": "Letter",
+      "width": 215.9,
+      "height": 279.4,
+      "unit": "mm",
+      "widthMm": 215.9,
+      "heightMm": 279.4
+    },
+    {
+      "id": "s4",
+      "label": "1/3A4",
+      "width": 100,
+      "height": 210,
+      "unit": "mm",
+      "widthMm": 100,
+      "heightMm": 210
+    },
+    {
+      "id": "s5",
+      "label": "Carte Vizită Standard",
+      "width": 90,
+      "height": 50,
+      "unit": "mm",
+      "widthMm": 90,
+      "heightMm": 50
+    },
+    {
+      "id": "s6",
+      "label": "Carte Vizită Compact",
+      "width": 80,
+      "height": 50,
+      "unit": "mm",
+      "widthMm": 80,
+      "heightMm": 50
+    },
+    {
+      "id": "s7",
+      "label": "A3+",
+      "width": 320,
+      "height": 450,
+      "unit": "mm",
+      "widthMm": 320,
+      "heightMm": 450
+    },
+    {
+      "id": "s8",
+      "label": "A6",
+      "width": 105,
+      "height": 148,
+      "unit": "mm",
+      "widthMm": 105,
+      "heightMm": 148
+    },
+    {
+      "id": "s9",
+      "label": "30x40",
+      "width": 30,
+      "height": 40,
+      "unit": "mm",
+      "widthMm": 30,
+      "heightMm": 40
+    },
+    {
+      "id": "s10",
+      "label": "50x50",
+      "width": 50,
+      "height": 50,
+      "unit": "mm",
+      "widthMm": 50,
+      "heightMm": 50
+    },
+    {
+      "id": "s11",
+      "label": "60x60",
+      "width": 60,
+      "height": 60,
+      "unit": "mm",
+      "widthMm": 60,
+      "heightMm": 60
+    },
+    {
+      "id": "s12",
+      "label": "40x60",
+      "width": 40,
+      "height": 60,
+      "unit": "mm",
+      "widthMm": 40,
+      "heightMm": 60
+    },
+    {
+      "id": "s13",
+      "label": "90x60",
+      "width": 90,
+      "height": 60,
+      "unit": "mm",
+      "widthMm": 90,
+      "heightMm": 60
+    },
+    {
+      "id": "s14",
+      "label": "70x70",
+      "width": 70,
+      "height": 70,
+      "unit": "mm",
+      "widthMm": 70,
+      "heightMm": 70
+    },
+    {
+      "id": "s15",
+      "label": "90x70",
+      "width": 90,
+      "height": 70,
+      "unit": "mm",
+      "widthMm": 90,
+      "heightMm": 70
+    },
+    {
+      "id": "s16",
+      "label": "90x40",
+      "width": 90,
+      "height": 40,
+      "unit": "mm",
+      "widthMm": 90,
+      "heightMm": 40
+    },
+    {
+      "id": "s17",
+      "label": "100x90",
+      "width": 100,
+      "height": 90,
+      "unit": "mm",
+      "widthMm": 100,
+      "heightMm": 90
+    },
+    {
+      "id": "s18",
+      "label": "100x100",
+      "width": 100,
+      "height": 100,
+      "unit": "mm",
+      "widthMm": 100,
+      "heightMm": 100
+    },
+    {
+      "id": "s19",
+      "label": "110x100",
+      "width": 110,
+      "height": 100,
+      "unit": "mm",
+      "widthMm": 110,
+      "heightMm": 100
+    },
+    {
+      "id": "s20",
+      "label": "120x100",
+      "width": 120,
+      "height": 100,
+      "unit": "mm",
+      "widthMm": 120,
+      "heightMm": 100
+    }
+  ],
+  "machines": [
+    {
+      "id": "m1",
+      "label": "Presă Digitală",
+      "maxWidthMm": 320,
+      "maxHeightMm": 450
+    }
+  ]
+}

@@ -13,7 +13,7 @@ export const MOCK_STICKERS: Sticker[] = [
   { kind: 'sticker', id: 'p7',  label: 'Etichetă Lucioasă Albă', gsm: 80, face: 'Gloss', explanation: 'Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă.' },
   { kind: 'sticker', id: 'p8',  label: 'Etichetă Mată Albă',     gsm: 80, face: 'Matt',  explanation: 'Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret.' },
   { kind: 'sticker', id: 'p9',  label: 'Etichetă Transparentă',  gsm: 80, face: 'Clear', explanation: 'Etichetă din film transparent. Creează un aspect de „fără etichetă" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt.' },
-  { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
+  { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
 ];
 
 export const MOCK_PAPER_LABELS: Sticker[] = [
@@ -32,7 +32,7 @@ export const MOCK_SIZES: Size[] = [
   { id: 's0', label: 'A3',                    width: 297, height: 420, unit: 'mm', widthMm: 297,   heightMm: 420   },
   { id: 's1', label: 'A4',                    width: 210, height: 297, unit: 'mm', widthMm: 210,   heightMm: 297   },
   { id: 's2', label: 'A5',                    width: 148, height: 210, unit: 'mm', widthMm: 148,   heightMm: 210   },
-  { id: 's3', label: 'Letter',                width: 8.5, height: 11,  unit: 'in', widthMm: 215.9, heightMm: 279.4 },
+  { id: 's3', label: 'Letter',                width: 215.9, height: 279.4,  unit: 'mm', widthMm: 215.9, heightMm: 279.4 },
   { id: 's4', label: '1/3A4',                 width: 100, height: 210, unit: 'mm', widthMm: 100,   heightMm: 210   },
   { id: 's5', label: 'Carte Vizită Standard', width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
   { id: 's6', label: 'Carte Vizită Compact',  width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
@@ -364,6 +364,38 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2d-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici.',
+  },
+  prod2g: {
+    ...BROCHURE_CATEGORY_CONFIG,
+    elementalPageCounts: {
+      'elem2e-1': { kind: 'derived' },
+      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+    },
+    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
+  },
+  prod2f: {
+    ...BROCHURE_CATEGORY_CONFIG,
+    elementalPageCounts: {
+      'elem2e-1': { kind: 'derived' },
+      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+    },
+    explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
+  },
+  prod2h: {
+    ...BROCHURE_CATEGORY_CONFIG,
+    elementalPageCounts: {
+      'elem2e-1': { kind: 'derived' },
+      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+    },
+    explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
+  },
+  prod2i: {
+    ...BROCHURE_CATEGORY_CONFIG,
+    elementalPageCounts: {
+      'elem2e-1': { kind: 'derived' },
+      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+    },
+    explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,
@@ -950,7 +982,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem1e-1',
         label: 'Coală Simplă',
         media: MOCK_PAPERS[2],
-        size: { id: 's8', label: 'A6', width: 105, height: 148, unit: 'in', widthMm: 105, heightMm: 148 },
+        size: { id: 's8', label: 'A6', width: 105, height: 148, unit: 'mm', widthMm: 105, heightMm: 148 },
         pageCount: 2,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1037,7 +1069,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod2c',
     categoryId: 'brochure',
-    label: 'Broșură A4, Interior 32 Pagini',
+    label: 'Broșură A4, Interior 24 Pagini',
     amount: 5,
     elementals: [
       {
@@ -1059,7 +1091,7 @@ export const MOCK_PRODUCTS: Product[] = [
         label: 'Interior',
         media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 32,
+        pageCount: 24,
         printing: { front: 'color', back: 'color' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
@@ -1073,11 +1105,47 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod2d',
     categoryId: 'brochure',
-    label: 'Broșură A5, Interior 8 Pagini',
+    label: 'Broșură A4, Interior 32 Pagini',
     amount: 5,
     elementals: [
       {
         id: 'elem2d-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[4],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 4,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 1 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem2d-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 32,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod2e',
+    categoryId: 'brochure',
+    label: 'Broșură A5, Interior 8 Pagini',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem2e-1',
         label: 'Copertă',
         media: MOCK_PAPERS[4],
         size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
@@ -1091,7 +1159,7 @@ export const MOCK_PRODUCTS: Product[] = [
         },
       },
       {
-        id: 'elem2d-2',
+        id: 'elem2e-2',
         label: 'Interior',
         media: MOCK_PAPERS[2],
         size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
@@ -1107,16 +1175,16 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 'prod2e',
+    id: 'prod2f',
     categoryId: 'brochure',
-    label: 'Broșură A4, Interior 24 Pagini',
-    amount: 5,
+    label: 'Broșură A5, Interior 16 Pagini',
+    amount: 10,
     elementals: [
       {
-        id: 'elem2e-1',
+        id: 'elem2f-1',
         label: 'Copertă',
         media: MOCK_PAPERS[4],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
         pageCount: 4,
         printing: { front: 'color', back: 'color' },
         finishing: {
@@ -1127,11 +1195,119 @@ export const MOCK_PRODUCTS: Product[] = [
         },
       },
       {
-        id: 'elem2e-2',
+        id: 'elem2f-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 16,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod2g',
+    categoryId: 'brochure',
+    label: 'Broșură A5, Interior 24 Pagini',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem2g-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[4],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 4,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 1 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem2g-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 24,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod2h',
+    categoryId: 'brochure',
+    label: 'Broșură A5, Interior 32 Pagini',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem2h-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[4],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 4,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 1 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem2h-2',
+        label: 'Interior',
+        media: MOCK_PAPERS[2],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 32,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod2i',
+    categoryId: 'brochure',
+    label: 'Broșură A4, Interior 16 Pagini, laminată Mat',
+    amount: 5,
+    elementals: [
+      {
+        id: 'elem2i-1',
+        label: 'Copertă',
+        media: MOCK_PAPERS[4],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 4,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'matt', sides: 'front' },
+          folding: { type: 'half-fold', folds: 1 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+      {
+        id: 'elem2i-2',
         label: 'Interior',
         media: MOCK_PAPERS[2],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 24,
+        pageCount: 16,
         printing: { front: 'color', back: 'color' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
@@ -1457,14 +1633,14 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6a',
     categoryId: 'sticker-sheet',
     label: 'Coală A4 Lucioasă',
-    amount: 1,
+    amount: 10,
     elementals: [
       {
         id: 'elem6a-1',
         label: 'Coală de Etichete',
         media: MOCK_STICKERS[0],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
-        pageCount: 1,
+        pageCount: 10,
         printing: { front: 'color', back: 'none' },
         finishing: {
           lamination: { type: 'none', sides: 'front' },
@@ -1479,7 +1655,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6b',
     categoryId: 'sticker-sheet',
     label: 'Coală A3 Mată',
-    amount: 1,
+    amount: 5,
     elementals: [
       {
         id: 'elem6b-1',
@@ -1501,7 +1677,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6c',
     categoryId: 'sticker-sheet',
     label: 'Coală A4 Transparentă',
-    amount: 1,
+    amount: 20,
     elementals: [
       {
         id: 'elem6c-1',
@@ -1523,7 +1699,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6d',
     categoryId: 'sticker-sheet',
     label: 'Coală A5 PVC',
-    amount: 1,
+    amount: 40,
     elementals: [
       {
         id: 'elem6d-1',
@@ -1545,7 +1721,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6e',
     categoryId: 'sticker-sheet',
     label: 'Coală A3 Lucioasă',
-    amount: 1,
+    amount: 10,
     elementals: [
       {
         id: 'elem6e-1',
@@ -1567,7 +1743,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6f',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 30x40mm Lucioasă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6f-1',
@@ -1589,7 +1765,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6g',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 50x50mm Mată',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6g-1',
@@ -1611,7 +1787,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6h',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 60x60mm Transparentă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6h-1',
@@ -1633,7 +1809,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6i',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 40x60mm PVC',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6i-1',
@@ -1655,7 +1831,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6j',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 90x60mm Lucioasă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6j-1',
@@ -1677,7 +1853,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6k',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 70x70mm Mată',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6k-1',
@@ -1699,7 +1875,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6l',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 90x70mm Transparentă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6l-1',
@@ -1721,7 +1897,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6m',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 90x40mm PVC',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6m-1',
@@ -1743,7 +1919,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6n',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 100x90mm Lucioasă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6n-1',
@@ -1765,7 +1941,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6o',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 100x100mm Mată',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6o-1',
@@ -1787,7 +1963,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6p',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 110x100mm Transparentă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6p-1',
@@ -1809,7 +1985,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod6q',
     categoryId: 'sticker-sheet',
     label: 'Etichetă 120x100mm PVC',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem6q-1',
@@ -2137,7 +2313,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8a',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x50, cu Gaură',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8a-1',
@@ -2160,7 +2336,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8b',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 80x50, cu Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8b-1',
@@ -2183,7 +2359,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8c',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x50, cu Gaură și Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8c-1',
@@ -2206,7 +2382,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8d',
     categoryId: 'cardboard-label',
     label: 'Etichetă Premium 80x50, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8d-1',
@@ -2229,7 +2405,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8e',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x50 Alb-Negru, cu Gaură',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8e-1',
@@ -2252,7 +2428,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8f',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 30x40, cu Gaură',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8f-1',
@@ -2275,7 +2451,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8g',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x60, cu Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8g-1',
@@ -2298,7 +2474,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8h',
     categoryId: 'cardboard-label',
     label: 'Etichetă Premium 70x70, cu Gaură și Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8h-1',
@@ -2321,7 +2497,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8i',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x70, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8i-1',
@@ -2344,7 +2520,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8j',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 90x40 Alb-Negru, cu Gaură',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8j-1',
@@ -2367,7 +2543,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8k',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 100x90, cu Gaură',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8k-1',
@@ -2390,7 +2566,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8l',
     categoryId: 'cardboard-label',
     label: 'Etichetă Premium 100x100, cu Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8l-1',
@@ -2413,7 +2589,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8m',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 110x100, cu Gaură și Capsă',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8m-1',
@@ -2436,7 +2612,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod8n',
     categoryId: 'cardboard-label',
     label: 'Etichetă Carton 120x100, Față-Verso',
-    amount: 1,
+    amount: 100,
     elementals: [
       {
         id: 'elem8n-1',
@@ -2459,7 +2635,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod9',
     categoryId: 'calendar',
     label: 'Calendar A3+',
-    amount: 1,
+    amount: 5,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
@@ -2510,7 +2686,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod10',
     categoryId: 'calendar',
     label: 'Calendar A4',
-    amount: 1,
+    amount: 6,
     binding: { type: 'spiral', color: 'white' },
     elementals: [
       {
