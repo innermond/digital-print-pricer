@@ -37,6 +37,12 @@ const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =
     if (!base) return product;
     return {
       ...product,
+      // A cache written before `punchHole` existed has no key at all, and
+      // `?? false` would then read as "the customer excluded the hole" on every
+      // product that ships with one. Absent means never chosen, so it falls back
+      // to the catalog default; an explicit true/false is the customer's and is
+      // left alone.
+      punchHole: product.punchHole ?? base.punchHole,
       elementals: product.elementals.map((elem) => {
         const baseElem = base.elementals.find((b) => b.id === elem.id);
         if (!baseElem) return elem;
@@ -139,6 +145,12 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     );
   };
 
+  const updatePunchHole = (productId: Product['id'], punchHole: boolean) => {
+    setProducts(prev =>
+      prev.map(p => (p.id === productId ? { ...p, punchHole } : p))
+    );
+  };
+
   // Apply one size to every elemental of a product (multi-element products
   // physically share a single size).
   const setProductSize = (productId: Product['id'], size: Elemental['size']) => {
@@ -179,7 +191,7 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     setProducts(prev =>
       prev.map(p =>
         p.id === id
-          ? { ...p, elementals: base.elementals, binding: base.binding, pocketEnabled: base.pocketEnabled }
+          ? { ...p, elementals: base.elementals, binding: base.binding, pocketEnabled: base.pocketEnabled, punchHole: base.punchHole }
           : p
       )
     );
@@ -236,6 +248,7 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
     removeElemental,
     updateBinding,
     updatePocketEnabled,
+    updatePunchHole,
     setProductSize,
     updateProductAmount,
     setProductAmount,

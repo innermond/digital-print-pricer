@@ -34,6 +34,10 @@ export function buildSelectionPayload(product: Product, pocketElem?: Elemental |
         creasing: { count: elem.finishing.creasing.count },
       },
     })),
+    // A product-wide operation rather than a part, so it rides at the top level
+    // next to the binding. Always sent, on or off: the host prices the absence of
+    // a hole on a product that offers one differently from a product with none.
+    punchHole: product.punchHole ?? false,
     // `{ type: 'none' }` is a real Binding but means unbound, so it must not
     // reach the wire — the payload shape stays exactly what it has always been.
     ...(product.binding?.type === 'spiral' ? { binding: product.binding } : {}),

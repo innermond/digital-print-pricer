@@ -145,6 +145,31 @@ describe('catalog integrity', () => {
     expect(missing).toEqual([]);
   });
 
+  // Same failure mode as the staple case above, one level up: with `punchHole` on
+  // the config, a product literal that omits the key has `undefined` in the
+  // baseline while the instance gains an explicit boolean the first time the
+  // control is toggled and untoggled — so isPersonalized's JSON compare keeps
+  // reporting a change the customer already undid.
+  it('writes punchHole on every product whose config offers one', () => {
+    const missing: string[] = [];
+    for (const product of MOCK_CATALOG.products) {
+      const config = MOCK_CATALOG.config[product.id];
+      if (!config?.punchHole) continue;
+      if (typeof product.punchHole !== 'boolean') missing.push(`${product.id} (${product.label})`);
+    }
+    expect(missing).toEqual([]);
+  });
+
+  // The reverse drift: a product punched with a hole its config never offers
+  // prices a hole the customer has no control to remove — ConfigureStage draws
+  // the control off `config.punchHole` alone.
+  it('never punches a product whose config does not offer a hole', () => {
+    const stray = MOCK_CATALOG.products
+      .filter((p) => p.punchHole && !MOCK_CATALOG.config[p.id]?.punchHole)
+      .map((p) => `${p.id} (${p.label})`);
+    expect(stray).toEqual([]);
+  });
+
   it('recommends media and sizes that the product actually allows', () => {
     const bad: string[] = [];
     for (const [id, config] of Object.entries(MOCK_CATALOG.config)) {

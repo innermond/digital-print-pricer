@@ -112,7 +112,7 @@ product-wide fields are what apply, which is why `allowedPageCount` exists.
 Reverting the product ("personalizat" pill) drops added elements, since revert
 restores the catalog's element list wholesale.
 
-## Finishing — staple, lamination sides, creasing, rounded corners, binding
+## Finishing — staple, punch hole, lamination sides, creasing, rounded corners, binding
 
 | Setting | Type | Effect |
 |---|---|---|
@@ -120,6 +120,7 @@ restores the catalog's element list wholesale.
 | `allowedLaminationSides` | `('front' \| 'back' \| 'both')[]` | Restricts which lamination sides are offered. **Omit → all three.** A blank/unprinted back can still be laminated, so this is a product decision, *not* derived from what is printed. Disallowed sides render greyed/disabled. |
 | `allowedCreasingCounts` | `number[]` | Restricts the creasing counts (0–5) offered. **Omit → everything the stock allows.** `[]` rules creasing out; a single value fixes it structurally (a folder cover is always creased). Intersected with the media ceiling below — a config cannot crease stock that won't hold one. |
 | `allowedRoundedCorners` | `(1 \| 2 \| 3 \| 4)[]` | Restricts which **corner positions** may be rounded — `1` top-left, `2` top-right, `3` bottom-left, `4` bottom-right. **Omit → all four wherever the media allows.** `[]` rules rounding out for shapes that never get it whatever the weight (Afiș, Mapă de Prezentare). Intersected with the media ceiling below. The whole control disappears when the result is empty; a partial set renders the remaining corners greyed. |
+| `punchHole` | `boolean` | **Opt-in.** Omit → no hanging-hole control. `true` → the control appears among the product-wide accessories in **Opțiuni avansate**. Product-wide rather than per-element: one hole goes through the whole bound block, unlike `allowedStaple`'s per-sheet `hole`. The **product literal's** own `punchHole` decides whether it starts included — `?? false`, so a product that offers a hole opts in explicitly. Reaches the price payload as a plain boolean, sent on *and* off (an un-punched calendar is a different job from a product with no hole on offer). |
 | `binding` | `{ type: 'spiral', allowedColors?: ('white' \| 'black')[] }` | Enables the binding tab/control for the product. The control also offers **Fără**, which writes `{ type: 'none' }` and is omitted from the price payload — so a spiral is never a one-way choice. |
 
 ## Copy
@@ -132,8 +133,8 @@ restores the catalog's element list wholesale.
 
 The configuration stage shows only what every job needs — material, size preset,
 printing, and page count where it applies. Exact dimensions, all finishing, and
-the product-wide accessories (spiral binding, folder pocket) live inside the
-**Opțiuni avansate** disclosure.
+the product-wide accessories (spiral binding, folder pocket, hanging hole) live
+inside the **Opțiuni avansate** disclosure.
 
 The disclosure opens automatically when any setting inside it differs from the
 catalog default, and when it is collapsed those settings are listed as chips on
@@ -143,9 +144,9 @@ its header. Collapsing therefore never hides a choice the user made.
 
 Not every restriction hides its control — some grey it out instead:
 
-- **Hidden entirely when not allowed:** staple (`allowedStaple`) and binding
-  (`binding`) when not configured; the page-count stepper (unless
-  `kind: "multiple"`); and **biguitură (creasing)** and **colțuri rotunjite
+- **Hidden entirely when not allowed:** staple (`allowedStaple`), the hanging
+  hole (`punchHole`) and binding (`binding`) when not configured; the page-count
+  stepper (unless `kind: "multiple"`); and **biguitură (creasing)** and **colțuri rotunjite
   (rounded corners)** whenever the media disallows them.
 - **Shown but greyed/disabled when a choice isn't allowed:** lamination type
   (only "Fără" when the media forbids lamination) and lamination sides.

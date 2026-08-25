@@ -310,4 +310,78 @@ describe('ProductConfigurator', () => {
       expect(el.size.heightMm).toBe(210);
     }
   });
+
+  // The hanging hole is a product-wide accessory, so it lives with the binding
+  // and the pocket in the advanced disclosure rather than on any element tab.
+  describe('punched hanging hole', () => {
+    const openCalendar = async (user: ReturnType<typeof setupUser>) => {
+      await user.click(screen.getByText('Calendar perete'));
+      await user.click(screen.getByText('Calendar A3+'));
+      await user.click(screen.getByRole('button', { name: /Continuă la Configurare/ }));
+      await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+    };
+
+    it('opens a calendar with the hole included', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await openCalendar(user);
+
+      expect(screen.getByRole('heading', { name: 'Gaură de agățare' })).toBeInTheDocument();
+      expect(screen.getByText('Gaură inclusă')).toBeInTheDocument();
+    });
+
+    it('excludes the hole, persists it and sends it to the price endpoint', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await openCalendar(user);
+
+      await user.click(screen.getByRole('button', { name: 'Inclusă' }));
+
+      expect(screen.getByText('Gaură exclusă')).toBeInTheDocument();
+      const saved = JSON.parse(localStorage.getItem('products')!);
+      expect(saved.find((p: { id: string }) => p.id === 'prod9').punchHole).toBe(false);
+
+      await waitFor(() => {
+        const last = bodyOf(fetchMock().mock.calls.length - 1);
+        expect(last.punchHole).toBe(false);
+      });
+    });
+
+    it('marks the product personalized once the hole is excluded', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await openCalendar(user);
+
+      await user.click(screen.getByRole('button', { name: 'Inclusă' }));
+      await user.click(screen.getByRole('button', { name: /Pasul 1 din 3: Produs/ }));
+
+      expect(screen.getByText('personalizat')).toBeInTheDocument();
+    });
+
+    it('names the hole in the assembly summary only while it is included', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await openCalendar(user);
+      await user.click(screen.getByRole('button', { name: /Continuă la Ofertă/ }));
+
+      expect(screen.getByText('Gaură de agățare:')).toBeInTheDocument();
+
+      await user.click(screen.getByRole('button', { name: /Pasul 2 din 3: Configurare/ }));
+      await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+      await user.click(screen.getByRole('button', { name: 'Inclusă' }));
+      await user.click(screen.getByRole('button', { name: /Continuă la Ofertă/ }));
+
+      expect(screen.queryByText('Gaură de agățare:')).not.toBeInTheDocument();
+    });
+
+    it('draws no hole control on a product whose config offers none', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await selectFlyer(user);
+      await user.click(screen.getByRole('button', { name: /Continuă la Configurare/ }));
+      await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+
+      expect(screen.queryByRole('heading', { name: 'Gaură de agățare' })).not.toBeInTheDocument();
+    });
+  });
 });

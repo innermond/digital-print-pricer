@@ -5,6 +5,7 @@ import type { Catalog } from '../../data/catalog';
 import { ConfigurationPanel } from '../ConfigurationPanel';
 import { BindingControl } from '../configuration/BindingControl';
 import { PocketControl } from '../configuration/PocketControl';
+import { PunchHoleControl } from '../configuration/PunchHoleControl';
 
 type ConfigureStageProps = {
   catalog: Catalog;
@@ -18,6 +19,7 @@ type ConfigureStageProps = {
   onRemoveElemental: (productId: Product['id'], elementId: Elemental['id']) => void;
   onUpdateBinding: (productId: Product['id'], binding: Binding) => void;
   onUpdatePocketEnabled: (productId: Product['id'], enabled: boolean) => void;
+  onUpdatePunchHole: (productId: Product['id'], enabled: boolean) => void;
   onSetProductSize: (productId: Product['id'], size: Elemental['size']) => void;
 };
 
@@ -33,6 +35,7 @@ export function ConfigureStage({
   onRemoveElemental,
   onUpdateBinding,
   onUpdatePocketEnabled,
+  onUpdatePunchHole,
   onSetProductSize,
 }: ConfigureStageProps) {
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -76,7 +79,7 @@ export function ConfigureStage({
   // same way; they are settings of the whole thing, so they sit in the advanced
   // section instead. PocketControl is read-only — a "what's included" note.
   const productExtras =
-    product && config && (config.binding?.type === 'spiral' || config.pocket) ? (
+    product && config && (config.binding?.type === 'spiral' || config.pocket || config.punchHole) ? (
       <div className="space-y-5">
         {config.binding?.type === 'spiral' && (
           <BindingControl
@@ -91,6 +94,12 @@ export function ConfigureStage({
             media={catalog.media}
             enabled={product.pocketEnabled ?? true}
             onChange={(enabled) => onUpdatePocketEnabled(product.id, enabled)}
+          />
+        )}
+        {config.punchHole && (
+          <PunchHoleControl
+            enabled={product.punchHole ?? false}
+            onChange={(enabled) => onUpdatePunchHole(product.id, enabled)}
           />
         )}
       </div>

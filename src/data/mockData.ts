@@ -106,6 +106,10 @@ export type ProductConfig = {
   // The glued-in paper pocket of a presentation folder. Like binding, it is a stock
   // item the catalog includes or omits — not an Elemental the customer can spec.
   pocket?: Pocket;
+  // Whether this product is punched with a hanging hole. Like the pocket it is a
+  // stock operation the catalog includes or omits, not something the customer
+  // specs — the instance only decides whether to keep it (`Product.punchHole`).
+  punchHole?: boolean;
   allowedStaple?: Staple;
   // Which lamination sides this product offers. Omit to allow all three
   // (front/back/both) — a blank verso can still be laminated, so this is a
@@ -253,7 +257,7 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedPrintingFronts
 // Shared constraints for the "calendar" category — presets within this category
 // only differ by page size and by the elemental ids their per-part rules are
 // keyed on. Every calendar is cover + month sheets + back cover on a spiral.
-const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationSides' | 'allowedRoundedCorners' | 'binding'> = {
+const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationSides' | 'allowedRoundedCorners' | 'binding' | 'punchHole'> = {
   allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
   allowedSizeIds: ['s1', 's2', 's7'],
   machineId: 'm1',
@@ -265,6 +269,7 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
   // A wall calendar is trimmed square — no rounded corners, whatever the board.
   allowedRoundedCorners: [],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
+  punchHole: true,
 };
 
 // Shared constraints for the "cardboard-label" category — presets within this category only
@@ -2760,6 +2765,7 @@ export const MOCK_PRODUCTS: Product[] = [
     label: 'Calendar A3+',
     amount: 5,
     binding: { type: 'spiral', color: 'white' },
+    punchHole: true,
     elementals: [
       {
         id: 'elem9-1',
@@ -2771,7 +2777,7 @@ export const MOCK_PRODUCTS: Product[] = [
         finishing: {
           lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
-          creasing: { count: 0, max: 5 },
+          creasing: { count: 0},
           roundedCornes: { corners: [] },
         },
       },
@@ -2811,6 +2817,7 @@ export const MOCK_PRODUCTS: Product[] = [
     label: 'Calendar A4',
     amount: 6,
     binding: { type: 'spiral', color: 'white' },
+    punchHole: true,
     elementals: [
       {
         id: 'elem10-1',

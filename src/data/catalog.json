@@ -4430,6 +4430,7 @@
         "type": "spiral",
         "color": "white"
       },
+      "punchHole": true,
       "elementals": [
         {
           "id": "elem9-1",
@@ -4466,8 +4467,7 @@
               "folds": 0
             },
             "creasing": {
-              "count": 0,
-              "max": 5
+              "count": 0
             },
             "roundedCornes": {
               "corners": []
@@ -4569,6 +4569,7 @@
         "type": "spiral",
         "color": "white"
       },
+      "punchHole": true,
       "elementals": [
         {
           "id": "elem10-1",
@@ -7449,6 +7450,7 @@
           "black"
         ]
       },
+      "punchHole": true,
       "elementalPrintingFronts": {
         "elem9-1": [
           "color"
@@ -7516,6 +7518,7 @@
           "black"
         ]
       },
+      "punchHole": true,
       "elementalPrintingFronts": {
         "elem10-1": [
           "color"

@@ -5,7 +5,7 @@ import { LAMINATION_RO, LAMINATION_SIDES_RO, FOLD_RO } from './labels';
 // A product is "personalized" once its elementals/binding diverge from the
 // pristine catalog definition (quantity is a separate concern, not a setting).
 const settingsOf = (p: Product) =>
-  JSON.stringify({ elementals: p.elementals, binding: p.binding ?? null, pocketEnabled: p.pocketEnabled ?? true });
+  JSON.stringify({ elementals: p.elementals, binding: p.binding ?? null, pocketEnabled: p.pocketEnabled ?? true, punchHole: p.punchHole ?? false });
 
 export function isPersonalized(product: Product, baseline: Product | undefined) {
   return !!baseline && settingsOf(baseline) !== settingsOf(product);

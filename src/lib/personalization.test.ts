@@ -28,6 +28,22 @@ describe('isPersonalized', () => {
   it('is false without a baseline to compare against', () => {
     expect(isPersonalized(makeProduct(), undefined)).toBe(false);
   });
+
+  it('is true once the punched hanging hole is turned off', () => {
+    const punched = { ...makeProduct(), punchHole: true };
+    expect(isPersonalized({ ...punched, punchHole: false }, punched)).toBe(true);
+  });
+
+  it('is false while the hole still matches the catalog', () => {
+    const punched = { ...makeProduct(), punchHole: true };
+    expect(isPersonalized({ ...punched }, punched)).toBe(false);
+  });
+
+  // `punchHole ?? false` on both sides, so a product that never offered a hole
+  // is not reported as personalized the moment someone writes an explicit false.
+  it('treats an absent hole and an explicit false as the same', () => {
+    expect(isPersonalized({ ...makeProduct(), punchHole: false }, makeProduct())).toBe(false);
+  });
 });
 
 describe('advancedSummary', () => {

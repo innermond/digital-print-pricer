@@ -52,6 +52,7 @@ export default function ProductConfigurator({
     removeElemental,
     updateBinding,
     updatePocketEnabled,
+    updatePunchHole,
     setProductSize,
     updateProductAmount,
     setProductAmount,
@@ -98,6 +99,9 @@ export default function ProductConfigurator({
   // Left to the React Compiler to memoize — a hand-written useMemo here had
   // narrower deps than the compiler could infer, so it skipped the component.
   const pocketElem = config?.pocket && pocketOn ? pocketElemental(config.pocket, catalog.media) : null;
+  // Undefined means off — a product that offers a hole opts in on its literal, so
+  // a config that never offered one can't have the summary claim one.
+  const punchHoleOn = Boolean(config?.punchHole) && (selectedProduct?.punchHole ?? false);
 
   // Once the product diverges from the catalog, its label and explanation both
   // describe a preset the customer is no longer buying — see describeProduct.
@@ -244,6 +248,7 @@ export default function ProductConfigurator({
                 onRemoveElemental={removeElemental}
                 onUpdateBinding={updateBinding}
                 onUpdatePocketEnabled={updatePocketEnabled}
+                onUpdatePunchHole={updatePunchHole}
                 onSetProductSize={setProductSize}
               />
             )}
@@ -253,6 +258,7 @@ export default function ProductConfigurator({
                 product={selectedProduct}
                 element={selectedElemental}
                 pocket={pocketOn ? config?.pocket : undefined}
+                punchHole={punchHoleOn}
                 personalized={personalized}
               />
             )}

@@ -8,6 +8,7 @@ import { MOCK_CATALOG } from '../data/catalog';
 // arriving as one on the wire.
 const folder = MOCK_CATALOG.products.find((p) => p.id === 'prod3a')!;
 const folderConfig = MOCK_CATALOG.config['prod3a'];
+const calendar = MOCK_CATALOG.products.find((p) => p.id === 'prod9')!;
 
 describe('buildSelectionPayload', () => {
   it('sends only the real elementals when there is no pocket', () => {
@@ -61,5 +62,21 @@ describe('buildSelectionPayload', () => {
     const cleared = { ...folder, binding: { type: 'none' } as const };
     expect(buildSelectionPayload(cleared)).not.toHaveProperty('binding');
     expect(buildSelectionPayload(folder)).not.toHaveProperty('binding');
+  });
+
+  it('sends the punched hanging hole of a calendar', () => {
+    expect(buildSelectionPayload(calendar)).toHaveProperty('punchHole', true);
+  });
+
+  it('sends an excluded hole as false rather than dropping it', () => {
+    // Unlike the binding, the hole stays on the wire when it is off: a calendar
+    // the customer un-punched is a different job from one that never offered a
+    // hole, and the host prices the two apart.
+    const unpunched = { ...calendar, punchHole: false };
+    expect(buildSelectionPayload(unpunched)).toHaveProperty('punchHole', false);
+  });
+
+  it('sends false for a product that has no hole on offer', () => {
+    expect(buildSelectionPayload(folder)).toHaveProperty('punchHole', false);
   });
 });

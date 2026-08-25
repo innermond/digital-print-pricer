@@ -11,6 +11,11 @@ type Product = {
   // instance. Undefined means on — every product with a pocket on offer shows
   // it by default, same as before this field existed.
   pocketEnabled?: boolean;
+  // Whether the catalog's punched hanging hole (see ProductConfig.punchHole) is
+  // included on this instance. Unlike the pocket, undefined means off: a product
+  // that offers a hole opts in explicitly on its literal, so a catalog that
+  // predates this field never starts pricing a hole into anything.
+  punchHole?: boolean;
 };
 
 export type { Product };

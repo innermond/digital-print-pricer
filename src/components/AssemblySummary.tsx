@@ -7,9 +7,12 @@ type AssemblySummaryProps = {
   // Catalog-level accessory rather than an elemental, so it arrives alongside the
   // product instead of appearing in the loop below.
   pocket?: Pocket;
+  // Already resolved against the config by the caller: true only when the product
+  // offers a hole and this instance keeps it.
+  punchHole?: boolean;
 };
 
-export function AssemblySummary({ product, personalized, pocket }: AssemblySummaryProps) {
+export function AssemblySummary({ product, personalized, pocket, punchHole }: AssemblySummaryProps) {
   if (!product) return null;
 
   return (
@@ -75,6 +78,12 @@ export function AssemblySummary({ product, personalized, pocket }: AssemblySumma
           <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">
             <span className="font-semibold">Buzunar: </span>
             {pocket.label} ({pocket.width} × {pocket.height} {pocket.unit})
+          </p>
+        )}
+        {punchHole && (
+          <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">
+            <span className="font-semibold">Gaură de agățare: </span>
+            Inclusă
           </p>
         )}
       </div>
