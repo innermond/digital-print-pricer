@@ -52,10 +52,11 @@ product id to a `ProductConfig`. Everything below is a field of that object.
 | `sharedSize` | `boolean` | For multi-element products, whether all elements share one size. Defaults to `true` when a product has more than one element; set `false` to allow a size per element. |
 | `machineId` | `string` | Which `Catalog.machines` entry this product's size is bound by. **Omit → no ceiling enforced** (a host catalog that predates this field just doesn't restrict size; `warnIfCatalogPredatesMachine` flags the drift in dev). |
 
-Built-in media ids: `p1` 90g Silk, `p2` 120g Lucios, `p3` 150g Mat, `p4` 200g
-Soft-touch, `p5` 250g Lucios, `p6` 350g Mat, `p7`–`p10` stickers.
+Built-in media ids: `p1` 90g Mat, `p2` 120g Lucios, `p3` 150g Mat, `p4` 200g Mat,
+`p5` 300g Mat Premium, `p6` 350g Mat Premium, `p7`–`p10` stickers.
 Size ids: `s0` A3, `s1` A4, `s2` A5, `s3` Letter, `s4` 1/3 A4, `s5`/`s6` business
-cards, `s7` A3+, `s8` A6, and `s9`–`s20` the small label formats.
+cards, `s7` A3+, `s8` A6, `s9`–`s20` the small label formats, and `s21`–`s24` the
+bookmark formats (50×150, 55×160, 60×180, 70×210 mm).
 
 A `Machine` is `{ id, label, maxWidthMm, maxHeightMm }` — the physical ceiling
 a print can't exceed, whatever a product's config otherwise allows. Sizes above
@@ -67,7 +68,7 @@ inputs (`CustomSizeControl`) clamp to it as the user types or steps. Built-in:
 
 | Setting | Type | Effect |
 |---|---|---|
-| `allowedPrintingFronts` | `('color' \| 'black' \| 'none')[]` | Restricts the **front** print buttons. Omit → all offered. |
+| `allowedPrintingFronts` | `('color' \| 'black' \| 'none')[]` | Restricts the **front** print buttons. Omit → Color and Alb-negru only; list `'none'` explicitly to offer an unprinted față. |
 | `allowedPrintingBacks` | `('color' \| 'black' \| 'none')[]` | Restricts the **back** print buttons. Set to `['none']` to force single-sided. |
 | `elementalPrintingFronts` | `Record<elementalId, (...)[]>` | Per-element override of `allowedPrintingFronts`. |
 | `elementalPrintingBacks` | `Record<elementalId, (...)[]>` | Per-element override of `allowedPrintingBacks`. |

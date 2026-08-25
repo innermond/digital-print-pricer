@@ -2874,7 +2874,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -2958,7 +2958,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3012,7 +3012,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3096,7 +3096,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3150,7 +3150,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3234,7 +3234,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3288,7 +3288,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3372,7 +3372,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3426,7 +3426,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3510,7 +3510,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3564,7 +3564,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -3648,7 +3648,7 @@
           },
           "finishing": {
             "lamination": {
-              "type": "gloss",
+              "type": "none",
               "sides": "front"
             },
             "folding": {
@@ -4699,6 +4699,335 @@
       ]
     },
     {
+      "id": "prod11a",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 55x160, Laminat Lucios",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11a-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s22",
+            "label": "55x160",
+            "width": 55,
+            "height": 160,
+            "unit": "mm",
+            "widthMm": 55,
+            "heightMm": 160
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "gloss",
+              "sides": "both"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod11b",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 50x150, cu Colțuri Rotunjite",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11b-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s21",
+            "label": "50x150",
+            "width": 50,
+            "height": 150,
+            "unit": "mm",
+            "widthMm": 50,
+            "heightMm": 150
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod11c",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 60x180, Laminat Mat",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11c-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s23",
+            "label": "60x180",
+            "width": 60,
+            "height": 180,
+            "unit": "mm",
+            "widthMm": 60,
+            "heightMm": 180
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "matt",
+              "sides": "both"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod11d",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 70x210, Economic",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11d-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p5",
+            "label": "300 GSM - Mat Premium",
+            "gsm": 300,
+            "finish": "Matt",
+            "explanation": "Carton lucios gros, utilizat pentru cărți de vizită și coperte. Își menține forma bine. Luciul ridicat amplifică profunzimea culorilor."
+          },
+          "size": {
+            "id": "s24",
+            "label": "70x210",
+            "width": 70,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 70,
+            "heightMm": 210
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod11e",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 55x160, Pliabil cu Biguitură",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11e-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s22",
+            "label": "55x160",
+            "width": 55,
+            "height": 160,
+            "unit": "mm",
+            "widthMm": 55,
+            "heightMm": 160
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 1
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "prod11f",
+      "categoryId": "bookmark",
+      "label": "Semn de Carte 50x150, cu Gaură și Capsă",
+      "amount": 100,
+      "elementals": [
+        {
+          "id": "elem11f-1",
+          "label": "Semn de Carte",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s21",
+            "label": "50x150",
+            "width": 50,
+            "height": 150,
+            "unit": "mm",
+            "widthMm": 50,
+            "heightMm": 150
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            },
+            "staple": {
+              "hole": true,
+              "staple": true
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "prodGa",
       "categoryId": "generic",
       "label": "Produs generic",
@@ -4743,6 +5072,10 @@
             },
             "roundedCornes": {
               "corners": []
+            },
+            "staple": {
+              "hole": false,
+              "staple": false
             }
           }
         }
@@ -7221,6 +7554,168 @@
       },
       "explanation": "Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici."
     },
+    "prod11a": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s22",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, laminat lucios pe ambele fețe. Laminarea îl ține drept și îl protejează de uzura zilnică — potrivit pentru librării și edituri."
+    },
+    "prod11b": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s21",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu toate cele patru colțuri rotunjite. Formatul subțire alunecă ușor între pagini, iar colțurile rotunde nu agață hârtia."
+    },
+    "prod11c": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "recommendedSizeId": "s23",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 60x180mm din carton mat 300gsm, laminat mat pe ambele fețe. Suprafața mată nu reflectă lumina și scoate în evidență fotografiile discrete."
+    },
+    "prod11d": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p5",
+      "recommendedSizeId": "s24",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 70x210mm din carton mat 300gsm, tipărit doar pe față, fără finisaje. Se taie 3 bucăți dintr-o coală A4 fără resturi — cea mai ieftină variantă pentru tiraje mari și materiale promoționale."
+    },
+    "prod11e": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s22",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, cu o biguitură care îi permite să se plieze peste marginea de sus a paginii. Rămâne pe pagină chiar dacă închideți cartea."
+    },
+    "prod11f": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s21",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        0,
+        1
+      ],
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras."
+    },
     "prodGa": {
       "allowedMediaIds": [
         "p1",
@@ -7255,7 +7750,11 @@
         "s17",
         "s18",
         "s19",
-        "s20"
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s24"
       ],
       "machineId": "m1",
       "recommendedMediaId": "p4",
@@ -7362,6 +7861,11 @@
       "id": "calendar",
       "label": "Calendar perete",
       "explanation": "Calendare de perete legate cu spirală, cu file lunare."
+    },
+    {
+      "id": "bookmark",
+      "label": "Semne de carte",
+      "explanation": "Semne de carte din carton gros, tipărite pe ambele fețe sau doar pe față. Se pot lamina, cu colțuri rotunjite, cu o biguitură pentru varianta care se pliază peste pagină, ori cu gaură și capsă pentru șnur sau ciucure."
     },
     {
       "id": "generic",
@@ -7640,6 +8144,42 @@
       "unit": "mm",
       "widthMm": 120,
       "heightMm": 100
+    },
+    {
+      "id": "s21",
+      "label": "50x150",
+      "width": 50,
+      "height": 150,
+      "unit": "mm",
+      "widthMm": 50,
+      "heightMm": 150
+    },
+    {
+      "id": "s22",
+      "label": "55x160",
+      "width": 55,
+      "height": 160,
+      "unit": "mm",
+      "widthMm": 55,
+      "heightMm": 160
+    },
+    {
+      "id": "s23",
+      "label": "60x180",
+      "width": 60,
+      "height": 180,
+      "unit": "mm",
+      "widthMm": 60,
+      "heightMm": 180
+    },
+    {
+      "id": "s24",
+      "label": "70x210",
+      "width": 70,
+      "height": 210,
+      "unit": "mm",
+      "widthMm": 70,
+      "heightMm": 210
     }
   ],
   "machines": [

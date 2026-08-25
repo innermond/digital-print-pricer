@@ -29,6 +29,10 @@ export function blankElemental(
       folding: { type: 'none', folds: 0 },
       creasing: { count: 0 },
       roundedCornes: { corners: [] },
+      // Written out rather than left absent: a config that allows stapling
+      // compares this against the catalog baseline, and an absent key makes
+      // toggling the control on and off leave the element permanently divergent.
+      staple: { hole: false, staple: false },
     },
   };
 }

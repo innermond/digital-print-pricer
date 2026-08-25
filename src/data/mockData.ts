@@ -50,6 +50,12 @@ export const MOCK_SIZES: Size[] = [
   { id: 's18', label: '100x100',               width: 100, height: 100, unit: 'mm', widthMm: 100,   heightMm: 100   },
   { id: 's19', label: '110x100',               width: 110, height: 100, unit: 'mm', widthMm: 110,   heightMm: 100   },
   { id: 's20', label: '120x100',               width: 120, height: 100, unit: 'mm', widthMm: 120,   heightMm: 100   },
+  // Semne de carte — long and narrow, a proportion nothing else in this list has.
+  // 70x210 is A4 height, so it cuts 3-up from an A4 sheet with no waste.
+  { id: 's21', label: '50x150',                width: 50,  height: 150, unit: 'mm', widthMm: 50,    heightMm: 150   },
+  { id: 's22', label: '55x160',                width: 55,  height: 160, unit: 'mm', widthMm: 55,    heightMm: 160   },
+  { id: 's23', label: '60x180',                width: 60,  height: 180, unit: 'mm', widthMm: 60,    heightMm: 180   },
+  { id: 's24', label: '70x210',                width: 70,  height: 210, unit: 'mm', widthMm: 70,    heightMm: 210   },
 ];
 
 // The physical ceiling a print is bound by, regardless of what a product's
@@ -124,6 +130,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'spiral-catalog', label: 'Catalog cu spira', explanation: 'Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate.' },
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
   { id: 'calendar', label: 'Calendar perete', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
+  { id: 'bookmark', label: 'Semne de carte', explanation: 'Semne de carte din carton gros, tipărite pe ambele fețe sau doar pe față. Se pot lamina, cu colțuri rotunjite, cu o biguitură pentru varianta care se pliază peste pagină, ori cu gaură și capsă pentru șnur sau ciucure.' },
   { id: 'generic', label: 'Produs generic', explanation: 'Pornire de la zero, pentru orice lucrare care nu se regăsește în categoriile de mai sus. Toate opțiunile sunt disponibile, iar elementele (copertă, interior, orice altceva) se adaugă și se șterg după nevoie. Laminarea, biguitura și colțurile rotunjite apar doar pe hârtie suficient de groasă — implicit 200 GSM, care le permite pe toate.' },
 ];
 
@@ -270,6 +277,38 @@ const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | '
   allowedFoldTypes: ['none'],
   // A hang tag is a flat piece of card — never creased.
   allowedCreasingCounts: [],
+  allowedStaple: { hole: true, staple: true },
+};
+
+// Shared constraints for the "bookmark" category — presets within this category
+// only differ by their initial size, stock and finishing selection.
+//
+// Both allowed stocks (300 and 350 GSM) clear every media gate in
+// finishingRules.ts — lamination and rounded corners at 170, creasing at 200 — so
+// the finishing controls stay put as the customer switches paper, instead of
+// appearing and disappearing under them.
+//
+// The omissions are load-bearing: [] means "none" and absent means "everything
+// the stock allows". Absent here are `allowedRoundedCorners` (all four corners),
+// `allowedLaminationSides` (față/verso/ambele — a blank verso can still be
+// laminated) and both printing lists, whose defaults are exactly what a bookmark
+// wants: the față is always printed, and the verso may be left Neimprimat for a
+// cheaper single-sided run.
+const BOOKMARK_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
+  allowedMediaIds: ['p5', 'p6'],
+  allowedSizeIds: ['s21', 's22', 's23', 's24'],
+  machineId: 'm1',
+  recommendedMediaId: 'p6',
+  recommendedSizeId: 's22',
+  // A bookmark's fold is a crease, not a fold — an empty allowedFoldTypes() hides
+  // the Pliere control entirely, the same way it does for Etichetă Carton.
+  allowedFoldTypes: ['none'],
+  // Flat, or one crease so it folds over the top of the page. The stock would
+  // take up to five, but nothing on a strip of card this size means anything.
+  allowedCreasingCounts: [0, 1],
+  // The fitting a cord or tassel is threaded through: a punched hole, and the
+  // metal capsă set into it to keep the card from tearing. Both are offered, so
+  // StapleControl renders neither of its buttons disabled.
   allowedStaple: { hole: true, staple: true },
 };
 
@@ -842,6 +881,36 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem10-3': { kind: 'fixed', value: 1 },
     },
     explanation: 'Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici.',
+  },
+  prod11a: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    explanation: 'Semn de carte 55x160mm din carton mat 350gsm, laminat lucios pe ambele fețe. Laminarea îl ține drept și îl protejează de uzura zilnică — potrivit pentru librării și edituri.',
+  },
+  prod11b: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    recommendedSizeId: 's21',
+    explanation: 'Semn de carte 50x150mm din carton mat 350gsm, cu toate cele patru colțuri rotunjite. Formatul subțire alunecă ușor între pagini, iar colțurile rotunde nu agață hârtia.',
+  },
+  prod11c: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    recommendedMediaId: 'p5',
+    recommendedSizeId: 's23',
+    explanation: 'Semn de carte 60x180mm din carton mat 300gsm, laminat mat pe ambele fețe. Suprafața mată nu reflectă lumina și scoate în evidență fotografiile discrete.',
+  },
+  prod11d: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    recommendedMediaId: 'p5',
+    recommendedSizeId: 's24',
+    explanation: 'Semn de carte 70x210mm din carton mat 300gsm, tipărit doar pe față, fără finisaje. Se taie 3 bucăți dintr-o coală A4 fără resturi — cea mai ieftină variantă pentru tiraje mari și materiale promoționale.',
+  },
+  prod11e: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    explanation: 'Semn de carte 55x160mm din carton mat 350gsm, cu o biguitură care îi permite să se plieze peste marginea de sus a paginii. Rămâne pe pagină chiar dacă închideți cartea.',
+  },
+  prod11f: {
+    ...BOOKMARK_CATEGORY_CONFIG,
+    recommendedSizeId: 's21',
+    explanation: 'Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras.',
   },
   prodGa: {
     ...GENERIC_CATEGORY_CONFIG,
@@ -2072,7 +2141,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2100,7 +2169,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2123,7 +2192,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2151,7 +2220,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2174,7 +2243,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2202,7 +2271,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2225,7 +2294,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2253,7 +2322,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2276,7 +2345,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2304,7 +2373,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2327,7 +2396,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'none', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2355,7 +2424,7 @@ export const MOCK_PRODUCTS: Product[] = [
         pageCount: 1,
         printing: { front: 'color', back: 'none' },
         finishing: {
-          lamination: { type: 'gloss', sides: 'front' },
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
@@ -2788,6 +2857,151 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 'prod11a',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 55x160, Laminat Lucios',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11a-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[5],
+        size: { id: 's22', label: '55x160', width: 55, height: 160, unit: 'mm', widthMm: 55, heightMm: 160 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'gloss', sides: 'both' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          // Written out even though nothing is fitted: with allowedStaple set, an
+          // absent key makes toggling the control on and then off leave the product
+          // permanently 'personalizat' against a baseline that has no key to match.
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod11b',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 50x150, cu Colțuri Rotunjite',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11b-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[5],
+        size: { id: 's21', label: '50x150', width: 50, height: 150, unit: 'mm', widthMm: 50, heightMm: 150 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [1, 2, 3, 4] },
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod11c',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 60x180, Laminat Mat',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11c-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[4],
+        size: { id: 's23', label: '60x180', width: 60, height: 180, unit: 'mm', widthMm: 60, heightMm: 180 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'matt', sides: 'both' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod11d',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 70x210, Economic',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11d-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[4],
+        size: { id: 's24', label: '70x210', width: 70, height: 210, unit: 'mm', widthMm: 70, heightMm: 210 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod11e',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 55x160, Pliabil cu Biguitură',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11e-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[5],
+        size: { id: 's22', label: '55x160', width: 55, height: 160, unit: 'mm', widthMm: 55, heightMm: 160 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          // No min/max: a per-elemental range would replace the category's
+          // allowedCreasingCounts outright (finishingRules.ts), losing the 0-or-1 rule.
+          creasing: { count: 1 },
+          roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod11f',
+    categoryId: 'bookmark',
+    label: 'Semn de Carte 50x150, cu Gaură și Capsă',
+    amount: 100,
+    elementals: [
+      {
+        id: 'elem11f-1',
+        label: 'Semn de Carte',
+        media: MOCK_PAPERS[5],
+        size: { id: 's21', label: '50x150', width: 50, height: 150, unit: 'mm', widthMm: 50, heightMm: 150 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+          // Both halves of the fitting: the hole is punched and the capsă is set
+          // into it before the cord goes through, the same pairing prod8c uses.
+          staple: { hole: true, staple: true },
+        },
+      },
+    ],
+  },
+  {
     id: 'prodGa',
     categoryId: 'generic',
     label: 'Produs generic',
@@ -2806,6 +3020,7 @@ export const MOCK_PRODUCTS: Product[] = [
           folding: { type: 'none', folds: 0 },
           creasing: { count: 0 },
           roundedCornes: { corners: [] },
+          staple: { hole: false, staple: false },
         },
       },
     ],

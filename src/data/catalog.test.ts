@@ -2,6 +2,11 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { ProductConfig } from './mockData';
 import type { Catalog } from './catalog';
 import { MOCK_CATALOG } from './catalog';
+import {
+  allowedLaminationTypes,
+  allowedCreasingCounts,
+  allowedRoundedCorners,
+} from '../lib/finishingRules';
 
 // The warning latches on a module-level flag so it fires once per page load, so
 // every case needs a fresh module instance.
@@ -55,6 +60,89 @@ describe('catalog integrity', () => {
       }
     }
     expect(stray).toEqual([]);
+  });
+
+  // Pre-existing drift, deliberately recorded rather than fixed: the brochure
+  // covers open with one crease while BROCHURE_CATEGORY_CONFIG rules creasing out
+  // (`allowedCreasingCounts: []`). The crease is real — a half-folded A4 cover is
+  // creased once, and the 300 GSM stock takes it — so the data is right and the
+  // config is the side that is wrong. Fixing it means widening the config, which
+  // changes what the Biguitură control offers on every brochure, so it is left as
+  // an owner's decision. Remove an entry here the moment it is resolved; nothing
+  // new should ever be added.
+  const KNOWN_FINISHING_DRIFT = new Set([
+    'prod2c/elem2c-1: creasing 1',
+    'prod2d/elem2d-1: creasing 1',
+    'prod2e/elem2e-1: creasing 1',
+    'prod2f/elem2f-1: creasing 1',
+    'prod2g/elem2g-1: creasing 1',
+    'prod2h/elem2h-1: creasing 1',
+  ]);
+
+  // A preset that opens with a finishing its own config forbids shows the
+  // customer a selection the control cannot represent, and the next unrelated
+  // edit silently clamps it away.
+  it('opens every product on finishing selections its config allows', () => {
+    const bad: string[] = [];
+    for (const product of MOCK_CATALOG.products) {
+      const config = MOCK_CATALOG.config[product.id];
+      if (!config) continue;
+      for (const elem of product.elementals) {
+        const { lamination, creasing, roundedCornes } = elem.finishing;
+        // 'none' is always on the table, whatever the stock.
+        if (lamination.type !== 'none' && !allowedLaminationTypes(elem).includes(lamination.type)) {
+          bad.push(`${product.id}/${elem.id}: lamination ${lamination.type}`);
+        }
+        // 0 is "no crease" — always valid, the same way lamination 'none' is, and
+        // it is not in the list when the product or the stock rules creasing out.
+        if (creasing.count !== 0 && !allowedCreasingCounts(elem, config).includes(creasing.count)) {
+          bad.push(`${product.id}/${elem.id}: creasing ${creasing.count}`);
+        }
+        const corners = allowedRoundedCorners(elem, config);
+        for (const corner of roundedCornes.corners) {
+          if (!corners.includes(corner)) bad.push(`${product.id}/${elem.id}: corner ${corner}`);
+        }
+      }
+    }
+    expect(bad.filter((entry) => !KNOWN_FINISHING_DRIFT.has(entry))).toEqual([]);
+    // The recorded exceptions must stay real, or the list quietly outlives the bug.
+    expect(bad.filter((entry) => KNOWN_FINISHING_DRIFT.has(entry)).sort()).toEqual([...KNOWN_FINISHING_DRIFT].sort());
+  });
+
+  // The premise the bookmark category rests on: both stocks it allows clear every
+  // media gate in finishingRules, so no finishing control appears or disappears as
+  // the customer switches paper mid-configuration.
+  it('offers every bookmark finishing on every stock the category allows', () => {
+    const bookmarks = MOCK_CATALOG.products.filter((p) => p.categoryId === 'bookmark');
+    expect(bookmarks.length).toBeGreaterThan(0);
+
+    const config = MOCK_CATALOG.config[bookmarks[0].id];
+    const elem = bookmarks[0].elementals[0];
+    for (const mediaId of config.allowedMediaIds) {
+      const media = MOCK_CATALOG.media.find((m) => m.id === mediaId);
+      expect(media, `media ${mediaId} missing from the catalog`).toBeDefined();
+      const on = { ...elem, media: media! };
+      expect(allowedLaminationTypes(on), mediaId).not.toEqual([]);
+      expect(allowedCreasingCounts(on, config), mediaId).toEqual([0, 1]);
+      expect(allowedRoundedCorners(on, config), mediaId).toEqual([1, 2, 3, 4]);
+    }
+  });
+
+  // An absent `finishing.staple` under a config that allows stapling is invisible
+  // until the customer toggles the control on and then off again: the instance
+  // then carries { hole: false, staple: false } while the baseline carries no key
+  // at all, so isPersonalized's JSON compare keeps the product flagged
+  // "personalizat" and advancedSummary chips a "Capsare: fără" change that was undone.
+  it('writes finishing.staple wherever the config allows stapling', () => {
+    const missing: string[] = [];
+    for (const product of MOCK_CATALOG.products) {
+      const config = MOCK_CATALOG.config[product.id];
+      if (!config?.allowedStaple) continue;
+      for (const elem of product.elementals) {
+        if (!elem.finishing.staple) missing.push(`${product.id}/${elem.id}`);
+      }
+    }
+    expect(missing).toEqual([]);
   });
 
   it('recommends media and sizes that the product actually allows', () => {
