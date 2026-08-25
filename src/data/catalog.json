@@ -4697,6 +4697,57 @@
           }
         }
       ]
+    },
+    {
+      "id": "prodGa",
+      "categoryId": "generic",
+      "label": "Produs generic",
+      "amount": 1,
+      "elementals": [
+        {
+          "id": "elemGa-1",
+          "label": "Element 1",
+          "media": {
+            "kind": "paper",
+            "id": "p4",
+            "label": "200 GSM - Mat",
+            "gsm": 200,
+            "finish": "Matt",
+            "explanation": "Laminare soft-touch catifelată. Senzație de lux notabilă — excelentă pentru dosare de prezentare și pliante premium. Amprentele se observă mai mult decât pe alte finisaje."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "color"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ],
+      "pocketEnabled": false
     }
   ],
   "config": {
@@ -7169,6 +7220,96 @@
         }
       },
       "explanation": "Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici."
+    },
+    "prodGa": {
+      "allowedMediaIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p4",
+      "recommendedSizeId": "s1",
+      "sharedSize": false,
+      "allowedFoldTypes": [
+        "none",
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold",
+        "custom"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedPrintingBacks": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedPageCount": {
+        "kind": "multiple",
+        "of": 1,
+        "min": 1,
+        "max": 500
+      },
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "binding": {
+        "type": "spiral",
+        "allowedColors": [
+          "white",
+          "black"
+        ]
+      },
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "black",
+          "back": "none"
+        }
+      },
+      "allowElementEditing": true,
+      "explanation": "Produs fără presetări: alege materialul, dimensiunea, tipărirea și finisarea de la zero, și adaugă câte elemente are lucrarea. Folosit pentru cereri care nu se încadrează în celelalte categorii."
     }
   },
   "categories": [
@@ -7221,6 +7362,11 @@
       "id": "calendar",
       "label": "Calendar perete",
       "explanation": "Calendare de perete legate cu spirală, cu file lunare."
+    },
+    {
+      "id": "generic",
+      "label": "Produs generic",
+      "explanation": "Pornire de la zero, pentru orice lucrare care nu se regăsește în categoriile de mai sus. Toate opțiunile sunt disponibile, iar elementele (copertă, interior, orice altceva) se adaugă și se șterg după nevoie. Laminarea, biguitura și colțurile rotunjite apar doar pe hârtie suficient de groasă — implicit 200 GSM, care le permite pe toate."
     }
   ],
   "media": [

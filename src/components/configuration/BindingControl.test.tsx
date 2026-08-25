@@ -31,6 +31,32 @@ describe('BindingControl', () => {
     expect(screen.getByRole('button', { name: 'Alb' })).not.toHaveClass('bg-blue-500');
   });
 
+  it('clears the binding, so a mis-clicked spiral is recoverable', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <BindingControl
+        binding={{ type: 'spiral', color: 'white' }}
+        allowedColors={['white', 'black']}
+        onChange={onChange}
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Fără' }));
+    expect(onChange).toHaveBeenCalledWith({ type: 'none' });
+  });
+
+  it('reads as unbound both before a choice and after clearing one', () => {
+    const { rerender } = render(
+      <BindingControl binding={undefined} allowedColors={['white']} onChange={() => {}} />,
+    );
+    expect(screen.getByRole('button', { name: 'Fără' })).toHaveClass('bg-blue-500');
+
+    rerender(<BindingControl binding={{ type: 'none' }} allowedColors={['white']} onChange={() => {}} />);
+    expect(screen.getByRole('button', { name: 'Fără' })).toHaveClass('bg-blue-500');
+    expect(screen.getByRole('button', { name: 'Alb' })).not.toHaveClass('bg-blue-500');
+  });
+
   it('ignores clicks on colors that are not allowed', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();

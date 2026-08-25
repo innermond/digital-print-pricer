@@ -83,6 +83,13 @@ export type ProductConfig = {
   elementalPrintingFronts?: Record<string, Array<PrintInk | 'none'>>;
   elementalPrintingBacks?: Record<string, Array<PrintInk | 'none'>>;
   elementalPageCounts?: Record<string, PageCountConstraint>;
+  // Fallback page-count rule for elements with no entry in elementalPageCounts —
+  // notably the ones a user adds at runtime, whose ids no catalog can predict.
+  // Mirrors allowedPrintingFronts vs elementalPrintingFronts.
+  allowedPageCount?: PageCountConstraint;
+  // Whether the user may add and remove elements. Opt-in: omit and the product
+  // keeps exactly the parts the catalog gave it.
+  allowElementEditing?: boolean;
   // Which creasing counts this product offers, narrowing what the stock can hold.
   // Omit to offer the full 0-5 range on paper heavy enough to take a crease; use []
   // to rule creasing out; use a single value to fix it structurally.
@@ -117,6 +124,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'spiral-catalog', label: 'Catalog cu spira', explanation: 'Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate.' },
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
   { id: 'calendar', label: 'Calendar perete', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
+  { id: 'generic', label: 'Produs generic', explanation: 'Pornire de la zero, pentru orice lucrare care nu se regăsește în categoriile de mai sus. Toate opțiunile sunt disponibile, iar elementele (copertă, interior, orice altceva) se adaugă și se șterg după nevoie. Laminarea, biguitura și colțurile rotunjite apar doar pe hârtie suficient de groasă — implicit 200 GSM, care le permite pe toate.' },
 ];
 
 // Shared constraints for the "afis" category — presets within this category only
@@ -263,6 +271,46 @@ const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | '
   // A hang tag is a flat piece of card — never creased.
   allowedCreasingCounts: [],
   allowedStaple: { hole: true, staple: true },
+};
+
+// Shared constraints for the "generic" category — the catch-all. Unlike every
+// other base this one *opens* rather than restricts: it exists so a job the
+// catalog never anticipated can still be specified and priced.
+//
+// The omissions are load-bearing. `allowedCreasingCounts`, `allowedRoundedCorners`
+// and `allowedLaminationSides` mean "none" when set to [] and "everything the
+// stock allows" when left out — so they are deliberately absent here.
+const GENERIC_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'sharedSize' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks' | 'allowedPageCount' | 'allowedStaple' | 'binding' | 'pocket' | 'allowElementEditing'> = {
+  allowedMediaIds: MOCK_MEDIA.map((m) => m.id),
+  allowedSizeIds: MOCK_SIZES.map((s) => s.id),
+  machineId: 'm1',
+  // 200 GSM is the lightest stock that clears all three media ceilings in
+  // finishingRules.ts (lamination 170, biguitură 200, colțuri 170), so a generic
+  // product opens with every finishing control on screen.
+  recommendedMediaId: 'p4',
+  recommendedSizeId: 's1',
+  // Parts of a generic product need not be the same size — a cover and an insert
+  // are not obliged to match the way a brochure's are.
+  sharedSize: false,
+  // 'none' is listed rather than implied: FoldingControl only enables its "Fără"
+  // button for a config that says so outright.
+  allowedFoldTypes: ['none', 'half-fold', 'tri-fold', 'z-fold', 'gate-fold', 'custom'],
+  allowedPrintingFronts: ['color', 'black', 'none'],
+  allowedPrintingBacks: ['color', 'black', 'none'],
+  // of: 1 — any page count at all, since nothing is known about the binding.
+  allowedPageCount: { kind: 'multiple', of: 1, min: 1, max: 500 },
+  allowedStaple: { hole: true, staple: true },
+  binding: { type: 'spiral', allowedColors: ['white', 'black'] },
+  pocket: {
+    label: 'Buzunar de Hârtie',
+    mediaId: 'p6',
+    width: 200,
+    height: 120,
+    unit: 'mm',
+    pageCount: 2,
+    printing: { front: 'black', back: 'none' },
+  },
+  allowElementEditing: true,
 };
 
 export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
@@ -794,6 +842,10 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem10-3': { kind: 'fixed', value: 1 },
     },
     explanation: 'Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici.',
+  },
+  prodGa: {
+    ...GENERIC_CATEGORY_CONFIG,
+    explanation: 'Produs fără presetări: alege materialul, dimensiunea, tipărirea și finisarea de la zero, și adaugă câte elemente are lucrarea. Folosit pentru cereri care nu se încadrează în celelalte categorii.',
   },
 };
 
@@ -2734,5 +2786,31 @@ export const MOCK_PRODUCTS: Product[] = [
         },
       },
     ],
+  },
+  {
+    id: 'prodGa',
+    categoryId: 'generic',
+    label: 'Produs generic',
+    amount: 1,
+    // Starts as a single blank part; the user adds the rest in Configurare.
+    elementals: [
+      {
+        id: 'elemGa-1',
+        label: 'Element 1',
+        media: MOCK_PAPERS[3],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'color' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+    // The config offers a pocket so the control is there, but a generic job must
+    // not be quietly priced with one: `pocketEnabled ?? true` would include it.
+    pocketEnabled: false,
   },
 ];

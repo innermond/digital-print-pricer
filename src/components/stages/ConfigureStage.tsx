@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Plus, Trash2 } from 'lucide-react';
 import type { Product, Elemental, SizeUnit, Binding } from '../../types';
 import type { Catalog } from '../../data/catalog';
 import { ConfigurationPanel } from '../ConfigurationPanel';
@@ -13,6 +14,8 @@ type ConfigureStageProps = {
   customSizeUnit: SizeUnit;
   onCustomSizeUnitChange: (unit: SizeUnit) => void;
   onUpdateElemental: (elementId: Elemental['id'], updates: Partial<Elemental>) => void;
+  onAddElemental: (productId: Product['id']) => Elemental | undefined;
+  onRemoveElemental: (productId: Product['id'], elementId: Elemental['id']) => void;
   onUpdateBinding: (productId: Product['id'], binding: Binding) => void;
   onUpdatePocketEnabled: (productId: Product['id'], enabled: boolean) => void;
   onSetProductSize: (productId: Product['id'], size: Elemental['size']) => void;
@@ -26,6 +29,8 @@ export function ConfigureStage({
   customSizeUnit,
   onCustomSizeUnitChange,
   onUpdateElemental,
+  onAddElemental,
+  onRemoveElemental,
   onUpdateBinding,
   onUpdatePocketEnabled,
   onSetProductSize,
@@ -36,6 +41,25 @@ export function ConfigureStage({
   // Multi-element products share one size by default; a config can opt out.
   const sizeShared = config?.sharedSize ?? ((product?.elementals.length ?? 1) > 1);
   const elementals = product?.elementals ?? [];
+  // Opt-in per product: a preset keeps exactly the parts the catalog gave it.
+  const editable = Boolean(config?.allowElementEditing);
+
+  const addElement = () => {
+    if (!product) return;
+    const added = onAddElemental(product.id);
+    if (added) onSelectElemental(added.id);
+  };
+
+  // Move the selection off the doomed tab first, or the panel renders blank for
+  // a render while selectedElementalId points at an element that is already gone.
+  const removeSelected = () => {
+    if (!product || elementals.length <= 1) return;
+    const index = elementals.findIndex((e) => e.id === selectedElementalId);
+    if (index === -1) return;
+    const neighbour = elementals[index + 1] ?? elementals[index - 1];
+    onSelectElemental(neighbour.id);
+    onRemoveElemental(product.id, selectedElementalId);
+  };
 
   // Left/Right move between tabs, per the tablist pattern.
   const handleTabKey = (event: React.KeyboardEvent, index: number) => {
@@ -76,7 +100,7 @@ export function ConfigureStage({
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
       {/* One tab per physical part of the product (cover, interior, …). Single
           -part products get no tab row at all — there is nothing to switch. */}
-      {elementals.length > 1 && (
+      {(elementals.length > 1 || editable) && (
         <div ref={tabsRef} role="tablist" aria-label="Elemente" className="mb-4 flex flex-wrap gap-1.5">
           {elementals.map((element: Elemental, index: number) => {
             const active = selectedElementalId === element.id;
@@ -98,6 +122,32 @@ export function ConfigureStage({
               </button>
             );
           })}
+        </div>
+      )}
+
+      {/* Deliberately not an × on each tab: a tab is a <button role="tab">, and a
+          nested button is invalid markup. Acting on the selected element keeps the
+          tablist — and its Left/Right roving focus — intact. */}
+      {editable && product && (
+        <div className="mb-4 flex flex-wrap gap-1.5">
+          <button
+            type="button"
+            onClick={addElement}
+            className="flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm font-medium text-slate-700 dark:text-slate-300 transition hover:bg-slate-100 dark:hover:bg-slate-700"
+          >
+            <Plus size={14} />
+            Adaugă element
+          </button>
+          <button
+            type="button"
+            onClick={removeSelected}
+            disabled={elementals.length <= 1}
+            title={elementals.length <= 1 ? 'Un produs are nevoie de cel puțin un element' : undefined}
+            className="flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm font-medium text-slate-700 dark:text-slate-300 transition hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+          >
+            <Trash2 size={14} />
+            Șterge elementul
+          </button>
         </div>
       )}
 

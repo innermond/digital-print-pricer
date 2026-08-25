@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { renderHook } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 import { useProducts } from './useProducts';
 import { MOCK_CATALOG } from '../data/catalog';
 
@@ -78,6 +78,33 @@ describe('useProducts — catalog constraints vs cached selections', () => {
     expect(loaded.elementals[0].finishing.creasing.count).toBe(2);
   });
 
+  it('picks up a product the catalog has gained since the cache was written', () => {
+    // Without this the only cure is bumping STORAGE_VERSION, which throws away
+    // every local edit — so a new catalog product would read "0 variante" for
+    // anyone who had ever opened the app.
+    seedCache((products) => {
+      const list = products as { id: string }[];
+      const index = list.findIndex((p) => p.id === 'prod2a');
+      list.splice(index, 1);
+    });
+
+    const loaded = load();
+    expect(loaded.some((p) => p.id === 'prod2a')).toBe(true);
+    expect(loaded).toHaveLength(MOCK_CATALOG.products.length);
+  });
+
+  it('keeps the cached selections when appending a new catalog product', () => {
+    seedCache((products) => {
+      const list = products as { id: string; amount: number }[];
+      list.find((p) => p.id === 'prod9')!.amount = 42;
+      list.splice(list.findIndex((p) => p.id === 'prod2a'), 1);
+    });
+
+    const loaded = load();
+    expect(loaded.find((p) => p.id === 'prod9')!.amount).toBe(42);
+    expect(loaded.some((p) => p.id === 'prod2a')).toBe(true);
+  });
+
   it('leaves products the catalog no longer has alone', () => {
     seedCache((products) => {
       (products as { id: string }[]).push({
@@ -87,5 +114,67 @@ describe('useProducts — catalog constraints vs cached selections', () => {
     });
 
     expect(load().some((p) => p.id === 'imported-only')).toBe(true);
+  });
+});
+
+describe('useProducts — adding and removing elements', () => {
+  beforeEach(() => localStorage.clear());
+  afterEach(() => localStorage.clear());
+
+  const render = () => renderHook(() => useProducts({ catalog: MOCK_CATALOG, persist: false }));
+  const find = (result: { current: { products: typeof MOCK_CATALOG.products } }, id: string) =>
+    result.current.products.find((p) => p.id === id)!;
+
+  it('appends a blank element to a product that allows editing', () => {
+    const { result } = render();
+    expect(find(result, 'prodGa').elementals).toHaveLength(1);
+
+    let added;
+    act(() => { added = result.current.addElemental('prodGa'); });
+
+    const elementals = find(result, 'prodGa').elementals;
+    expect(elementals).toHaveLength(2);
+    expect(elementals[1].id).toBe(added!.id);
+    // Returned so the caller can move the tab selection onto the new element.
+    expect(added!.label).toBe('Element 2');
+  });
+
+  it('refuses to add to a product that does not allow editing', () => {
+    const { result } = render();
+    const before = find(result, 'prod2a').elementals.length;
+
+    let added;
+    act(() => { added = result.current.addElemental('prod2a'); });
+
+    expect(added).toBeUndefined();
+    expect(find(result, 'prod2a').elementals).toHaveLength(before);
+  });
+
+  it('removes an element by id', () => {
+    const { result } = render();
+    act(() => { result.current.addElemental('prodGa'); });
+    const doomed = find(result, 'prodGa').elementals[1].id;
+
+    act(() => { result.current.removeElemental('prodGa', doomed); });
+
+    expect(find(result, 'prodGa').elementals.map((e) => e.id)).not.toContain(doomed);
+  });
+
+  it('never removes the last element, which would leave nothing to price', () => {
+    const { result } = render();
+    const only = find(result, 'prodGa').elementals[0].id;
+
+    act(() => { result.current.removeElemental('prodGa', only); });
+
+    expect(find(result, 'prodGa').elementals).toHaveLength(1);
+  });
+
+  it('marks the product personalized once an element is added, and reverts it away', () => {
+    const { result } = render();
+    act(() => { result.current.addElemental('prodGa'); });
+    expect(result.current.isPersonalized(find(result, 'prodGa'))).toBe(true);
+
+    act(() => { result.current.revertProduct('prodGa'); });
+    expect(find(result, 'prodGa').elementals).toHaveLength(1);
   });
 });

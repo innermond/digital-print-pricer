@@ -55,7 +55,9 @@ export function ConfigurationPanel({
   // taking away a size the config would otherwise offer.
   const hasSizesHiddenByMachine = availableSizes.length < sizesInConfig.length;
 
-  const pageCountConstraint = config.elementalPageCounts?.[element.id];
+  // Falls back to the product-wide rule, the same way printing does below: an
+  // element the user added at runtime has an id no catalog could have keyed on.
+  const pageCountConstraint = config.elementalPageCounts?.[element.id] ?? config.allowedPageCount;
   const showPageCount = pageCountConstraint?.kind === 'multiple';
 
   const baseElement = baseline?.elementals.find((e) => e.id === element.id);

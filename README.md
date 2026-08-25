@@ -54,7 +54,8 @@ product id to a `ProductConfig`. Everything below is a field of that object.
 
 Built-in media ids: `p1` 90g Silk, `p2` 120g Lucios, `p3` 150g Mat, `p4` 200g
 Soft-touch, `p5` 250g Lucios, `p6` 350g Mat, `p7`–`p10` stickers.
-Size ids: `s0` A3, `s1` A4, `s2` A5, `s3` Letter, `s4` 1/3 A4, `s5`/`s6` business cards.
+Size ids: `s0` A3, `s1` A4, `s2` A5, `s3` Letter, `s4` 1/3 A4, `s5`/`s6` business
+cards, `s7` A3+, `s8` A6, and `s9`–`s20` the small label formats.
 
 A `Machine` is `{ id, label, maxWidthMm, maxHeightMm }` — the physical ceiling
 a print can't exceed, whatever a product's config otherwise allows. Sizes above
@@ -76,6 +77,7 @@ inputs (`CustomSizeControl`) clamp to it as the user types or steps. Built-in:
 | Setting | Type | Effect |
 |---|---|---|
 | `elementalPageCounts` | `Record<elementalId, constraint>` | Per-element page-count rule. |
+| `allowedPageCount` | `constraint` | Product-wide fallback, used for any element `elementalPageCounts` doesn't cover — notably elements the user adds at runtime, whose ids no catalog can predict. Same relationship as `allowedPrintingFronts` → `elementalPrintingFronts`. |
 
 `constraint` is one of:
 
@@ -95,6 +97,20 @@ The page-count control is **only visible** for `kind: "multiple"`.
 
 Values: `none`, `half-fold`, `tri-fold`, `z-fold`, `gate-fold`, `custom`.
 
+## Elements
+
+| Setting | Type | Effect |
+|---|---|---|
+| `allowElementEditing` | `boolean` | **Opt-in.** Lets the user add and remove elements in Configurare ("Adaugă element" / "Șterge elementul"). Omit and the product keeps exactly the parts the catalog gave it. The last element can never be removed. |
+
+An added element gets a generated id, a `Element N` label, and media/size seeded
+from `recommendedMediaId`/`recommendedSizeId` (`blankElemental` in
+`src/lib/elementals.ts`). Because its id is not in the catalog, per-element
+records (`elementalPageCounts`, `elementalPrinting*`) can't cover it — the
+product-wide fields are what apply, which is why `allowedPageCount` exists.
+Reverting the product ("personalizat" pill) drops added elements, since revert
+restores the catalog's element list wholesale.
+
 ## Finishing — staple, lamination sides, creasing, rounded corners, binding
 
 | Setting | Type | Effect |
@@ -103,7 +119,7 @@ Values: `none`, `half-fold`, `tri-fold`, `z-fold`, `gate-fold`, `custom`.
 | `allowedLaminationSides` | `('front' \| 'back' \| 'both')[]` | Restricts which lamination sides are offered. **Omit → all three.** A blank/unprinted back can still be laminated, so this is a product decision, *not* derived from what is printed. Disallowed sides render greyed/disabled. |
 | `allowedCreasingCounts` | `number[]` | Restricts the creasing counts (0–5) offered. **Omit → everything the stock allows.** `[]` rules creasing out; a single value fixes it structurally (a folder cover is always creased). Intersected with the media ceiling below — a config cannot crease stock that won't hold one. |
 | `allowedRoundedCorners` | `(1 \| 2 \| 3 \| 4)[]` | Restricts which **corner positions** may be rounded — `1` top-left, `2` top-right, `3` bottom-left, `4` bottom-right. **Omit → all four wherever the media allows.** `[]` rules rounding out for shapes that never get it whatever the weight (Afiș, Mapă de Prezentare). Intersected with the media ceiling below. The whole control disappears when the result is empty; a partial set renders the remaining corners greyed. |
-| `binding` | `{ type: 'spiral', allowedColors?: ('white' \| 'black')[] }` | Enables the binding tab/control for the product. |
+| `binding` | `{ type: 'spiral', allowedColors?: ('white' \| 'black')[] }` | Enables the binding tab/control for the product. The control also offers **Fără**, which writes `{ type: 'none' }` and is omitted from the price payload — so a spiral is never a one-way choice. |
 
 ## Copy
 
@@ -158,6 +174,36 @@ square.
   }
 }
 ```
+
+---
+
+## Produs generic — the catch-all
+
+`Produs generic` (category `generic`, product `prodGa`) is the one product that
+presets nothing. Its config opens every field rather than narrowing it, so the
+whole control surface is on screen at once, and `allowElementEditing` lets the
+user build up however many parts the job has.
+
+Two things about it are easy to get wrong when editing:
+
+- **The omissions are load-bearing.** `allowedCreasingCounts`,
+  `allowedRoundedCorners` and `allowedLaminationSides` mean *none* when set to
+  `[]` and *everything the stock allows* when left out. They are deliberately
+  absent from `GENERIC_CATEGORY_CONFIG` — setting any of them to `[]` silently
+  removes that control.
+- **The media ceilings still apply.** Lamination and rounded corners need paper
+  ≥ 170 GSM and creasing ≥ 200 GSM (see the table below); no config field
+  overrides that. The product therefore defaults to `p4` (200 GSM), the lightest
+  stock that clears all three, and those controls correctly disappear if the user
+  switches to lighter paper or a sticker.
+
+It also sets `pocketEnabled: false` on the product literal: the config offers a
+pocket so the control is there, but `pocketEnabled ?? true` would otherwise price
+a pocket into every generic job by default.
+
+The price endpoint receives `productId: "prodGa"` like any other product — a host
+that prices from a known preset id rather than from the payload's parts list will
+need to handle it.
 
 ---
 

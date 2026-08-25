@@ -4,6 +4,7 @@ import type { Product, Elemental, Binding } from '../types';
 import type { Catalog } from '../data/catalog';
 import { clampLamination } from '../lib/finishingRules';
 import { isPersonalized as isPersonalizedAgainst } from '../lib/personalization';
+import { blankElemental } from '../lib/elementals';
 
 // v3: the folder pocket stopped being an Elemental and prod3b was retired, so a
 // v2 cache would resurrect both. The persisted Product[] shape has not changed
@@ -22,9 +23,16 @@ const STORAGE_VERSION = 'v3';
  * today. Add any future constraint that lives on the elemental here, or it
  * will drift the same way. Ids missing from the catalog are left alone rather
  * than dropped, so an imported product list still round-trips.
+ *
+ * Products the catalog has gained since the cache was written are appended, at
+ * the end so the user's own ordering and edits are untouched. Without this a new
+ * catalog product is invisible to everyone who has ever opened the app — its
+ * category reads "0 variante" — and the only cure would be bumping
+ * STORAGE_VERSION, which throws away exactly the selections this function exists
+ * to preserve.
  */
-const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =>
-  saved.map((product) => {
+const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] => {
+  const refreshed = saved.map((product) => {
     const base = catalog.products.find((b) => b.id === product.id);
     if (!base) return product;
     return {
@@ -46,6 +54,10 @@ const withCatalogConstraints = (saved: Product[], catalog: Catalog): Product[] =
       }),
     };
   });
+
+  const known = new Set(refreshed.map((p) => p.id));
+  return [...refreshed, ...catalog.products.filter((p) => !known.has(p.id))];
+};
 
 type UseProductsOptions = {
   catalog: Catalog;
@@ -85,6 +97,33 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
             : elem
         ),
       }))
+    );
+  };
+
+  // Add a part to a product whose config opts into `allowElementEditing`. The
+  // new elemental is built here rather than inside setProducts so it can be
+  // returned — the caller needs its id to move the tab selection onto it.
+  const addElemental = (productId: Product['id']): Elemental | undefined => {
+    const product = products.find(p => p.id === productId);
+    const config = catalog.config[productId];
+    if (!product || !config?.allowElementEditing) return undefined;
+
+    const elemental = blankElemental(config, catalog, product.elementals);
+    setProducts(prev =>
+      prev.map(p => (p.id === productId ? { ...p, elementals: [...p.elementals, elemental] } : p))
+    );
+    return elemental;
+  };
+
+  // Never removes the last part — a product with no elementals has nothing to
+  // configure and nothing to price.
+  const removeElemental = (productId: Product['id'], elementId: Elemental['id']) => {
+    setProducts(prev =>
+      prev.map(p => {
+        if (p.id !== productId || p.elementals.length <= 1) return p;
+        const elementals = p.elementals.filter(e => e.id !== elementId);
+        return elementals.length === p.elementals.length ? p : { ...p, elementals };
+      })
     );
   };
 
@@ -193,6 +232,8 @@ export function useProducts({ catalog, persist }: UseProductsOptions) {
   return {
     products,
     updateElemental,
+    addElemental,
+    removeElemental,
     updateBinding,
     updatePocketEnabled,
     setProductSize,

@@ -117,6 +117,28 @@ describe('ConfigurationPanel', () => {
     expect(screen.queryByText('Pagini')).not.toBeInTheDocument();
   });
 
+  it('falls back to the product-wide page count rule', () => {
+    // An element the user added at runtime has an id no catalog could key on,
+    // so elementalPageCounts can never cover it.
+    renderPanel({
+      config: makeConfig({
+        allowedPageCount: { kind: 'multiple', of: 1, min: 1, max: 500 },
+      }),
+    });
+    expect(screen.getByText('Pagini')).toBeInTheDocument();
+    expect(screen.getByText('multipli de 1, 1–500')).toBeInTheDocument();
+  });
+
+  it('lets a per-elemental rule override the product-wide one', () => {
+    renderPanel({
+      config: makeConfig({
+        allowedPageCount: { kind: 'multiple', of: 1, min: 1, max: 500 },
+        elementalPageCounts: { [element.id]: { kind: 'derived' } },
+      }),
+    });
+    expect(screen.queryByText('Pagini')).not.toBeInTheDocument();
+  });
+
   it('applies per-elemental printing restrictions', () => {
     renderPanel({
       config: makeConfig({

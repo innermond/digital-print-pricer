@@ -34,6 +34,8 @@ export function buildSelectionPayload(product: Product, pocketElem?: Elemental |
         creasing: { count: elem.finishing.creasing.count },
       },
     })),
-    ...(product.binding ? { binding: product.binding } : {}),
+    // `{ type: 'none' }` is a real Binding but means unbound, so it must not
+    // reach the wire — the payload shape stays exactly what it has always been.
+    ...(product.binding?.type === 'spiral' ? { binding: product.binding } : {}),
   };
 }

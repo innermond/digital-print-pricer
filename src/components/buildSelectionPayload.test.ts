@@ -50,4 +50,16 @@ describe('buildSelectionPayload', () => {
     expect(creasing).toEqual({ count: 2 });
     expect(creasing).not.toHaveProperty('max');
   });
+
+  it('sends a spiral binding but not an explicit "no binding"', () => {
+    // `{ type: 'none' }` is what BindingControl's "Fără" writes. It is a real
+    // Binding, but on the wire it must be indistinguishable from never having
+    // chosen one — the host has always read `binding`'s absence as unbound.
+    const spiral = { ...folder, binding: { type: 'spiral', color: 'white' } as const };
+    expect(buildSelectionPayload(spiral)).toHaveProperty('binding', { type: 'spiral', color: 'white' });
+
+    const cleared = { ...folder, binding: { type: 'none' } as const };
+    expect(buildSelectionPayload(cleared)).not.toHaveProperty('binding');
+    expect(buildSelectionPayload(folder)).not.toHaveProperty('binding');
+  });
 });

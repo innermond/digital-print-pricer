@@ -48,6 +48,8 @@ export default function ProductConfigurator({
   const {
     products,
     updateElemental,
+    addElemental,
+    removeElemental,
     updateBinding,
     updatePocketEnabled,
     setProductSize,
@@ -238,6 +240,8 @@ export default function ProductConfigurator({
                 customSizeUnit={customSizeUnit}
                 onCustomSizeUnitChange={setCustomSizeUnit}
                 onUpdateElemental={updateElemental}
+                onAddElemental={addElemental}
+                onRemoveElemental={removeElemental}
                 onUpdateBinding={updateBinding}
                 onUpdatePocketEnabled={updatePocketEnabled}
                 onSetProductSize={setProductSize}
