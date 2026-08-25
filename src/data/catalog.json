@@ -5014,7 +5014,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
     },
     "prod2e": {
       "allowedMediaIds": [
@@ -5046,7 +5046,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici."
     },
     "prod2d": {
       "allowedMediaIds": [
@@ -5078,7 +5078,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici."
+      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
     },
     "prod2g": {
       "allowedMediaIds": [
@@ -5110,7 +5110,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
     },
     "prod2f": {
       "allowedMediaIds": [
@@ -5142,7 +5142,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
     },
     "prod2h": {
       "allowedMediaIds": [
@@ -5174,7 +5174,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
     },
     "prod2i": {
       "allowedMediaIds": [
@@ -5206,7 +5206,7 @@
           "max": 64
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+      "explanation": "Broșură pliată cu copertă laminată mat și interior de 16 pagini. Laminarea protejează coperta și îi dă un finisaj catifelat, potrivit pentru prezentări premium."
     },
     "prod3a": {
       "allowedMediaIds": [

@@ -13,6 +13,7 @@ import { PricePanel } from './PricePanel';
 import { useProducts } from '../hooks/useProducts';
 import { useAutoPrice } from '../hooks/useAutoPrice';
 import { buildSelectionPayload } from '../lib/selection';
+import { describeProduct } from '../lib/labels';
 import { pocketElemental } from '../lib/pocket';
 
 type ProductConfiguratorProps = {
@@ -95,6 +96,10 @@ export default function ProductConfigurator({
   // Left to the React Compiler to memoize — a hand-written useMemo here had
   // narrower deps than the compiler could infer, so it skipped the component.
   const pocketElem = config?.pocket && pocketOn ? pocketElemental(config.pocket, catalog.media) : null;
+
+  // Once the product diverges from the catalog, its label and explanation both
+  // describe a preset the customer is no longer buying — see describeProduct.
+  const personalized = !!selectedProduct && isPersonalized(selectedProduct);
 
   const { status: priceStatus, retry: retryPrice } = useAutoPrice({
     product: selectedProduct,
@@ -205,7 +210,7 @@ export default function ProductConfigurator({
             </h2>
             {selectedProduct && (
               <p className="mb-3 text-sm text-slate-500 dark:text-slate-400">
-                {selectedProduct.label}
+                {personalized ? describeProduct(selectedProduct) : selectedProduct.label}
               </p>
             )}
 
@@ -244,7 +249,7 @@ export default function ProductConfigurator({
                 product={selectedProduct}
                 element={selectedElemental}
                 pocket={pocketOn ? config?.pocket : undefined}
-                personalized={!!selectedProduct && isPersonalized(selectedProduct)}
+                personalized={personalized}
               />
             )}
 
@@ -264,7 +269,7 @@ export default function ProductConfigurator({
                 onAmountStep={(delta) => updateProductAmount(selectedProduct.id, delta)}
                 onAmountSet={(amount) => setProductAmount(selectedProduct.id, amount)}
                 showOffer={stage === 2}
-                amountBadgeText={config?.explanation}
+                amountBadgeText={personalized ? undefined : config?.explanation}
               />
             </div>
           )}

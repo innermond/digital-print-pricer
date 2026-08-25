@@ -198,7 +198,7 @@ const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'al
 
 // Shared constraints for the "folded-flyer" category — presets within this category only
 // differ by their initial fold type and panel count.
-const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes'> = {
+const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedPrintingFronts' | 'allowedPrintingBacks'> = {
   allowedMediaIds: ['p1', 'p2', 'p3', 'p4'],
   allowedSizeIds: ['s1', 's2', 's4'],
   allowedPrintingFronts: ['color', 'black'],
@@ -346,7 +346,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2c-1': { kind: 'derived' },
       'elem2c-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
+    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
   },
   prod2e: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -354,7 +354,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2e-1': { kind: 'derived' },
       'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
+    explanation: 'Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici.',
   },
   prod2d: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -362,7 +362,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2d-1': { kind: 'derived' },
       'elem2d-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici.',
+    explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
   },
   prod2g: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -371,7 +371,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2g-1': { kind: 'derived' },
       'elem2g-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
+    explanation: 'Broșură pliată format A5, cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
   },
   prod2f: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -380,7 +380,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2f-1': { kind: 'derived' },
       'elem2f-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
+    explanation: 'Broșură pliată format A5, cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
   },
   prod2h: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -389,7 +389,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2h-1': { kind: 'derived' },
       'elem2h-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
+    explanation: 'Broșură pliată format A5, cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
   },
   prod2i: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -397,7 +397,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
       'elem2i-1': { kind: 'derived' },
       'elem2i-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
-    explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
+    explanation: 'Broșură pliată cu copertă laminată mat și interior de 16 pagini. Laminarea protejează coperta și îi dă un finisaj catifelat, potrivit pentru prezentări premium.',
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,

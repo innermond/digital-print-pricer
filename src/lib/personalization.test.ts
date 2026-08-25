@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { advancedSummary, isPersonalized } from './personalization';
-import { makeElemental, makeFinishing, makeSize } from '../test/fixtures';
+import { makeElemental, makeFinishing, makePaper, makeSize } from '../test/fixtures';
 import type { Product } from '../types';
 
 const base = makeElemental();
@@ -76,7 +76,22 @@ describe('advancedSummary', () => {
 
   it('ignores an essential change, which stays visible on its own', () => {
     // Media lives in the essentials, so it never needs a chip.
-    const changed = makeElemental({ pageCount: 8 });
+    const changed = makeElemental({ media: makePaper({ id: 'p3', gsm: 150 }) });
     expect(advancedSummary(changed, base)).toEqual([]);
+  });
+
+  it('leaves a page count alone when its stepper is on screen', () => {
+    const changed = makeElemental({ pageCount: 8 });
+    const constraint = { kind: 'multiple', of: 4, min: 4, max: 64 } as const;
+    expect(advancedSummary(changed, base, constraint)).toEqual([]);
+  });
+
+  it('reports a derived page count, which has no control of its own', () => {
+    // The cover follows the fold silently — without a chip the change is nowhere.
+    const changed = makeElemental({
+      pageCount: 6,
+      finishing: makeFinishing({ folding: { type: 'tri-fold', folds: 2 } }),
+    });
+    expect(advancedSummary(changed, base, { kind: 'derived' })).toContain('Pagini: 6');
   });
 });

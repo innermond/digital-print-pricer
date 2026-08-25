@@ -1,5 +1,5 @@
 import type { Elemental, Pocket, Product } from '../types';
-import { LAMINATION_RO, FOLD_RO, SPIRAL_COLOR_RO, plural } from '../lib/labels';
+import { LAMINATION_RO, FOLD_RO, SPIRAL_COLOR_RO, plural, describeProduct } from '../lib/labels';
 
 type AssemblySummaryProps = {
   product: Product | undefined;
@@ -34,6 +34,9 @@ export function AssemblySummary({ product, personalized, pocket }: AssemblySumma
                 <span className="font-medium text-slate-900 dark:text-slate-50">Dimensiune:</span> {element.size.width.toFixed(1)}×{element.size.height.toFixed(1)} {element.size.unit}
               </div>
               <div>
+                <span className="font-medium text-slate-900 dark:text-slate-50">Pagini:</span> {element.pageCount}
+              </div>
+              <div>
                 <span className="font-medium text-slate-900 dark:text-slate-50">Laminare:</span>{' '}
                 {LAMINATION_RO[element.finishing.lamination.type] ?? element.finishing.lamination.type}
               </div>
@@ -57,7 +60,10 @@ export function AssemblySummary({ product, personalized, pocket }: AssemblySumma
       <div className="mt-3 rounded-lg bg-blue-50 dark:bg-blue-950 p-2.5 border border-blue-200 dark:border-blue-800">
         <p className="text-xs text-blue-900 dark:text-blue-200">
           <span className="font-semibold">{personalized ? 'Produs personalizat' : 'Produs'}: </span>
-          {product.label} ({plural(product.elementals.length, 'element', 'elemente')}) × {product.amount}
+          {/* The catalog label names the preset, not what was configured — once the
+              product diverges it would read "A5, 16 Pagini" over an A4 24-page job. */}
+          {personalized ? describeProduct(product) : product.label}{' '}
+          ({plural(product.elementals.length, 'element', 'elemente')}) × {product.amount}
         </p>
         {product.binding?.type === 'spiral' && (
           <p className="text-xs text-blue-900 dark:text-blue-200 mt-1">

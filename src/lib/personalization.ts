@@ -1,4 +1,5 @@
 import type { Product, Elemental } from '../types';
+import type { PageCountConstraint } from '../data/mockData';
 import { LAMINATION_RO, LAMINATION_SIDES_RO, FOLD_RO } from './labels';
 
 // A product is "personalized" once its elementals/binding diverge from the
@@ -16,7 +17,11 @@ export function isPersonalized(product: Product, baseline: Product | undefined) 
  * setting on screen even when its control is hidden — collapsing must never
  * conceal something the user chose.
  */
-export function advancedSummary(element: Elemental, baseline: Elemental | undefined): string[] {
+export function advancedSummary(
+  element: Elemental,
+  baseline: Elemental | undefined,
+  pageCount?: PageCountConstraint,
+): string[] {
   if (!baseline) return [];
   const chips: string[] = [];
   const { finishing } = element;
@@ -51,6 +56,13 @@ export function advancedSummary(element: Elemental, baseline: Elemental | undefi
   if (staple && (staple.hole !== baseStaple?.hole || staple.staple !== baseStaple?.staple)) {
     const parts = [staple.hole && 'Gaură', staple.staple && 'Capsă'].filter(Boolean);
     chips.push(`Capsare: ${parts.length ? parts.join(', ') : 'fără'}`);
+  }
+
+  // A `multiple` page count has its own stepper in the essentials, so chipping it
+  // would only repeat what is already on screen. A `derived` one has no control at
+  // all — it moves silently when the fold changes — so that is the case worth a chip.
+  if (element.pageCount !== baseline.pageCount && pageCount?.kind !== 'multiple') {
+    chips.push(`Pagini: ${element.pageCount}`);
   }
 
   // A custom size is an advanced choice too — a preset lives in the essentials.

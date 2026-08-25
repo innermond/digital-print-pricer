@@ -59,7 +59,7 @@ export function ConfigurationPanel({
   const showPageCount = pageCountConstraint?.kind === 'multiple';
 
   const baseElement = baseline?.elementals.find((e) => e.id === element.id);
-  const chips = advancedSummary(element, baseElement);
+  const chips = advancedSummary(element, baseElement, pageCountConstraint);
 
   useEffect(() => {
     if (openSignal > 0) widthInputRef.current?.focus();
