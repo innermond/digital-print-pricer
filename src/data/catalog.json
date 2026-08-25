@@ -5063,7 +5063,7 @@
       "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
-      "recommendedSizeId": "s2",
+      "recommendedSizeId": "s1",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5079,6 +5079,134 @@
         }
       },
       "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici."
+    },
+    "prod2g": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2g-1": {
+          "kind": "derived"
+        },
+        "elem2g-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
+    },
+    "prod2f": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2f-1": {
+          "kind": "derived"
+        },
+        "elem2f-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+    },
+    "prod2h": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2h-1": {
+          "kind": "derived"
+        },
+        "elem2h-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+    },
+    "prod2i": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2i-1": {
+          "kind": "derived"
+        },
+        "elem2i-2": {
+          "kind": "multiple",
+          "of": 4,
+          "min": 4,
+          "max": 64
+        }
+      },
+      "explanation": "Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
     },
     "prod3a": {
       "allowedMediaIds": [

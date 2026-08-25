@@ -358,7 +358,6 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod2d: {
     ...BROCHURE_CATEGORY_CONFIG,
-    recommendedSizeId: 's2',
     elementalPageCounts: {
       'elem2d-1': { kind: 'derived' },
       'elem2d-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
@@ -367,33 +366,36 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod2g: {
     ...BROCHURE_CATEGORY_CONFIG,
+    recommendedSizeId: 's2',
     elementalPageCounts: {
-      'elem2e-1': { kind: 'derived' },
-      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+      'elem2g-1': { kind: 'derived' },
+      'elem2g-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.',
   },
   prod2f: {
     ...BROCHURE_CATEGORY_CONFIG,
+    recommendedSizeId: 's2',
     elementalPageCounts: {
-      'elem2e-1': { kind: 'derived' },
-      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+      'elem2f-1': { kind: 'derived' },
+      'elem2f-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
   },
   prod2h: {
     ...BROCHURE_CATEGORY_CONFIG,
+    recommendedSizeId: 's2',
     elementalPageCounts: {
-      'elem2e-1': { kind: 'derived' },
-      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+      'elem2h-1': { kind: 'derived' },
+      'elem2h-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.',
   },
   prod2i: {
     ...BROCHURE_CATEGORY_CONFIG,
     elementalPageCounts: {
-      'elem2e-1': { kind: 'derived' },
-      'elem2e-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
+      'elem2i-1': { kind: 'derived' },
+      'elem2i-2': { kind: 'multiple', of: 4, min: 4, max: 64 },
     },
     explanation: 'Broșură pliată cu copertă și interior de 16 pagini.  Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.',
   },
