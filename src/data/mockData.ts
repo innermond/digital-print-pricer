@@ -35,7 +35,7 @@ export const MOCK_SIZES: Size[] = [
   { id: 's3', label: 'Letter',                width: 215.9, height: 279.4,  unit: 'mm', widthMm: 215.9, heightMm: 279.4 },
   { id: 's4', label: '1/3A4',                 width: 100, height: 210, unit: 'mm', widthMm: 100,   heightMm: 210   },
   { id: 's5', label: 'Carte Vizită Standard', width: 90,  height: 50,  unit: 'mm', widthMm: 90,    heightMm: 50    },
-  { id: 's6', label: 'Carte Vizită Compact',  width: 80,  height: 50,  unit: 'mm', widthMm: 80,    heightMm: 50    },
+  { id: 's6', label: 'Carte Vizită Compact',  width: 85,  height: 55,  unit: 'mm', widthMm: 85,    heightMm: 55    },
   { id: 's7', label: 'A3+',                   width: 320, height: 450, unit: 'mm', widthMm: 320,   heightMm: 450   },
   { id: 's8', label: 'A6',                    width: 105, height: 148, unit: 'mm', widthMm: 105,   heightMm: 148   },
   { id: 's9', label: '30x40',                 width: 30,  height: 40,  unit: 'mm', widthMm: 30,    heightMm: 40    },
@@ -515,7 +515,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod4b: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's6',
-    explanation: 'Carte de vizită compact 80x50mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari.',
+    explanation: 'Carte de vizită compact 85x55mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari.',
   },
   prod4c: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
@@ -531,7 +531,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod4e: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
     recommendedSizeId: 's6',
-    explanation: 'Carte de vizită compact 80x50mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat.',
+    explanation: 'Carte de vizită compact 85x55mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat.',
   },
   prod5a: {
     ...FOLDED_FLYER_CATEGORY_CONFIG,
@@ -784,7 +784,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod8b: {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
     recommendedSizeId: 's6',
-    explanation: 'Etichetă din carton gros 80x50mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs.',
+    explanation: 'Etichetă din carton gros 85x55mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs.',
   },
   prod8c: {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
@@ -795,7 +795,7 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
     recommendedMediaId: 'p5',
     recommendedSizeId: 's6',
-    explanation: 'Etichetă premium din carton lucios 300gsm, 80x50mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.',
+    explanation: 'Etichetă premium din carton lucios 300gsm, 85x55mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.',
   },
   prod8e: {
     ...CARDBOARD_LABEL_CATEGORY_CONFIG,
@@ -1562,7 +1562,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4b',
     categoryId: 'business-card',
-    label: 'Carte Compact 80x50, O Față',
+    label: 'Carte Compact 85x55, O Față',
     amount: 100,
     elementals: [
       {
@@ -1628,7 +1628,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod4e',
     categoryId: 'business-card',
-    label: 'Carte Compact 80x50, Față-Verso',
+    label: 'Carte Compact 85x55, Față-Verso',
     amount: 100,
     elementals: [
       {
@@ -2463,7 +2463,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod8b',
     categoryId: 'cardboard-label',
-    label: 'Etichetă Carton 80x50, cu Capsă',
+    label: 'Etichetă Carton 85x55, cu Capsă',
     amount: 100,
     elementals: [
       {

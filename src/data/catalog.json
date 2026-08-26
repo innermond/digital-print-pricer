@@ -1540,7 +1540,7 @@
     {
       "id": "prod4b",
       "categoryId": "business-card",
-      "label": "Carte Compact 80x50, O Față",
+      "label": "Carte Compact 85x55, O Față",
       "amount": 100,
       "elementals": [
         {
@@ -1690,7 +1690,7 @@
     {
       "id": "prod4e",
       "categoryId": "business-card",
-      "label": "Carte Compact 80x50, Față-Verso",
+      "label": "Carte Compact 85x55, Față-Verso",
       "amount": 100,
       "elementals": [
         {
@@ -3722,7 +3722,7 @@
     {
       "id": "prod8b",
       "categoryId": "cardboard-label",
-      "label": "Etichetă Carton 80x50, cu Capsă",
+      "label": "Etichetă Carton 85x55, cu Capsă",
       "amount": 100,
       "elementals": [
         {
@@ -5759,7 +5759,7 @@
         "none"
       ],
       "recommendedSizeId": "s6",
-      "explanation": "Carte de vizită compact 80x50mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari."
+      "explanation": "Carte de vizită compact 85x55mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari."
     },
     "prod4c": {
       "allowedCreasingCounts": [],
@@ -5813,7 +5813,7 @@
         "none"
       ],
       "recommendedSizeId": "s6",
-      "explanation": "Carte de vizită compact 80x50mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat."
+      "explanation": "Carte de vizită compact 85x55mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat."
     },
     "prod5a": {
       "allowedMediaIds": [
@@ -7047,7 +7047,7 @@
         "staple": true
       },
       "recommendedSizeId": "s6",
-      "explanation": "Etichetă din carton gros 80x50mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs."
+      "explanation": "Etichetă din carton gros 85x55mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs."
     },
     "prod8c": {
       "allowedMediaIds": [
@@ -7109,7 +7109,7 @@
         "staple": true
       },
       "recommendedSizeId": "s6",
-      "explanation": "Etichetă premium din carton lucios 300gsm, 80x50mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
+      "explanation": "Etichetă premium din carton lucios 300gsm, 85x55mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
     },
     "prod8e": {
       "allowedMediaIds": [
@@ -8016,11 +8016,11 @@
     {
       "id": "s6",
       "label": "Carte Vizită Compact",
-      "width": 80,
-      "height": 50,
+      "width": 85,
+      "height": 55,
       "unit": "mm",
-      "widthMm": 80,
-      "heightMm": 50
+      "widthMm": 85,
+      "heightMm": 55
     },
     {
       "id": "s7",
