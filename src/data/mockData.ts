@@ -199,7 +199,7 @@ const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSi
     height: 120,
     unit: 'mm',
     pageCount: 2,
-    printing: { front: 'black', back: 'none' },
+    printing: { front: 'none', back: 'none' },
   },
 };
 
@@ -504,6 +504,10 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     explanation: 'Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
   },
   prod3e: {
+    ...FOLDER_CATEGORY_CONFIG,
+    explanation: 'Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale.',
+  },
+  prod3f: {
     ...FOLDER_CATEGORY_CONFIG,
     explanation: 'Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale.',
   },
@@ -1530,6 +1534,28 @@ export const MOCK_PRODUCTS: Product[] = [
         printing: { front: 'color', back: 'none' },
         finishing: {
           lamination: { type: 'matt', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 2, min: 1, max: 2 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod3f',
+    categoryId: 'folder',
+    label: 'Mapă mică A5 cu Buzunar și cotor',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem3f-1',
+        label: 'Coală A4 Pliată',
+        media: MOCK_PAPERS[5],
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
           folding: { type: 'none', folds: 0 },
           creasing: { count: 2, min: 1, max: 2 },
           roundedCornes: { corners: [] },

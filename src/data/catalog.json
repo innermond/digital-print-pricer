@@ -1488,6 +1488,58 @@
       ]
     },
     {
+      "id": "prod3f",
+      "categoryId": "folder",
+      "label": "Mapă mică A5 cu Buzunar și cotor",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem3f-1",
+          "label": "Coală A4 Pliată",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 148,
+            "heightMm": 210
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 2,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "prod4a",
       "categoryId": "business-card",
       "label": "Carte Standard 90x50, Față-Verso",
@@ -5620,7 +5672,7 @@
         "unit": "mm",
         "pageCount": 2,
         "printing": {
-          "front": "black",
+          "front": "none",
           "back": "none"
         }
       },
@@ -5653,7 +5705,7 @@
         "unit": "mm",
         "pageCount": 2,
         "printing": {
-          "front": "black",
+          "front": "none",
           "back": "none"
         }
       },
@@ -5686,7 +5738,7 @@
         "unit": "mm",
         "pageCount": 2,
         "printing": {
-          "front": "black",
+          "front": "none",
           "back": "none"
         }
       },
@@ -5719,7 +5771,40 @@
         "unit": "mm",
         "pageCount": 2,
         "printing": {
-          "front": "black",
+          "front": "none",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale."
+    },
+    "prod3f": {
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "none",
           "back": "none"
         }
       },
