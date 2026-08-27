@@ -5081,6 +5081,56 @@
       ]
     },
     {
+      "id": "prod12a",
+      "categoryId": "diploma",
+      "label": "Diplomă clasică, format A4, color pe carton gros de 350g",
+      "amount": 10,
+      "elementals": [
+        {
+          "id": "elem12a-1",
+          "label": "Diplomă",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 297,
+            "height": 210,
+            "unit": "mm",
+            "widthMm": 297,
+            "heightMm": 210
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 0
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "prodGa",
       "categoryId": "generic",
       "label": "Produs generic",
@@ -7526,7 +7576,9 @@
         "none"
       ],
       "allowedCreasingCounts": [],
-      "allowedLaminationSides": [],
+      "allowedLaminationSides": [
+        "front"
+      ],
       "allowedRoundedCorners": [],
       "binding": {
         "type": "spiral",
@@ -7594,7 +7646,9 @@
         "none"
       ],
       "allowedCreasingCounts": [],
-      "allowedLaminationSides": [],
+      "allowedLaminationSides": [
+        "front"
+      ],
       "allowedRoundedCorners": [],
       "binding": {
         "type": "spiral",
@@ -7804,6 +7858,25 @@
       },
       "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras."
     },
+    "prod12a": {
+      "allowedCreasingCounts": [],
+      "allowedMediaIds": [
+        "p5",
+        "p6"
+      ],
+      "allowedSizeIds": [
+        "s0",
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "recommendedSizeId": "s1",
+      "explanation": "Diplomă A4 printată color pe carton solid 350gsm, cu aspect mat."
+    },
     "prodGa": {
       "allowedMediaIds": [
         "p1",
@@ -7954,6 +8027,11 @@
       "id": "bookmark",
       "label": "Semne de carte",
       "explanation": "Semne de carte din carton gros, tipărite pe ambele fețe sau doar pe față. Se pot lamina, cu colțuri rotunjite, cu o biguitură pentru varianta care se pliază peste pagină, ori cu gaură și capsă pentru șnur sau ciucure."
+    },
+    {
+      "id": "diploma",
+      "label": "Diplomă",
+      "explanation": "Diplomă color printată pe carton solid, de 350g, cu aspect mat. Se poate lamina, rotunji colțuri."
     },
     {
       "id": "generic",

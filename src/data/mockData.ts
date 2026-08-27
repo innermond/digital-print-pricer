@@ -135,6 +135,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
   { id: 'calendar', label: 'Calendar perete', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
   { id: 'bookmark', label: 'Semne de carte', explanation: 'Semne de carte din carton gros, tipărite pe ambele fețe sau doar pe față. Se pot lamina, cu colțuri rotunjite, cu o biguitură pentru varianta care se pliază peste pagină, ori cu gaură și capsă pentru șnur sau ciucure.' },
+  { id: 'diploma', label: 'Diplomă', explanation: 'Diplomă color printată pe carton solid, de 350g, cu aspect mat. Se poate lamina, rotunji colțuri.' },
   { id: 'generic', label: 'Produs generic', explanation: 'Pornire de la zero, pentru orice lucrare care nu se regăsește în categoriile de mai sus. Toate opțiunile sunt disponibile, iar elementele (copertă, interior, orice altceva) se adaugă și se șterg după nevoie. Laminarea, biguitura și colțurile rotunjite apar doar pe hârtie suficient de groasă — implicit 200 GSM, care le permite pe toate.' },
 ];
 
@@ -265,7 +266,7 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
   recommendedSizeId: 's7',
   allowedFoldTypes: ['none'],
   allowedCreasingCounts: [],
-  allowedLaminationSides: [],
+  allowedLaminationSides: ['front'],
   // A wall calendar is trimmed square — no rounded corners, whatever the board.
   allowedRoundedCorners: [],
   binding: { type: 'spiral', allowedColors: ['white', 'black'] },
@@ -317,6 +318,17 @@ const BOOKMARK_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
   allowedStaple: { hole: true, staple: true },
 };
 
+// Shared constraints for the "business-card" category — presets within this category only
+// differ by their initial size and printing selections.
+const DIPLOMA_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
+  // A card is a single flat piece — never creased.
+  allowedCreasingCounts: [],
+  allowedMediaIds: ['p5', 'p6'],
+  allowedSizeIds: ['s0', 's1', 's2'],
+  machineId: 'm1',
+  recommendedMediaId: 'p6',
+  allowedFoldTypes: ['none'],
+};
 // Shared constraints for the "generic" category — the catch-all. Unlike every
 // other base this one *opens* rather than restricts: it exists so a job the
 // catalog never anticipated can still be specified and priced.
@@ -920,6 +932,11 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     ...BOOKMARK_CATEGORY_CONFIG,
     recommendedSizeId: 's21',
     explanation: 'Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras.',
+  },
+  prod12a: {
+    ...DIPLOMA_CATEGORY_CONFIG,
+    recommendedSizeId: 's1',
+    explanation: 'Diplomă A4 printată color pe carton solid 350gsm, cu aspect mat.',
   },
   prodGa: {
     ...GENERIC_CATEGORY_CONFIG,
@@ -3030,6 +3047,28 @@ export const MOCK_PRODUCTS: Product[] = [
           // Both halves of the fitting: the hole is punched and the capsă is set
           // into it before the cord goes through, the same pairing prod8c uses.
           staple: { hole: true, staple: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'prod12a',
+    categoryId: 'diploma',
+    label: 'Diplomă clasică, format A4, color pe carton gros de 350g',
+    amount: 10,
+    elementals: [
+      {
+        id: 'elem12a-1',
+        label: 'Diplomă',
+        media: MOCK_PAPERS[5],
+        size: { id: 's1', label: 'A4', width: 297, height: 210, unit: 'mm', widthMm: 297, heightMm: 210 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 0 },
+          roundedCornes: { corners: [] },
         },
       },
     ],
