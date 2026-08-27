@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CategoryButton } from './CategoryButton';
 import type { ProductCategory } from '../types';
@@ -54,6 +54,9 @@ describe('CategoryButton', () => {
         onClick={() => {}}
       />,
     );
+    // The panel is only in the DOM while the badge is open — it used to be mounted
+    // permanently and hidden, which cost layout and overflowed narrow viewports.
+    fireEvent.mouseEnter(screen.getByText('ⓘ'));
     expect(screen.getByText('category details')).toBeInTheDocument();
   });
 

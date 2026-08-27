@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MediaSelector } from './MediaSelector';
 import { makePaper, makeSticker } from '../../test/fixtures';
@@ -44,6 +44,9 @@ describe('MediaSelector', () => {
   it('wraps options that have an explanation in a Badge', () => {
     const explained = makePaper({ id: 'p3', label: '150 GSM - Mat', explanation: 'hârtie mată' });
     render(<MediaSelector media={[explained]} selectedId="p3" recommendedId="p3" onSelect={() => {}} />);
+    // The panel is only in the DOM while the badge is open — it used to be mounted
+    // permanently and hidden, which cost layout and overflowed narrow viewports.
+    fireEvent.mouseEnter(screen.getByText('ⓘ'));
     expect(screen.getByText('hârtie mată')).toBeInTheDocument();
   });
 });

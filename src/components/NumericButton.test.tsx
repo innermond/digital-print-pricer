@@ -93,6 +93,9 @@ describe('NumericButton', () => {
 
   it('wraps the widget in a Badge when badgeText is given', () => {
     renderNumericButton({ badgeText: 'helpful hint' });
+    // The panel is only in the DOM while the badge is open — it used to be mounted
+    // permanently and hidden, which cost layout and overflowed narrow viewports.
+    fireEvent.mouseEnter(screen.getByText('ⓘ'));
     expect(screen.getByText('helpful hint')).toBeInTheDocument();
   });
 

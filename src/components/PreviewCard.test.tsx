@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { PreviewCard } from './PreviewCard';
 import { makeElemental, makeFinishing, makeSize, makeSticker } from '../test/fixtures';
 import type { Pocket } from '../types';
@@ -108,6 +108,9 @@ describe('PreviewCard', () => {
     });
     render(<PreviewCard element={element} />);
     expect(screen.getByText('Lucios')).toBeInTheDocument();
+    // The panel is only in the DOM while the badge is open — it used to be mounted
+    // permanently and hidden, which cost layout and overflowed narrow viewports.
+    fireEvent.mouseEnter(screen.getByText('Lucios'));
     expect(screen.getByText('Laminare lucios pe ambele fețe')).toBeInTheDocument();
   });
 
