@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { PreviewCard } from './PreviewCard';
-import { makeElemental, makeFinishing, makeSticker } from '../test/fixtures';
+import { makeElemental, makeFinishing, makeSize, makeSticker } from '../test/fixtures';
+import type { Pocket } from '../types';
 
 describe('PreviewCard', () => {
   it('renders nothing without an element', () => {
@@ -22,14 +23,62 @@ describe('PreviewCard', () => {
     expect(screen.getByText('Etichetă PVC')).toBeInTheDocument();
   });
 
-  it('applies the rounded-corner classes', () => {
+  it('rounds the corners the element asks for, and only those', () => {
+    // The sheet is an SVG path now, so the radii are arcs in `d` rather than
+    // Tailwind classes: two corners rounded means two arcs.
     const element = makeElemental({
       finishing: makeFinishing({ roundedCornes: { corners: [1, 4] } }),
     });
     const { container } = render(<PreviewCard element={element} />);
-    const box = container.querySelector('.rounded-tl-xl');
-    expect(box).not.toBeNull();
-    expect(box).toHaveClass('rounded-br-xl');
+    const sheet = container.querySelector('svg path');
+    expect(sheet?.getAttribute('d')?.match(/A /g)).toHaveLength(2);
+
+    const { container: square } = render(<PreviewCard element={makeElemental()} />);
+    expect(square.querySelector('svg path')?.getAttribute('d')).not.toContain('A ');
+  });
+
+  it('names the drawing after what it depicts', () => {
+    render(<PreviewCard element={makeElemental()} />);
+    expect(screen.getByRole('img', { name: 'Coală Simplă, 210.0 × 297.0 mm' })).toBeInTheDocument();
+  });
+
+  it('names the format in the caption when it knows the presets', () => {
+    const landscapeA4 = makeSize({ width: 297, height: 210, widthMm: 297, heightMm: 210 });
+    render(<PreviewCard element={makeElemental({ size: landscapeA4 })} presets={[makeSize()]} />);
+    expect(screen.getByText('A4 orizontal · 297.0 × 210.0 mm')).toBeInTheDocument();
+  });
+
+  it('draws the fold lines of a folded sheet', () => {
+    const element = makeElemental({
+      finishing: makeFinishing({ folding: { type: 'tri-fold', folds: 2 } }),
+    });
+    render(<PreviewCard element={element} />);
+    expect(screen.getAllByTestId('preview-fold')).toHaveLength(2);
+  });
+
+  it('draws the product-level features it is given', () => {
+    const pocket: Pocket = {
+      label: 'Buzunar', mediaId: 'p5', width: 210, height: 100, unit: 'mm',
+      pageCount: 2, printing: { front: 'none', back: 'none' },
+    };
+    render(
+      <PreviewCard
+        element={makeElemental()}
+        binding={{ type: 'spiral', color: 'black' }}
+        pocket={pocket}
+        punchHole
+      />
+    );
+    expect(screen.getByTestId('preview-spiral')).toBeInTheDocument();
+    expect(screen.getByTestId('preview-pocket')).toBeInTheDocument();
+    expect(screen.getByTestId('preview-hole')).toBeInTheDocument();
+  });
+
+  it('draws none of them for a plain sheet', () => {
+    render(<PreviewCard element={makeElemental()} />);
+    expect(screen.queryByTestId('preview-spiral')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('preview-pocket')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('preview-hole')).not.toBeInTheDocument();
   });
 
   it('shows a lamination badge when the element is laminated', () => {

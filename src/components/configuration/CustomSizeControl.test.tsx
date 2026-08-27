@@ -7,10 +7,14 @@ import { makeSize } from '../../test/fixtures';
 // Split out of SizeSelector when the exact dimensions moved behind the
 // "Opțiuni avansate" disclosure; these assertions came with them.
 const a4 = makeSize();
+const a5 = makeSize({ id: 's2', label: 'A5', width: 148, height: 210, widthMm: 148, heightMm: 210 });
+const card = makeSize({ id: 's5', label: 'Carte Vizită Standard', width: 90, height: 50, widthMm: 90, heightMm: 50 });
+const presets = [a4, a5, card];
 
 function renderControl(overrides: Partial<Parameters<typeof CustomSizeControl>[0]> = {}) {
   const props = {
     currentSize: a4,
+    presets,
     customSizeUnit: 'mm' as const,
     onSizeChange: vi.fn(),
     onUnitChange: vi.fn(),
@@ -56,6 +60,35 @@ describe('CustomSizeControl', () => {
     fireEvent.change(screen.getByLabelText('Înălțime (mm)'), { target: { value: '300' } });
     expect(props.onSizeChange).toHaveBeenCalledWith(
       expect.objectContaining({ id: 'custom', heightMm: 300, widthMm: 210 }),
+    );
+  });
+
+  it('names a rotated preset rather than calling it custom', () => {
+    const { props } = renderControl({
+      currentSize: makeSize({ width: 210, height: 210, widthMm: 210, heightMm: 210 }),
+    });
+
+    // Height 210 already; typing a width of 297 makes it an A4 lying down.
+    fireEvent.change(screen.getByLabelText('Lățime (mm)'), { target: { value: '297' } });
+    expect(props.onSizeChange).toHaveBeenCalledWith({
+      id: 's1',
+      label: 'A4 orizontal',
+      width: 297,
+      height: 210,
+      widthMm: 297,
+      heightMm: 210,
+      unit: 'mm',
+    });
+  });
+
+  it('calls a preset that is already wide vertical when stood up', () => {
+    const { props } = renderControl({
+      currentSize: makeSize({ width: 50, height: 50, widthMm: 50, heightMm: 50 }),
+    });
+
+    fireEvent.change(screen.getByLabelText('Înălțime (mm)'), { target: { value: '90' } });
+    expect(props.onSizeChange).toHaveBeenCalledWith(
+      expect.objectContaining({ id: 's5', label: 'Carte Vizită Standard vertical' }),
     );
   });
 

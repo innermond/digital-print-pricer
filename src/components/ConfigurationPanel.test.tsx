@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ConfigurationPanel } from './ConfigurationPanel';
 import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
-import { makeConfig, makeElemental, makePaper, makeMachine } from '../test/fixtures';
+import { makeConfig, makeElemental, makePaper, makeMachine, makeSize } from '../test/fixtures';
 
 // The panel filters the media/sizes it's given by the config, so use real ids:
 // p2 = "120 GSM - Lucios", p3 = "150 GSM - Mat", s1 = A4, s2 = A5.
@@ -44,7 +44,8 @@ describe('ConfigurationPanel', () => {
   });
 
   it('excludes preset sizes larger than the resolved machine max, with a note why', () => {
-    // A4 is 210x297mm; a 200mm-wide machine rules it out but not A5 (148x210mm).
+    // A4 is 210x297mm; its short edge alone is past this press's 200mm one, so
+    // no orientation saves it. A5 (148x210mm) still fits.
     renderPanel({
       config: makeConfig({ allowedSizeIds: ['s1', 's2'], machineId: 'm1' }),
       machines: [makeMachine({ id: 'm1', maxWidthMm: 200, maxHeightMm: 450 })],
@@ -81,6 +82,36 @@ describe('ConfigurationPanel', () => {
     await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
     expect(screen.getByLabelText('Lățime (mm)')).toBeInTheDocument();
     expect(screen.getByLabelText('Înălțime (mm)')).toBeInTheDocument();
+  });
+
+  it('caps a dimension by what the press can take beside the other one', async () => {
+    const user = userEvent.setup();
+    // The press is 320×450 and the sheet is an A4 lying down (297×210). With a
+    // height of 210 the width may run to the press's long edge, so 450 — not
+    // the 320 a width-against-width reading would give.
+    renderPanel({
+      element: makeElemental({ size: makeSize({ width: 297, height: 210, widthMm: 297, heightMm: 210 }) }),
+      config: makeConfig({ machineId: 'm1' }),
+      machines: [makeMachine({ id: 'm1', maxWidthMm: 320, maxHeightMm: 450 })],
+    });
+
+    await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+    expect(screen.getByLabelText('Lățime (mm) · max 450')).toBeInTheDocument();
+    // The height sits beside a 297mm width, which is the press's short edge or
+    // less, so it too may run long.
+    expect(screen.getByLabelText('Înălțime (mm) · max 450')).toBeInTheDocument();
+  });
+
+  it('drops the cap to the press short edge once the other side is long', async () => {
+    const user = userEvent.setup();
+    renderPanel({
+      element: makeElemental({ size: makeSize({ width: 200, height: 400, widthMm: 200, heightMm: 400 }) }),
+      config: makeConfig({ machineId: 'm1' }),
+      machines: [makeMachine({ id: 'm1', maxWidthMm: 320, maxHeightMm: 450 })],
+    });
+
+    await user.click(screen.getByRole('button', { name: /Opțiuni avansate/ }));
+    expect(screen.getByLabelText('Lățime (mm) · max 320')).toBeInTheDocument();
   });
 
   it('reports a media selection', async () => {

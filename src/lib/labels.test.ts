@@ -35,6 +35,25 @@ describe('describeProduct', () => {
     expect(describeProduct(product)).toBe('Copertă A4 4 p. · Interior A5 24 p.');
   });
 
+  it('names a rotated preset by its format and orientation', () => {
+    const landscapeA4 = makeSize({ label: 'A4 orizontal', width: 297, height: 210, widthMm: 297, heightMm: 210 });
+    const product = makeProduct({ elementals: [makeElemental({ label: 'Diplomă', size: landscapeA4 })] });
+    expect(describeProduct(product)).toBe('A4 orizontal · Diplomă 2 p.');
+  });
+
+  it('does not share one size line between two orientations of the same preset', () => {
+    // Both are `s1`; a preset id now survives being turned sideways, so the id
+    // alone no longer proves the elementals are the same sheet.
+    const landscapeA4 = makeSize({ label: 'A4 orizontal', width: 297, height: 210, widthMm: 297, heightMm: 210 });
+    const product = makeProduct({
+      elementals: [
+        makeElemental({ id: 'e1', label: 'Copertă', pageCount: 4 }),
+        makeElemental({ id: 'e2', label: 'Interior', size: landscapeA4, pageCount: 24 }),
+      ],
+    });
+    expect(describeProduct(product)).toBe('Copertă A4 4 p. · Interior A4 orizontal 24 p.');
+  });
+
   it('gives dimensions for a custom size, which has no name worth showing', () => {
     const custom = makeSize({
       id: 'custom', label: 'Personalizat',

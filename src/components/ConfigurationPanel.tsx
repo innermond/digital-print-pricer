@@ -9,7 +9,7 @@ import { PageCountControl } from './configuration/PageCountControl';
 import { FinishingOptions } from './configuration/FinishingOptions';
 import { Disclosure } from './Disclosure';
 import { hasFinishingOptions } from '../lib/finishingRules';
-import { resolveMachine, fitsMachine } from '../lib/machine';
+import { resolveMachine, fitsMachine, maxSideMm } from '../lib/machine';
 import { advancedSummary } from '../lib/personalization';
 
 type ConfigurationPanelProps = {
@@ -81,6 +81,7 @@ export function ConfigurationPanel({
       <section>
         <SizeSelector
           sizes={availableSizes}
+          presets={sizes}
           currentSize={element.size}
           customSizeUnit={customSizeUnit}
           recommendedSizeId={config.recommendedSizeId}
@@ -119,11 +120,12 @@ export function ConfigurationPanel({
           <div className="space-y-5 pt-2">
             <CustomSizeControl
               currentSize={element.size}
+              presets={sizes}
               customSizeUnit={customSizeUnit}
               onSizeChange={(size) => onUpdate({ size })}
               onUnitChange={onCustomSizeUnitChange}
-              maxWidthMm={machine?.maxWidthMm}
-              maxHeightMm={machine?.maxHeightMm}
+              maxWidthMm={maxSideMm(element.size.heightMm, machine)}
+              maxHeightMm={maxSideMm(element.size.widthMm, machine)}
               widthInputRef={widthInputRef}
             />
             {hasFinishingOptions(element, config) && (

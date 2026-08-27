@@ -1,6 +1,6 @@
 import { useId, type Ref } from 'react';
 import type { Size, SizeUnit } from '../../types';
-import { convertSize } from '../../lib/sizeUtils';
+import { convertSize, resolveSize } from '../../lib/sizeUtils';
 import { NumericButton } from '../NumericButton';
 import { optionButtonClass } from '../../lib/optionButton';
 
@@ -8,6 +8,10 @@ const SIZE_UNITS: SizeUnit[] = ['mm', 'in', 'pt'];
 
 type CustomSizeControlProps = {
   currentSize: Size;
+  // The whole catalog's sizes, so typed dimensions can be recognised as the
+  // format they are — the full list, not the product's allowed subset: a
+  // 297×210 sheet is an A4 whether or not this product offers A4.
+  presets: Size[];
   customSizeUnit: SizeUnit;
   onSizeChange: (size: Size) => void;
   onUnitChange: (unit: SizeUnit) => void;
@@ -23,6 +27,7 @@ type CustomSizeControlProps = {
 // other advanced settings rather than under every size picker.
 export function CustomSizeControl({
   currentSize,
+  presets,
   customSizeUnit,
   onSizeChange,
   onUnitChange,
@@ -47,15 +52,16 @@ export function CustomSizeControl({
     const max = field === 'width' ? maxDisplayWidth : maxDisplayHeight;
     const clampedValue = max !== undefined ? Math.min(numValue, max) : numValue;
     const numMm = convertSize(clampedValue, customSizeUnit, 'mm');
-    onSizeChange({
-      id: 'custom',
-      label: 'Personalizat',
-      width: field === 'width' ? clampedValue : displayWidth,
-      height: field === 'height' ? clampedValue : displayHeight,
-      widthMm: field === 'width' ? numMm : currentSize.widthMm,
-      heightMm: field === 'height' ? numMm : currentSize.heightMm,
-      unit: customSizeUnit,
-    });
+    // Resolved rather than hardcoded to 'custom': typing 297 next to a height
+    // of 210 lands back on A4, turned sideways, instead of losing the name.
+    onSizeChange(
+      resolveSize(
+        presets,
+        field === 'width' ? numMm : currentSize.widthMm,
+        field === 'height' ? numMm : currentSize.heightMm,
+        customSizeUnit
+      )
+    );
   };
 
   const handleUnitChange = (newUnit: SizeUnit) => {

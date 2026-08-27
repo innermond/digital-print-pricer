@@ -44,7 +44,12 @@ export function describeProduct(product: Product): string {
   // Multi-element products share one size (ConfigureStage writes through
   // setProductSize), so say it once — unless a catalog product opts out of
   // sharing and the elementals really do differ.
-  const sizeShared = elementals.every((e) => e.size.id === elementals[0].size.id);
+  // Dimensions as well as the id: a preset id now survives being turned
+  // sideways, so two elementals can share `s1` and still be different sheets.
+  const first = elementals[0].size;
+  const sizeShared = elementals.every(
+    (e) => e.size.id === first.id && e.size.widthMm === first.widthMm && e.size.heightMm === first.heightMm
+  );
   if (sizeShared) parts.push(sizeText(elementals[0].size));
 
   for (const element of elementals) {

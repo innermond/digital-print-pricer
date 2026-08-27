@@ -3061,7 +3061,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'elem12a-1',
         label: 'Diplomă',
         media: MOCK_PAPERS[5],
-        size: { id: 's1', label: 'A4', width: 297, height: 210, unit: 'mm', widthMm: 297, heightMm: 210 },
+        size: { id: 's1', label: 'A4 orizontal', width: 297, height: 210, unit: 'mm', widthMm: 297, heightMm: 210 },
         pageCount: 2,
         printing: { front: 'color', back: 'none' },
         finishing: {

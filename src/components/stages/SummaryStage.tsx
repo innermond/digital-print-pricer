@@ -1,4 +1,4 @@
-import type { Product, Elemental } from '../../types';
+import type { Product, Elemental, Size } from '../../types';
 import type { ProductConfig } from '../../data/mockData';
 import { PreviewCard } from '../PreviewCard';
 import { AssemblySummary } from '../AssemblySummary';
@@ -9,12 +9,21 @@ type SummaryStageProps = {
   pocket: ProductConfig['pocket'];
   punchHole?: boolean;
   personalized: boolean;
+  sizes?: Size[];
 };
 
-export function SummaryStage({ product, element, pocket, punchHole, personalized }: SummaryStageProps) {
+export function SummaryStage({ product, element, pocket, punchHole, personalized, sizes }: SummaryStageProps) {
   return (
     <div className="flex flex-wrap gap-4">
-      <div className="flex-1 min-w-72"><PreviewCard element={element} /></div>
+      <div className="flex-1 min-w-72">
+        <PreviewCard
+          element={element}
+          binding={product?.binding}
+          pocket={pocket}
+          punchHole={punchHole}
+          presets={sizes}
+        />
+      </div>
       <div className="flex-1 min-w-72">
         <AssemblySummary product={product} personalized={personalized} pocket={pocket} punchHole={punchHole} />
       </div>

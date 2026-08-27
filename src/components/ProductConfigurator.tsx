@@ -10,6 +10,7 @@ import { ProductStage } from './stages/ProductStage';
 import { ConfigureStage } from './stages/ConfigureStage';
 import { SummaryStage } from './stages/SummaryStage';
 import { PricePanel } from './PricePanel';
+import { PreviewCard } from './PreviewCard';
 import { useProducts } from '../hooks/useProducts';
 import { useAutoPrice } from '../hooks/useAutoPrice';
 import { buildSelectionPayload } from '../lib/selection';
@@ -260,6 +261,7 @@ export default function ProductConfigurator({
                 pocket={pocketOn ? config?.pocket : undefined}
                 punchHole={punchHoleOn}
                 personalized={personalized}
+                sizes={catalog.sizes}
               />
             )}
 
@@ -270,7 +272,18 @@ export default function ProductConfigurator({
               living on one of its own: quantity is the biggest price lever, so
               the stepper belongs next to the total it changes. */}
           {selectedProduct && (
-            <div className="lg:w-72 lg:flex-shrink-0 lg:sticky lg:top-24">
+            <div className="lg:w-72 lg:flex-shrink-0 lg:sticky lg:top-24 space-y-4">
+              {/* Only while configuring: stage 2 draws its own, larger, next to
+                  the assembly list, and stage 0 has nothing selected yet. */}
+              {stage === 1 && (
+                <PreviewCard
+                  element={selectedElemental}
+                  binding={selectedProduct.binding}
+                  pocket={pocketOn ? config?.pocket : undefined}
+                  punchHole={punchHoleOn}
+                  presets={catalog.sizes}
+                />
+              )}
               <PricePanel
                 product={selectedProduct}
                 status={priceStatus}

@@ -94,6 +94,29 @@ describe('ProductConfigurator', () => {
       expect(screen.getByText('Material')).toBeInTheDocument();
     });
 
+    it('draws the product beside the price while configuring', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await selectFlyer(user);
+
+      // Stage 0: nothing configured yet, so nothing to draw.
+      expect(screen.queryByText('Previzualizare')).not.toBeInTheDocument();
+
+      await user.click(screen.getByRole('button', { name: /Continuă la Configurare/ }));
+      expect(screen.getByText('Previzualizare')).toBeInTheDocument();
+      expect(screen.getByRole('img', { name: /Coală Simplă/ })).toBeInTheDocument();
+    });
+
+    it('leaves the Ofertă stage with one preview, not two', async () => {
+      const user = setupUser();
+      renderConfigurator();
+      await selectFlyer(user);
+
+      await user.click(screen.getByRole('button', { name: /Pasul 3 din 3: Ofertă/ }));
+      // The rail's copy stands down for the larger one next to the assembly list.
+      expect(screen.getAllByText('Previzualizare')).toHaveLength(1);
+    });
+
     it('jumps to a stage from the progress nav', async () => {
       const user = setupUser();
       renderConfigurator();
