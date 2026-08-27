@@ -64,13 +64,19 @@ export function ProductPreview({ shapes, lamination, title }: ProductPreviewProp
   const { sheet, lines, holes, staple, spiral, pocket, sheetsBehind } = shapes;
   const { widthMm, heightMm } = sheet;
 
-  // Room for the spiral coil on the left and the stacked sheets behind, so
-  // nothing is clipped by the viewBox.
+  const spineOnTop = spiral?.edge === 'top';
+  // The stack falls away from the spine: up-and-right for a side-bound job,
+  // down-and-right for a top-bound one, where up is where the wire lives.
   const stackOffset = 2.5;
-  const padLeft = spiral ? 7 : 2;
+  const stackDy = spineOnTop ? stackOffset : -stackOffset;
+
+  // Room for the coil on whichever edge it is on, and for the stacked sheets
+  // behind, so nothing is clipped by the viewBox.
+  const coilRoom = 5;
+  const padLeft = spiral && !spineOnTop ? 2 + coilRoom : 2;
   const padRight = 2 + sheetsBehind * stackOffset;
-  const padTop = 2 + sheetsBehind * stackOffset;
-  const padBottom = 2;
+  const padTop = 2 + (spineOnTop ? coilRoom : sheetsBehind * stackOffset);
+  const padBottom = 2 + (spineOnTop ? sheetsBehind * stackOffset : 0);
 
   const strokeWidth = Math.max(widthMm, heightMm) / 180;
 
@@ -98,7 +104,7 @@ export function ProductPreview({ shapes, lamination, title }: ProductPreviewProp
         <path
           key={i}
           d={sheetPath(widthMm, heightMm, sheet.corners)}
-          transform={`translate(${(sheetsBehind - i) * stackOffset}, ${-(sheetsBehind - i) * stackOffset})`}
+          transform={`translate(${(sheetsBehind - i) * stackOffset}, ${(sheetsBehind - i) * stackDy})`}
           className="fill-slate-100 dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-600"
           strokeWidth={strokeWidth}
         />
@@ -145,7 +151,10 @@ export function ProductPreview({ shapes, lamination, title }: ProductPreviewProp
           data-testid="preview-hole"
           cx={hole.cxMm}
           cy={hole.cyMm}
-          r={hole.rMm}
+          // A true 3mm hole is 1% of an A3+ calendar and vanishes at this size.
+          // The geometry stays in real millimetres; only the drawn circle is
+          // floored, so the hole reads on a big sheet as well as on a bookmark.
+          r={Math.max(hole.rMm, Math.max(widthMm, heightMm) / 60)}
           className="fill-slate-50 dark:fill-slate-900 stroke-slate-500 dark:stroke-slate-400"
           strokeWidth={strokeWidth}
         />
@@ -168,11 +177,24 @@ export function ProductPreview({ shapes, lamination, title }: ProductPreviewProp
       {spiral && (
         <g data-testid="preview-spiral" strokeWidth={strokeWidth * 2.2} fill="none">
           {Array.from({ length: spiral.loops }, (_, i) => {
-            const y = ((i + 0.5) * heightMm) / spiral.loops;
+            // Position along the spine, then the same loop shape drawn either
+            // reaching in from the left or down from the top.
+            const along = ((i + 0.5) * (spineOnTop ? widthMm : heightMm)) / spiral.loops;
+            // The hanging hole is punched in the wire, so leave it a gap rather
+            // than painting loops across it.
+            const clearsHole = holes.every(
+              (hole) => Math.abs(along - (spineOnTop ? hole.cxMm : hole.cyMm)) > hole.rMm * 1.6
+            );
+            if (!clearsHole) return null;
+
             return (
               <path
                 key={i}
-                d={`M ${-5} ${y - 1.5} Q ${-1} ${y - 3.5} ${4} ${y}`}
+                d={
+                  spineOnTop
+                    ? `M ${along - 1.5} ${-coilRoom} Q ${along - 3.5} ${-1} ${along} ${4}`
+                    : `M ${-coilRoom} ${along - 1.5} Q ${-1} ${along - 3.5} ${4} ${along}`
+                }
                 className={SPIRAL_LOOP_CLASS[spiral.color]}
               />
             );

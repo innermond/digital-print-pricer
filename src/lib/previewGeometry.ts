@@ -20,7 +20,9 @@ export type PreviewShapes = {
   lines: PreviewLine[];
   holes: { cxMm: number; cyMm: number; rMm: number }[];
   staple: { cxMm: number; cyMm: number } | null;
-  spiral: { color: SpiralColor; loops: number } | null;
+  // A wall calendar is bound along the edge it hangs from — the top — while a
+  // catalog is bound down its side.
+  spiral: { edge: 'left' | 'top'; color: SpiralColor; loops: number } | null;
   pocket: { heightMm: number } | null;
   // A depth cue, not a page count: how many sheets to suggest behind this one.
   sheetsBehind: number;
@@ -92,10 +94,19 @@ export function previewShapes({
     ...linesAcross('crease', evenFractions(creasing.count), widthMm, heightMm),
   ];
 
+  // A hanging hole means the product hangs from that edge, so that is the edge
+  // it is bound along — a wall calendar's wire runs across its top. Keyed on
+  // `punchHole` alone and never on "there is a hole": a generic product may take
+  // a spiral and a tassel hole together, and it is still bound down the side.
+  // No spiral means no wire for the hole to sit in, so the inset rule stands.
+  const spineOnTop = Boolean(punchHole) && binding?.type === 'spiral';
+
   // Two independent sources — the calendar's hanging hole is a product-level
   // choice, the bookmark's is part of its finishing — but one physical hole.
   const hasHole = Boolean(punchHole) || Boolean(staple?.hole);
-  const holeCentre = { cxMm: widthMm / 2, cyMm: HOLE_INSET_MM };
+  // The hanging hole is punched in the wire itself; every other one is inset
+  // from the edge it is nearest.
+  const holeCentre = { cxMm: widthMm / 2, cyMm: spineOnTop ? 0 : HOLE_INSET_MM };
 
   return {
     sheet: { widthMm, heightMm, corners: roundedCornes.corners },
@@ -106,8 +117,16 @@ export function previewShapes({
     spiral:
       binding?.type === 'spiral'
         ? {
+            edge: spineOnTop ? 'top' : 'left',
             color: binding.color,
-            loops: Math.round(clamp(heightMm / SPIRAL_MM_PER_LOOP, SPIRAL_MIN_LOOPS, SPIRAL_MAX_LOOPS)),
+            // Counted along the spine that exists, not always the height.
+            loops: Math.round(
+              clamp(
+                (spineOnTop ? widthMm : heightMm) / SPIRAL_MM_PER_LOOP,
+                SPIRAL_MIN_LOOPS,
+                SPIRAL_MAX_LOOPS
+              )
+            ),
           }
         : null,
     pocket: pocket ? { heightMm: convertSize(pocket.height, pocket.unit, 'mm') } : null,

@@ -74,6 +74,27 @@ describe('PreviewCard', () => {
     expect(screen.getByTestId('preview-hole')).toBeInTheDocument();
   });
 
+  it('runs a hanging product\'s coil across the top, not down the side', () => {
+    const { container } = render(
+      <PreviewCard
+        element={makeElemental()}
+        binding={{ type: 'spiral', color: 'white' }}
+        punchHole
+      />
+    );
+    // A top coil sweeps out of negative y; a side coil sweeps out of negative x.
+    const loop = container.querySelector('[data-testid="preview-spiral"] path');
+    expect(loop?.getAttribute('d')).toMatch(/^M [\d.]+ -\d/);
+  });
+
+  it('runs a side-bound coil down the left edge', () => {
+    const { container } = render(
+      <PreviewCard element={makeElemental()} binding={{ type: 'spiral', color: 'white' }} />
+    );
+    const loop = container.querySelector('[data-testid="preview-spiral"] path');
+    expect(loop?.getAttribute('d')).toMatch(/^M -\d/);
+  });
+
   it('draws none of them for a plain sheet', () => {
     render(<PreviewCard element={makeElemental()} />);
     expect(screen.queryByTestId('preview-spiral')).not.toBeInTheDocument();

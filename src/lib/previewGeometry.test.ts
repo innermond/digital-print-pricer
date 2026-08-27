@@ -173,6 +173,59 @@ describe('previewShapes — spiral', () => {
     expect(previewShapes({ element: makeElemental() }).spiral).toBeNull();
   });
 
+  it('binds a hanging product along the edge it hangs from', () => {
+    // A wall calendar: the wire runs across the top, and the hole is in it.
+    const { spiral, holes } = previewShapes({
+      element: makeElemental(),
+      binding: { type: 'spiral', color: 'white' },
+      punchHole: true,
+    });
+    expect(spiral?.edge).toBe('top');
+    expect(holes).toEqual([{ cxMm: 105, cyMm: 0, rMm: 3 }]);
+  });
+
+  it('binds a product with no hanging hole down its side', () => {
+    // A spiral catalog: same binding, no hole, bound like a book.
+    const { spiral, holes } = previewShapes({
+      element: makeElemental(),
+      binding: { type: 'spiral', color: 'white' },
+    });
+    expect(spiral?.edge).toBe('left');
+    expect(holes).toEqual([]);
+  });
+
+  it('keeps a tassel hole from moving the spine', () => {
+    // A generic product may take a spiral and a staple hole together. That hole
+    // is for a string, not for hanging, so the spine stays on the side and the
+    // hole stays inset.
+    const element = makeElemental({
+      finishing: makeFinishing({ staple: { hole: true, staple: false } }),
+    });
+    const { spiral, holes } = previewShapes({
+      element,
+      binding: { type: 'spiral', color: 'white' },
+    });
+    expect(spiral?.edge).toBe('left');
+    expect(holes[0].cyMm).toBe(8);
+  });
+
+  it('leaves the hole inset when there is no wire to punch it in', () => {
+    const { holes } = previewShapes({ element: makeElemental(), punchHole: true });
+    expect(holes[0].cyMm).toBe(8);
+  });
+
+  it('counts the loops along the spine that exists, not always the height', () => {
+    const element = makeElemental({ size: a4Landscape }); // 297 wide × 210 tall
+    const topBound = previewShapes({
+      element,
+      binding: { type: 'spiral', color: 'white' },
+      punchHole: true,
+    });
+    const sideBound = previewShapes({ element, binding: { type: 'spiral', color: 'white' } });
+    // 297mm of top spine against 210mm of side spine.
+    expect(topBound.spiral!.loops).toBeGreaterThan(sideBound.spiral!.loops);
+  });
+
   it('scales the loops to the spine, within reason', () => {
     const tall = previewShapes({
       element: makeElemental(),
