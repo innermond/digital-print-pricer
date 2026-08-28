@@ -1279,14 +1279,66 @@
       ]
     },
     {
+      "id": "prod3g",
+      "categoryId": "folder",
+      "label": "Mapă standard cu Buzunar și cotor",
+      "amount": 20,
+      "elementals": [
+        {
+          "id": "elem3g-1",
+          "label": "Coală A3 cu 2 plieri",
+          "media": {
+            "kind": "paper",
+            "id": "p6",
+            "label": "350 GSM - Mat Premium",
+            "gsm": 350,
+            "finish": "Matt",
+            "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+          },
+          "size": {
+            "id": "s1",
+            "label": "A4",
+            "width": 210,
+            "height": 297,
+            "unit": "mm",
+            "widthMm": 210,
+            "heightMm": 297
+          },
+          "pageCount": 2,
+          "printing": {
+            "front": "color",
+            "back": "none"
+          },
+          "finishing": {
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
+            "folding": {
+              "type": "none",
+              "folds": 0
+            },
+            "creasing": {
+              "count": 2,
+              "min": 1,
+              "max": 2
+            },
+            "roundedCornes": {
+              "corners": []
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "prod3a",
       "categoryId": "folder",
       "label": "Mapă cu Buzunar și Cotor, laminată soft-touch",
-      "amount": 10,
+      "amount": 20,
       "elementals": [
         {
           "id": "elem3a-1",
-          "label": "Coală A3 Pliată",
+          "label": "Coală A3 cu dublă îndoitură",
           "media": {
             "kind": "paper",
             "id": "p6",
@@ -1334,11 +1386,11 @@
       "id": "prod3c",
       "categoryId": "folder",
       "label": "Mapă cu Buzunar fără Cotor",
-      "amount": 10,
+      "amount": 20,
       "elementals": [
         {
           "id": "elem3c-1",
-          "label": "Coală A3 Pliată",
+          "label": "Coală A3 cu o singură îndoitură",
           "media": {
             "kind": "paper",
             "id": "p6",
@@ -1386,12 +1438,12 @@
       "id": "prod3d",
       "categoryId": "folder",
       "label": "Mapă fără Buzunar, fără Cotor",
-      "amount": 10,
+      "amount": 20,
       "pocketEnabled": false,
       "elementals": [
         {
           "id": "elem3d-1",
-          "label": "Coală A3 Pliată",
+          "label": "Coală A3 o singură pliere",
           "media": {
             "kind": "paper",
             "id": "p5",
@@ -1439,11 +1491,11 @@
       "id": "prod3e",
       "categoryId": "folder",
       "label": "Mapă Laminată Mat cu Buzunar",
-      "amount": 10,
+      "amount": 20,
       "elementals": [
         {
           "id": "elem3e-1",
-          "label": "Coală A3 Pliată",
+          "label": "Coală A3 Pliată (dublă îndoire)",
           "media": {
             "kind": "paper",
             "id": "p6",
@@ -1490,8 +1542,9 @@
     {
       "id": "prod3f",
       "categoryId": "folder",
-      "label": "Mapă mică A5 cu Buzunar și cotor",
-      "amount": 10,
+      "label": "Mapă mică A5 fără Buzunar cu cotor",
+      "amount": 20,
+      "pocketEnabled": false,
       "elementals": [
         {
           "id": "elem3f-1",
@@ -1992,7 +2045,7 @@
     {
       "id": "prod5e",
       "categoryId": "folded-flyer",
-      "label": "Pliant Tri-fold A4",
+      "label": "Pliant Tri-fold A5",
       "amount": 20,
       "elementals": [
         {
@@ -2007,13 +2060,13 @@
             "explanation": "Hârtie mat de greutate medie. Reflexia minimă o face ușor de citit în lumină puternică. Se simte mai solid decât lucioasa la aceeași greutate."
           },
           "size": {
-            "id": "s1",
-            "label": "A4",
-            "width": 210,
-            "height": 297,
+            "id": "s2",
+            "label": "A5",
+            "width": 148,
+            "height": 210,
             "unit": "mm",
-            "widthMm": 210,
-            "heightMm": 297
+            "widthMm": 148,
+            "heightMm": 210
           },
           "pageCount": 6,
           "printing": {
@@ -2041,7 +2094,7 @@
     },
     {
       "id": "prod6a",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Coală A4 Lucioasă",
       "amount": 10,
       "elementals": [
@@ -2091,7 +2144,7 @@
     },
     {
       "id": "prod6b",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Coală A3 Mată",
       "amount": 5,
       "elementals": [
@@ -2141,7 +2194,7 @@
     },
     {
       "id": "prod6c",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Coală A4 Transparentă",
       "amount": 20,
       "elementals": [
@@ -2191,7 +2244,7 @@
     },
     {
       "id": "prod6d",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Coală A5 PVC",
       "amount": 40,
       "elementals": [
@@ -2241,7 +2294,7 @@
     },
     {
       "id": "prod6e",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Coală A3 Lucioasă",
       "amount": 10,
       "elementals": [
@@ -2291,7 +2344,7 @@
     },
     {
       "id": "prod6f",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 30x40mm Lucioasă",
       "amount": 100,
       "elementals": [
@@ -2341,7 +2394,7 @@
     },
     {
       "id": "prod6g",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 50x50mm Mată",
       "amount": 100,
       "elementals": [
@@ -2391,7 +2444,7 @@
     },
     {
       "id": "prod6h",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 60x60mm Transparentă",
       "amount": 100,
       "elementals": [
@@ -2441,7 +2494,7 @@
     },
     {
       "id": "prod6i",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 40x60mm PVC",
       "amount": 100,
       "elementals": [
@@ -2491,7 +2544,7 @@
     },
     {
       "id": "prod6j",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 90x60mm Lucioasă",
       "amount": 100,
       "elementals": [
@@ -2541,7 +2594,7 @@
     },
     {
       "id": "prod6k",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 70x70mm Mată",
       "amount": 100,
       "elementals": [
@@ -2591,7 +2644,7 @@
     },
     {
       "id": "prod6l",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 90x70mm Transparentă",
       "amount": 100,
       "elementals": [
@@ -2641,7 +2694,7 @@
     },
     {
       "id": "prod6m",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 90x40mm PVC",
       "amount": 100,
       "elementals": [
@@ -2691,7 +2744,7 @@
     },
     {
       "id": "prod6n",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 100x90mm Lucioasă",
       "amount": 100,
       "elementals": [
@@ -2741,7 +2794,7 @@
     },
     {
       "id": "prod6o",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 100x100mm Mată",
       "amount": 100,
       "elementals": [
@@ -2791,7 +2844,7 @@
     },
     {
       "id": "prod6p",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 110x100mm Transparentă",
       "amount": 100,
       "elementals": [
@@ -2841,7 +2894,7 @@
     },
     {
       "id": "prod6q",
-      "categoryId": "sticker-sheet",
+      "categoryId": "sticker",
       "label": "Etichetă 120x100mm PVC",
       "amount": 100,
       "elementals": [
@@ -5099,7 +5152,7 @@
           },
           "size": {
             "id": "s1",
-            "label": "A4",
+            "label": "A4 orizontal",
             "width": 297,
             "height": 210,
             "unit": "mm",
@@ -5275,7 +5328,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s0",
-      "explanation": "Coală A3 tipărită alb-negru pe o față. Dimensiune rezonabilă pentru utilizare in-door."
+      "explanation": "Coală A3 tipărită alb-negru pe o față. Cost mai mic."
     },
     "prod0d": {
       "allowedMediaIds": [
@@ -5305,7 +5358,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "explanation": "Coală A4 tipărită alb-negru pe o față. Format compact pentru afișaj in-door în spații mici."
+      "explanation": "Coală A4 tipărită alb-negru pe o față. Cel mai mic cost."
     },
     "prod1a": {
       "allowedMediaIds": [
@@ -5325,7 +5378,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "explanation": "Coală A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat pe ambele fețe — evenimente, promoții, materiale informative."
+      "explanation": "Foaie A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat — evenimente, promoții, materiale informative."
     },
     "prod1b": {
       "allowedMediaIds": [
@@ -5345,7 +5398,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s4",
-      "explanation": "Fluturaș 1/3A4 tipărit color pe o ambele fețe. Cea mai economică variantă pentru distribuire în masă — costuri minime de tipărire."
+      "explanation": "Fluturaș o treime din A4 color pe ambele fețe. Costuri minime de printare."
     },
     "prod1c": {
       "allowedMediaIds": [
@@ -5365,7 +5418,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
-      "explanation": "Coală A5 tipărită color pe ambele fețe. Format compact ideal pentru pliante de mână, meniuri sau invitații."
+      "explanation": "Filă A5 print color pe ambele fețe. Format compact ce poate fi păstrat mai ușor."
     },
     "prod1d": {
       "allowedMediaIds": [
@@ -5385,7 +5438,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "explanation": "Coală A4 tipărită color doar pe față. Potrivit pentru afișe simple sau anunțuri unde versoul rămâne neutilizat."
+      "explanation": "Coală A4 color doar pe o față. Potrivit pentru afișe simple sau anunțuri unde nu se folosește verso-ul."
     },
     "prod1e": {
       "allowedMediaIds": [
@@ -5405,7 +5458,7 @@
       ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s8",
-      "explanation": "Coală format A6 tipărită color pe ambele fețe. Recomandat pentru materiale care se citesc din mers."
+      "explanation": "Format A6 tipărită color pe ambele fețe. Perfect pentru materiale date în mână, citite din mers."
     },
     "prod2a": {
       "allowedMediaIds": [
@@ -5698,7 +5751,8 @@
     "prod3a": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1"
@@ -5714,6 +5768,7 @@
         2
       ],
       "allowedRoundedCorners": [],
+      "foldedInHalf": true,
       "pocket": {
         "label": "Buzunar de Hârtie",
         "mediaId": "p6",
@@ -5726,12 +5781,13 @@
           "back": "none"
         }
       },
-      "explanation": "Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium."
+      "explanation": "Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Laminată cu strat tactil plăcut. Folosită pentru oferte, materiale de prezentare premium."
     },
     "prod3c": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1"
@@ -5747,6 +5803,7 @@
         2
       ],
       "allowedRoundedCorners": [],
+      "foldedInHalf": true,
       "pocket": {
         "label": "Buzunar de Hârtie",
         "mediaId": "p6",
@@ -5759,12 +5816,13 @@
           "back": "none"
         }
       },
-      "explanation": "Mapă de prezentare cu buzunar interior și bandă elastică de închidere. Protejează conținutul în timpul transportului — potrivit pentru dosare de candidatură sau materiale care circulă des."
+      "explanation": "Mapă de prezentare cu buzunar interior și cotor îngust. Grupează materiale care se mută des."
     },
     "prod3d": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1"
@@ -5780,6 +5838,7 @@
         2
       ],
       "allowedRoundedCorners": [],
+      "foldedInHalf": true,
       "pocket": {
         "label": "Buzunar de Hârtie",
         "mediaId": "p6",
@@ -5792,12 +5851,13 @@
           "back": "none"
         }
       },
-      "explanation": "Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția."
+      "explanation": "Mapă de prezentare simplificată. Carton robust, Cost minim."
     },
     "prod3e": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1"
@@ -5813,6 +5873,7 @@
         2
       ],
       "allowedRoundedCorners": [],
+      "foldedInHalf": true,
       "pocket": {
         "label": "Buzunar de Hârtie",
         "mediaId": "p6",
@@ -5825,12 +5886,13 @@
           "back": "none"
         }
       },
-      "explanation": "Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale."
+      "explanation": "Mapă de prezentare cu buzunar interior, cotor și laminare mată pe copertă. Utilăși cu aspect elegant."
     },
     "prod3f": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1"
@@ -5846,6 +5908,7 @@
         2
       ],
       "allowedRoundedCorners": [],
+      "foldedInHalf": true,
       "pocket": {
         "label": "Buzunar de Hârtie",
         "mediaId": "p6",
@@ -5858,13 +5921,49 @@
           "back": "none"
         }
       },
-      "explanation": "Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale."
+      "explanation": "Mapă de prezentare cu dimensiuni reduse. Fără buzunar interior. Laminarea mată a coperții conferă un aspect mătuit, discret."
+    },
+    "prod3g": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": [],
+      "foldedInHalf": true,
+      "pocket": {
+        "label": "Buzunar de Hârtie",
+        "mediaId": "p6",
+        "width": 200,
+        "height": 120,
+        "unit": "mm",
+        "pageCount": 2,
+        "printing": {
+          "front": "none",
+          "back": "none"
+        }
+      },
+      "explanation": "Mapă standard de prezentare. Are buzunar interior și cotor obținut din 2 plieri apropriate. Buzunarul și cotorul oferă spațiu pentru un număr decent de documente."
     },
     "prod4a": {
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -5882,7 +5981,8 @@
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -5900,7 +6000,8 @@
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -5918,7 +6019,8 @@
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -5936,7 +6038,8 @@
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -6116,7 +6219,7 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p3",
-      "recommendedSizeId": "s1",
+      "recommendedSizeId": "s2",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6128,7 +6231,7 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant format A4 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe."
+      "explanation": "Pliant format A5 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe."
     },
     "prod6a": {
       "allowedMediaIds": [
@@ -7125,7 +7228,8 @@
     "prod8a": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7156,7 +7260,8 @@
     "prod8b": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7187,7 +7292,8 @@
     "prod8c": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7218,7 +7324,8 @@
     "prod8d": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7249,7 +7356,8 @@
     "prod8e": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7280,7 +7388,8 @@
     "prod8f": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7311,7 +7420,8 @@
     "prod8g": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7342,7 +7452,8 @@
     "prod8h": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7373,7 +7484,8 @@
     "prod8i": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7404,7 +7516,8 @@
     "prod8j": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7435,7 +7548,8 @@
     "prod8k": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7466,7 +7580,8 @@
     "prod8l": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7497,7 +7612,8 @@
     "prod8m": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7528,7 +7644,8 @@
     "prod8n": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s5",
@@ -7562,7 +7679,8 @@
         "p3",
         "p4",
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1",
@@ -7632,7 +7750,8 @@
         "p3",
         "p4",
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s1",
@@ -7699,7 +7818,8 @@
     "prod11a": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7726,7 +7846,8 @@
     "prod11b": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7753,7 +7874,8 @@
     "prod11c": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7780,7 +7902,8 @@
     "prod11d": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7807,7 +7930,8 @@
     "prod11e": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7834,7 +7958,8 @@
     "prod11f": {
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s21",
@@ -7862,7 +7987,8 @@
       "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
-        "p6"
+        "p6",
+        "p11"
       ],
       "allowedSizeIds": [
         "s0",
@@ -7885,6 +8011,7 @@
         "p4",
         "p5",
         "p6",
+        "p11",
         "p7",
         "p8",
         "p9",
@@ -8004,9 +8131,9 @@
       "explanation": "Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală."
     },
     {
-      "id": "sticker-sheet",
-      "label": "Etichetă pe Coală",
-      "explanation": "Coli de etichete autoadezive, decupate individual după tipărire."
+      "id": "sticker",
+      "label": "Etichetă autocolantă",
+      "explanation": "Etichete autoadezive tăiate pe ghilotină. Forme rectangulare"
     },
     {
       "id": "spiral-catalog",
@@ -8087,6 +8214,14 @@
       "gsm": 350,
       "finish": "Matt",
       "explanation": "Carton mat greu — impresie de volum. Ideal pentru cărți de vizită unde doriți o impresie solidă. Suprafața mată permite scrierea cu pixul."
+    },
+    {
+      "kind": "special",
+      "id": "p11",
+      "label": "300 GSM - Sirio Pearl White (Luxury)",
+      "gsm": 300,
+      "finish": "Matt",
+      "explanation": "Carton special cu tentă argintie mată. De folosit pentru aplicații de lux, speciale, care au nevoie de un aspect deosebit."
     },
     {
       "kind": "sticker",

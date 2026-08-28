@@ -132,7 +132,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   { id: 'folder', label: 'Mapă de Prezentare', explanation: 'Mape din carton gros cu buzunar interior, pentru oferte și prezentări.' },
   { id: 'business-card', label: 'Carte de Vizită', explanation: 'Carți de vizită clasice, tipărite pe carton rezistent.' },
   { id: 'folded-flyer', label: 'Pliant', explanation: 'Pliante cu mai multe panouri, obținute prin pliere dintr-o singură coală.' },
-  { id: 'sticker-sheet', label: 'Etichetă pe Coală', explanation: 'Coli de etichete autoadezive, decupate individual după tipărire.' },
+  { id: 'sticker', label: 'Etichetă autocolantă', explanation: 'Etichete autoadezive tăiate pe ghilotină. Forme rectangulare' },
   { id: 'spiral-catalog', label: 'Catalog cu spira', explanation: 'Cataloage legate cu spirală, cu copertă, interior multi-pagină și copertă spate.' },
   { id: 'cardboard-label', label: 'Etichetă Carton', explanation: 'Etichete din carton gros, cu opțiune de gaură pentru agățare și/sau capsă.' },
   { id: 'calendar', label: 'Calendar perete', explanation: 'Calendare de perete legate cu spirală, cu file lunare.' },
@@ -233,7 +233,7 @@ const FOLDED_FLYER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'all
   allowedFoldTypes: ['half-fold', 'tri-fold', 'z-fold', 'gate-fold'],
 };
 
-// Shared constraints for the "sticker-sheet" category — presets within this category only
+// Shared constraints for the "sticker" category — presets within this category only
 // differ by their initial media (face finish) and size.
 const STICKER_SHEET_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedPrintingBacks'> = {
   allowedMediaIds: ['p7', 'p8', 'p9', 'p10'],
@@ -1836,7 +1836,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6a',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Coală A4 Lucioasă',
     amount: 10,
     elementals: [
@@ -1858,7 +1858,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6b',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Coală A3 Mată',
     amount: 5,
     elementals: [
@@ -1880,7 +1880,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6c',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Coală A4 Transparentă',
     amount: 20,
     elementals: [
@@ -1902,7 +1902,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6d',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Coală A5 PVC',
     amount: 40,
     elementals: [
@@ -1924,7 +1924,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6e',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Coală A3 Lucioasă',
     amount: 10,
     elementals: [
@@ -1946,7 +1946,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6f',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 30x40mm Lucioasă',
     amount: 100,
     elementals: [
@@ -1968,7 +1968,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6g',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 50x50mm Mată',
     amount: 100,
     elementals: [
@@ -1990,7 +1990,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6h',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 60x60mm Transparentă',
     amount: 100,
     elementals: [
@@ -2012,7 +2012,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6i',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 40x60mm PVC',
     amount: 100,
     elementals: [
@@ -2034,7 +2034,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6j',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 90x60mm Lucioasă',
     amount: 100,
     elementals: [
@@ -2056,7 +2056,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6k',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 70x70mm Mată',
     amount: 100,
     elementals: [
@@ -2078,7 +2078,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6l',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 90x70mm Transparentă',
     amount: 100,
     elementals: [
@@ -2100,7 +2100,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6m',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 90x40mm PVC',
     amount: 100,
     elementals: [
@@ -2122,7 +2122,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6n',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 100x90mm Lucioasă',
     amount: 100,
     elementals: [
@@ -2144,7 +2144,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6o',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 100x100mm Mată',
     amount: 100,
     elementals: [
@@ -2166,7 +2166,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6p',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 110x100mm Transparentă',
     amount: 100,
     elementals: [
@@ -2188,7 +2188,7 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod6q',
-    categoryId: 'sticker-sheet',
+    categoryId: 'sticker',
     label: 'Etichetă 120x100mm PVC',
     amount: 100,
     elementals: [
