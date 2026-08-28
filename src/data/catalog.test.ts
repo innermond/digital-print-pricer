@@ -7,6 +7,8 @@ import {
   allowedCreasingCounts,
   allowedRoundedCorners,
 } from '../lib/finishingRules';
+import { resolveMachine, fitsMachine } from '../lib/machine';
+import { unfoldFactor, unfoldedSizeMm } from '../lib/foldUtils';
 
 // The warning latches on a module-level flag so it fires once per page load, so
 // every case needs a fresh module instance.
@@ -168,6 +170,28 @@ describe('catalog integrity', () => {
       .filter((p) => p.punchHole && !MOCK_CATALOG.config[p.id]?.punchHole)
       .map((p) => `${p.id} (${p.label})`);
     expect(stray).toEqual([]);
+  });
+
+  it('keeps every product\u2019s unfolded footprint inside its machine', () => {
+    // The size on an elemental is the finished piece; the press runs the sheet it
+    // is folded from. A Pliant catalogued as a tri-folded A4 is a 630\u00d7297 sheet,
+    // which no press here can take \u2014 the sort of entry that used to ship.
+    const oversize = MOCK_CATALOG.products.flatMap((product) => {
+      const config = MOCK_CATALOG.config[product.id];
+      if (!config) return [];
+      const machine = resolveMachine(config, MOCK_CATALOG.machines);
+      return product.elementals.flatMap((elem) => {
+        const factor = unfoldFactor(elem.finishing.folding, config.foldedInHalf);
+        const flat = unfoldedSizeMm(elem.size.widthMm, elem.size.heightMm, factor);
+        return fitsMachine(flat.widthMm, flat.heightMm, machine)
+          ? []
+          : [
+              `${product.id}/${elem.id}: ${elem.size.widthMm}\u00d7${elem.size.heightMm} opens to ` +
+                `${flat.widthMm}\u00d7${flat.heightMm}, past ${machine?.maxWidthMm}\u00d7${machine?.maxHeightMm}`,
+            ];
+      });
+    });
+    expect(oversize).toEqual([]);
   });
 
   it('recommends media and sizes that the product actually allows', () => {

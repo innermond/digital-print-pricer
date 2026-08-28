@@ -14,7 +14,7 @@ describe('buildSelectionPayload', () => {
   it('sends only the real elementals when there is no pocket', () => {
     const payload = buildSelectionPayload(folder);
     expect(payload.elementals).toHaveLength(1);
-    expect(payload.elementals[0].label).toBe('Coală A3 Pliată');
+    expect(payload.elementals[0].label).toBe('Coală A3 cu dublă îndoitură');
   });
 
   it('appends the pocket as an elemental, exactly as before it became catalog data', () => {
@@ -25,7 +25,7 @@ describe('buildSelectionPayload', () => {
     expect(payload.elementals[1]).toMatchObject({
       label: 'Buzunar de Hârtie',
       size: { width: 200, height: 120, unit: 'mm' },
-      printing: { front: 'black', back: 'none' },
+      printing: { front: 'none', back: 'none' },
       pageCount: 2,
     });
     expect(payload.elementals[1].media).toMatchObject({ id: 'p6', kind: 'paper' });
@@ -33,7 +33,7 @@ describe('buildSelectionPayload', () => {
 
   it('leaves the folder cover untouched by the appended pocket', () => {
     const pocket = pocketElemental(folderConfig.pocket!, MOCK_CATALOG.media);
-    expect(buildSelectionPayload(folder, pocket).elementals[0].label).toBe('Coală A3 Pliată');
+    expect(buildSelectionPayload(folder, pocket).elementals[0].label).toBe('Coală A3 cu dublă îndoitură');
     expect(folder.elementals).toHaveLength(1);
   });
 

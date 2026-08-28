@@ -260,6 +260,7 @@ export default function ProductConfigurator({
                 element={selectedElemental}
                 pocket={pocketOn ? config?.pocket : undefined}
                 punchHole={punchHoleOn}
+                foldedInHalf={config?.foldedInHalf}
                 personalized={personalized}
                 sizes={catalog.sizes}
               />
@@ -281,6 +282,7 @@ export default function ProductConfigurator({
                   binding={selectedProduct.binding}
                   pocket={pocketOn ? config?.pocket : undefined}
                   punchHole={punchHoleOn}
+                  foldedInHalf={config?.foldedInHalf}
                   presets={catalog.sizes}
                 />
               )}

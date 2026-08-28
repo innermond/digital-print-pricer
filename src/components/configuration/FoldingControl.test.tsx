@@ -92,3 +92,57 @@ describe('FoldingControl', () => {
     expect(screen.getByRole('button', { name: 'Pliere la jumătate' })).toHaveClass('bg-blue-500');
   });
 });
+
+describe('FoldingControl — folds the press cannot open out', () => {
+  const ALL = ['none', 'half-fold', 'tri-fold', 'z-fold', 'gate-fold'];
+
+  it('disables a fold whose sheet would not fit', () => {
+    render(
+      <FoldingControl
+        folding={{ type: 'half-fold', folds: 1 }}
+        allowedFoldTypes={ALL}
+        foldFits={(type) => type !== 'tri-fold'}
+        onChange={() => {}}
+      />,
+    );
+    expect(screen.getByRole('button', { name: 'Pliere în trei' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Pliere Z' })).toBeEnabled();
+  });
+
+  it('says the press is why, rather than just going grey', async () => {
+    const user = userEvent.setup();
+    render(
+      <FoldingControl
+        folding={{ type: 'half-fold', folds: 1 }}
+        allowedFoldTypes={ALL}
+        foldFits={(type) => type !== 'tri-fold'}
+        onChange={() => {}}
+      />,
+    );
+    // The fold button is disabled, so the reason hangs off the Badge beside it.
+    const triFold = screen.getByRole('button', { name: 'Pliere în trei' });
+    await user.click(triFold.parentElement!.querySelector('button[aria-label="Detalii"]')!);
+    expect(screen.getByText(/depășește limita presei/)).toBeInTheDocument();
+  });
+
+  it('keeps the current selection clickable even when it no longer fits', () => {
+    // A selection restored from an old cache has to be one you can change away
+    // from — gating it too would leave every button dead.
+    render(
+      <FoldingControl
+        folding={{ type: 'tri-fold', folds: 2 }}
+        allowedFoldTypes={ALL}
+        foldFits={() => false}
+        onChange={() => {}}
+      />,
+    );
+    expect(screen.getByRole('button', { name: 'Pliere în trei' })).toBeEnabled();
+  });
+
+  it('gates nothing when no press is answering', () => {
+    render(
+      <FoldingControl folding={{ type: 'none', folds: 0 }} allowedFoldTypes={ALL} onChange={() => {}} />,
+    );
+    expect(screen.getByRole('button', { name: 'Pliere în trei' })).toBeEnabled();
+  });
+});

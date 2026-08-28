@@ -103,6 +103,11 @@ export type ProductConfig = {
   // The glued-in paper pocket of a presentation folder. Like binding, it is a stock
   // item the catalog includes or omits — not an Elemental the customer can spec.
   pocket?: Pocket;
+  // Whether the finished piece is one half of a sheet folded down the middle: an
+  // A4 Mapă is cut from A3. Only the drawing cares — the size, the payload and the
+  // price stay the finished A4 — but the creases and the pocket live on the flat
+  // sheet, so that is the shape worth drawing.
+  foldedInHalf?: boolean;
   // Whether this product is punched with a hanging hole. Like the pocket it is a
   // stock operation the catalog includes or omits, not something the customer
   // specs — the instance only decides whether to keep it (`Product.punchHole`).
@@ -177,7 +182,7 @@ const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // Shared constraints for the "folder" category — presets within this category only
 // differ by the lamination of the cover. Every folder includes the paper pocket, a
 // fixed accessory rather than a configurable element.
-const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket'> = {
+const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket' | 'foldedInHalf'> = {
   allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s1'],
   machineId: 'm1',
@@ -190,6 +195,8 @@ const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSi
   // The cover is a folded A3 panel, not a trimmed card — its corners stay square
   // however heavy the board.
   allowedRoundedCorners: [],
+  // A4 finished, A3 flat: the preview draws it open, spine down the middle.
+  foldedInHalf: true,
   pocket: {
     label: 'Buzunar de Hârtie',
     mediaId: 'p6',
@@ -386,44 +393,44 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
     allowedPrintingFronts: ['black'],
     recommendedMediaId: 'p3',
     recommendedSizeId: 's0',
-    explanation: 'Coală A3 tipărită alb-negru pe o față. Dimensiune rezonabilă pentru utilizare in-door.',
+    explanation: 'Coală A3 tipărită alb-negru pe o față. Cost mai mic.',
   },
   prod0d: {
     ...AFIS_CATEGORY_CONFIG,
     allowedPrintingFronts: ['black'],
     recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
-    explanation: 'Coală A4 tipărită alb-negru pe o față. Format compact pentru afișaj in-door în spații mici.',
+    explanation: 'Coală A4 tipărită alb-negru pe o față. Cel mai mic cost.',
   },
   prod1a: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
-    explanation: 'Coală A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat pe ambele fețe — evenimente, promoții, materiale informative.',
+    explanation: 'Foaie A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat — evenimente, promoții, materiale informative.',
   },
   prod1b: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
     recommendedSizeId: 's4',
-    explanation: 'Fluturaș 1/3A4 tipărit color pe o ambele fețe. Cea mai economică variantă pentru distribuire în masă — costuri minime de tipărire.',
+    explanation: 'Fluturaș o treime din A4 color pe ambele fețe. Costuri minime de printare.',
   },
   prod1c: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
     recommendedSizeId: 's2',
-    explanation: 'Coală A5 tipărită color pe ambele fețe. Format compact ideal pentru pliante de mână, meniuri sau invitații.',
+    explanation: 'Filă A5 print color pe ambele fețe. Format compact ce poate fi păstrat mai ușor.',
   },
   prod1d: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
     recommendedSizeId: 's1',
-    explanation: 'Coală A4 tipărită color doar pe față. Potrivit pentru afișe simple sau anunțuri unde versoul rămâne neutilizat.',
+    explanation: 'Coală A4 color doar pe o față. Potrivit pentru afișe simple sau anunțuri unde nu se folosește verso-ul.',
   },
   prod1e: {
     ...FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
     recommendedSizeId: 's8',
-    explanation: 'Coală format A6 tipărită color pe ambele fețe. Recomandat pentru materiale care se citesc din mers.',
+    explanation: 'Format A6 tipărită color pe ambele fețe. Perfect pentru materiale date în mână, citite din mers.',
   },
   prod2a: {
     ...BROCHURE_CATEGORY_CONFIG,
@@ -502,23 +509,27 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   },
   prod3a: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Folosit pentru oferte comerciale, dosare de candidatură sau materiale de prezentare premium.',
+    explanation: 'Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Laminată cu strat tactil plăcut. Folosită pentru oferte, materiale de prezentare premium.',
   },
   prod3c: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Mapă de prezentare cu buzunar interior și bandă elastică de închidere. Protejează conținutul în timpul transportului — potrivit pentru dosare de candidatură sau materiale care circulă des.',
+    explanation: 'Mapă de prezentare cu buzunar interior și cotor îngust. Grupează materiale care se mută des.',
   },
   prod3d: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Mapă de prezentare cu buzunar interior și laminare lucioasă pe copertă. Aspect strălucitor, premium — recomandat pentru materiale de marketing care trebuie să atragă atenția.',
+    explanation: 'Mapă de prezentare simplificată. Carton robust, Cost minim.',
   },
   prod3e: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale.',
+    explanation: 'Mapă de prezentare cu buzunar interior, cotor și laminare mată pe copertă. Utilăși cu aspect elegant.',
   },
   prod3f: {
     ...FOLDER_CATEGORY_CONFIG,
-    explanation: 'Mapă de prezentare cu buzunar interior și laminare mată pe copertă. Aspect discret și elegant pentru documente oficiale.',
+    explanation: 'Mapă de prezentare cu dimensiuni reduse. Fără buzunar interior. Laminarea mată a coperții conferă un aspect mătuit, discret.',
+  },
+  prod3g: {
+    ...FOLDER_CATEGORY_CONFIG,
+    explanation: 'Mapă standard de prezentare. Are buzunar interior și cotor obținut din 2 plieri apropriate. Buzunarul și cotorul oferă spațiu pentru un număr decent de documente.',
   },
   prod4a: {
     ...BUSINESS_CARD_CATEGORY_CONFIG,
@@ -578,11 +589,11 @@ export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   prod5e: {
     ...FOLDED_FLYER_CATEGORY_CONFIG,
     recommendedMediaId: 'p3',
-    recommendedSizeId: 's1',
+    recommendedSizeId: 's2',
     elementalPageCounts: {
       'elem5e-1': { kind: 'derived' },
     },
-    explanation: 'Pliant format A4 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe.',
+    explanation: 'Pliant format A5 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe.',
   },
   prod6a: {
     ...STICKER_SHEET_CATEGORY_CONFIG,
@@ -1465,14 +1476,36 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 'prod3g',
+    categoryId: 'folder',
+    label: 'Mapă standard cu Buzunar și cotor',
+    amount: 20,
+    elementals: [
+      {
+        id: 'elem3g-1',
+        label: 'Coală A3 cu 2 plieri',
+        media: MOCK_PAPERS[5],
+        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        pageCount: 2,
+        printing: { front: 'color', back: 'none' },
+        finishing: {
+          lamination: { type: 'none', sides: 'front' },
+          folding: { type: 'none', folds: 0 },
+          creasing: { count: 2, min: 1, max: 2 },
+          roundedCornes: { corners: [] },
+        },
+      },
+    ],
+  },
+  {
     id: 'prod3a',
     categoryId: 'folder',
     label: 'Mapă cu Buzunar și Cotor, laminată soft-touch',
-    amount: 10,
+    amount: 20,
     elementals: [
       {
         id: 'elem3a-1',
-        label: 'Coală A3 Pliată',
+        label: 'Coală A3 cu dublă îndoitură',
         media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
@@ -1490,11 +1523,11 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3c',
     categoryId: 'folder',
     label: 'Mapă cu Buzunar fără Cotor',
-    amount: 10,
+    amount: 20,
     elementals: [
       {
         id: 'elem3c-1',
-        label: 'Coală A3 Pliată',
+        label: 'Coală A3 cu o singură îndoitură',
         media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
@@ -1512,14 +1545,14 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3d',
     categoryId: 'folder',
     label: 'Mapă fără Buzunar, fără Cotor',
-    amount: 10,
+    amount: 20,
     // The catalog still offers a pocket (via FOLDER_CATEGORY_CONFIG) so the
     // toggle in the UI can turn it back on, but this variant ships without one.
     pocketEnabled: false,
     elementals: [
       {
         id: 'elem3d-1',
-        label: 'Coală A3 Pliată',
+        label: 'Coală A3 o singură pliere',
         media: MOCK_PAPERS[4],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
@@ -1537,11 +1570,11 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'prod3e',
     categoryId: 'folder',
     label: 'Mapă Laminată Mat cu Buzunar',
-    amount: 10,
+    amount: 20,
     elementals: [
       {
         id: 'elem3e-1',
-        label: 'Coală A3 Pliată',
+        label: 'Coală A3 Pliată (dublă îndoire)',
         media: MOCK_PAPERS[5],
         size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
         pageCount: 2,
@@ -1558,8 +1591,9 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod3f',
     categoryId: 'folder',
-    label: 'Mapă mică A5 cu Buzunar și cotor',
-    amount: 10,
+    label: 'Mapă mică A5 fără Buzunar cu cotor',
+    amount: 20,
+    pocketEnabled: false,
     elementals: [
       {
         id: 'elem3f-1',
@@ -1778,14 +1812,17 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod5e',
     categoryId: 'folded-flyer',
-    label: 'Pliant Tri-fold A4',
+    label: 'Pliant Tri-fold A5',
     amount: 20,
     elementals: [
       {
         id: 'elem5e-1',
         label: 'Coală',
         media: MOCK_PAPERS[2],
-        size: { id: 's1', label: 'A4', width: 210, height: 297, unit: 'mm', widthMm: 210, heightMm: 297 },
+        // The size is the pliant folded. Tri-folded, this opens out to 444×210 —
+        // an A4 was the entry it used to carry, and that opens to 630×297, wider
+        // than any press here.
+        size: { id: 's2', label: 'A5', width: 148, height: 210, unit: 'mm', widthMm: 148, heightMm: 210 },
         pageCount: 6,
         printing: { front: 'color', back: 'color' },
         finishing: {

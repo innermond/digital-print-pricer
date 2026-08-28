@@ -117,11 +117,12 @@ export function ProductPreview({ shapes, lamination, title }: ProductPreviewProp
         strokeWidth={strokeWidth}
       />
 
-      {/* The glued pocket of a presentation folder: a band across the foot. */}
+      {/* The glued pocket of a presentation folder: a band across the foot of the
+          panel it belongs to, which on a folder is one half of the open sheet. */}
       {pocket && (
         <path
           data-testid="preview-pocket"
-          d={`M 0 ${heightMm - pocket.heightMm} H ${widthMm} V ${heightMm} H 0 Z`}
+          d={`M ${pocket.xMm} ${heightMm - pocket.heightMm} H ${pocket.xMm + pocket.widthMm} V ${heightMm} H ${pocket.xMm} Z`}
           className="fill-slate-200/70 dark:fill-slate-600/70 stroke-slate-400 dark:stroke-slate-500"
           strokeWidth={strokeWidth}
         />

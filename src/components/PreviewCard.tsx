@@ -12,6 +12,9 @@ type PreviewCardProps = {
   binding?: Binding;
   pocket?: Pocket;
   punchHole?: boolean;
+  // Whether the element is one panel of a sheet folded in half — a Mapă's A4
+  // cover is half an A3 — so the drawing opens it out.
+  foldedInHalf?: boolean;
   // Named formats, so the caption can say "A4 orizontal" the way the size
   // picker does. Omit and the caption gives dimensions alone.
   presets?: Size[];
@@ -25,11 +28,11 @@ const sizeCaption = (size: Size, presets: Size[]) => {
 };
 
 // ============ PREVIEW CARD ============
-export function PreviewCard({ element, binding, pocket, punchHole, presets = [] }: PreviewCardProps) {
+export function PreviewCard({ element, binding, pocket, punchHole, foldedInHalf, presets = [] }: PreviewCardProps) {
   if (!element) return null;
 
   const { lamination } = element.finishing;
-  const shapes = previewShapes({ element, binding, pocket, punchHole });
+  const shapes = previewShapes({ element, binding, pocket, punchHole, foldedInHalf });
   const caption = sizeCaption(element.size, presets);
 
   const previewBox = (

@@ -74,6 +74,24 @@ describe('PreviewCard', () => {
     expect(screen.getByTestId('preview-hole')).toBeInTheDocument();
   });
 
+  it('keeps a folder\'s pocket off the fold, on the panel it is glued to', () => {
+    const pocket: Pocket = {
+      label: 'Buzunar', mediaId: 'p5', width: 200, height: 120, unit: 'mm',
+      pageCount: 2, printing: { front: 'none', back: 'none' },
+    };
+    const { container } = render(
+      <PreviewCard
+        element={makeElemental({ finishing: makeFinishing({ creasing: { count: 2 } }) })}
+        pocket={pocket}
+        foldedInHalf
+      />
+    );
+    // The open A3 sheet is 420 wide, so the band starts at the right-hand crease
+    // rather than at the left edge of the sheet.
+    const band = container.querySelector('[data-testid="preview-pocket"]');
+    expect(band?.getAttribute('d')).toMatch(/^M 215/);
+  });
+
   it('runs a hanging product\'s coil across the top, not down the side', () => {
     const { container } = render(
       <PreviewCard

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Elemental, SizeUnit, Media, Size, Machine, Product } from '../types';
+import type { Elemental, SizeUnit, Media, Size, Machine, Product, FoldingType } from '../types';
 import type { ProductConfig } from '../data/mockData';
 import { MediaSelector } from './configuration/MediaSelector';
 import { SizeSelector } from './configuration/SizeSelector';
@@ -9,7 +9,8 @@ import { PageCountControl } from './configuration/PageCountControl';
 import { FinishingOptions } from './configuration/FinishingOptions';
 import { Disclosure } from './Disclosure';
 import { hasFinishingOptions } from '../lib/finishingRules';
-import { resolveMachine, fitsMachine, maxSideMm } from '../lib/machine';
+import { resolveMachine, fitsMachine, maxSideUnfoldedMm } from '../lib/machine';
+import { unfoldFactor, unfoldedSizeMm } from '../lib/foldUtils';
 import { advancedSummary } from '../lib/personalization';
 
 type ConfigurationPanelProps = {
@@ -48,8 +49,25 @@ export function ConfigurationPanel({
   const [openSignal, setOpenSignal] = useState(0);
   const availableMedia = media.filter((m) => config.allowedMediaIds.includes(m.id));
   const machine = resolveMachine(config, machines);
+  // A Pliant, a Broșură and a Mapă are sized folded but printed flat, so the
+  // press has to be asked about the sheet, not about the finished piece.
+  const factor = unfoldFactor(element.finishing.folding, config.foldedInHalf);
+  const fitsFolded = (widthMm: number, heightMm: number, byFactor = factor) => {
+    const flat = unfoldedSizeMm(widthMm, heightMm, byFactor);
+    return fitsMachine(flat.widthMm, flat.heightMm, machine);
+  };
+  // Whether the sheet a given fold would open out to still fits. Asked per fold
+  // type rather than reusing `factor`, since the point is to judge the folds the
+  // customer has not chosen yet.
+  const foldFits = (type: FoldingType) => {
+    const factorForType = unfoldFactor(
+      { type, folds: element.finishing.folding.folds },
+      config.foldedInHalf
+    );
+    return fitsFolded(element.size.widthMm, element.size.heightMm, factorForType);
+  };
   const sizesInConfig = sizes.filter((s) => config.allowedSizeIds.includes(s.id));
-  const availableSizes = sizesInConfig.filter((s) => fitsMachine(s.widthMm, s.heightMm, machine));
+  const availableSizes = sizesInConfig.filter((s) => fitsFolded(s.widthMm, s.heightMm));
   // Distinct from a size never being in allowedSizeIds to begin with (ordinary
   // catalog data, not worth flagging) — this is specifically the machine
   // taking away a size the config would otherwise offer.
@@ -124,12 +142,12 @@ export function ConfigurationPanel({
               customSizeUnit={customSizeUnit}
               onSizeChange={(size) => onUpdate({ size })}
               onUnitChange={onCustomSizeUnitChange}
-              maxWidthMm={maxSideMm(element.size.heightMm, machine)}
-              maxHeightMm={maxSideMm(element.size.widthMm, machine)}
+              maxWidthMm={maxSideUnfoldedMm(element.size.heightMm, factor, machine)}
+              maxHeightMm={maxSideUnfoldedMm(element.size.widthMm, factor, machine)}
               widthInputRef={widthInputRef}
             />
             {hasFinishingOptions(element, config) && (
-              <FinishingOptions element={element} config={config} onUpdate={onUpdate} />
+              <FinishingOptions element={element} config={config} onUpdate={onUpdate} foldFits={foldFits} />
             )}
             {productExtras}
           </div>

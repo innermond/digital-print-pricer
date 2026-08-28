@@ -1,4 +1,4 @@
-import type { Elemental } from '../../types';
+import type { Elemental, FoldingType } from '../../types';
 import type { ProductConfig } from '../../data/mockData';
 import {
   allowedLaminationTypes,
@@ -21,10 +21,13 @@ type FinishingOptionsProps = {
   element: Elemental;
   config: ProductConfig;
   onUpdate: (updates: Partial<Elemental>) => void;
+  // Whether the sheet a fold opens out to still fits the press. Passed straight
+  // through: the press belongs to the panel above, not to finishing.
+  foldFits?: (type: FoldingType) => boolean;
   badgeText?: string;
 };
 
-export function FinishingOptions({ element, config, onUpdate, badgeText }: FinishingOptionsProps) {
+export function FinishingOptions({ element, config, onUpdate, foldFits, badgeText }: FinishingOptionsProps) {
   const headingId = useId();
   const { finishing } = element;
 
@@ -59,6 +62,7 @@ export function FinishingOptions({ element, config, onUpdate, badgeText }: Finis
           <FoldingControl
             folding={finishing.folding}
             allowedFoldTypes={config.allowedFoldTypes}
+            foldFits={foldFits}
             onChange={(folding) => {
               const pageCountConstraint = config.elementalPageCounts?.[element.id];
               const updates: Partial<Elemental> = { finishing: { ...finishing, folding } };

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { resolveMachine, fitsMachine, maxSideMm } from './machine';
+import { resolveMachine, fitsMachine, maxSideMm, maxSideUnfoldedMm } from './machine';
+import { unfoldedSizeMm } from './foldUtils';
 import { makeConfig, makeMachine } from '../test/fixtures';
 
 describe('resolveMachine', () => {
@@ -73,5 +74,50 @@ describe('maxSideMm', () => {
 
   it('keeps the field usable for a sheet that cannot fit at all', () => {
     expect(maxSideMm(9_000, machine)).toBe(320);
+  });
+});
+
+describe('maxSideUnfoldedMm', () => {
+  const press = makeMachine({ maxWidthMm: 320, maxHeightMm: 450 });
+
+  it('answers exactly like maxSideMm when nothing is folded', () => {
+    for (const other of [100, 210, 297, 320, 450, 500]) {
+      expect(maxSideUnfoldedMm(other, 1, press)).toBe(maxSideMm(other, press));
+    }
+  });
+
+  it('has no ceiling to give without a machine', () => {
+    expect(maxSideUnfoldedMm(210, 3, undefined)).toBeUndefined();
+  });
+
+  it('leaves room for an A4 half-fold but not an A4 tri-fold', () => {
+    // Beside a height of 297: half-folded, the width may run to 225 (450 open);
+    // tri-folded, only to 150 — which is why an A4 tri-fold cannot be printed.
+    expect(maxSideUnfoldedMm(297, 2, press)).toBe(225);
+    expect(maxSideUnfoldedMm(297, 3, press)).toBe(150);
+  });
+
+  it('lets the fixed side run long once the other one is the edge that grows', () => {
+    // Beside a width of 210, the height passes 210 and becomes the long edge, so
+    // the width is what doubles: 420 open, leaving the height the press's 320.
+    expect(maxSideUnfoldedMm(210, 2, press)).toBe(320);
+  });
+
+  it('never returns a cap the press cannot actually take', () => {
+    for (const factor of [2, 3, 4]) {
+      for (const other of [50, 100, 148, 210, 297, 320]) {
+        const cap = maxSideUnfoldedMm(other, factor, press)!;
+        const at = unfoldedSizeMm(cap, other, factor);
+        expect(fitsMachine(at.widthMm, at.heightMm, press)).toBe(true);
+        const past = unfoldedSizeMm(cap + 1, other, factor);
+        expect(fitsMachine(past.widthMm, past.heightMm, press)).toBe(false);
+      }
+    }
+  });
+
+  it('keeps the field usable when the other side alone is already too big', () => {
+    // Nothing fits at 500mm, but a cap of 0 would pin the input shut — pulling
+    // the other side back down has to be able to recover.
+    expect(maxSideUnfoldedMm(500, 2, press)).toBeGreaterThan(0);
   });
 });

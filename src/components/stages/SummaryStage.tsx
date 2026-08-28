@@ -8,11 +8,12 @@ type SummaryStageProps = {
   element: Elemental | undefined;
   pocket: ProductConfig['pocket'];
   punchHole?: boolean;
+  foldedInHalf?: boolean;
   personalized: boolean;
   sizes?: Size[];
 };
 
-export function SummaryStage({ product, element, pocket, punchHole, personalized, sizes }: SummaryStageProps) {
+export function SummaryStage({ product, element, pocket, punchHole, foldedInHalf, personalized, sizes }: SummaryStageProps) {
   return (
     <div className="flex flex-wrap gap-4">
       <div className="flex-1 min-w-72">
@@ -21,6 +22,7 @@ export function SummaryStage({ product, element, pocket, punchHole, personalized
           binding={product?.binding}
           pocket={pocket}
           punchHole={punchHole}
+          foldedInHalf={foldedInHalf}
           presets={sizes}
         />
       </div>

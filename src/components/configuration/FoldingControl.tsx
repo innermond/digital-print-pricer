@@ -13,22 +13,36 @@ const FOLDING_TYPE_INFO: Partial<Record<FoldingType, { label: string; explanatio
 
 const FOLDING_TYPES = Object.keys(FOLDING_TYPE_INFO) as FoldingType[];
 
+// Shown instead of the fold's own description when the press is what rules it
+// out, so the button explains itself rather than just going grey.
+const TOO_BIG_UNFOLDED = 'Desfăcut, formatul depășește limita presei. Alege o dimensiune mai mică.';
+
 type FoldingControlProps = {
   folding: Finishing['folding'];
   allowedFoldTypes: string[];
   onChange: (folding: Finishing['folding']) => void;
+  // Whether the sheet this fold opens out to still fits the press. Omit where
+  // there is no press to answer for.
+  foldFits?: (type: FoldingType) => boolean;
   badgeText?: string;
 };
 
-export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText }: FoldingControlProps) {
+export function FoldingControl({ folding, allowedFoldTypes, onChange, foldFits, badgeText }: FoldingControlProps) {
   const headingId = useId();
   const widget = (
     <div role="group" aria-labelledby={headingId} className="rounded-lg bg-slate-50 dark:bg-slate-700 p-3">
       <h4 id={headingId} className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Pliere</h4>
       <div className="flex flex-wrap gap-1.5">
         {FOLDING_TYPES.map((type) => {
-          const allowed = allowedFoldTypes.includes(type) || (type === 'none' && allowedFoldTypes.length === 0);
+          const offered = allowedFoldTypes.includes(type) || (type === 'none' && allowedFoldTypes.length === 0);
+          const fits = foldFits?.(type) ?? true;
+          // The current selection stays clickable whatever the press says: a
+          // choice restored from an old cache must be one you can change away
+          // from, not one that pins the control shut.
+          const allowed = (offered && fits) || folding.type === type;
           const { label, explanation } = FOLDING_TYPE_INFO[type]!;
+          // Why it is off matters more than what it would have done.
+          const hint = offered && !fits ? TOO_BIG_UNFOLDED : explanation;
           const btn = (
             <button
               key={type}
@@ -50,8 +64,8 @@ export function FoldingControl({ folding, allowedFoldTypes, onChange, badgeText 
               {label}
             </button>
           );
-          return explanation && allowed
-            ? <Badge key={type} text={explanation}>{btn}</Badge>
+          return hint && (allowed || (offered && !fits))
+            ? <Badge key={type} text={hint}>{btn}</Badge>
             : btn;
         })}
       </div>
