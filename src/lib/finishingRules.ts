@@ -9,7 +9,9 @@ const ALL_ROUNDED_CORNERS: RoundedCorner[] = [1, 2, 3, 4];
 export const allowedLaminationTypes = (elem: Elemental): LaminationType[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
-    case 'paper':   return elem.media.gsm < 170 ? [] : ALL_LAMINATION_TYPES;
+    case 'paper':
+    case 'special':
+      return elem.media.gsm < 170 ? [] : ALL_LAMINATION_TYPES;
   }
 };
 
@@ -55,7 +57,9 @@ export const clampLamination = (elem: Elemental, config?: ProductConfig): Elemen
 const creasableByMedia = (elem: Elemental): number[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
-    case 'paper':   return elem.media.gsm < 200 ? [] : ALL_CREASING_COUNTS;
+    case 'paper':
+    case 'special':
+      return elem.media.gsm < 200 ? [] : ALL_CREASING_COUNTS;
   }
 };
 
@@ -96,7 +100,9 @@ export const allowedCreasingCounts = (elem: Elemental, config?: ProductConfig): 
 const roundableByMedia = (elem: Elemental): RoundedCorner[] => {
   switch (elem.media.kind) {
     case 'sticker': return [];
-    case 'paper':   return elem.media.gsm < 170 ? [] : ALL_ROUNDED_CORNERS;
+    case 'paper':
+    case 'special':
+      return elem.media.gsm < 170 ? [] : ALL_ROUNDED_CORNERS;
   }
 };
 

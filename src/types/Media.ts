@@ -14,6 +14,15 @@ type Paper = {
   explanation?: string;
 };
 
+type Special = {
+  kind: 'special';
+  id: string;
+  label: string;
+  gsm: PaperWeight;
+  finish: PaperFinish;
+  explanation?: string;
+};
+
 type StickerFace = "Gloss" | "Matt" | "Clear" | "PVC";
 
 type Sticker = {
@@ -25,6 +34,6 @@ type Sticker = {
   explanation?: string;
 };
 
-type Media = Paper | Sticker;
+type Media = Paper | Special | Sticker;
 
-export type { PaperFinish, PaperWeight, Paper, StickerFace, Sticker, Media };
+export type { PaperFinish, PaperWeight, Paper, Special, StickerFace, Sticker, Media };

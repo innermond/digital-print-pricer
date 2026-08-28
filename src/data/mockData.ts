@@ -1,4 +1,4 @@
-import type { Paper, Sticker, Media, Size, Machine, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
+import type { Paper, Special, Sticker, Media, Size, Machine, Product, ProductCategory, PrintInk, BindingType, SpiralColor, Staple, LaminationSides, RoundedCorner, Pocket } from '../types';
 
 export const MOCK_PAPERS: Paper[] = [
   { kind: 'paper', id: 'p1', label: '90 GSM - Mat',           gsm: 90,  finish: 'Matt',       explanation: 'Hârtie mată ușoară. Ideală pentru tiraje mari unde costul contează. Culorile sunt vii, dar coala se simte subțire.' },
@@ -16,17 +16,14 @@ export const MOCK_STICKERS: Sticker[] = [
   { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC (plastic). Rezistentă la apă — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
 ];
 
-export const MOCK_PAPER_LABELS: Sticker[] = [
-  { kind: 'sticker', id: 'p7',  label: 'Etichetă Lucioasă Albă', gsm: 80, face: 'Gloss', explanation: 'Material de etichetă alb cu față lucioasă. Cel mai comun material pentru etichete — culorile sunt vii și suprafața este rezistentă la apă.' },
-  { kind: 'sticker', id: 'p8',  label: 'Etichetă Mată Albă',     gsm: 80, face: 'Matt',  explanation: 'Material de etichetă alb cu față mată. Ușor de scris și dă un aspect mai curat și discret.' },
-  { kind: 'sticker', id: 'p9',  label: 'Etichetă Transparentă',  gsm: 80, face: 'Clear', explanation: 'Etichetă din film transparent. Creează un aspect de „fără etichetă" când este aplicată pe ambalaj — doar tipărirea este vizibilă pe suprafața de dedesubt.' },
-  { kind: 'sticker', id: 'p10', label: 'Etichetă PVC',          gsm: 80, face: 'PVC', explanation: 'Etichetă din PVC maro neacoperit. Aspect natural, ecologic — populară pentru produse alimentare artizanale, cosmetice și ambalaje handmade.' },
+export const MOCK_PAPERS_SPECIALS: Special[] = [
+  { kind: 'special', id: 'p11',  label: '300 GSM - Sirio Pearl White (Luxury)', gsm: 300, finish: 'Matt', explanation: 'Carton special cu tentă argintie mată. De folosit pentru aplicații de lux, speciale, care au nevoie de un aspect deosebit.' },
 ];
 
 
 // TODO add special papers
 
-export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_STICKERS];
+export const MOCK_MEDIA: Media[] = [...MOCK_PAPERS, ...MOCK_PAPERS_SPECIALS, ...MOCK_STICKERS];
 
 export const MOCK_SIZES: Size[] = [
   { id: 's0', label: 'A3',                    width: 297, height: 420, unit: 'mm', widthMm: 297,   heightMm: 420   },
@@ -181,7 +178,7 @@ const BROCHURE_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // differ by the lamination of the cover. Every folder includes the paper pocket, a
 // fixed accessory rather than a configurable element.
 const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedRoundedCorners' | 'pocket'> = {
-  allowedMediaIds: ['p5', 'p6'],
+  allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s1'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
@@ -209,7 +206,7 @@ const FOLDER_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSi
 const BUSINESS_CARD_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
   // A card is a single flat piece — never creased.
   allowedCreasingCounts: [],
-  allowedMediaIds: ['p5', 'p6'],
+  allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s5', 's6'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
@@ -259,7 +256,7 @@ const SPIRAL_CATALOG_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedPrintingFronts
 // only differ by page size and by the elemental ids their per-part rules are
 // keyed on. Every calendar is cover + month sheets + back cover on a spiral.
 const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedLaminationSides' | 'allowedRoundedCorners' | 'binding' | 'punchHole'> = {
-  allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6'],
+  allowedMediaIds: ['p2', 'p3', 'p4', 'p5', 'p6', 'p11'],
   allowedSizeIds: ['s1', 's2', 's7'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
@@ -276,7 +273,7 @@ const CALENDAR_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 // Shared constraints for the "cardboard-label" category — presets within this category only
 // differ by their initial size and staple selection.
 const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
-  allowedMediaIds: ['p5', 'p6'],
+  allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s5', 's6', 's9', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
@@ -301,7 +298,7 @@ const CARDBOARD_LABEL_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | '
 // wants: the față is always printed, and the verso may be left Neimprimat for a
 // cheaper single-sided run.
 const BOOKMARK_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'recommendedSizeId' | 'allowedFoldTypes' | 'allowedCreasingCounts' | 'allowedStaple'> = {
-  allowedMediaIds: ['p5', 'p6'],
+  allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s21', 's22', 's23', 's24'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
@@ -323,7 +320,7 @@ const BOOKMARK_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowed
 const DIPLOMA_CATEGORY_CONFIG: Pick<ProductConfig, 'allowedMediaIds' | 'allowedSizeIds' | 'machineId' | 'recommendedMediaId' | 'allowedFoldTypes' | 'allowedCreasingCounts'> = {
   // A card is a single flat piece — never creased.
   allowedCreasingCounts: [],
-  allowedMediaIds: ['p5', 'p6'],
+  allowedMediaIds: ['p5', 'p6', 'p11'],
   allowedSizeIds: ['s0', 's1', 's2'],
   machineId: 'm1',
   recommendedMediaId: 'p6',
