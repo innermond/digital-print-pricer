@@ -1,4 +1,4 @@
-import type { Elemental, Finishing, Machine, Paper, Size, Sticker } from '../types';
+import type { Elemental, Finishing, Machine, Paper, Size, Special, Sticker } from '../types';
 import type { ProductConfig } from '../data/mockData';
 
 export const makePaper = (overrides: Partial<Paper> = {}): Paper => ({
@@ -7,6 +7,17 @@ export const makePaper = (overrides: Partial<Paper> = {}): Paper => ({
   label: '250 GSM - Lucios Premium',
   gsm: 250,
   finish: 'Gloss',
+  ...overrides,
+});
+
+// The catalog's one special stock. Structurally a Paper apart from its `kind`, which is
+// exactly why the components kept forgetting it existed.
+export const makeSpecial = (overrides: Partial<Special> = {}): Special => ({
+  kind: 'special',
+  id: 'p11',
+  label: '300 GSM - Sirio Pearl White (Luxury)',
+  gsm: 300,
+  finish: 'Matt',
   ...overrides,
 });
 

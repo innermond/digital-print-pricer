@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { PreviewCard } from './PreviewCard';
-import { makeElemental, makeFinishing, makeSize, makeSticker } from '../test/fixtures';
+import { makeElemental, makeFinishing, makeSize, makeSpecial, makeSticker } from '../test/fixtures';
 import type { Pocket } from '../types';
 
 describe('PreviewCard', () => {
@@ -21,6 +21,14 @@ describe('PreviewCard', () => {
   it('describes sticker media by its face', () => {
     render(<PreviewCard element={makeElemental({ media: makeSticker({ face: 'PVC' }) })} />);
     expect(screen.getByText('Etichetă PVC')).toBeInTheDocument();
+  });
+
+  // The caption arm tested for 'paper', so a special fell into the sticker arm and read a
+  // `face` it does not have: the card said "Etichetă undefined".
+  it('describes a special stock by its gsm and finish, not as a sticker', () => {
+    render(<PreviewCard element={makeElemental({ media: makeSpecial() })} />);
+    expect(screen.getByText('300 GSM · Matt')).toBeInTheDocument();
+    expect(screen.queryByText(/Etichetă/)).not.toBeInTheDocument();
   });
 
   it('rounds the corners the element asks for, and only those', () => {

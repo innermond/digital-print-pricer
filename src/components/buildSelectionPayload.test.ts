@@ -31,6 +31,23 @@ describe('buildSelectionPayload', () => {
     expect(payload.elementals[1].media).toMatchObject({ id: 'p6', kind: 'paper' });
   });
 
+  // The host prices a special off its id alone, so this was never a wrong price — but
+  // the media object arrived without the `finish` every other kind carries, and the host's
+  // other builder (price-table.js) sends it. One wire format, not two.
+  it('keeps the finish on a special stock', () => {
+    const special = {
+      ...folder,
+      elementals: folder.elementals.map((e) => ({
+        ...e,
+        media: MOCK_CATALOG.media.find((m) => m.id === 'p11')!,
+      })),
+    };
+
+    expect(buildSelectionPayload(special).elementals[0].media).toEqual({
+      kind: 'special', id: 'p11', label: '300 GSM - Sirio Pearl White (Luxury)', gsm: 300, finish: 'Matt',
+    });
+  });
+
   it('leaves the folder cover untouched by the appended pocket', () => {
     const pocket = pocketElemental(folderConfig.pocket!, MOCK_CATALOG.media);
     expect(buildSelectionPayload(folder, pocket).elementals[0].label).toBe('Coală A3 cu dublă îndoitură');

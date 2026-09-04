@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MediaSelector } from './MediaSelector';
-import { makePaper, makeSticker } from '../../test/fixtures';
+import { makePaper, makeSpecial, makeSticker } from '../../test/fixtures';
 import type { Media } from '../../types';
 
 const paper = makePaper({ id: 'p2', label: '120 GSM - Lucios', gsm: 120, finish: 'Gloss' });
@@ -16,6 +16,15 @@ describe('MediaSelector', () => {
     expect(screen.getByText('120 GSM · Gloss')).toBeInTheDocument();
     expect(screen.getByText('Etichetă Lucioasă Albă')).toBeInTheDocument();
     expect(screen.getByText('Față lucioasă')).toBeInTheDocument();
+  });
+
+  // mediaSubLabel used to fall off the end of its switch for a special and return
+  // undefined, so Sirio Pearl rendered with an empty second line.
+  it('gives a special stock the same gsm and finish sub-label as a paper', () => {
+    const special = makeSpecial();
+    render(<MediaSelector media={[special]} selectedId="p11" recommendedId="p11" onSelect={() => {}} />);
+    expect(screen.getByText('300 GSM - Sirio Pearl White (Luxury)')).toBeInTheDocument();
+    expect(screen.getByText('300 GSM · Matt')).toBeInTheDocument();
   });
 
   it('marks the recommended media with a star', () => {

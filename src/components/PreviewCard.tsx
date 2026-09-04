@@ -68,9 +68,11 @@ export function PreviewCard({ element, binding, pocket, punchHole, foldedInHalf,
         </div>
         <div className="mt-0.5 text-xs font-semibold text-slate-900 dark:text-slate-50">{caption}</div>
         <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">
-          {element.media.kind === 'paper'
-            ? `${element.media.gsm} GSM · ${element.media.finish}`
-            : `Etichetă ${element.media.face}`}
+          {/* Tested against 'sticker', not 'paper': a special has no `face`, so the
+              other way round captioned every special "Etichetă undefined". */}
+          {element.media.kind === 'sticker'
+            ? `Etichetă ${element.media.face}`
+            : `${element.media.gsm} GSM · ${element.media.finish}`}
         </div>
       </div>
     </div>

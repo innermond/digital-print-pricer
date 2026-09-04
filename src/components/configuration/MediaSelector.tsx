@@ -20,7 +20,11 @@ const FACE_RO: Record<StickerFace, string> = {
 
 function mediaSubLabel(m: Media): string {
   switch (m.kind) {
-    case 'paper':   return `${m.gsm} GSM · ${m.finish}`;
+    // A special carries the same gsm and finish as a paper and reads the same way; what
+    // sets it apart is its label ("Sirio Pearl White"), not this line. Falling through is
+    // the shape finishingRules.ts uses for the same reason.
+    case 'paper':
+    case 'special': return `${m.gsm} GSM · ${m.finish}`;
     case 'sticker': return `Față ${FACE_RO[m.face] ?? m.face.toLowerCase()}`;
   }
 }

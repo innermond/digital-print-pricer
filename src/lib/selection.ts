@@ -17,8 +17,10 @@ export function buildSelectionPayload(product: Product, pocketElem?: Elemental |
         id: elem.media.id,
         label: elem.media.label,
         gsm: elem.media.gsm,
-        ...(elem.media.kind === 'paper'   ? { finish: elem.media.finish } : {}),
-        ...(elem.media.kind === 'sticker' ? { face: elem.media.face }     : {}),
+        // One branch rather than two independent spreads: a special is a paper in every
+        // way this payload cares about, and testing only for 'paper' sent it without its
+        // finish — a wire format the host's other builder (price-table.js) does not share.
+        ...(elem.media.kind === 'sticker' ? { face: elem.media.face } : { finish: elem.media.finish }),
       },
       size: {
         width: elem.size.width,
