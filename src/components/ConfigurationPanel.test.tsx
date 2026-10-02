@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ConfigurationPanel } from './ConfigurationPanel';
-import { MOCK_MEDIA, MOCK_SIZES } from '../data/mockData';
+import { MOCK_CATALOG } from '../data/catalog';
 import { makeConfig, makeElemental, makeFinishing, makePaper, makeMachine, makeSize } from '../test/fixtures';
 
 // The panel filters the media/sizes it's given by the config, so use real ids:
@@ -17,8 +17,8 @@ function renderPanel(overrides: Partial<Parameters<typeof ConfigurationPanel>[0]
     customSizeUnit: 'mm' as const,
     onCustomSizeUnitChange: vi.fn(),
     config,
-    media: MOCK_MEDIA,
-    sizes: MOCK_SIZES,
+    media: MOCK_CATALOG.media,
+    sizes: MOCK_CATALOG.sizes,
     machines: [makeMachine()],
     ...overrides,
   };

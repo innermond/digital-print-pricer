@@ -1,5 +1,5 @@
 import type { Elemental, LaminationType, LaminationSides, RoundedCorner } from '../types';
-import type { ProductConfig } from '../data/mockData';
+import type { ProductConfig } from '../types';
 
 const ALL_LAMINATION_TYPES: LaminationType[] = ['none', 'gloss', 'matt', 'soft-touch'];
 const ALL_LAMINATION_SIDES: LaminationSides[] = ['front', 'back', 'both'];

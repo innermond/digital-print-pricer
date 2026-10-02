@@ -1,5 +1,5 @@
 import type { Product, Elemental, Size } from '../../types';
-import type { ProductConfig } from '../../data/mockData';
+import type { ProductConfig } from '../../types';
 import { PreviewCard } from '../PreviewCard';
 import { AssemblySummary } from '../AssemblySummary';
 

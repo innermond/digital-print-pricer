@@ -8,3 +8,4 @@ export * from './Pocket';
 export * from './Printing';
 export * from './Size';
 export * from './Product';
+export * from './ProductConfig';

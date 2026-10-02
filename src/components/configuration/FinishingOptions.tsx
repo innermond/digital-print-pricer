@@ -1,5 +1,5 @@
 import type { Elemental, FoldingType } from '../../types';
-import type { ProductConfig } from '../../data/mockData';
+import type { ProductConfig } from '../../types';
 import {
   allowedLaminationTypes,
   allowedLaminationSides,

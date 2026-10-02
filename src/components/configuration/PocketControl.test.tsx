@@ -2,8 +2,10 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PocketControl } from './PocketControl';
-import { MOCK_MEDIA } from '../../data/mockData';
+import { MOCK_CATALOG } from '../../data/catalog';
 import type { Pocket } from '../../types';
+
+const MOCK_MEDIA = MOCK_CATALOG.media;
 
 const pocket: Pocket = {
   label: 'Buzunar de Hârtie',

@@ -1,10 +1,9 @@
-import type { Product, ProductCategory, Media, Size, Machine } from '../types';
-import type { ProductConfig } from './mockData';
-import { MOCK_PRODUCTS, PRODUCT_CONFIG, PRODUCT_CATEGORIES, MOCK_MEDIA, MOCK_SIZES, MOCK_MACHINES } from './mockData';
+import type { Product, ProductCategory, Media, Size, Machine, ProductConfig } from '../types';
+import catalogData from './catalog.json';
 
 // Everything the configurator needs to render, in one serializable object.
-// Standalone dev uses MOCK_CATALOG (assembled from mockData); a host app
-// (materialpublicitar) injects an equivalent object fetched from its endpoint.
+// Standalone dev uses MOCK_CATALOG (src/data/catalog.json); a host app
+// (printuridigital) injects an equivalent object fetched from its endpoint.
 export type Catalog = {
   products: Product[];
   config: Record<string, ProductConfig>;
@@ -14,14 +13,11 @@ export type Catalog = {
   machines: Machine[];
 };
 
-export const MOCK_CATALOG: Catalog = {
-  products: MOCK_PRODUCTS,
-  config: PRODUCT_CONFIG,
-  categories: PRODUCT_CATEGORIES,
-  media: MOCK_MEDIA,
-  sizes: MOCK_SIZES,
-  machines: MOCK_MACHINES,
-};
+// The host's catalog, as its admin downloads it (Calculator preț → "Descarcă
+// catalogul") or `php artisan pricer:export` writes it. The database there is the
+// source of truth; this file is a copy that is refreshed from it. The cast is
+// because a JSON module's literal types are wider than the unions in ../types.
+export const MOCK_CATALOG = catalogData as unknown as Catalog;
 
 let warnedAboutRoundedCorners = false;
 
@@ -48,7 +44,7 @@ export const warnIfCatalogPredatesRoundedCorners = (catalog: Catalog): void => {
     '[pricer] No product config declares `allowedRoundedCorners`. If this catalog came ' +
     'from a host endpoint it likely predates that field, so Afiș and Mapă de Prezentare ' +
     'will now offer rounded corners they cannot be produced with. Re-seed it with ' +
-    '`npm run dump:catalog`. (Harmless if every product in your catalog really does ' +
+    'the host\'s `pricer:export`. (Harmless if every product in your catalog really does ' +
     'allow rounded corners.)'
   );
 };
@@ -74,6 +70,6 @@ export const warnIfCatalogPredatesMachine = (catalog: Catalog): void => {
   console.warn(
     '[pricer] No product config declares `machineId`. If this catalog came from a host ' +
     'endpoint it likely predates that field, so no printing-machine max width/height is ' +
-    'being enforced on any product. Re-seed it with `npm run dump:catalog`.'
+    'being enforced on any product. Re-seed it with the host\'s `pricer:export`.'
   );
 };

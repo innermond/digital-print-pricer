@@ -1,5 +1,5 @@
 import type { Product, Elemental } from '../types';
-import type { PageCountConstraint } from '../data/mockData';
+import type { PageCountConstraint } from '../types';
 import { LAMINATION_RO, LAMINATION_SIDES_RO, FOLD_RO } from './labels';
 
 // A product is "personalized" once its elementals/binding diverge from the

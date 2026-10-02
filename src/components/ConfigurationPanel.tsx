@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Elemental, SizeUnit, Media, Size, Machine, Product, FoldingType } from '../types';
-import type { ProductConfig } from '../data/mockData';
+import type { ProductConfig } from '../types';
 import { MediaSelector } from './configuration/MediaSelector';
 import { SizeSelector } from './configuration/SizeSelector';
 import { CustomSizeControl } from './configuration/CustomSizeControl';

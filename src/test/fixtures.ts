@@ -1,5 +1,5 @@
 import type { Elemental, Finishing, Machine, Paper, Size, Special, Sticker } from '../types';
-import type { ProductConfig } from '../data/mockData';
+import type { ProductConfig } from '../types';
 
 export const makePaper = (overrides: Partial<Paper> = {}): Paper => ({
   kind: 'paper',

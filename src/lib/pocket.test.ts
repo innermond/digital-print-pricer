@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { pocketElemental } from './pocket';
-import { MOCK_MEDIA } from '../data/mockData';
+import { MOCK_CATALOG } from '../data/catalog';
 import type { Pocket } from '../types';
+
+const MOCK_MEDIA = MOCK_CATALOG.media;
 
 const pocket: Pocket = {
   label: 'Buzunar de Hârtie',

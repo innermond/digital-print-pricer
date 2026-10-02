@@ -1,5 +1,5 @@
 import type { Machine } from '../types';
-import type { ProductConfig } from '../data/mockData';
+import type { ProductConfig } from '../types';
 
 // The printing machine a product's config points at, or undefined when the
 // catalog doesn't declare one (see warnIfCatalogPredatesMachine).

@@ -23,8 +23,9 @@ npm run lint       # eslint
 # Configuration
 
 Everything the configurator renders comes from a single JSON-serializable
-`Catalog` object. In standalone dev it is `MOCK_CATALOG` (assembled from
-`src/data/mockData.ts`); a host app injects an equivalent object fetched from its
+`Catalog` object. In standalone dev it is `MOCK_CATALOG` (loaded from
+`src/data/catalog.json`, a copy of the host's catalog — refresh it with the host's
+`php artisan pricer:export` or the admin's "Descarcă catalogul" link); a host app injects an equivalent object fetched from its
 endpoint.
 
 ```jsonc

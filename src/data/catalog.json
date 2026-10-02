@@ -32,16 +32,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -82,16 +82,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -132,16 +132,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -182,16 +182,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -232,16 +232,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -282,16 +282,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -332,16 +332,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -382,16 +382,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -432,16 +432,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -482,16 +482,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -524,16 +524,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -574,16 +574,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -616,16 +616,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -666,16 +666,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -708,16 +708,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -758,16 +758,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -800,16 +800,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -850,16 +850,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -892,16 +892,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -942,16 +942,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -984,16 +984,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1034,16 +1034,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1076,16 +1076,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1126,16 +1126,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1168,16 +1168,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1218,16 +1218,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "matt",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "matt",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1260,16 +1260,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1310,18 +1310,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 2,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 2
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1362,18 +1362,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "soft-touch",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 2,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 2
+            },
+            "lamination": {
+              "type": "soft-touch",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1414,18 +1414,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 1,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1467,18 +1467,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 1,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 1
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1519,18 +1519,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "matt",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 2,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 2
+            },
+            "lamination": {
+              "type": "matt",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1572,18 +1572,18 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
-              "count": 2,
+              "max": 2,
               "min": 1,
-              "max": 2
+              "count": 2
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1624,16 +1624,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1662,11 +1662,11 @@
           "size": {
             "id": "s6",
             "label": "Carte Vizită Compact",
-            "width": 80,
-            "height": 50,
+            "width": 85,
+            "height": 55,
             "unit": "mm",
-            "widthMm": 80,
-            "heightMm": 50
+            "widthMm": 85,
+            "heightMm": 55
           },
           "pageCount": 2,
           "printing": {
@@ -1674,16 +1674,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1724,16 +1724,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "gloss",
-              "sides": "both"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "gloss",
+              "sides": "both"
             },
             "roundedCornes": {
               "corners": []
@@ -1774,16 +1774,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "soft-touch",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "soft-touch",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1812,11 +1812,11 @@
           "size": {
             "id": "s6",
             "label": "Carte Vizită Compact",
-            "width": 80,
-            "height": 50,
+            "width": 85,
+            "height": 55,
             "unit": "mm",
-            "widthMm": 80,
-            "heightMm": 50
+            "widthMm": 85,
+            "heightMm": 55
           },
           "pageCount": 2,
           "printing": {
@@ -1824,16 +1824,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1874,16 +1874,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "tri-fold",
               "folds": 2
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1924,16 +1924,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "z-fold",
               "folds": 2
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -1974,16 +1974,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "half-fold",
               "folds": 1
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2024,16 +2024,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "gate-fold",
               "folds": 3
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2074,16 +2074,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "tri-fold",
               "folds": 2
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2124,16 +2124,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2174,16 +2174,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2224,16 +2224,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2274,16 +2274,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2324,16 +2324,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2374,16 +2374,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2424,16 +2424,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2474,16 +2474,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2524,16 +2524,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2574,16 +2574,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2624,16 +2624,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2674,16 +2674,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2724,16 +2724,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2774,16 +2774,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2824,16 +2824,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2874,16 +2874,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2924,16 +2924,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -2978,16 +2978,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3020,16 +3020,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3062,16 +3062,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3116,16 +3116,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3158,16 +3158,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3200,16 +3200,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3254,16 +3254,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3296,16 +3296,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3338,16 +3338,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3392,16 +3392,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3434,16 +3434,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3476,16 +3476,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3530,16 +3530,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3572,16 +3572,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3614,16 +3614,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3668,16 +3668,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3710,16 +3710,16 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3752,16 +3752,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -3802,9 +3802,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -3813,12 +3813,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": false
             }
           }
         }
@@ -3844,11 +3844,11 @@
           "size": {
             "id": "s6",
             "label": "Carte Vizită Compact",
-            "width": 80,
-            "height": 50,
+            "width": 85,
+            "height": 55,
             "unit": "mm",
-            "widthMm": 80,
-            "heightMm": 50
+            "widthMm": 85,
+            "heightMm": 55
           },
           "pageCount": 2,
           "printing": {
@@ -3856,9 +3856,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -3867,12 +3867,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": true
             }
           }
         }
@@ -3910,9 +3910,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -3921,12 +3921,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": true
             }
           }
         }
@@ -3951,10 +3951,10 @@
           },
           "size": {
             "id": "s6",
+            "unit": "mm",
             "label": "Carte Vizită Compact",
             "width": 80,
             "height": 50,
-            "unit": "mm",
             "widthMm": 80,
             "heightMm": 50
           },
@@ -3964,9 +3964,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -3975,12 +3975,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -4018,9 +4018,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4029,12 +4029,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": false
             }
           }
         }
@@ -4072,9 +4072,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4083,12 +4083,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": false
             }
           }
         }
@@ -4126,9 +4126,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -4137,12 +4137,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": true
             }
           }
         }
@@ -4180,9 +4180,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -4191,12 +4191,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": true
             }
           }
         }
@@ -4234,9 +4234,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4245,12 +4245,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -4288,9 +4288,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4299,12 +4299,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": false
             }
           }
         }
@@ -4342,9 +4342,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4353,12 +4353,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": false
             }
           }
         }
@@ -4396,9 +4396,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -4407,12 +4407,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": true
             }
           }
         }
@@ -4450,9 +4450,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -4461,12 +4461,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": true
             }
           }
         }
@@ -4504,9 +4504,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4515,12 +4515,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -4563,16 +4563,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4605,16 +4605,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4636,7 +4636,7 @@
             "id": "s7",
             "label": "A3+",
             "width": 320,
-            "height": 420,
+            "height": 450,
             "unit": "mm",
             "widthMm": 320,
             "heightMm": 450
@@ -4647,16 +4647,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4702,16 +4702,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4744,16 +4744,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4786,16 +4786,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -4836,9 +4836,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "gloss",
-              "sides": "both"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4847,12 +4847,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "gloss",
+              "sides": "both"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -4890,9 +4890,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4901,6 +4901,10 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": [
                 1,
@@ -4908,10 +4912,6 @@
                 3,
                 4
               ]
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -4949,9 +4949,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "matt",
-              "sides": "both"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -4960,12 +4960,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "matt",
+              "sides": "both"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -5003,9 +5003,9 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -5014,12 +5014,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -5057,9 +5057,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -5068,12 +5068,12 @@
             "creasing": {
               "count": 1
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
@@ -5111,9 +5111,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": true,
+              "staple": true
             },
             "folding": {
               "type": "none",
@@ -5122,12 +5122,12 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": true,
-              "staple": true
             }
           }
         }
@@ -5152,10 +5152,10 @@
           },
           "size": {
             "id": "s1",
+            "unit": "mm",
             "label": "A4 orizontal",
             "width": 297,
             "height": 210,
-            "unit": "mm",
             "widthMm": 297,
             "heightMm": 210
           },
@@ -5165,16 +5165,16 @@
             "back": "none"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
-            },
             "folding": {
               "type": "none",
               "folds": 0
             },
             "creasing": {
               "count": 0
+            },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
             },
             "roundedCornes": {
               "corners": []
@@ -5188,6 +5188,7 @@
       "categoryId": "generic",
       "label": "Produs generic",
       "amount": 1,
+      "pocketEnabled": false,
       "elementals": [
         {
           "id": "elemGa-1",
@@ -5215,9 +5216,9 @@
             "back": "color"
           },
           "finishing": {
-            "lamination": {
-              "type": "none",
-              "sides": "front"
+            "staple": {
+              "hole": false,
+              "staple": false
             },
             "folding": {
               "type": "none",
@@ -5226,17 +5227,16 @@
             "creasing": {
               "count": 0
             },
+            "lamination": {
+              "type": "none",
+              "sides": "front"
+            },
             "roundedCornes": {
               "corners": []
-            },
-            "staple": {
-              "hole": false,
-              "staple": false
             }
           }
         }
-      ],
-      "pocketEnabled": false
+      ]
     }
   ],
   "config": {
@@ -5252,23 +5252,23 @@
         "s1"
       ],
       "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s0",
+      "explanation": "Coală A3 tipărită color pe o față. Dimensiune rezonabilă pentru utilizare in-door.",
       "allowedFoldTypes": [
         "none"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "allowedPrintingBacks": [
         "none"
       ],
-      "allowedLaminationSides": [
-        "front"
-      ],
+      "allowedCreasingCounts": [],
       "allowedPrintingFronts": [
         "color"
       ],
-      "recommendedMediaId": "p3",
-      "recommendedSizeId": "s0",
-      "explanation": "Coală A3 tipărită color pe o față. Dimensiune rezonabilă pentru utilizare in-door."
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ]
     },
     "prod0b": {
       "allowedMediaIds": [
@@ -5282,23 +5282,23 @@
         "s1"
       ],
       "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită color pe o față. Format compact pentru afișaj in-door în spații mici.",
       "allowedFoldTypes": [
         "none"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "allowedPrintingBacks": [
         "none"
       ],
-      "allowedLaminationSides": [
-        "front"
-      ],
+      "allowedCreasingCounts": [],
       "allowedPrintingFronts": [
         "color"
       ],
-      "recommendedMediaId": "p3",
-      "recommendedSizeId": "s1",
-      "explanation": "Coală A4 tipărită color pe o față. Format compact pentru afișaj in-door în spații mici."
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ]
     },
     "prod0c": {
       "allowedMediaIds": [
@@ -5312,23 +5312,23 @@
         "s1"
       ],
       "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s0",
+      "explanation": "Coală A3 tipărită alb-negru pe o față. Cost mai mic.",
       "allowedFoldTypes": [
         "none"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "allowedPrintingBacks": [
         "none"
       ],
-      "allowedLaminationSides": [
-        "front"
-      ],
+      "allowedCreasingCounts": [],
       "allowedPrintingFronts": [
         "black"
       ],
-      "recommendedMediaId": "p3",
-      "recommendedSizeId": "s0",
-      "explanation": "Coală A3 tipărită alb-negru pe o față. Cost mai mic."
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ]
     },
     "prod0d": {
       "allowedMediaIds": [
@@ -5342,23 +5342,23 @@
         "s1"
       ],
       "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s1",
+      "explanation": "Coală A4 tipărită alb-negru pe o față. Cel mai mic cost.",
       "allowedFoldTypes": [
         "none"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "allowedPrintingBacks": [
         "none"
       ],
-      "allowedLaminationSides": [
-        "front"
-      ],
+      "allowedCreasingCounts": [],
       "allowedPrintingFronts": [
         "black"
       ],
-      "recommendedMediaId": "p3",
-      "recommendedSizeId": "s1",
-      "explanation": "Coală A4 tipărită alb-negru pe o față. Cel mai mic cost."
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ]
     },
     "prod1a": {
       "allowedMediaIds": [
@@ -5373,12 +5373,12 @@
         "s8"
       ],
       "machineId": "m1",
-      "allowedFoldTypes": [
-        "none"
-      ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "explanation": "Foaie A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat — evenimente, promoții, materiale informative."
+      "explanation": "Foaie A4 tipărită color pe ambele fețe. Ideală pentru fluturași cu mesaj detaliat — evenimente, promoții, materiale informative.",
+      "allowedFoldTypes": [
+        "none"
+      ]
     },
     "prod1b": {
       "allowedMediaIds": [
@@ -5393,12 +5393,12 @@
         "s8"
       ],
       "machineId": "m1",
-      "allowedFoldTypes": [
-        "none"
-      ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s4",
-      "explanation": "Fluturaș o treime din A4 color pe ambele fețe. Costuri minime de printare."
+      "explanation": "Fluturaș o treime din A4 color pe ambele fețe. Costuri minime de printare.",
+      "allowedFoldTypes": [
+        "none"
+      ]
     },
     "prod1c": {
       "allowedMediaIds": [
@@ -5413,12 +5413,12 @@
         "s8"
       ],
       "machineId": "m1",
-      "allowedFoldTypes": [
-        "none"
-      ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
-      "explanation": "Filă A5 print color pe ambele fețe. Format compact ce poate fi păstrat mai ușor."
+      "explanation": "Filă A5 print color pe ambele fețe. Format compact ce poate fi păstrat mai ușor.",
+      "allowedFoldTypes": [
+        "none"
+      ]
     },
     "prod1d": {
       "allowedMediaIds": [
@@ -5433,12 +5433,12 @@
         "s8"
       ],
       "machineId": "m1",
-      "allowedFoldTypes": [
-        "none"
-      ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "explanation": "Coală A4 color doar pe o față. Potrivit pentru afișe simple sau anunțuri unde nu se folosește verso-ul."
+      "explanation": "Coală A4 color doar pe o față. Potrivit pentru afișe simple sau anunțuri unde nu se folosește verso-ul.",
+      "allowedFoldTypes": [
+        "none"
+      ]
     },
     "prod1e": {
       "allowedMediaIds": [
@@ -5453,12 +5453,12 @@
         "s8"
       ],
       "machineId": "m1",
-      "allowedFoldTypes": [
-        "none"
-      ],
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s8",
-      "explanation": "Format A6 tipărită color pe ambele fețe. Perfect pentru materiale date în mână, citite din mers."
+      "explanation": "Format A6 tipărită color pe ambele fețe. Perfect pentru materiale date în mână, citite din mers.",
+      "allowedFoldTypes": [
+        "none"
+      ]
     },
     "prod2a": {
       "allowedMediaIds": [
@@ -5471,11 +5471,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată cu copertă și interior de 8 pagini. Potrivită pentru cataloage subțiri, prezentări de produse sau materiale promoționale concise.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5484,13 +5483,14 @@
           "kind": "derived"
         },
         "elem2a-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 8 pagini. Potrivită pentru cataloage subțiri, prezentări de produse sau materiale promoționale concise."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod2b": {
       "allowedMediaIds": [
@@ -5503,11 +5503,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5516,13 +5515,14 @@
           "kind": "derived"
         },
         "elem2b-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod2c": {
       "allowedMediaIds": [
@@ -5535,11 +5535,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5548,45 +5547,14 @@
           "kind": "derived"
         },
         "elem2c-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
-    },
-    "prod2e": {
-      "allowedMediaIds": [
-        "p2",
-        "p3",
-        "p4",
-        "p5"
-      ],
-      "allowedSizeIds": [
-        "s1",
-        "s2"
-      ],
       "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
-      "machineId": "m1",
-      "recommendedMediaId": "p3",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "half-fold"
-      ],
-      "elementalPageCounts": {
-        "elem2e-1": {
-          "kind": "derived"
-        },
-        "elem2e-2": {
-          "kind": "multiple",
-          "of": 4,
-          "min": 4,
-          "max": 64
-        }
-      },
-      "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici."
+      "allowedRoundedCorners": []
     },
     "prod2d": {
       "allowedMediaIds": [
@@ -5599,11 +5567,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5612,15 +5579,16 @@
           "kind": "derived"
         },
         "elem2d-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
-    "prod2g": {
+    "prod2e": {
       "allowedMediaIds": [
         "p2",
         "p3",
@@ -5631,26 +5599,26 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
-      "recommendedSizeId": "s2",
+      "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 8 pagini. Variantă compactă pentru pliante de buzunar sau ghiduri mici.",
       "allowedFoldTypes": [
         "half-fold"
       ],
       "elementalPageCounts": {
-        "elem2g-1": {
+        "elem2e-1": {
           "kind": "derived"
         },
-        "elem2g-2": {
-          "kind": "multiple",
+        "elem2e-2": {
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată format A5, cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod2f": {
       "allowedMediaIds": [
@@ -5663,11 +5631,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5676,13 +5643,46 @@
           "kind": "derived"
         },
         "elem2f-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată format A5, cu copertă și interior de 16 pagini. Potrivită pentru cataloage de produse cu mai multe categorii sau prezentări detaliate."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
+    },
+    "prod2g": {
+      "allowedMediaIds": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "allowedSizeIds": [
+        "s1",
+        "s2"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p3",
+      "recommendedSizeId": "s2",
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 24 pagini. Echilibru între volum și cost — potrivită pentru cataloage de dimensiuni medii.",
+      "allowedFoldTypes": [
+        "half-fold"
+      ],
+      "elementalPageCounts": {
+        "elem2g-1": {
+          "kind": "derived"
+        },
+        "elem2g-2": {
+          "of": 4,
+          "max": 64,
+          "min": 4,
+          "kind": "multiple"
+        }
+      },
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod2h": {
       "allowedMediaIds": [
@@ -5695,11 +5695,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
+      "explanation": "Broșură pliată format A5, cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5708,13 +5707,14 @@
           "kind": "derived"
         },
         "elem2h-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată format A5, cu copertă și interior de 32 pagini. Potrivită pentru cataloage extinse, manuale sau portofolii de produse."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod2i": {
       "allowedMediaIds": [
@@ -5727,11 +5727,10 @@
         "s1",
         "s2"
       ],
-      "allowedCreasingCounts": [],
-      "allowedRoundedCorners": [],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
+      "explanation": "Broșură pliată cu copertă laminată mat și interior de 16 pagini. Laminarea protejează coperta și îi dă un finisaj catifelat, potrivit pentru prezentări premium.",
       "allowedFoldTypes": [
         "half-fold"
       ],
@@ -5740,188 +5739,14 @@
           "kind": "derived"
         },
         "elem2i-2": {
-          "kind": "multiple",
           "of": 4,
+          "max": 64,
           "min": 4,
-          "max": 64
+          "kind": "multiple"
         }
       },
-      "explanation": "Broșură pliată cu copertă laminată mat și interior de 16 pagini. Laminarea protejează coperta și îi dă un finisaj catifelat, potrivit pentru prezentări premium."
-    },
-    "prod3a": {
-      "allowedMediaIds": [
-        "p5",
-        "p6",
-        "p11"
-      ],
-      "allowedSizeIds": [
-        "s1"
-      ],
-      "machineId": "m1",
-      "recommendedMediaId": "p6",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [
-        1,
-        2
-      ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "none",
-          "back": "none"
-        }
-      },
-      "explanation": "Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Laminată cu strat tactil plăcut. Folosită pentru oferte, materiale de prezentare premium."
-    },
-    "prod3c": {
-      "allowedMediaIds": [
-        "p5",
-        "p6",
-        "p11"
-      ],
-      "allowedSizeIds": [
-        "s1"
-      ],
-      "machineId": "m1",
-      "recommendedMediaId": "p6",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [
-        1,
-        2
-      ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "none",
-          "back": "none"
-        }
-      },
-      "explanation": "Mapă de prezentare cu buzunar interior și cotor îngust. Grupează materiale care se mută des."
-    },
-    "prod3d": {
-      "allowedMediaIds": [
-        "p5",
-        "p6",
-        "p11"
-      ],
-      "allowedSizeIds": [
-        "s1"
-      ],
-      "machineId": "m1",
-      "recommendedMediaId": "p6",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [
-        1,
-        2
-      ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "none",
-          "back": "none"
-        }
-      },
-      "explanation": "Mapă de prezentare simplificată. Carton robust, Cost minim."
-    },
-    "prod3e": {
-      "allowedMediaIds": [
-        "p5",
-        "p6",
-        "p11"
-      ],
-      "allowedSizeIds": [
-        "s1"
-      ],
-      "machineId": "m1",
-      "recommendedMediaId": "p6",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [
-        1,
-        2
-      ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "none",
-          "back": "none"
-        }
-      },
-      "explanation": "Mapă de prezentare cu buzunar interior, cotor și laminare mată pe copertă. Utilăși cu aspect elegant."
-    },
-    "prod3f": {
-      "allowedMediaIds": [
-        "p5",
-        "p6",
-        "p11"
-      ],
-      "allowedSizeIds": [
-        "s1"
-      ],
-      "machineId": "m1",
-      "recommendedMediaId": "p6",
-      "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [
-        1,
-        2
-      ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "none",
-          "back": "none"
-        }
-      },
-      "explanation": "Mapă de prezentare cu dimensiuni reduse. Fără buzunar interior. Laminarea mată a coperții conferă un aspect mătuit, discret."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": []
     },
     "prod3g": {
       "allowedMediaIds": [
@@ -5935,6 +5760,20 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s1",
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
+      },
+      "explanation": "Mapă standard de prezentare. Are buzunar interior și cotor obținut din 2 plieri apropriate. Buzunarul și cotorul oferă spațiu pentru un număr decent de documente.",
+      "foldedInHalf": true,
       "allowedFoldTypes": [
         "none"
       ],
@@ -5942,24 +5781,184 @@
         1,
         2
       ],
-      "allowedRoundedCorners": [],
-      "foldedInHalf": true,
+      "allowedRoundedCorners": []
+    },
+    "prod3a": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
       "pocket": {
+        "unit": "mm",
         "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
         "width": 200,
         "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
+        "mediaId": "p6",
         "printing": {
-          "front": "none",
-          "back": "none"
-        }
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
       },
-      "explanation": "Mapă standard de prezentare. Are buzunar interior și cotor obținut din 2 plieri apropriate. Buzunarul și cotorul oferă spațiu pentru un număr decent de documente."
+      "explanation": "Mapă de prezentare din carton gros, cu buzunar interior pentru documente. Laminată cu strat tactil plăcut. Folosită pentru oferte, materiale de prezentare premium.",
+      "foldedInHalf": true,
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": []
+    },
+    "prod3c": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior și cotor îngust. Grupează materiale care se mută des.",
+      "foldedInHalf": true,
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": []
+    },
+    "prod3d": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
+      },
+      "explanation": "Mapă de prezentare simplificată. Carton robust, Cost minim.",
+      "foldedInHalf": true,
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": []
+    },
+    "prod3e": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
+      },
+      "explanation": "Mapă de prezentare cu buzunar interior, cotor și laminare mată pe copertă. Utilăși cu aspect elegant.",
+      "foldedInHalf": true,
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": []
+    },
+    "prod3f": {
+      "allowedMediaIds": [
+        "p5",
+        "p6",
+        "p11"
+      ],
+      "allowedSizeIds": [
+        "s1"
+      ],
+      "machineId": "m1",
+      "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "none"
+        },
+        "pageCount": 2
+      },
+      "explanation": "Mapă de prezentare cu dimensiuni reduse. Fără buzunar interior. Laminarea mată a coperții conferă un aspect mătuit, discret.",
+      "foldedInHalf": true,
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": [
+        1,
+        2
+      ],
+      "allowedRoundedCorners": []
     },
     "prod4a": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -5971,14 +5970,14 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită standard 90x50mm, tipărit pe ambele fețe pe carton rezistent. Esențial pentru identitatea de afaceri și networking.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s5",
-      "explanation": "Carte de vizită standard 90x50mm, tipărit pe ambele fețe pe carton rezistent. Esențial pentru identitatea de afaceri și networking."
+      "allowedCreasingCounts": []
     },
     "prod4b": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -5990,14 +5989,14 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
+      "recommendedSizeId": "s6",
+      "explanation": "Carte de vizită compact 85x55mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s6",
-      "explanation": "Carte de vizită compact 85x55mm, tipărit pe o singură față. Variantă mai economică pentru tiraje mari."
+      "allowedCreasingCounts": []
     },
     "prod4c": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -6009,14 +6008,14 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p5",
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită premium 90x50mm pe carton lucios 300gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s5",
-      "explanation": "Carte de vizită premium 90x50mm pe carton lucios 300gsm, laminat pe ambele fețe. Aspect strălucitor și rezistență sporită — pentru profesioniști care vor să iasă în evidență."
+      "allowedCreasingCounts": []
     },
     "prod4d": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -6028,14 +6027,14 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
+      "recommendedSizeId": "s5",
+      "explanation": "Carte de vizită standard 90x50mm, tipărit doar pe față, cu finisaj soft-touch catifelat. Senzație tactilă premium pentru o primă impresie memorabilă.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s5",
-      "explanation": "Carte de vizită standard 90x50mm, tipărit doar pe față, cu finisaj soft-touch catifelat. Senzație tactilă premium pentru o primă impresie memorabilă."
+      "allowedCreasingCounts": []
     },
     "prod4e": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -6047,11 +6046,12 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
+      "recommendedSizeId": "s6",
+      "explanation": "Carte de vizită compact 85x55mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s6",
-      "explanation": "Carte de vizită compact 85x55mm, tipărit pe ambele fețe. Permite mai multe informații de contact pe un format redus, la cost moderat."
+      "allowedCreasingCounts": []
     },
     "prod5a": {
       "allowedMediaIds": [
@@ -6065,17 +6065,10 @@
         "s2",
         "s4"
       ],
-      "allowedPrintingFronts": [
-        "color",
-        "black"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black"
-      ],
       "machineId": "m1",
       "recommendedMediaId": "p2",
       "recommendedSizeId": "s4",
+      "explanation": "Pliant cu pliere în 3 (tri-fold), obținut dintr-o singură coală. Excelent pentru hărți, ghiduri sau prezentări de produse cu mai multe secțiuni.",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6087,7 +6080,14 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant cu pliere în 3 (tri-fold), obținut dintr-o singură coală. Excelent pentru hărți, ghiduri sau prezentări de produse cu mai multe secțiuni."
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ]
     },
     "prod5b": {
       "allowedMediaIds": [
@@ -6101,17 +6101,10 @@
         "s2",
         "s4"
       ],
-      "allowedPrintingFronts": [
-        "color",
-        "black"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black"
-      ],
       "machineId": "m1",
       "recommendedMediaId": "p2",
       "recommendedSizeId": "s4",
+      "explanation": "Pliant cu pliere în Z (z-fold), obținut dintr-o singură coală. Potrivit pentru prezentări secvențiale sau hărți pliate.",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6123,7 +6116,14 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant cu pliere în Z (z-fold), obținut dintr-o singură coală. Potrivit pentru prezentări secvențiale sau hărți pliate."
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ]
     },
     "prod5c": {
       "allowedMediaIds": [
@@ -6137,17 +6137,10 @@
         "s2",
         "s4"
       ],
-      "allowedPrintingFronts": [
-        "color",
-        "black"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black"
-      ],
       "machineId": "m1",
       "recommendedMediaId": "p2",
       "recommendedSizeId": "s4",
+      "explanation": "Pliant cu pliere simplă în 2 (bi-fold), obținut dintr-o singură coală. Variantă compactă pentru mesaje scurte.",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6159,7 +6152,14 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant cu pliere simplă în 2 (bi-fold), obținut dintr-o singură coală. Variantă compactă pentru mesaje scurte."
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ]
     },
     "prod5d": {
       "allowedMediaIds": [
@@ -6173,17 +6173,10 @@
         "s2",
         "s4"
       ],
-      "allowedPrintingFronts": [
-        "color",
-        "black"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black"
-      ],
       "machineId": "m1",
       "recommendedMediaId": "p2",
       "recommendedSizeId": "s1",
+      "explanation": "Pliant format A4 cu pliere tip portiță (gate-fold), care se deschide spre interior din ambele laturi. Creează un efect spectaculos pentru lansări de produse sau meniuri de lux.",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6195,7 +6188,14 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant format A4 cu pliere tip portiță (gate-fold), care se deschide spre interior din ambele laturi. Creează un efect spectaculos pentru lansări de produse sau meniuri de lux."
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ]
     },
     "prod5e": {
       "allowedMediaIds": [
@@ -6209,17 +6209,10 @@
         "s2",
         "s4"
       ],
-      "allowedPrintingFronts": [
-        "color",
-        "black"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black"
-      ],
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
+      "explanation": "Pliant format A5 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe.",
       "allowedFoldTypes": [
         "half-fold",
         "tri-fold",
@@ -6231,7 +6224,14 @@
           "kind": "derived"
         }
       },
-      "explanation": "Pliant format A5 cu pliere în 3 (tri-fold), mai mare decât varianta 1/3A4. Spațiu generos pentru text și imagini — potrivit pentru prezentări de servicii complexe."
+      "allowedPrintingBacks": [
+        "color",
+        "black"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black"
+      ]
     },
     "prod6a": {
       "allowedMediaIds": [
@@ -6260,10 +6260,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s1",
+      "explanation": "Coală A4 de etichete autoadezive lucioase, tipărită pe o singură față. Potrivită pentru ambalaje, sticle sau organizare — se decupează individual după tipărire.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6272,7 +6270,9 @@
           "value": 1
         }
       },
-      "explanation": "Coală A4 de etichete autoadezive lucioase, tipărită pe o singură față. Potrivită pentru ambalaje, sticle sau organizare — se decupează individual după tipărire."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6b": {
       "allowedMediaIds": [
@@ -6301,10 +6301,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s1",
+      "explanation": "Coală A3 de etichete autoadezive mate, tipărită pe o singură față. Potrivită pentru tiraje mari de etichete decupate individual.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6313,7 +6311,9 @@
           "value": 1
         }
       },
-      "explanation": "Coală A3 de etichete autoadezive mate, tipărită pe o singură față. Potrivită pentru tiraje mari de etichete decupate individual."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6c": {
       "allowedMediaIds": [
@@ -6342,10 +6342,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s1",
+      "explanation": "Coală A4 de etichete transparente, tipărită pe o singură față. Creează un aspect „fără etichetă\" — ideală pentru ambalaje premium.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6354,7 +6352,9 @@
           "value": 1
         }
       },
-      "explanation": "Coală A4 de etichete transparente, tipărită pe o singură față. Creează un aspect „fără etichetă\" — ideală pentru ambalaje premium."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6d": {
       "allowedMediaIds": [
@@ -6383,10 +6383,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p10",
       "recommendedSizeId": "s2",
+      "explanation": "Coală A5 de etichete PVC, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau organice.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6395,7 +6393,9 @@
           "value": 1
         }
       },
-      "explanation": "Coală A5 de etichete PVC, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau organice."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6e": {
       "allowedMediaIds": [
@@ -6424,10 +6424,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s0",
+      "explanation": "Coală A3 de etichete autoadezive lucioase, tipărită pe o singură față. Format mare pentru tiraje de volum sau decupaje complexe cu multe etichete pe coală.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6436,7 +6434,9 @@
           "value": 1
         }
       },
-      "explanation": "Coală A3 de etichete autoadezive lucioase, tipărită pe o singură față. Format mare pentru tiraje de volum sau decupaje complexe cu multe etichete pe coală."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6f": {
       "allowedMediaIds": [
@@ -6465,10 +6465,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s9",
+      "explanation": "Etichetă autoadezivă lucioasă 30x40mm, tipărită pe o singură față. Format mic potrivit pentru etichete de produs sau ambalaje compacte.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6477,7 +6475,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă lucioasă 30x40mm, tipărită pe o singură față. Format mic potrivit pentru etichete de produs sau ambalaje compacte."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6g": {
       "allowedMediaIds": [
@@ -6506,10 +6506,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p8",
       "recommendedSizeId": "s10",
+      "explanation": "Etichetă autoadezivă mată 50x50mm, tipărită pe o singură față. Format pătrat versatil pentru etichete de borcane, cutii sau logo-uri.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6518,7 +6516,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă mată 50x50mm, tipărită pe o singură față. Format pătrat versatil pentru etichete de borcane, cutii sau logo-uri."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6h": {
       "allowedMediaIds": [
@@ -6547,10 +6547,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p9",
       "recommendedSizeId": "s11",
+      "explanation": "Etichetă transparentă 60x60mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje premium de dimensiuni medii.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6559,7 +6557,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă transparentă 60x60mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje premium de dimensiuni medii."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6i": {
       "allowedMediaIds": [
@@ -6588,10 +6588,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p10",
       "recommendedSizeId": "s12",
+      "explanation": "Etichetă PVC 40x60mm, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau cosmetice.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6600,7 +6598,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă PVC 40x60mm, tipărită pe o singură față. Aspect natural, ecologic — potrivit pentru produse artizanale sau cosmetice."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6j": {
       "allowedMediaIds": [
@@ -6629,10 +6629,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s13",
+      "explanation": "Etichetă autoadezivă lucioasă 90x60mm, tipărită pe o singură față. Format dreptunghiular potrivit pentru etichete de sticle sau cutii.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6641,7 +6639,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă lucioasă 90x60mm, tipărită pe o singură față. Format dreptunghiular potrivit pentru etichete de sticle sau cutii."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6k": {
       "allowedMediaIds": [
@@ -6670,10 +6670,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p8",
       "recommendedSizeId": "s14",
+      "explanation": "Etichetă autoadezivă mată 70x70mm, tipărită pe o singură față. Format pătrat mai mare, potrivit pentru etichete cu mai mult text.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6682,7 +6680,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă mată 70x70mm, tipărită pe o singură față. Format pătrat mai mare, potrivit pentru etichete cu mai mult text."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6l": {
       "allowedMediaIds": [
@@ -6711,10 +6711,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p9",
       "recommendedSizeId": "s15",
+      "explanation": "Etichetă transparentă 90x70mm, tipărită pe o singură față. Format mare pentru ambalaje premium cu detalii vizuale complexe.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6723,7 +6721,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă transparentă 90x70mm, tipărită pe o singură față. Format mare pentru ambalaje premium cu detalii vizuale complexe."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6m": {
       "allowedMediaIds": [
@@ -6752,10 +6752,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p10",
       "recommendedSizeId": "s16",
+      "explanation": "Etichetă PVC 90x40mm, tipărită pe o singură față. Format alungit, potrivit pentru etichete de identificare sau preț.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6764,7 +6762,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă PVC 90x40mm, tipărită pe o singură față. Format alungit, potrivit pentru etichete de identificare sau preț."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6n": {
       "allowedMediaIds": [
@@ -6793,10 +6793,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p7",
       "recommendedSizeId": "s17",
+      "explanation": "Etichetă autoadezivă lucioasă 100x90mm, tipărită pe o singură față. Format mare potrivit pentru etichete de expediere sau cutii.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6805,7 +6803,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă lucioasă 100x90mm, tipărită pe o singură față. Format mare potrivit pentru etichete de expediere sau cutii."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6o": {
       "allowedMediaIds": [
@@ -6834,10 +6834,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p8",
       "recommendedSizeId": "s18",
+      "explanation": "Etichetă autoadezivă mată 100x100mm, tipărită pe o singură față. Format pătrat mare pentru etichete cu text sau grafică extinsă.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6846,7 +6844,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă autoadezivă mată 100x100mm, tipărită pe o singură față. Format pătrat mare pentru etichete cu text sau grafică extinsă."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6p": {
       "allowedMediaIds": [
@@ -6875,10 +6875,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p9",
       "recommendedSizeId": "s19",
+      "explanation": "Etichetă transparentă 110x100mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje mari sau premium.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6887,7 +6885,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă transparentă 110x100mm, tipărită pe o singură față. Aspect „fără etichetă\" pentru ambalaje mari sau premium."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod6q": {
       "allowedMediaIds": [
@@ -6916,10 +6916,8 @@
       "machineId": "m1",
       "recommendedMediaId": "p10",
       "recommendedSizeId": "s20",
+      "explanation": "Etichetă PVC 120x100mm, tipărită pe o singură față. Cel mai mare format din gamă — potrivit pentru cutii sau ambalaje voluminoase.",
       "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedPrintingBacks": [
         "none"
       ],
       "elementalPageCounts": {
@@ -6928,7 +6926,9 @@
           "value": 1
         }
       },
-      "explanation": "Etichetă PVC 120x100mm, tipărită pe o singură față. Cel mai mare format din gamă — potrivit pentru cutii sau ambalaje voluminoase."
+      "allowedPrintingBacks": [
+        "none"
+      ]
     },
     "prod7a": {
       "allowedMediaIds": [
@@ -6944,15 +6944,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -6960,23 +6951,32 @@
           "black"
         ]
       },
+      "explanation": "Catalog cu copertă, interior de 16 pagini și copertă spate, legat cu spirală. Ideal pentru cataloage subțiri de produse sau portofolii compacte.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7a-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7a-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7a-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog cu copertă, interior de 16 pagini și copertă spate, legat cu spirală. Ideal pentru cataloage subțiri de produse sau portofolii compacte."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": []
     },
     "prod7b": {
       "allowedMediaIds": [
@@ -6992,15 +6992,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7008,23 +6999,32 @@
           "black"
         ]
       },
+      "explanation": "Catalog cu copertă, interior de 32 pagini și copertă spate, legat cu spirală. Potrivit pentru cataloage de produse cu game extinse.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7b-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7b-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7b-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog cu copertă, interior de 32 pagini și copertă spate, legat cu spirală. Potrivit pentru cataloage de produse cu game extinse."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": []
     },
     "prod7c": {
       "allowedMediaIds": [
@@ -7040,15 +7040,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7056,23 +7047,32 @@
           "black"
         ]
       },
+      "explanation": "Catalog cu copertă, interior de 48 pagini și copertă spate, legat cu spirală. Ideal pentru manuale sau portofolii extinse care trebuie să stea deschise plate.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7c-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7c-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7c-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog cu copertă, interior de 48 pagini și copertă spate, legat cu spirală. Ideal pentru manuale sau portofolii extinse care trebuie să stea deschise plate."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": []
     },
     "prod7d": {
       "allowedMediaIds": [
@@ -7088,15 +7088,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s2",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7104,23 +7095,32 @@
           "black"
         ]
       },
+      "explanation": "Catalog format A5 cu copertă, interior de 24 pagini și copertă spate, legat cu spirală. Format de buzunar, ușor de transportat — potrivit pentru cataloage de prezentare la întâlniri.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7d-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7d-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7d-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog format A5 cu copertă, interior de 24 pagini și copertă spate, legat cu spirală. Format de buzunar, ușor de transportat — potrivit pentru cataloage de prezentare la întâlniri."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": []
     },
     "prod7e": {
       "allowedMediaIds": [
@@ -7136,15 +7136,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7152,23 +7143,32 @@
           "black"
         ]
       },
+      "explanation": "Catalog cu copertă, interior de 96 pagini și copertă spate, legat cu spirală. Variantă pentru cataloage foarte extinse sau cărți de specialitate.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7e-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7e-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7e-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog cu copertă, interior de 96 pagini și copertă spate, legat cu spirală. Variantă pentru cataloage foarte extinse sau cărți de specialitate."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": []
     },
     "prod7f": {
       "allowedMediaIds": [
@@ -7184,15 +7184,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p3",
       "recommendedSizeId": "s1",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedRoundedCorners": [],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7200,30 +7191,39 @@
           "black"
         ]
       },
-      "elementalPrintingFronts": {
-        "elem7f-1": [
-          "color",
-          "black",
-          "none"
-        ]
-      },
+      "explanation": "Catalog cu copertă opțional netipărită, interior de 16 pagini și copertă spate, legat cu spirală. Potrivit pentru clienți care nu doresc o copertă tipărită.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem7f-1": {
           "kind": "fixed",
           "value": 1
         },
         "elem7f-2": {
-          "kind": "multiple",
           "of": 2,
+          "max": 200,
           "min": 2,
-          "max": 200
+          "kind": "multiple"
         },
         "elem7f-3": {
           "kind": "fixed",
           "value": 1
         }
       },
-      "explanation": "Catalog cu copertă opțional netipărită, interior de 16 pagini și copertă spate, legat cu spirală. Potrivit pentru clienți care nu doresc o copertă tipărită."
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedRoundedCorners": [],
+      "elementalPrintingFronts": {
+        "elem7f-1": [
+          "color",
+          "black",
+          "none"
+        ]
+      }
     },
     "prod8a": {
       "allowedMediaIds": [
@@ -7246,16 +7246,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton gros 90x50mm, cu gaură pentru agățare. Potrivită pentru etichete de bagaje sau atârnătoare de produs.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s5",
-      "explanation": "Etichetă din carton gros 90x50mm, cu gaură pentru agățare. Potrivită pentru etichete de bagaje sau atârnătoare de produs."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8b": {
       "allowedMediaIds": [
@@ -7278,16 +7278,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s6",
+      "explanation": "Etichetă din carton gros 85x55mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s6",
-      "explanation": "Etichetă din carton gros 85x55mm, cu capsă. Potrivită pentru etichete de prețuri prinse direct pe produs."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8c": {
       "allowedMediaIds": [
@@ -7310,16 +7310,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton gros 90x50mm, cu gaură și capsă pentru fixare dublă. Potrivită pentru etichete care trebuie atașate sigur pe produse voluminoase.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s5",
-      "explanation": "Etichetă din carton gros 90x50mm, cu gaură și capsă pentru fixare dublă. Potrivită pentru etichete care trebuie atașate sigur pe produse voluminoase."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8d": {
       "allowedMediaIds": [
@@ -7342,16 +7342,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p5",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s6",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 85x55mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s6",
-      "explanation": "Etichetă premium din carton lucios 300gsm, 85x55mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8e": {
       "allowedMediaIds": [
@@ -7374,16 +7374,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s5",
+      "explanation": "Etichetă din carton 90x50mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s5",
-      "explanation": "Etichetă din carton 90x50mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8f": {
       "allowedMediaIds": [
@@ -7406,16 +7406,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s9",
+      "explanation": "Etichetă din carton gros 30x40mm, cu gaură pentru agățare. Format mic, potrivit pentru etichete de bijuterii sau accesorii.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s9",
-      "explanation": "Etichetă din carton gros 30x40mm, cu gaură pentru agățare. Format mic, potrivit pentru etichete de bijuterii sau accesorii."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8g": {
       "allowedMediaIds": [
@@ -7438,16 +7438,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s13",
+      "explanation": "Etichetă din carton gros 90x60mm, cu capsă. Format dreptunghiular pentru etichete de preț sau identificare produs.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s13",
-      "explanation": "Etichetă din carton gros 90x60mm, cu capsă. Format dreptunghiular pentru etichete de preț sau identificare produs."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8h": {
       "allowedMediaIds": [
@@ -7470,16 +7470,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p5",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s14",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 70x70mm, cu gaură și capsă pentru fixare dublă. Format pătrat pentru atârnătoare de produs.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s14",
-      "explanation": "Etichetă premium din carton lucios 300gsm, 70x70mm, cu gaură și capsă pentru fixare dublă. Format pătrat pentru atârnătoare de produs."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8i": {
       "allowedMediaIds": [
@@ -7502,16 +7502,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s15",
+      "explanation": "Etichetă din carton gros 90x70mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s15",
-      "explanation": "Etichetă din carton gros 90x70mm, tipărită pe ambele fețe, fără gaură sau capsă. Gata pentru aplicare cu adeziv sau șnur separat."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8j": {
       "allowedMediaIds": [
@@ -7534,16 +7534,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s16",
+      "explanation": "Etichetă din carton gros 90x40mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s16",
-      "explanation": "Etichetă din carton gros 90x40mm, tipărită alb-negru, cu o gaură pentru agățare. Variantă economică pentru etichetare în volum mare."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8k": {
       "allowedMediaIds": [
@@ -7566,16 +7566,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s17",
+      "explanation": "Etichetă din carton gros 100x90mm, cu gaură pentru agățare. Format mare, potrivit pentru atârnătoare de bagaje sau produse voluminoase.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s17",
-      "explanation": "Etichetă din carton gros 100x90mm, cu gaură pentru agățare. Format mare, potrivit pentru atârnătoare de bagaje sau produse voluminoase."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8l": {
       "allowedMediaIds": [
@@ -7598,16 +7598,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p5",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s18",
+      "explanation": "Etichetă premium din carton lucios 300gsm, 100x100mm, cu capsă. Format pătrat mare pentru etichete cu text sau grafică extinsă.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s18",
-      "explanation": "Etichetă premium din carton lucios 300gsm, 100x100mm, cu capsă. Format pătrat mare pentru etichete cu text sau grafică extinsă."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8m": {
       "allowedMediaIds": [
@@ -7630,16 +7630,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s19",
+      "explanation": "Etichetă din carton gros 110x100mm, cu gaură și capsă pentru fixare dublă. Format mare pentru produse voluminoase.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s19",
-      "explanation": "Etichetă din carton gros 110x100mm, cu gaură și capsă pentru fixare dublă. Format mare pentru produse voluminoase."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod8n": {
       "allowedMediaIds": [
@@ -7662,16 +7662,16 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
+      "recommendedSizeId": "s20",
+      "explanation": "Etichetă din carton gros 120x100mm, tipărită pe ambele fețe, fără gaură sau capsă. Cel mai mare format din gamă.",
       "allowedStaple": {
         "hole": true,
         "staple": true
       },
-      "recommendedSizeId": "s20",
-      "explanation": "Etichetă din carton gros 120x100mm, tipărită pe ambele fețe, fără gaură sau capsă. Cel mai mare format din gamă."
+      "allowedFoldTypes": [
+        "none"
+      ],
+      "allowedCreasingCounts": []
     },
     "prod9": {
       "allowedMediaIds": [
@@ -7690,14 +7690,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s7",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
-      "allowedLaminationSides": [
-        "front"
-      ],
-      "allowedRoundedCorners": [],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7706,28 +7698,10 @@
         ]
       },
       "punchHole": true,
-      "elementalPrintingFronts": {
-        "elem9-1": [
-          "color"
-        ],
-        "elem9-2": [
-          "color"
-        ],
-        "elem9-3": [
-          "none"
-        ]
-      },
-      "elementalPrintingBacks": {
-        "elem9-1": [
-          "none"
-        ],
-        "elem9-2": [
-          "none"
-        ],
-        "elem9-3": [
-          "none"
-        ]
-      },
+      "explanation": "Calendar de perete cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format clasic pentru calendare promoționale anuale.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem9-1": {
           "kind": "fixed",
@@ -7742,7 +7716,33 @@
           "value": 1
         }
       },
-      "explanation": "Calendar de perete cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format clasic pentru calendare promoționale anuale."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "elementalPrintingBacks": {
+        "elem9-1": [
+          "none"
+        ],
+        "elem9-2": [
+          "none"
+        ],
+        "elem9-3": [
+          "none"
+        ]
+      },
+      "elementalPrintingFronts": {
+        "elem9-1": [
+          "color"
+        ],
+        "elem9-2": [
+          "color"
+        ],
+        "elem9-3": [
+          "none"
+        ]
+      }
     },
     "prod10": {
       "allowedMediaIds": [
@@ -7761,14 +7761,6 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s7",
-      "allowedFoldTypes": [
-        "none"
-      ],
-      "allowedCreasingCounts": [],
-      "allowedLaminationSides": [
-        "front"
-      ],
-      "allowedRoundedCorners": [],
       "binding": {
         "type": "spiral",
         "allowedColors": [
@@ -7777,28 +7769,10 @@
         ]
       },
       "punchHole": true,
-      "elementalPrintingFronts": {
-        "elem10-1": [
-          "color"
-        ],
-        "elem10-2": [
-          "color"
-        ],
-        "elem10-3": [
-          "none"
-        ]
-      },
-      "elementalPrintingBacks": {
-        "elem10-1": [
-          "none"
-        ],
-        "elem10-2": [
-          "none"
-        ],
-        "elem10-3": [
-          "none"
-        ]
-      },
+      "explanation": "Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici.",
+      "allowedFoldTypes": [
+        "none"
+      ],
       "elementalPageCounts": {
         "elem10-1": {
           "kind": "fixed",
@@ -7813,7 +7787,33 @@
           "value": 1
         }
       },
-      "explanation": "Calendar de perete în format A4, cu copertă, 12 file lunare (tipărite doar pe față) și copertă spate, legat cu spirală. Format compact pentru birou sau spații mici."
+      "allowedCreasingCounts": [],
+      "allowedRoundedCorners": [],
+      "allowedLaminationSides": [
+        "front"
+      ],
+      "elementalPrintingBacks": {
+        "elem10-1": [
+          "none"
+        ],
+        "elem10-2": [
+          "none"
+        ],
+        "elem10-3": [
+          "none"
+        ]
+      },
+      "elementalPrintingFronts": {
+        "elem10-1": [
+          "color"
+        ],
+        "elem10-2": [
+          "color"
+        ],
+        "elem10-3": [
+          "none"
+        ]
+      }
     },
     "prod11a": {
       "allowedMediaIds": [
@@ -7830,18 +7830,18 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s22",
+      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, laminat lucios pe ambele fețe. Laminarea îl ține drept și îl protejează de uzura zilnică — potrivit pentru librării și edituri.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, laminat lucios pe ambele fețe. Laminarea îl ține drept și îl protejează de uzura zilnică — potrivit pentru librării și edituri."
+      ]
     },
     "prod11b": {
       "allowedMediaIds": [
@@ -7858,18 +7858,18 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s21",
+      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu toate cele patru colțuri rotunjite. Formatul subțire alunecă ușor între pagini, iar colțurile rotunde nu agață hârtia.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu toate cele patru colțuri rotunjite. Formatul subțire alunecă ușor între pagini, iar colțurile rotunde nu agață hârtia."
+      ]
     },
     "prod11c": {
       "allowedMediaIds": [
@@ -7886,18 +7886,18 @@
       "machineId": "m1",
       "recommendedMediaId": "p5",
       "recommendedSizeId": "s23",
+      "explanation": "Semn de carte 60x180mm din carton mat 300gsm, laminat mat pe ambele fețe. Suprafața mată nu reflectă lumina și scoate în evidență fotografiile discrete.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 60x180mm din carton mat 300gsm, laminat mat pe ambele fețe. Suprafața mată nu reflectă lumina și scoate în evidență fotografiile discrete."
+      ]
     },
     "prod11d": {
       "allowedMediaIds": [
@@ -7914,18 +7914,18 @@
       "machineId": "m1",
       "recommendedMediaId": "p5",
       "recommendedSizeId": "s24",
+      "explanation": "Semn de carte 70x210mm din carton mat 300gsm, tipărit doar pe față, fără finisaje. Se taie 3 bucăți dintr-o coală A4 fără resturi — cea mai ieftină variantă pentru tiraje mari și materiale promoționale.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 70x210mm din carton mat 300gsm, tipărit doar pe față, fără finisaje. Se taie 3 bucăți dintr-o coală A4 fără resturi — cea mai ieftină variantă pentru tiraje mari și materiale promoționale."
+      ]
     },
     "prod11e": {
       "allowedMediaIds": [
@@ -7942,18 +7942,18 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s22",
+      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, cu o biguitură care îi permite să se plieze peste marginea de sus a paginii. Rămâne pe pagină chiar dacă închideți cartea.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 55x160mm din carton mat 350gsm, cu o biguitură care îi permite să se plieze peste marginea de sus a paginii. Rămâne pe pagină chiar dacă închideți cartea."
+      ]
     },
     "prod11f": {
       "allowedMediaIds": [
@@ -7970,21 +7970,20 @@
       "machineId": "m1",
       "recommendedMediaId": "p6",
       "recommendedSizeId": "s21",
+      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
       "allowedFoldTypes": [
         "none"
       ],
       "allowedCreasingCounts": [
         0,
         1
-      ],
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
-      },
-      "explanation": "Semn de carte 50x150mm din carton mat 350gsm, cu gaură și capsă metalică pentru șnur sau ciucure. Capsa întărește gaura, astfel încât cartonul nu se rupe la tras."
+      ]
     },
     "prod12a": {
-      "allowedCreasingCounts": [],
       "allowedMediaIds": [
         "p5",
         "p6",
@@ -7997,11 +7996,12 @@
       ],
       "machineId": "m1",
       "recommendedMediaId": "p6",
+      "recommendedSizeId": "s1",
+      "explanation": "Diplomă A4 printată color pe carton solid 350gsm, cu aspect mat.",
       "allowedFoldTypes": [
         "none"
       ],
-      "recommendedSizeId": "s1",
-      "explanation": "Diplomă A4 printată color pe carton solid 350gsm, cu aspect mat."
+      "allowedCreasingCounts": []
     },
     "prodGa": {
       "allowedMediaIds": [
@@ -8047,34 +8047,17 @@
       "machineId": "m1",
       "recommendedMediaId": "p4",
       "recommendedSizeId": "s1",
-      "sharedSize": false,
-      "allowedFoldTypes": [
-        "none",
-        "half-fold",
-        "tri-fold",
-        "z-fold",
-        "gate-fold",
-        "custom"
-      ],
-      "allowedPrintingFronts": [
-        "color",
-        "black",
-        "none"
-      ],
-      "allowedPrintingBacks": [
-        "color",
-        "black",
-        "none"
-      ],
-      "allowedPageCount": {
-        "kind": "multiple",
-        "of": 1,
-        "min": 1,
-        "max": 500
-      },
-      "allowedStaple": {
-        "hole": true,
-        "staple": true
+      "pocket": {
+        "unit": "mm",
+        "label": "Buzunar de Hârtie",
+        "width": 200,
+        "height": 120,
+        "mediaId": "p6",
+        "printing": {
+          "back": "none",
+          "front": "black"
+        },
+        "pageCount": 2
       },
       "binding": {
         "type": "spiral",
@@ -8083,20 +8066,37 @@
           "black"
         ]
       },
-      "pocket": {
-        "label": "Buzunar de Hârtie",
-        "mediaId": "p6",
-        "width": 200,
-        "height": 120,
-        "unit": "mm",
-        "pageCount": 2,
-        "printing": {
-          "front": "black",
-          "back": "none"
-        }
+      "sharedSize": false,
+      "explanation": "Produs fără presetări: alege materialul, dimensiunea, tipărirea și finisarea de la zero, și adaugă câte elemente are lucrarea. Folosit pentru cereri care nu se încadrează în celelalte categorii.",
+      "allowedStaple": {
+        "hole": true,
+        "staple": true
+      },
+      "allowedFoldTypes": [
+        "none",
+        "half-fold",
+        "tri-fold",
+        "z-fold",
+        "gate-fold",
+        "custom"
+      ],
+      "allowedPageCount": {
+        "of": 1,
+        "max": 500,
+        "min": 1,
+        "kind": "multiple"
       },
       "allowElementEditing": true,
-      "explanation": "Produs fără presetări: alege materialul, dimensiunea, tipărirea și finisarea de la zero, și adaugă câte elemente are lucrarea. Folosit pentru cereri care nu se încadrează în celelalte categorii."
+      "allowedPrintingBacks": [
+        "color",
+        "black",
+        "none"
+      ],
+      "allowedPrintingFronts": [
+        "color",
+        "black",
+        "none"
+      ]
     }
   },
   "categories": [

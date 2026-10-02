@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import type { Elemental, Media, Size } from '../types';
 import type { Catalog } from '../data/catalog';
-import type { ProductConfig } from '../data/mockData';
+import type { ProductConfig } from '../types';
 
 /**
  * A fresh, neutral part for a product whose config sets `allowElementEditing`.

@@ -12,8 +12,6 @@ dist
 dist-ssr
 *.local
 
-# generated catalog seed (canonical copy lives in the host/Laravel repo)
-scripts/catalog.json
 
 # Editor directories and files
 .vscode/*

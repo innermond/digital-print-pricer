@@ -9,7 +9,6 @@ import {
 } from './finishingRules';
 import { makeElemental, makeFinishing, makeConfig, makePaper, makeSticker } from '../test/fixtures';
 import { MOCK_CATALOG } from '../data/catalog';
-import { MOCK_PAPERS } from '../data/mockData';
 
 describe('allowedLaminationSides', () => {
   it('offers all three sides by default (no config restriction)', () => {
@@ -215,7 +214,7 @@ describe('allowedRoundedCorners, wired to the real catalog', () => {
     const products = MOCK_CATALOG.products.filter((p) => p.categoryId === categoryId);
     // Guards the reverse failure: a renamed category silently emptying the loop.
     expect(products.length).toBeGreaterThan(0);
-    const board = MOCK_PAPERS.find((p) => p.gsm === 350)!;
+    const board = MOCK_CATALOG.media.find((m) => m.kind === 'paper' && m.gsm === 350)!;
     for (const product of products) {
       const config = MOCK_CATALOG.config[product.id];
       expect(config, `${product.id} has no config entry`).toBeDefined();
