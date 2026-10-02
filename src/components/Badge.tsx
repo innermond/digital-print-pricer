@@ -34,6 +34,15 @@ export function Badge({ children, label, text, position = 'top-right', grow = fa
   // nothing until someone actually asks for help.
   const [open, setOpen] = useState(false);
   const [panelStyle, setPanelStyle] = useState<CSSProperties | null>(null);
+  // Closing forgets the measured position, so the next open starts unmeasured (and
+  // invisible) again. Done while rendering rather than in the layout effect: setting
+  // state there for a reset is what React's "adjust state on a prop change" pattern
+  // replaces, and it spares a second render.
+  const [wasOpen, setWasOpen] = useState(false);
+  if (open !== wasOpen) {
+    setWasOpen(open);
+    if (!open) setPanelStyle(null);
+  }
   // Click/tap pins the panel open. Hover alone left the help unreachable on
   // touch devices, where there is no hover at all.
   const [pinned, setPinned] = useState(false);
@@ -46,7 +55,7 @@ export function Badge({ children, label, text, position = 'top-right', grow = fa
   // at its unpositioned spot. Measuring in the handler (as this did) is what forced the
   // panel to be permanently mounted in the first place.
   useLayoutEffect(() => {
-    if (!open) { setPanelStyle(null); return; }
+    if (!open) return;
 
     const badgeEl = badgeRef.current;
     const panelEl = panelRef.current;
